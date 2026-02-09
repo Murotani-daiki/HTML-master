@@ -1327,7 +1327,25 @@
 <!-- Confetti container -->
 <div class="confetti-container" id="confetti"></div>
 
+<!-- Firebase SDK (compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
 <script>
+// ==============================
+// FIREBASE INIT
+// ==============================
+const firebaseConfig = {
+  apiKey: "AIzaSyCb_JgYML7rxfIloqjxt5y_1YSF__MiSaU",
+  authDomain: "japan-wordle.firebaseapp.com",
+  projectId: "japan-wordle",
+  storageBucket: "japan-wordle.firebasestorage.app",
+  messagingSenderId: "642967595639",
+  appId: "1:642967595639:web:60f77076db8f984bf1b472",
+  measurementId: "G-6YZRNSHTDW"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 // ==============================
 // WORD LIST - 5文字の日本の地名
 // ==============================
@@ -2077,31 +2095,13 @@ async function syncRankingToServer() {
         best_streak: stats.bestStreak,
         played: stats.played,
         won: stats.won,
-        win_rate: winRate
+        win_rate: winRate,
+        updated_at: firebase.firestore.FieldValue.serverTimestamp()
     };
     
     try {
-        // 既存レコードを検索
-        const res = await fetch(`tables/rankings?search=${encodeURIComponent(playerId)}&limit=100`);
-        const json = await res.json();
-        
-        const existing = json.data && json.data.find(r => r.player_id === playerId);
-        
-        if (existing) {
-            // 更新
-            await fetch(`tables/rankings/${existing.id}`, {
-                method: 'PUT',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
-            });
-        } else {
-            // 新規作成
-            await fetch(`tables/rankings`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
-            });
-        }
+        // player_idをドキュメントIDとして使用（upsert）
+        await db.collection('rankings').doc(playerId).set(data, { merge: true });
     } catch (err) {
         console.error('Ranking sync error:', err);
     }
@@ -2119,16 +2119,22 @@ async function loadRanking(tab) {
     document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
     
     try {
-        // Fetch all rankings
-        const res = await fetch('tables/rankings?limit=100&sort=-' + getSortField(tab));
-        const json = await res.json();
-        let items = json.data || [];
+        // Firestoreからランキングデータを取得
+        const sortField = getSortField(tab);
+        const snapshot = await db.collection('rankings')
+            .orderBy(sortField, 'desc')
+            .limit(100)
+            .get();
         
-        // Sort client-side to ensure correct order
+        let items = [];
+        snapshot.forEach(doc => {
+            items.push({ id: doc.id, ...doc.data() });
+        });
+        
+        // 同率の場合のクライアント側ソート
         items.sort((a, b) => {
             const field = getSortField(tab);
             if (field === 'win_rate') {
-                // 勝率は同率の場合プレイ数で比較
                 if (b.win_rate !== a.win_rate) return b.win_rate - a.win_rate;
                 return b.played - a.played;
             }
