@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythonの基礎知識：シンプルかつ強力な世界へ | Python Master 学習ガイド</title>
+    <meta name="description" content="Pythonの基本文法、インデント、リスト、関数など、初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/py-basics.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/py-basics.html">
+    <meta property="og:title" content="Pythonの基礎知識：シンプルかつ強力な世界へ | Python Master 学習ガイド">
+    <meta property="og:description" content="Pythonの基本文法、インデント、リスト、関数など、初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/py-basics.html">
+    <meta name="twitter:title" content="Pythonの基礎知識：シンプルかつ強力な世界へ | Python Master 学習ガイド">
+    <meta name="twitter:description" content="Pythonの基本文法、インデント、リスト、関数など、初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Pythonの基礎知識：シンプルかつ強力な世界へ | Python Master 学習ガイド",
+        "description": "Pythonの基本文法、インデント、リスト、関数など、初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/py-basics.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #3b82f6;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .guide-body ul,
+        .guide-body ol {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #60a5fa;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../py_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #3b82f6, #60a5fa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Python Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="../py_levels.html">レベル</a>
+                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">学習ガイド</span>
+                    <h1>Pythonの基礎知識</h1>
+                    <p>シンプルだからこそ強力。次世代の必須スキルを身につける</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>Pythonとは何か？：シンプルさに秘められた無限の可能性</h2>
+                    <p>Python（パイソン）は、1991年にグイド・ヴァンロッサム氏によって開発されたプログラミング言語です。その名前は、イギリスのコメディ番組『空飛ぶモンティ・パイソン』に由来しています。現在では、AI（人工知能）開発、データ分析、業務効率化、Webアプリ開発など、現代のテクノロジーを支える最重要言語の一つとなっています。
+                    </p>
+                    <p>Pythonの最大の特徴は、 **「シンプルで読みやすいこと」**
+                        にあります。複雑な記号を極力排除し、英語の文章に近い感覚でコードを書くことができるため、初心者にとって最も習得しやすく、かつプロの現場でも強力な力を発揮する言語として愛されています。
+                    </p>
+
+                    <h2>1. Zen of Python：Pythonが大切にしている哲学</h2>
+                    <p>Pythonには「Zen of Python（Pythonの禅）」と呼ばれる19の指針があります。その中には **「Beautiful is better than
+                        ugly（醜いより美しい方がいい）」「Simple is better than complex（複雑よりシンプルがいい）」**
+                        といった言葉が含まれています。
+                    </p>
+                    <p>この哲学が浸透しているため、Pythonのコードは誰が書いても似た構造になりやすく、チームでの開発や過去のコードの修正が非常にスムーズに行えるという大きなメリットがあります。</p>
+
+                    <h2>2. インデントの魔法：コードの「見た目」が「意味」になる</h2>
+                    <p>他の多くの言語（JavaScriptやJavaなど）では、コードのまとまりを `{ }`
+                        などの記号で示しますが、Pythonでは「インデント（行頭の空白）」自体がプログラムの構造を決定します。</p>
+                    <ul>
+                        <li><strong>読みやすさの強制:</strong> インデントを揃えないとプログラムが動かないため、強制的に整理された美しいコードになります。</li>
+                        <li><strong>視覚的な構造:</strong>
+                            一目で「どこからどこまでがif文の範囲か」がわかるため、バグの発見が非常に早くなります。</li>
+                    </ul>
+
+                    <div class="code-block-guide">
+                        <pre># Pythonの美しい構造の例
+def welcome_message(name):
+    if name == "Python Master":
+        print(f"ようこそ、{name}へ！")
+        print("最高レベルの学習を開始しましょう。")
+    else:
+        print("こんにちは！新しい世界へようこそ。")
+
+welcome_message("Python Master")</pre>
+                    </div>
+
+                    <h2>3. 圧倒的なエコシステム：ライブラリという「外部の脳」</h2>
+                    <p>Pythonがこれほどまでに普及した最大の理由は、世界中の天才たちが公開している「ライブラリ（便利な道具セット）」の豊富さです。</p>
+                    <ul>
+                        <li><strong>AI・機械学習:</strong> PyTorch, TensorFlow, scikit-learn</li>
+                        <li><strong>データ分析:</strong> pandas, NumPy, Matplotlib</li>
+                        <li><strong>Web開発:</strong> Django, Flask, FastAPI</li>
+                    </ul>
+                    <p>これらの道具を使えば、本来なら何万行も書かなければならない複雑なAI機能も、わずか数行で実装できてしまうのです。これが、現代社会でPythonが「最強の言語」と呼ばれる理由です。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">Q: Python 2とPython 3、どちらを学べばいいですか？</h4>
+                        <p>A:
+                            間違いなく **Python 3**
+                            です。Python 2はすでにサポートが終了しており、現在新しく開発されるプログラムはすべてPython 3で書かれています。Python Masterでも、最新のPython
+                            3の文法をベースに教えています。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">Q: Pythonは数学が得意でないと難しいですか？</h4>
+                        <p>A:
+                            いいえ、そんなことはありません。AIのアルゴリズムをゼロから開発する場合は高度な数学が必要ですが、ライブラリを使ってツールを作ったり、業務を自動化したりするだけであれば、基本的な算数ができれば十分楽しめます。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">Q: スマホアプリもPythonで作れますか？</h4>
+                        <p>A:
+                            作れますが、Web開発やデータ分析ほど得意分野ではありません。スマホアプリをメインで作りたいならSwiftやKotlinが向いていますが、アプリの「裏側（サーバー）」をPythonで作る構成は非常によく使われます。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>Pythonを学ぶことは、コンピュータと対話するための最も洗練された言語を身につけることです。シンプルで力強いこの言語は、あなたの論理的思考を助け、アイデアを形にするスピードを爆発的に高めてくれるでしょう。
+                    </p>
+                    <p>Python Masterでは、難しい環境構築の壁を壊し、あなたが最初の1行を書き上げるまでを全力でサポートします。さあ、Pythonと共に、テクノロジーの最先端へ踏み出しましょう！</p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 Python Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

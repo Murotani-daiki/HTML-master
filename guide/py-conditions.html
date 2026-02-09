@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件分岐（if）：インデントで判断を分ける | Python Master リファレンス</title>
+    <meta name="description" content="Pythonの条件分岐について。if, elif, else構文と、Python特有のインデントによるブロック構造、比較演算子の使い方を初心者向けに解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/py-conditions.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/py-conditions.html">
+    <meta property="og:title" content="条件分岐（if）：インデントで判断を分ける | Python Master リファレンス">
+    <meta property="og:description"
+        content="Pythonの条件分岐について。if, elif, else構文と、Python特有のインデントによるブロック構造、比較演算子の使い方を初心者向けに解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/py-conditions.html">
+    <meta name="twitter:title" content="条件分岐（if）：インデントで判断を分ける | Python Master リファレンス">
+    <meta name="twitter:description"
+        content="Pythonの条件分岐について。if, elif, else構文と、Python特有のインデントによるブロック構造、比較演算子の使い方を初心者向けに解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "条件分岐（if）：インデントで判断を分ける | Python Master リファレンス",
+        "description": "Pythonの条件分岐について。if, elif, else構文と、Python特有のインデントによるブロック構造、比較演算子の使い方を初心者向けに解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/py-conditions.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #3b82f6;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #eab308);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #3b82f6;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .indent-tip {
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 4px solid #eab308;
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../py_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #3b82f6, #eab308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Python Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="py_index.html">解説一覧</a>
+                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">ロジック</span>
+                    <h1>条件分岐</h1>
+                    <p>プログラムに「判断」をさせ、処理の流れを切り替えよう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>条件分岐とは？：プログラムに「思考」を持たせる</h2>
+                    <p>私たちの日常生活は判断の連続です。「信号が赤なら止まる」「雨が降っているなら傘を持つ」といった論理的な判断を、プログラムの世界で実現するのが **条件分岐 (Conditional
+                        Branching)** です。
+                    </p>
+                    <p>適切な条件分岐を書けるようになると、プログラムは単なる命令の羅列から、状況を自ら判断して最適に動く「知的なシステム」へと進化します。ユーザーの入力チェック、ログイン判定、複雑な計算アルゴリズムなど、あらゆる動的処理の核心となる技術です。
+                    </p>
+
+                    <h2>1. Pythonの象徴：インデントによるブロック構造</h2>
+                    <p>Pythonが他の言語（JavaScriptやC++など）と決定的に違うのが、波カッコ `{ }` を使わずに「字下げ（インデント）」でコードの範囲を決める点です。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：基本の if</span>
+                        <pre>age = 18
+if age >= 18:
+    print("あなたは成人です")
+    print("選挙権があります") # インデントが同じなら同じブロック</pre>
+                    </div>
+                    <p>条件式の末尾には必ずコロン `:`
+                        をつけます。その後に続くインデントされた行が、条件が成立した時（真：True）に実行される範囲です。このルールのおかげで、Pythonのコードは誰が書いても同じように整って見えるというメリットがあります。
+                    </p>
+
+                    <h2>2. else と elif：複雑な分岐</h2>
+                    <p>「そうでなければ（else）」や「別の条件として（elif）」を組み合わせることで、多方向への分岐が可能になります。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：多方向分岐</span>
+                        <pre>score = 75
+
+if score >= 90:
+    print("ランク A")
+elif score >= 70:
+    print("ランク B")
+elif score >= 50:
+    print("ランク C")
+else:
+    print("残念、不合格です")</pre>
+                    </div>
+
+                    <h2>3. 論理演算：複数の条件をまとめる</h2>
+                    <p>Pythonの論理演算子は、記号ではなく `and` や `or` などの「単語」を使います。これにより、コードがまるで英文を読んでいるかのように直感的になります。</p>
+                    <ul>
+                        <li><strong>and:</strong> AもBも成立するとき（かつ）</li>
+                        <li><strong>or:</strong> AかBのどちらかが成立するとき（または）</li>
+                        <li><strong>not:</strong> 条件を反転させる（〜ではない）</li>
+                    </ul>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：論理演算と範囲</span>
+                        <pre># Pythonならではの書き方！
+if 10 <= score <= 100:
+    print("有効なスコア範囲内です")
+
+if is_user and not is_banned:
+    print("ログインを許可します")</pre>
+                    </div>
+
+                    <h2>4. Pythonの新機能：match-case (Python 3.10+)</h2>
+                    <p>最新のPythonでは、多数の選択肢をよりスマートに捌く **`match-case`** が導入されました。他言語の switch
+                        文に相当しますが、より高度な「パターンマッチング」が可能です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：match-case文</span>
+                        <pre>status = 404
+match status:
+    case 200:
+        print("成功")
+    case 404:
+        print("ページが見つかりません")
+    case _:
+        print("不明なエラー") # _: は「その他すべて」</pre>
+                    </div>
+
+                    <div class="indent-tip">
+                        <h4>🚀 真偽判定の落とし穴：何が Falsy か？</h4>
+                        <p>Pythonでは、単なる数値やリストも条件式に入れられます。以下のものは「偽（False相当）」とみなされます。
+                            <br>・数値の `0`
+                            <br>・空のリスト `[]` や辞書 `{}`
+                            <br>・空の文字列 `""`
+                            <br>・`None`（何もないことを表す値）
+                            <br>これ以外は基本的に「真」として扱われます。
+                        </p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: インデントはスペースとタブ、どちらが良いですか？</h4>
+                        <p>A: Pythonの公式ルール（PEP 8）では **「半角スペース4つ」**
+                            が強く推奨されています。混ぜるとエラーの原因になるので、エディタの設定でタブをスペースに変換するようにしておきましょう。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 1行で if 文を書くことはできますか？</h4>
+                        <p>A: はい、条件演算子（三項演算子）が使えます。 `print("合格") if score >= 80 else print("不合格")`
+                            のように記述できますが、複雑な場合は可読性のために通常の if 文を使いましょう。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: pass 文とは何ですか？</h4>
+                        <p>A: 「何もしない」ことを表す命令です。if 文を書いたけれど中身が決まっていないとき、エラーを避けるためにとりあえず `pass` と書いておきます。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>条件分岐はプログラムに「知性」を与える第一歩です。インデントを正しく使いこなし、`and` や `or`
+                        でスマートに条件を記述できるようになれば、あなたはもう初心者卒業です。美しいインデントは、美しいプログラムの第一歩！
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 Python Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

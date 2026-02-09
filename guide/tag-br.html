@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brタグの役割と使い方：正しい改行のルール | HTML Master リファレンス</title>
+    <meta name="description" content="HTMLの改行タグ（br）の基本、pタグとの違い、不適切な使い方の例などを詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-br.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-br.html">
+    <meta property="og:title" content="brタグの役割と使い方：正しい改行のルール | HTML Master リファレンス">
+    <meta property="og:description" content="HTMLの改行タグ（br）の基本、pタグとの違い、不適切な使い方の例などを詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-br.html">
+    <meta name="twitter:title" content="brタグの役割と使い方：正しい改行のルール | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTMLの改行タグ（br）の基本、pタグとの違い、不適切な使い方の例などを詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "brタグの役割と使い方：正しい改行のルール | HTML Master リファレンス",
+        "description": "HTMLの改行タグ（br）の基本、pタグとの違い、不適切な使い方の例などを詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-br.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;br&gt;</span></div>
+                    <h1>改行タグ（br）</h1>
+                    <p>文章の途中で強制的に行を変えるためのタグ。終了タグを持たない空要素。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>brタグとは？：意味を分極させずに「行」だけを折る</h2>
+                    <p>文章を書いていて、次の行へ移りたい。しかし、新しい段落（pタグ）にするほど話の内容は変わっていない。そんな時に登場するのが `&lt;br&gt;`
+                        タグです。これは「Line Break（改行）」の略で、テキストの流れを物理的に断ち切り、強制的に次の行から開始させる働きを持ちます。</p>
+                    <p>このタグの最大の特徴は、 **「中身を持たない空要素」**
+                        であることです。開始タグと終了タグで文字を囲むのではなく、改行したい場所に「ポツン」と置くだけで機能します。非常に手軽ですが、その手軽さゆえに、Web制作の中で最も間違った使われ方をしやすいタグの一つでもあります。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>brタグの正しい活用例（住所）</h4>
+                        <div class="example-code">
+                            &lt;p&gt;<br>
+                            &nbsp;&nbsp;〒100-0001&lt;br&gt;<br>
+                            &nbsp;&nbsp;東京都千代田区千代田1-1&lt;br&gt;<br>
+                            &nbsp;&nbsp;皇居内 HTML Master事務局<br>
+                            &lt;/p&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. brタグを使って良い「3つの場面」</h2>
+                    <p>HTML5の仕様では、brタグは「改行そのものがコンテンツの一部である場合」にのみ使うべきとされています。具体的には以下のようなケースです。</p>
+                    <ul>
+                        <li><strong>郵便住所:</strong> 行を分けることで読みやすくなるが、全体で一つの「住所」という情報である場合。</li>
+                        <li><strong>詩や歌詞:</strong>
+                            「句切れ」や「リズム」を表現するために、意味が繋がっていても行を変える必要がある文芸作品。</li>
+                        <li><strong>署名エリア:</strong> メールの末尾のような、名前や役職を並べる箇所。</li>
+                    </ul>
+
+                    <h2>2. 最大の禁じ手：レイアウト調整のための「連打」</h2>
+                    <p>最もやってはいけないのが、 **「段落の間を広く空けたいから」という理由で &lt;br&gt; &lt;br&gt;... と連続して使うこと**
+                        です。これは初心者が陥りやすい罠ですが、プロの現場では厳禁です。</p>
+                    <ul>
+                        <li><strong>なぜダメなのか？:</strong>
+                            HTMLはあくまで「情報の構造」を決めるためのものです。余白（デザイン）はCSS（marginやpadding）の仕事です。brを連打すると、スマホなどの狭い画面で見た時に、不自然な空白が大量に発生し、ユーザー体験を著しく損ないます。
+                        </li>
+                        <li><strong>解決策:</strong> 文脈が変わるなら素直に `&lt;p&gt;` タグで段落を分け、余白の広さはCSSで調整しましょう。</li>
+                    </ul>
+
+                    <h2>3. アクセシビリティ：スクリーンリーダーへの影響</h2>
+                    <p>目が不自由な方が使うスクリーンリーダー（音声読み上げ機能）にとって、意味のない
+                        `&lt;br&gt;`
+                        は単なる「不自然なポーズ（間）」として認識されます。特にレイアウトのためにbrを使いすぎると、読み上げのリズムがバラバラになり、内容が伝わりづらくなってしまいます。「機械が読んでも自然な文章か？」を意識することが、良いHTMLを書くコツです。
+                    </p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: &lt;br&gt; と &lt;br /&gt;
+                            はどちらが正しいですか？</h4>
+                        <p>A:
+                            現在のHTML5では、どちらも正解です。 `&lt;br /&gt;`
+                            という書き方はXML（XHTML）という古いルールに基づいたものですが、今でも多くの開発者が慣習的に使っています。プロジェクト内でルールが統一されていれば、どちらを使っても問題ありません。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: スマホで見るときだけ改行をなくしたいのですが。</h4>
+                        <p>A:
+                            残念ながらbrタグそのものを消すのは難しいです。そのため、最近では「PCでは改行したいがスマホでは繋げたい」場合、brを使わずに
+                            `display: inline-block;`
+                            を適用したspanタグなどで単語を包むという高度なテクニックが使われることもあります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 見出し（h1など）の中でbrを使ってもいいですか？</h4>
+                        <p>A:
+                            はい、技術的には可能です。あまりに長い見出しをデザイン上どうしてもキリの良いところで改行したい場合に限り、使用されることがあります。ただし、SEOの観点からは、見出しはできるだけ短く簡潔にまとめるのが理想的です。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>brタグは、非常に「個性の強い」タグです。正しく使えば文章の表現力を高めますが、頼りすぎるとコードの品質を下げ、保守（修正）を困難にします。「ここは本当にbrが必要か？
+                        CSSで解決できないか？」と自問自答することが、HTMLマスターへの近道となります。
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

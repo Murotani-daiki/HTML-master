@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptの基礎知識：Webを動かす魔法 | JavaScript Master 学習ガイド</title>
+    <meta name="description" content="JavaScriptの基本文法、変数、データ型、DOM操作の基礎など、初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/js-basics.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js-basics.html">
+    <meta property="og:title" content="JavaScriptの基礎知識：Webを動かす魔法 | JavaScript Master 学習ガイド">
+    <meta property="og:description" content="JavaScriptの基本文法、変数、データ型、DOM操作の基礎など、初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js-basics.html">
+    <meta name="twitter:title" content="JavaScriptの基礎知識：Webを動かす魔法 | JavaScript Master 学習ガイド">
+    <meta name="twitter:description" content="JavaScriptの基本文法、変数、データ型、DOM操作の基礎など、初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "JavaScriptの基礎知識：Webを動かす魔法 | JavaScript Master 学習ガイド",
+        "description": "JavaScriptの基本文法、変数、データ型、DOM操作の基礎など、初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js-basics.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #facc15;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .guide-body ul,
+        .guide-body ol {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #facc15;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="../js_levels.html">レベル</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">学習ガイド</span>
+                    <h1>JavaScriptの基礎知識</h1>
+                    <p>動的なWebサイトを支える、最もパワフルな言語を学ぶ</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>JavaScriptとは何か？：Webに「命」を吹き込む魔法</h2>
+                    <p>JavaScriptは、Webサイトにインタラクティブな動きを加えるためのプログラミング言語です。1995年にわずか10日間で設計されたこの言語は、今日では世界で最も広く使われる言語の一つとなりました。
+                    </p>
+                    <p>HTMLが「骨格（構造）」、CSSが「外見（装飾）」を司るとすれば、JavaScriptは「筋肉」や「知能（振る舞い）」に例えられます。ボタンをクリックした際の反応、サーバーからのリアルタイムなデータ取得、洗練されたアニメーションの制御など、ブラウザ上で起こる動的な変化のすべてがJavaScriptによって制御されています。
+                    </p>
+
+                    <h2>1. ブラウザの中で何が起きているのか？（V8エンジンと実行環境）</h2>
+                    <p>JavaScriptがこれほど高速に動作するのは、ブラウザ内部にある「JavaScriptエンジン」のおかげです。Google
+                        Chromeに搭載されている「V8エンジン」などは、人間が書いたソースコードを即座に機械語へ翻訳し、驚異的なスピードで実行します。
+                    </p>
+                    <p>また、JavaScriptは **「シングルスレッド」**
+                        という、一度に一つのことしかできない性質を持っています。しかし、「イベントループ」という賢い仕組みのおかげで、重い処理中もブラウザをフリーズさせることなく、スムーズに操作を続けることができるのです。
+                    </p>
+
+                    <h2>2. モダンな書き方：ES6以降の進化</h2>
+                    <p>JavaScriptは2015年（ES6/ES2015）に劇的な進化を遂げました。かつての `var`
+                        を使った古い書き方は姿を消し、現在ではより安全で読みやすい構文が主流となっています。</p>
+                    <ul>
+                        <li><strong>変数と定数:</strong> 値を再代入できる `let` と、一度決めたら変えない `const`。これにより、意図しない値の書き換え（バグ）を防ぎます。</li>
+                        <li><strong>アロー関数:</strong> `(x) => x * 2` のように、数学の公式のように簡潔に関数を記述できるようになりました。</li>
+                        <li><strong>テンプレートリテラル:</strong> バッククォート（`）を使い、文字列の中に変数を `${name}` 形式で直感的に埋め込むことができます。</li>
+                    </ul>
+
+                    <div class="code-block-guide">
+                        <pre>// モダンなJavaScriptの例
+const userName = "JavaScript Master";
+const greet = (name) => {
+    console.log(`こんにちは、${name}さん！学習を開始しましょう。`);
+};
+
+greet(userName);</pre>
+                    </div>
+
+                    <h2>3. DOM操作：Webページを自由自在に操る</h2>
+                    <p>JavaScriptを学ぶ最大の動機は **「DOM（Document Object Model）操作」**
+                        にあります。これは、HTMLの各要素を「オブジェクト（操作可能な部品）」としてJavaScriptから制御する仕組みです。
+                        `document.querySelector()`
+                        という魔法の言葉を使えば、ページ内の特定の文字を書き換えたり、画像の色を反転させたり、新しいボタンを作り出したりすることが自由自在になります。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: #facc15; margin-bottom: 0.5rem;">Q: JavaScriptとJavaは同じものですか？</h4>
+                        <p>A:
+                            全くの別物です。名前は似ていますが、メロンとメロンパン、あるいはインドとインドネシアほども違います。Javaは主に大規模なシステム開発に使われ、JavaScriptはWebブラウザで動作するために開発されました。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: #facc15; margin-bottom: 0.5rem;">Q: 学習を始めるのに、何かソフトをインストールする必要がありますか？</h4>
+                        <p>A:
+                            いいえ、必要ありません。今あなたが使っているブラウザ（ChromeやSafariなど）には、すでにJavaScriptの実行環境が備わっています。ブラウザの「開発者ツール（Console）」を開けば、今すぐ1行目からコードを実行できます。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: #facc15; margin-bottom: 0.5rem;">Q: 初心者が最初に覚えるべきことは何ですか？</h4>
+                        <p>A:
+                            まずは「変数(let/const)」「条件分岐(if)」「ループ(for)」、そして「イベント(クリック等)」の4つです。これらを組み合わせるだけで、Webサイトの基本的なインタラクションの8割は作ることができます。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>JavaScriptの世界へようこそ。最初はエラーが出たり、思い通りに動かず悩むこともあるでしょう。しかし、一歩ずつコードを書き、それが画面上で形になった時の感動は、何物にも代えがたいものです。
+                    </p>
+                    <p>JavaScript Masterでは、環境構築の手間を省き、コードの楽しさに集中できるカリキュラムを用意しています。Webの世界に魔法をかける準備はできましたか？</p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

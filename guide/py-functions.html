@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>関数（def）：処理を部品化して再利用する | Python Master リファレンス</title>
+    <meta name="description" content="Pythonの関数定義について。defキーワード、引数、戻り値、関数の再利用性とメリットを初心者向けに分かりやすく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/py-functions.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/py-functions.html">
+    <meta property="og:title" content="関数（def）：処理を部品化して再利用する | Python Master リファレンス">
+    <meta property="og:description" content="Pythonの関数定義について。defキーワード、引数、戻り値、関数の再利用性とメリットを初心者向けに分かりやすく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/py-functions.html">
+    <meta name="twitter:title" content="関数（def）：処理を部品化して再利用する | Python Master リファレンス">
+    <meta name="twitter:description" content="Pythonの関数定義について。defキーワード、引数、戻り値、関数の再利用性とメリットを初心者向けに分かりやすく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "関数（def）：処理を部品化して再利用する | Python Master リファレンス",
+        "description": "Pythonの関数定義について。defキーワード、引数、戻り値、関数の再利用性とメリットを初心者向けに分かりやすく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/py-functions.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #3b82f6;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #eab308);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #3b82f6;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .def-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../py_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #3b82f6, #eab308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Python Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="py_index.html">解説一覧</a>
+                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">設計</span>
+                    <h1>関数</h1>
+                    <p>レシピをまとめて名付ける：処理の部品化でコードをスッキリさせよう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>関数とは？：処理をパッケージ化する「魔法のレシピ」</h2>
+                    <p>プログラミングにおいて、何度も使う一連の処理をひとまとめにして名前をつけたものを「関数（Function）」と呼びます。
+                    </p>
+                    <p>料理に例えるなら、関数は「特定の料理を作るためのレシピ」のようなものです。一度レシピを書いておけば、材料（データ）を渡すだけで、何度でも同じ味（結果）を再現できます。大規模な開発では、プログラムを一から長く書くのではなく、小さくて便利な「関数の部品」を組み合わせて巨大なシステムを構築していきます。
+                    </p>
+
+                    <h2>1. 関数の作り方：def キーワード</h2>
+                    <p>Pythonでは `def`（Defineの略）キーワードを使って関数を定義します。関数名には、変数と同じく **スネークケース (snake_case)** を使うのが一般的です。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：関数の定義</span>
+                        <pre>def celebrate():
+    print("おめでとうございます！")
+    print("関数の実行に成功しました。")
+
+# 呼び出し（実行）
+celebrate()</pre>
+                    </div>
+                    <p>コロン `:` の後のインデントされた範囲が、その関数の一部として扱われます。インデントが終わった場所が、関数の終わりの合図です。</p>
+
+                    <h2>2. 引数：関数にデータを渡す</h2>
+                    <p>関数は外からのデータ（引数）を受け取ることで、より柔軟に動くようになります。</p>
+
+                    <h3>デフォルト引数</h3>
+                    <p>あらかじめ値を決めておくことで、引数が渡されなかった時の動作を指定できます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：引数の活用</span>
+                        <pre>def greet(name, message="こんにちは"):
+    print(f"{name}さん、{message}！")
+
+greet("田中")          # 田中さん、こんにちは！
+greet("佐藤", "お疲れ様") # 佐藤さん、お疲れ様！</pre>
+                    </div>
+
+                    <h2>3. 戻り値：処理結果を外に返す</h2>
+                    <p>関数の中で計算した結果を、呼び出し元に返したい時に `return` を使います。戻り値がない関数は、Python内部ではこっそり `None` という値を返しています。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：戻り値</span>
+                        <pre>def add_numbers(a, b):
+    return a + b
+
+total = add_numbers(10, 5) # totalに15が代入される</pre>
+                    </div>
+
+                    <h3>複数の値を返す</h3>
+                    <p>Pythonの関数は、カンマで区切るだけで複数の結果を一度に返すことができます（実体はタプルという形式です）。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：複数戻り値</span>
+                        <pre>def get_min_max(numbers):
+    return min(numbers), max(numbers)
+
+low, high = get_min_max([1, 5, 10, 2])
+# low=1, high=10 となる</pre>
+                    </div>
+
+                    <h2>4. スコープ：変数の「有効範囲」を知る</h2>
+                    <p>関数の中で作った変数は、その関数の外側から使うことはできません。これを **ローカルスコープ**
+                        と呼びます。逆に、プログラムのトップレベルで作った変数はどこからでも見えますが（グローバルスコープ）、関数の中から書き換えるには `global` 宣言が必要になります。</p>
+
+                    <div class="def-card">
+                        <h3>🚀 プロの習慣：Docstring（ドキュメンテーション）</h3>
+                        <p>関数のすぐ下に `""" 文字列 """` を書くことで、その関数が「何をするものか」を説明できます。これを **Docstring**
+                            と呼び、大規模なコードを読む際の大きな助けになります。</p>
+                        <div class="code-block-guide">
+                            <pre>def square(x):
+    """渡された数値を2乗して返します。"""
+    return x * x</pre>
+                        </div>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 関数の中で関数を呼び出すことはできますか？</h4>
+                        <p>A: もちろん可能です！ 大きな問題を小さな機能（関数）に分解し、それらを組み合わせて解決するのがプログラミングの王道です。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: lambda（ラムダ）式とは何ですか？</h4>
+                        <p>A: 名前をつけない短い関数のことで「無名関数」とも呼ばれます。一行ですむような単純な処理を引数として渡したい時によく使われます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 同じ名前の関数を2つ作るとどうなりますか？</h4>
+                        <p>A: 後から書いた方の関数で上書きされてしまいます。Pythonには「オーバーロード（引数によって同名の関数を使い分ける機能）」はないので注意しましょう。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>関数は、あなたのコードを「ただの命令」から「再利用可能な知恵のパーツ」へと変えてくれます。一つひとつの関数をシンプルに、分かりやすい名前で保つことが、美しいプログラムを書くための最大の秘訣です。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 Python Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

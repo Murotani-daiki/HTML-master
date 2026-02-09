@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imgタグの役割と使い方：画像を正しく表示する | HTML Master リファレンス</title>
+    <meta name="description" content="HTMLの画像タグ（img）の属性、alt属性の重要性、アスペクト比の維持方法などを初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-img.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-img.html">
+    <meta property="og:title" content="imgタグの役割と使い方：画像を正しく表示する | HTML Master リファレンス">
+    <meta property="og:description" content="HTMLの画像タグ（img）の属性、alt属性の重要性、アスペクト比の維持方法などを初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-img.html">
+    <meta name="twitter:title" content="imgタグの役割と使い方：画像を正しく表示する | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTMLの画像タグ（img）の属性、alt属性の重要性、アスペクト比の維持方法などを初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "imgタグの役割と使い方：画像を正しく表示する | HTML Master リファレンス",
+        "description": "HTMLの画像タグ（img）の属性、alt属性の重要性、アスペクト比の維持方法などを初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-img.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.05);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box h4 {
+            color: #ef4444;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="index.html">一覧に戻る</a>
+                <a href="../levels.html">レベル</a>
+            </nav>
+        </header>
+
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar">
+                        <span class="tag-badge">&lt;img&gt;</span>
+                    </div>
+                    <h1>画像タグ（Image）</h1>
+                    <p>文字だけでは伝えきれない情報を視覚的に表現するための要素。</p>
+                </header>
+
+                <div class="detail-body">
+                    <h2>imgタグとは？：Webサイトに「鮮やかさ」を添える魔法の窓</h2>
+                    <p>Webサイトにおいて、テキストだけでは伝えられない情緒や、複雑な情報を一目で理解させる力を持つのが `&lt;img&gt;`
+                        タグ（Image）です。このタグは、ブラウザに対して外部にある画像ファイルを読み込み、その場所に表示するように指示を出します。</p>
+                    <p>技術的な特徴として、 `&lt;img&gt;`
+                        は **「空要素」**
+                        と呼ばれ、終了タグ（&lt;/img&gt;）が必要ありません。一つのタグの中に、画像へのパスやサイズ、説明文などの情報を「属性」として詰め込んでいく、非常に効率的な仕組みになっています。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>パフォーマンスを考慮した画像マークアップ</h4>
+                        <div class="example-code">
+                            &lt;img src="images/sunset.webp" <br>
+                            &nbsp;&nbsp;alt="江の島の海岸から見える、燃えるような夕焼けの景色" <br>
+                            &nbsp;&nbsp;width="800" height="450" <br>
+                            &nbsp;&nbsp;loading="lazy"&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. alt属性：画像に「言葉」を与える責任</h2>
+                    <p>imgタグにおいて `alt`
+                        属性は、単なる「補足」ではありません。画像が見えない、あるいは見ることができないあらゆる状況において、画像の代わりを務める **「代替テキスト」** です。</p>
+                    <ul>
+                        <li><strong>アクセシビリティ:</strong> 目の不自由な方が使う読み上げソフトは、このaltテキストを読み上げます。</li>
+                        <li><strong>エラー時の保険:</strong> ネット環境が悪く画像が読み込めなかった際、枠の中にこのテキストが表示されます。</li>
+                        <li><strong>SEO（検索エンジン最適化）:</strong>
+                            GoogleのAIは画像を解析しますが、最終的にはこのaltテキストを最も強く信頼して「何が写っているか」を判断します。</li>
+                    </ul>
+
+                    <h2>2. パフォーマンス最適化：loading="lazy" とサイズ指定</h2>
+                    <p>現代のWeb制作では、ページの読み込み速度が極めて重要です。そこで欠かせないのが `loading="lazy"`
+                        属性です。これを記述することで、ユーザーがその画像の場所までスクロールした瞬間に初めて読み込みを開始します。これにより、ページを開いた瞬間の通信量を劇的に減らすことができます。</p>
+                    <p>また、 `width` と `height`
+                        属性をHTMLに記述しておくことも重要です。これによって、画像が読み込まれる前にあらかじめ「場所を確保」することができ、画像が表示された瞬間に画面がガタンと揺れる
+                        **「レイアウトシフト（CLS）」** を防ぐことができます。</p>
+
+                    <h2>3. 次世代画像フォーマットの活用</h2>
+                    <p>かつては `.jpg` や `.png` が主流でしたが、現在はより軽量で高画質な **`.webp`** や **`.avif`**
+                        といったフォーマットが推奨されています。同じ見た目でもファイルサイズを半分以下に抑えることができるため、HTML Masterではこれらの最新フォーマットの使用を推奨しています。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: alt属性に「〜の画像」と書いてもいいですか？</h4>
+                        <p>A:
+                            **避けるべきです。**
+                            読み上げソフトは自動的に「〜（altの内容）の画像」と読み上げるため、altに「〜の画像」と書くと「青空の画像、の画像」と重複してしまいます。中身の説明（例：「晴れ渡った青空」）だけで十分です。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 装飾用のアイコンや模様にもaltは必要ですか？</h4>
+                        <p>A:
+                            意味を持たない装飾（背景の模様など）の場合は、 `alt=""`
+                            とあえと空にしておきましょう。これにより、読み上げソフトに「これは無視していい装飾ですよ」と伝えることができます。属性自体を削除してはいけません。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: CSSで画像サイズを変えたら、HTMLの
+                            width/height は不要？</h4>
+                        <p>A:
+                            いいえ、**どちらも書くのが正解です。**
+                            HTMLの属性は「アスペクト比（縦横比）」をブラウザに伝え、CSSは実際の「表示サイズ」を決定します。両方書くことで、画面のガタつき（レイアウトシフト）を最も確実に抑えられます。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>imgタグを使いこなすことは、サイトに「命」を吹き込むと同時に、その「健康状態（表示速度）」を管理することでもあります。美しさだけでなく、alt属性による優しさ、そして適切な属性による速さを兼ね備えた、プロフェッショナルな画像配置を目指しましょう！
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <footer> タグの役割と使い方 | HTML Master リファレンス
+    </title>
+    <meta name="description" content="ウェブページの最下部を定義するfooterタグの役割、著作権情報やサイトマップの記述方法について詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-footer.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-footer.html">
+    <meta property="og:title" content="<footer> タグの役割と使い方 | HTML Master リファレンス">
+    <meta property="og:description" content="ウェブページの最下部を定義するfooterタグの役割、著作権情報やサイトマップの記述方法について詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-footer.html">
+    <meta name="twitter:title" content="<footer> タグの役割と使い方 | HTML Master リファレンス">
+    <meta name="twitter:description" content="ウェブページの最下部を定義するfooterタグの役割、著作権情報やサイトマップの記述方法について詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "<footer> タグの役割と使い方 | HTML Master リファレンス",
+        "description": "ウェブページの最下部を定義するfooterタグの役割、著作権情報やサイトマップの記述方法について詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-footer.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;footer&gt;</span></div>
+                    <h1>フッタータグ（footer）</h1>
+                    <p>ページやセクションの締めくくり。著者情報、著作権、関連リンクなどを記述する要素。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>footerタグとは？：ページ全体や情報の「出口」を整える</h2>
+                    <p>Webサイトを最後まで読み進めたとき、一番下に待っている領域——そこには著作権表示や、他の重要なページへのリンク、SNSのアイコンなどが並んでいます。HTML5で登場した
+                        `&lt;footer&gt;`
+                        タグは、そうした「締めくくり」の情報をまとめるためのセマンティックな要素です。</p>
+                    <p>かつてのWebでは `&lt;div id="footer"&gt;`
+                        のようにただの箱として扱われていましたが、現在はこのタグを使うことで、機械（ブラウザや検索エンジン）に対して「ここがこの情報の結び（出口）ですよ」という論理的な役割を明確に伝えることがマナーとなっています。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>一般的なフッターの構造例</h4>
+                        <div class="example-code">
+                            &lt;footer&gt;<br>
+                            &nbsp;&nbsp;&lt;nav&gt;...サイトマップや重要リンク...&lt;/nav&gt;<br>
+                            &nbsp;&nbsp;&lt;address&gt;...運営者の連絡先...&lt;/address&gt;<br>
+                            &nbsp;&nbsp;&lt;p&gt;&amp;copy; 2026 HTML Master. All rights reserved.&lt;/p&gt;<br>
+                            &lt;/footer&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. フッターに含まれるべき代表的な情報</h2>
+                    <p>フッターは単なる「余白」ではなく、ユーザーがサイトの全体像を把握したり、信頼性を確認したりするための重要なエリアです。以下のような要素がよく含まれます。</p>
+                    <ul>
+                        <li><strong>著作権表示（コピーライト）:</strong> `&amp;copy;
+                            2026 サイト名` 形式で、誰がそのコンテンツの権利を持っているかを示します。</li>
+                        <li><strong>補助ナビゲーション:</strong>
+                            最上部のメインメニューには入りきらなかったが、サイトを巡る上で欠かせないリンク（プライバシーポリシー、利用規約、お問い合わせなど）。</li>
+                        <li><strong>関連情報:</strong>
+                            著者のプロフィール、SNSへのリンク、最新記事のリストなど。</li>
+                    </ul>
+
+                    <h2>2. 1ページに複数使用するテクニック</h2>
+                    <p>`&lt;header&gt;` と同様、 `&lt;footer&gt;`
+                        もページ内に何個あっても構いません。大きく分けて2つの使い道があります。</p>
+                    <ul>
+                        <li><strong>サイトフーター:</strong>
+                            ページ全体の最下部にある、全ページ共通の領域です。</li>
+                        <li><strong>セクションフーター:</strong> `&lt;article&gt;` や `&lt;section&gt;`
+                            の終わりで、その記事の注釈、関連記事へのリンク、著者紹介などをまとめるために使われます。</li>
+                    </ul>
+
+                    <h2>3. SEOと信頼性：E-E-A-Tへの貢献</h2>
+                    <p>Googleなどの検索エンジンは、サイトの「信頼性」を非常に重視します。フッターに **「プライバシーポリシー」「運営者情報（会社概要）」「お問い合わせ」**
+                        へのリンクを正しく配置しておくことは、ユーザーの安心感を高めるだけでなく、検索エンジンに対して「実態の伴った、透明性の高いサイトである」とアピールする強力なSEO対策にもなります。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: footerタグの中にh1タグを使ってもいいですか？
+                        </h4>
+                        <p>A:
+                            禁止されてはいませんが、あまり一般的ではありません。h1は「そのページのメインテーマ」を表すため、本来は最上部付近にあるべきです。フッターに見出しが必要な場合は、h3やh4といった、より低いレベルのタグを使うのが構造的に自然です。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 連絡先情報は単なるpタグでいいですか？</h4>
+                        <p>A:
+                            より専門的なマークアップとして `&lt;address&gt;`
+                            タグの使用を検討してください。これを `&lt;footer&gt;` 内に書くことで、「この記事またはページ自体の連絡先である」ことを、機械に対してより正確に伝えることができます。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: フッター自体を非表示に（display:
+                            none）してもいいですか？</h4>
+                        <p>A:
+                            デザイン上どうしても不要なページがあるなら可能ですが、基本的にはおすすめしません。特にプライバシーポリシーへのリンクなどが隠されてしまうと、法的・倫理的な問題や、広告プラットフォーム（AdSenseなど）の審査に悪影響を及ぼす可能性があります。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>フッターは、サイトという「物語」を美しく締めくくる「あとがき」のような存在です。最後の1行まで手を抜かず、正しい `&lt;footer&gt;`
+                        タグを使いこなすことで、あなたのサイトの信頼性と完成度は飛躍的に高まるでしょう。HTML Masterで学んだセマンティクスの知識を、ぜひこのフッター作成にも活かしてみてください！
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

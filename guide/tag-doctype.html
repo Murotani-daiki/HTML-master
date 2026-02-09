@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <!DOCTYPE html> の役割と使い方 | HTML Master リファレンス
+    </title>
+    <meta name="description" content="HTML文書の冒頭に記述するDOCTYPE宣言の役割、標準モードと互換モードの違いなどを初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-doctype.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-doctype.html">
+    <meta property="og:title" content="<!DOCTYPE html> の役割と使い方 | HTML Master リファレンス">
+    <meta property="og:description" content="HTML文書の冒頭に記述するDOCTYPE宣言の役割、標準モードと互換モードの違いなどを初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-doctype.html">
+    <meta name="twitter:title" content="<!DOCTYPE html> の役割と使い方 | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTML文書の冒頭に記述するDOCTYPE宣言の役割、標準モードと互換モードの違いなどを初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "<!DOCTYPE html> の役割と使い方 | HTML Master リファレンス",
+        "description": "HTML文書の冒頭に記述するDOCTYPE宣言の役割、標準モードと互換モードの違いなどを初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-doctype.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;!DOCTYPE html&gt;</span></div>
+                    <h1>文書型宣言（DOCTYPE）</h1>
+                    <p>ブラウザに対して「このファイルはHTML5で書かれています」と伝えるための重要な宣言。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>DOCTYPE宣言とは？：Webページの「身分証明書」</h2>
+                    <p>WebブラウザがHTMLファイルを読み込む時、最初に見るのがこの `&lt;!DOCTYPE html&gt;`
+                        です。厳密にはHTMLの「タグ」ではなく、ブラウザに対して「このファイルはどのバージョンのHTMLで書かれているか」を伝えるための **「宣言（Instruction）」**
+                        です。</p>
+                    <p>現在、Web制作の現場で使われているのは、この一行だけで完結する最新の **HTML5**
+                        基準の宣言です。たった一行ですが、これが欠けていると、現代の洗練されたデザインが正しく表示されない「重大な不具合」の原因となります。</p>
+
+                    <div class="example-box">
+                        <h4>正しい記述位置</h4>
+                        <div class="example-code">
+                            &lt;!DOCTYPE html&gt; &lt;!-- 必ず1行目に記述 --&gt;<br>
+                            &lt;html lang="ja"&gt;<br>
+                            ...
+                        </div>
+                    </div>
+
+                    <h2>なぜ省略してはいけないのか？：標準モードと互換モード</h2>
+                    <p>この宣言が存在しない場合、ブラウザは **「互換モード（Quirks Mode）」**
+                        という特殊な状態でページを表示しようとします。これは、1990年代後半の非常に古いブラウザ向けに作られた不正確なレイアウト・ルールを採用するモードです。</p>
+                    <p>互換モードでは、CSSで設定した幅（width）や高さ（height）が期待通りに反映されなかったり、文字のサイズや位置が微妙にズレたりします。「CSSコードは完璧なはずなのに、なぜかデザインが崩れる」という初心者の悩みは、このDOCTYPE宣言を忘れていることが原因であることが非常に多いです。
+                    </p>
+
+                    <h2>歴史：複雑だった過去からシンプルへ</h2>
+                    <p>かつてのWeb制作では、DOCTYPE宣言はもっと長く、複雑なものでした。参考までに、以前のバージョン（HTML 4.01）の宣言を見てみましょう。</p>
+                    <div class="example-box" style="background: rgba(255, 255, 255, 0.05);">
+                        <p style="font-size: 0.8rem; color: var(--text-secondary);">昔のDOCTYPE宣言の例（HTML 4.01）</p>
+                        <code style="font-size: 0.85rem; color: #818cf8; word-break: break-all;">
+                            &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+                        </code>
+                    </div>
+                    <p>このように、「DTD」と呼ばれる外部の定義ファイルを指定する必要がありました。しかし、HTML5では「ブラウザを標準モードで起動させること」だけが目的となり、現在の極めてシンプルな形に集約されました。これは、Web開発者にとって大きな進歩だったと言えます。
+                    </p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 大文字と小文字は区別されますか？</h4>
+                        <p>A: いいえ。DOCTYPE宣言は **大文字・小文字を区別しません**。 `&lt;!doctype html&gt;`
+                            と書いても正しく動作しますが、慣習として全体、あるいは一部（DOCTYPEの部分）を大文字で書くことが多いです。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 1行目に空行があってもいいですか？</h4>
+                        <p>A:
+                            **絶対に1行目に書いてください。**
+                            宣言の前に空行やコメントがあると、ブラウザによっては互換モードに切り替わってしまうことがあります。ファイルの「一番最初」に配置することを鉄則にしましょう。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: XML宣言と一緒でもいいですか？</h4>
+                        <p>A: かつてのXHTMLではXML宣言を併記することがありましたが、現代のHTML5では **不要**
+                            です。むしろXML宣言を先頭に書くと、Internet
+                            Explorerなどの古いブラウザでレイアウトが崩れる原因になっていました。現代では `&lt;!DOCTYPE html&gt;`
+                            だけで十分です。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>HTMLの構築は、ブラウザへの「信頼の証」である一行から始まります。地味な存在ではありますが、あなたのデザインを完璧に再現するために、どんな時も忘れずにファイルの先頭に添えてあげてください。
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

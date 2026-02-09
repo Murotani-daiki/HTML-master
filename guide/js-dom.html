@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM操作：Webページを動的に変える | JavaScript Master リファレンス</title>
+    <meta name="description" content="JavaScriptの真髄であるDOM操作について。HTML要素の取得方法、イベントリスナー、スタイルの変更などを初心者向けに分かりやすく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/js-dom.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js-dom.html">
+    <meta property="og:title" content="DOM操作：Webページを動的に変える | JavaScript Master リファレンス">
+    <meta property="og:description"
+        content="JavaScriptの真髄であるDOM操作について。HTML要素の取得方法、イベントリスナー、スタイルの変更などを初心者向けに分かりやすく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js-dom.html">
+    <meta name="twitter:title" content="DOM操作：Webページを動的に変える | JavaScript Master リファレンス">
+    <meta name="twitter:description"
+        content="JavaScriptの真髄であるDOM操作について。HTML要素の取得方法、イベントリスナー、スタイルの変更などを初心者向けに分かりやすく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "DOM操作：Webページを動的に変える | JavaScript Master リファレンス",
+        "description": "JavaScriptの真髄であるDOM操作について。HTML要素の取得方法、イベントリスナー、スタイルの変更などを初心者向けに分かりやすく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js-dom.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: #facc15;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #facc15;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            background: rgba(250, 204, 21, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #facc15;
+        }
+
+        .point-card {
+            background: rgba(250, 204, 21, 0.05);
+            border-left: 4px solid #facc15;
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+        }
+
+        .point-card h4 {
+            color: #facc15;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="js_index.html">解説一覧</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">実践スキル</span>
+                    <h1>DOM操作</h1>
+                    <p>JavaScriptでHTMLを自由自在に操る技術</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>DOM（ドム）とは何か？：Webページの生命線</h2>
+                    <p>DOMは **Document Object Model**
+                        の略称で、簡単に言えば「HTMLをプログラムから自由に操れるようにするための窓口」です。ブラウザがHTMLファイルを読み込むと、それを内部的に「ツリー構造（木のような形）」のデータに変換します。これがDOMです。
+                    </p>
+                    <p>JavaScriptはこのDOMという窓口を通して、HTML要素を新しく作ったり、既存の文字を書き換えたり、不要な部分を削除したり、デザイン（CSS）を動的に変更したりすることができます。DOM操作ができるようになると、Webサイトは単なる情報の提示から、ユーザーの入力に応じて変化し続ける「アプリケーション」へと進化します。
+                    </p>
+
+                    <h2>1. 要素を取得する：狙った獲物を逃さない</h2>
+                    <p>操作の第一歩は、HTMLの中から操作したい要素を特定して「取得」することです。現代のJavaScript開発では、CSSセレクタと同じ記法が使える `querySelector`
+                        が最も一般的です。</p>
+
+                    <h3>主要な取得メソッド</h3>
+                    <ul>
+                        <li><strong>document.querySelector(".class-name"):</strong> 指定した条件に一致する「最初の一つ」を取得します。</li>
+                        <li><strong>document.querySelectorAll(".class-name"):</strong>
+                            一致する「すべて」を配列のような形式（NodeList）で取得します。</li>
+                        <li><strong>document.getElementById("id-name"):</strong> 特定のIDを持つ要素を高速に取得します。</li>
+                    </ul>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：要素の取得</span>
+                        <pre>const title = document.querySelector("h1");
+const items = document.querySelectorAll(".list-item");
+
+// 全てに処理を行う場合はforEachが便利！
+items.forEach(item => {
+    item.style.color = "blue";
+});</pre>
+                    </div>
+
+                    <h2>2. 内容と外見を操る：動的な変化</h2>
+                    <p>取得した要素に対して、中身（文字）や見た目（スタイル）を変更する方法を学びましょう。</p>
+
+                    <h3>テキストの変更：textContent</h3>
+                    <p>要素内の文字だけを安全に書き換えます。`innerHTML` というプロパティもありますが、セキュリティ（XSS攻撃など）の観点から、単なる文字の変更には `textContent`
+                        を使うのがプロの鉄則です。</p>
+
+                    <h3>クラスの操作：classList</h3>
+                    <p>要素のスタイルを変えるとき、JavaScriptで直接 `element.style.color = "red"`
+                        と書くのはあまり推奨されません。代わりに、CSSであらかじめ用意したクラスを付け外しする **`classList`** を使うのが最もスマートな方法です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：クラス操作の黄金律</span>
+                        <pre>const card = document.querySelector(".card");
+
+card.classList.add("active");    // クラスを追加
+card.classList.remove("hidden"); // クラスを削除
+card.classList.toggle("dark");   // あれば消す、なければ付ける！</pre>
+                    </div>
+
+                    <h2>3. 要素を生み出し、削除する</h2>
+                    <p>既存のものを変えるだけでなく、新しいHTML要素をゼロから作り出すことも可能です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：要素の動的生成</span>
+                        <pre>// 1. 新しい div を作成
+const newDiv = document.createElement("div");
+
+// 2. 中身を設定
+newDiv.textContent = "新しく追加された要素です";
+newDiv.classList.add("dynamic-item");
+
+// 3. 画面上の親要素に追加
+const container = document.querySelector("#container");
+container.appendChild(newDiv);</pre>
+                    </div>
+
+                    <div class="point-card">
+                        <h4>🚀 パフォーマンスの知恵：リフロー（再描画）を抑える</h4>
+                        <p>DOM操作はJavaScriptの処理の中でも「高コスト（重い）」な部類に入ります。100個の要素を追加するのに100回 `appendChild`
+                            すると画面がカクつくことがあります。そのような場合は、一時的なメモリ上のコンテナである `DocumentFragment`
+                            を使い、一気にまとめて画面に追加するのが上級者のテクニックです。</p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: querySelector
+                            で要素が見つからないとどうなりますか？</h4>
+                        <p>A: `null` が返ってきます。見つからなかった場合にエラーにならないよう、`if (element) { ... }` のようにチェックを挟むのが安全な書き方です。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: HTMLタグごと文字列で流し込みたい時は？</h4>
+                        <p>A: `innerHTML` を使います。ただし、ユーザーが入力した文字をそのまま `innerHTML`
+                            に入れるとウイルス（スクリプト）が実行される危険があるため、細心の注意が必要です。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 親要素や兄弟要素を取得するには？</h4>
+                        <p>A:
+                            `parentElement`（親）、`children`（子リスト）、`nextElementSibling`（隣の弟要素）などのプロパティを辿ることで、DOMツリーを自由自在に移動できます。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>「要素を取得し、クラスを操作し、必要に応じて新しい要素を作る」。これがモダンなWebフロントエンド開発の基本サイクルです。DOM操作をマスターすれば、jQueryなどのライブラリに頼らずとも、美しく動くユーザーインターフェースを自分の手で作り上げることができるようになります。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

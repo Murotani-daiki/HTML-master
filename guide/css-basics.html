@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSSの基礎知識：デザインの魔法 | HTML Master 学習ガイド</title>
+    <meta name="description" content="CSSの書き方、セレクタの種類、ボックスモデル、色の指定方法など、初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/css-basics.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/css-basics.html">
+    <meta property="og:title" content="CSSの基礎知識：デザインの魔法 | HTML Master 学習ガイド">
+    <meta property="og:description" content="CSSの書き方、セレクタの種類、ボックスモデル、色の指定方法など、初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/css-basics.html">
+    <meta name="twitter:title" content="CSSの基礎知識：デザインの魔法 | HTML Master 学習ガイド">
+    <meta name="twitter:description" content="CSSの書き方、セレクタの種類、ボックスモデル、色の指定方法など、初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "CSSの基礎知識：デザインの魔法 | HTML Master 学習ガイド",
+        "description": "CSSの書き方、セレクタの種類、ボックスモデル、色の指定方法など、初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/css-basics.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #fbbf24;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #fbbf24;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .guide-body ul,
+        .guide-body ol {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #fbbf24;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="../levels.html">レベル</a>
+                <a href="../index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.2);">学習ガイド</span>
+                    <h1>CSSの基礎知識</h1>
+                    <p>ウェブサイトに美しさと使いやすさを加えるデザインの技術</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>CSSとは何か？：Webページに命を吹き込む「デザインの魔法」</h2>
+                    <p>CSS（Cascading Style
+                        Sheets）は、HTMLで作られた「骨組み」に対して、色や形、配置といった「装飾」を施すための言語です。HTMLが「何がそこにあるか」を定義するのに対し、CSSは「それがどのように見えるか」を決定します。
+                    </p>
+                    <p>CSS（カスケード）という名前には「上から下へと流れる」という意味があり、複数の指定が重なった時に、どのルールを優先するかを決める強力なルールセットが備わっています。この仕組みを理解することが、思い通りのデザインを実現するための第一歩となります。
+                    </p>
+
+                    <h2>1. CSSの書き方：セレクタ・プロパティ・値</h2>
+                    <p>CSSは非常にシンプルな構造をしています。「どの要素（セレクタ）」の、「何（プロパティ）」を、「どう変える（値）」かというセットで記述します。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">CSS：基本の構文</span>
+                        <pre>/* セレクタ { プロパティ: 値; } */
+h1 {
+    color: #3b82f6;      /* 文字色をブルーに */
+    font-size: 32px;      /* 文字サイズを32pxに */
+    text-align: center;   /* 中央揃えに */
+}</pre>
+                    </div>
+                    <p>波カッコ `{ }` の中に複数の命令（宣言）を書くことができます。各命令の末尾には必ずセミコロン `;` を忘れないようにしましょう。これは、複数の命令を区切るための重要な記号です。</p>
+
+                    <h2>2. カスケード（優先順位）の仕組み</h2>
+                    <p>同じ要素に対して複数のスタイルが指定された場合、CSSは以下のルールに従ってどれを採用するかを決定します。</p>
+                    <ul>
+                        <li><strong>後から書いたものが勝つ:</strong> 同じ強さの指定であれば、ファイル内でより下に書かれたルールが優先されます。</li>
+                        <li><strong>具体性は力なり:</strong> <code>h1</code> というタグ指定よりも、特定のID（例:
+                            <code>#main-title</code>）を指定した方が優先されます。</li>
+                        <li><strong>スタイルの継承:</strong> 親要素に指定した文字色やフォントは、特に指定がなければ子要素にも引き継がれます。</li>
+                    </ul>
+
+                    <h2>3. CSSを適用する3つの方法</h2>
+                    <p>ウェブページにCSSを読み込ませるには、主に3つの方法があります。開発現場では「外部ファイル」による管理が最も一般的です。</p>
+                    <ul>
+                        <li><strong>外部CSS（推奨）:</strong> <code>&lt;link&gt;</code> タグを使って <code>.css</code>
+                            ファイルを読み込みます。複数のページでデザインを共有できるため、メンテナンス性が最高です。</li>
+                        <li><strong>内部CSS:</strong> HTMLの <code>&lt;head&gt;</code> 内に <code>&lt;style&gt;</code>
+                            タグを書いて記述します。そのページ専用のスタイルを書きたい時に使います。</li>
+                        <li><strong>インラインCSS:</strong> HTMLタグに直接 <code>style="..."</code>
+                            と書きます。特定の一箇所だけを急ぎで変えたい時の最終手段です。</li>
+                    </ul>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">HTML：外部ファイルの読み込み例</span>
+                        <pre>&lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</pre>
+                    </div>
+
+                    <h2>4. ボックスモデルの概念</h2>
+                    <p>CSSを扱う上で、全ての要素は「四角い箱」であると考える必要があります。この箱（ボックス）の隙間をどう調整するかが、レイアウトの基本です。</p>
+                    <div class="box-note"
+                        style="background: rgba(251, 191, 36, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <ul>
+                            <li><strong>Margin:</strong> ボックスの外側の余白（他の要素との距離）</li>
+                            <li><strong>Border:</strong> ボックスの枠線</li>
+                            <li><strong>Padding:</strong> 枠線と中身（文字など）の間の内側の余白</li>
+                            <li><strong>Content:</strong> 実際のテキストや画像が表示される領域</li>
+                        </ul>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: CSSが効きません！どうすればいいですか？</h4>
+                        <p>A: まずは「スペルミス」と「セミコロン <code>;</code>
+                            の付け忘れ」を確認しましょう。また、ブラウザの「検証ツール（F12）」を使うと、どのスタイルが打ち消されているか一目で分かります。</p>
+                    </div>
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: コメントはどうやって書きますか？</h4>
+                        <p>A: <code>/* 隠したい内容 */</code>
+                            で囲みます。HTMLのコメントとは書き方が違うので注意してください。メモを残したり、一時的にスタイルを無効化したりするのに便利です。</p>
+                    </div>
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: IDとクラス、どちらを使うべきですか？</h4>
+                        <p>A: 基本的には **クラス (.class-name)**
+                            を使いましょう。IDはページ内に一つしか存在できないため、デザインの使い回しがきかなくなります。クラスなら、複数の要素に同じデザインを簡単に適用できます。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>CSSは、あなたのウェブサイトを「ただのテキスト」から「感動を与えるデジタル体験」へと進化させる魔法のツールです。まずは色を変える、中央に寄せる、といった小さな一歩から始めてみましょう。コードを一行書くたびに、画面がプロフェッショナルな表情に変わっていく楽しさを、ぜひ味わってください！
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;"><a
+                        href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a><a
+                        href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a><a
+                        href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy;
+                    2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

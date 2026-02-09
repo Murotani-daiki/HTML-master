@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h1〜h6タグの役割と使い方：正しい見出し構造 | HTML Master リファレンス</title>
+    <meta name="description" content="HTMLの見出しタグ（h1〜h6）の正しい順番、SEOへの影響、デザイン上の注意点などを初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-headings.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-headings.html">
+    <meta property="og:title" content="h1〜h6タグの役割と使い方：正しい見出し構造 | HTML Master リファレンス">
+    <meta property="og:description" content="HTMLの見出しタグ（h1〜h6）の正しい順番、SEOへの影響、デザイン上の注意点などを初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-headings.html">
+    <meta name="twitter:title" content="h1〜h6タグの役割と使い方：正しい見出し構造 | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTMLの見出しタグ（h1〜h6）の正しい順番、SEOへの影響、デザイン上の注意点などを初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "h1〜h6タグの役割と使い方：正しい見出し構造 | HTML Master リファレンス",
+        "description": "HTMLの見出しタグ（h1〜h6）の正しい順番、SEOへの影響、デザイン上の注意点などを初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-headings.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .best-practice {
+            background: rgba(34, 197, 94, 0.05);
+            border-left: 4px solid #22c55e;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .best-practice h4 {
+            color: #22c55e;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="index.html">一覧に戻る</a>
+                <a href="../levels.html">レベル</a>
+            </nav>
+        </header>
+
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar">
+                        <span class="tag-badge">&lt;h1&gt;〜&lt;h6&gt;</span>
+                    </div>
+                    <h1>見出しタグ（Headings）</h1>
+                    <p>文書の論理構造を整理し、ユーザーと検索エンジンに内容を伝える重要な要素。</p>
+                </header>
+
+                <div class="detail-body">
+                    <h2>見出しタグとは？：情報の「階段」を作る最も重要な骨組み</h2>
+                    <p>Webコンテンツにおいて、見出しタグ（Headings）は単なる「大きな文字」ではありません。文章の論理的な構造を示し、情報の「重要度のレベル」を決定する **情報の骨組み** です。
+                    </p>
+                    <p>HTMLでは `&lt;h1&gt;` から `&lt;h6&gt;`
+                        までの6段階の見出しが用意されています。数字が小さいほど重要度が高く、大きい見出しとして扱われます。これらを正しく使い分けることで、ユーザーは一目でページの構成を把握でき、検索エンジンはこのページが「何について、どんな順番で語っているか」を正確に理解できるようになります。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>理想的な見出しの階層構造</h4>
+                        <div class="example-code">
+                            &lt;h1&gt;Webサイト制作の基本&lt;/h1&gt; &lt;!-- ページに1つだけのタイトル --&gt;<br>
+                            &nbsp;&nbsp;&lt;h2&gt;HTMLの役割&lt;/h2&gt; &lt;!-- 章（メインセクション） --&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;タグの種類&lt;/h3&gt; &lt;!-- 節（サブセクション） --&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;属性の使い方&lt;/h3&gt;<br>
+                            &nbsp;&nbsp;&lt;h2&gt;CSSの役割&lt;/h2&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;スタイルの適用&lt;/h3&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. 検索エンジン (SEO) と見出しの密接な関係</h2>
+                    <p>Googleなどの検索エンジンは、見出しタグの内容を非常に重視します。特に `&lt;h1&gt;`
+                        に含まれるキーワードは、そのページ全体のテーマとして強く認識されます。また、適切な見出しが設定されていると、Googleの検索結果に「目次（記事内の各セクションへのリンク）」が表示されることがあり、クリック率を大幅に高める効果が期待できます。
+                    </p>
+                    <p>初心者がやりがちな「見た目を大きくしたいから、すべてをh1やh2で書く」といった手法は、検索エンジンにとって情報の優先順位を混乱させる原因となり、逆効果（SEO評価の低下）を招く可能性があるため注意が必要です。
+                    </p>
+
+                    <h2>2. アクセシビリティ：誰もが情報を得られる工夫</h2>
+                    <p>見出しタグは、視覚障がいのある方が使用する「スクリーンリーダー」にとっても不可欠です。多くのリーダーには **「見出しジャンプ機能」**
+                        があり、ユーザーは本文を全て読み飛ばして、見出しだけを頼りに必要な情報を探すことができます。</p>
+                    <p>もし見出しがない（あるいは全てがただの太字 `&lt;b&gt;`
+                        である）場合、これらのユーザーは膨大な文章を最初から最後まで聞かなければならず、非常にストレスフルな体験を強いることになります。正しい見出し構造は、 Webの平等性を支える重要な要素なのです。
+                    </p>
+
+                    <div class="best-practice">
+                        <h4>プロが守る「鉄の掟」</h4>
+                        <p><strong>階層を飛ばしてはいけない：</strong> `&lt;h1&gt;` の次にいきなり `&lt;h3&gt;`
+                            を置くのはNGです。必ず「階段」を一段ずつ降りるように（h1 → h2 → h3...）構成しましょう。</p>
+                        <p><strong>デザインのための選定はしない：</strong>
+                            「ここの見出しは小さい方がいいからh5にしよう」と考えるのは間違いです。構造として必要ならh2を選び、サイズが大きすぎるならCSSの `font-size` で調整してください。
+                        </p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: h1タグを1ページに複数使ってもいいですか？</h4>
+                        <p>A: HTML5の仕様上は問題ありませんが、現代のWeb標準およびSEOの観点からは **「原則として1ページ1つ」**
+                            が推奨されます。本のタイトルが1つであるように、サイトのメインタイトルも1つに絞るのが最も明確です。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: h6まで使い切ることはありますか？</h4>
+                        <p>A:
+                            非常に長大な技術ドキュメントや論文のようなコンテンツでは使うことがありますが、一般的なWebサイトでは **h3かh4まで**
+                            で収まるのが理想的です。h5以降が必要になる場合は、そのセクションを別のページに分けることを検討した方が、ユーザーにとって読みやすくなるかもしれません。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: ロゴ画像に見出しタグを使ってもいいですか？</h4>
+                        <p>A:
+                            はい、非常に一般的です。ただしその場合は、画像に適切な `alt`
+                            属性（代替テキスト）を入れて、「画像が見えない場合でも、そこに見出しとしての意味がある」ことを伝える必要があります。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>見出しタグを極めることは、Webサイトの「整理整頓」を極めることです。正しい階層構造で書かれたページは、清潔で信頼感があり、あらゆるデバイス、あらゆるユーザーにとって優しいものになります。まずはあなたのページの「目次」を、h1から順番に組み立ててみることからはじめてください。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

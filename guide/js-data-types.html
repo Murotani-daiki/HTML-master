@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データ型：データの種類を理解する | JavaScript Master リファレンス</title>
+    <meta name="description" content="JavaScriptで扱うデータの種類（データ型）について。文字列、数値、真偽値、配列、オブジェクトの違いと特徴を初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/js-data-types.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js-data-types.html">
+    <meta property="og:title" content="データ型：データの種類を理解する | JavaScript Master リファレンス">
+    <meta property="og:description" content="JavaScriptで扱うデータの種類（データ型）について。文字列、数値、真偽値、配列、オブジェクトの違いと特徴を初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js-data-types.html">
+    <meta name="twitter:title" content="データ型：データの種類を理解する | JavaScript Master リファレンス">
+    <meta name="twitter:description" content="JavaScriptで扱うデータの種類（データ型）について。文字列、数値、真偽値、配列、オブジェクトの違いと特徴を初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "データ型：データの種類を理解する | JavaScript Master リファレンス",
+        "description": "JavaScriptで扱うデータの種類（データ型）について。文字列、数値、真偽値、配列、オブジェクトの違いと特徴を初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js-data-types.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: #facc15;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #facc15;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .type-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .type-card h4 {
+            color: #facc15;
+            margin-bottom: 0.5rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="js_index.html">解説一覧</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">基本概念</span>
+                    <h1>データ型</h1>
+                    <p>JavaScriptが扱う情報の「種類」をマスターしよう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>データには「型」がある：JavaScriptの分類学</h2>
+                    <p>プログラミングで扱うあらゆるデータには、それぞれ決まった種類（型）があります。JavaScriptは、メモリ上のデータを数値として計算し、文字として画面に表示し、あるいは複雑な情報の集合体として管理するために、この「データ型」を内部で厳密に区別しています。
+                    </p>
+                    <p>JavaScriptのデータ型は、大きく分けて **「プリミティブ型」** と **「オブジェクト型」**
+                        の2つのグループに分類されます。この違いを理解することが、思わぬバグを防ぎ、効率的なコードを書くための最大の鍵となります。</p>
+
+                    <div class="type-grid">
+                        <div class="type-card">
+                            <h4>String (文字列)</h4>
+                            <p>名前や文章など、テキストを扱うプリミティブ型です。不変（Immutable）という特徴があります。</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Number (数値)</h4>
+                            <p>整数や小数。JavaScriptでは全て「64ビット浮動小数点数」として扱われます。</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Boolean (真偽値)</h4>
+                            <p>`true` か `false`。条件分岐（if文）の心臓部となる、最もシンプルな型です。</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Special (特殊値)</h4>
+                            <p>`null` や `undefined`。値が存在しない、あるいは準備中の状態を表します。</p>
+                        </div>
+                    </div>
+
+                    <h2>1. プリミティブ型：不変の基礎データ</h2>
+                    <p>数値や文字列などのプリミティブ型は、一度作成されたらその値自体を変更することはできません（不変性）。例えば、文字列の特定の一文字だけを書き換えることはできず、変更したい場合は新しい文字列を再作成する必要があります。
+                    </p>
+
+                    <h3>文字列 (String) の進化：テンプレートリテラル</h3>
+                    <p>引用符 `"` や `'` 以外に、バックティック ( ` ) を使うことで、改行を含んだり、`${ }`
+                        を使って変数を直接埋め込んだりすることができます。これは現代のJavaScript開発において標準的な書き方です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：文字の埋め込み</span>
+                        <pre>const lang = "JS";
+const message = `私は ${lang} Master を目指しています。
+毎日学習しています！`;
+console.log(message);</pre>
+                    </div>
+
+                    <h2>2. 特殊な値：null と undefined の違い</h2>
+                    <p>どちらも「値がない」ことを意味しますが、使われる文脈が明確に異なります。
+                    </p>
+                    <ul>
+                        <li><strong>undefined:</strong> 「まだ値が決まっていない」状態。定義しただけの変数などはこれになります。</li>
+                        <li><strong>null:</strong> 「意図的に空である」と明示した状態。開発者が明示的に代入するものです。</li>
+                    </ul>
+                    <div class="point-card" style="border-left-color: #3b82f6; background: rgba(59, 130, 246, 0.05);">
+                        <h4>💡 歴史的なバグ：typeof null</h4>
+                        <p>`typeof null` を実行すると `"object"`
+                            が返ってきます。これはJavaScriptの最初期からある有名なバグですが、互換性のために修正されずに残っています。「null
+                            はオブジェクトではないが、typeofの結果はobjectになる」と覚えておきましょう。</p>
+                    </div>
+
+                    <h2>3. オブジェクト型：参照による管理</h2>
+                    <p>配列（Array）やオブジェクト（Object）は、複数のデータをまとめて管理するための複雑な仕組みです。プリミティブとは異なり、これらは **「参照（リファレンス）」** で扱われます。
+                    </p>
+                    <p>変数にはデータそのものではなく、「データがメモリ上のどこにあるかという住所（参照）」が保存されます。そのため、同じオブジェクトを複数の変数で共有することができ、一つの変数を経由して中身を書き換えると、他の変数から見た中身も変わる、という挙動をします。
+                    </p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：参照の仕組み</span>
+                        <pre>const a = [1, 2, 3];
+const b = a; // 参照（住所）をコピー
+b.push(4);    // bを操作したつもりでも...
+console.log(a); // [1, 2, 3, 4] になっています！</pre>
+                    </div>
+
+                    <h2>4. 動的な型変換（型強制）の落とし穴</h2>
+                    <p>JavaScriptは、異なる型同士の計算をしようとすると、良かれと思って自動的に型を変換してしまいます（暗黙の型変換）。これがしばしば混乱の原因となります。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：型の衝突</span>
+                        <pre>console.log(1 + "1");  // "11" （数値が文字列に変換されて連結される）
+console.log("5" - 2);  // 3    （文字列が数値に変換されて計算される）
+console.log("abc" * 2); // NaN  （数値に変換できず "Not a Number" となる）</pre>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 配列 (Array) はオブジェクトの一種ですか？</h4>
+                        <p>A: はい、その通りです。JavaScriptの内部では、配列は「数字のキーを持つ特殊なオブジェクト」として実装されています。そのため、`typeof []` は `"object"`
+                            になります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 非常に大きな数値を扱うにはどうすればいいですか？</h4>
+                        <p>A: `Number` 型では扱いきれない巨大な整数（2の53乗以上）のために、**BigInt** 型が用意されています。数値の末尾に `n`
+                            をつける（例：`100n`）ことで使用できます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 型を厳密にチェックするには？</h4>
+                        <p>A: 比較には必ず `===`（厳密等価演算子）を使いましょう。`==` だと `1 == "1"` が true になってしまいますが、`===`
+                            ならデータ型までチェックするため安心です。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>データ型を正しく理解することは、意図しない計算ミスを防ぎ、大規模で複雑なプログラムを構築するための土台となります。一見ややこしい「参照」や「型変換」のルールも、仕組みを知れば強力な味方になります。今、自分の書いたコードの変数が「どの型」なのか、常に意識することから始めましょう。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データ構造：情報を整理して扱う | Python Master リファレンス</title>
+    <meta name="description" content="Pythonの主要なデータ構造（リスト、辞書、タプル、集合）について。それぞれの特徴と使い分け、操作方法を初心者向けに分かりやすく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/py-data-structures.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/py-data-structures.html">
+    <meta property="og:title" content="データ構造：情報を整理して扱う | Python Master リファレンス">
+    <meta property="og:description" content="Pythonの主要なデータ構造（リスト、辞書、タプル、集合）について。それぞれの特徴と使い分け、操作方法を初心者向けに分かりやすく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/py-data-structures.html">
+    <meta name="twitter:title" content="データ構造：情報を整理して扱う | Python Master リファレンス">
+    <meta name="twitter:description" content="Pythonの主要なデータ構造（リスト、辞書、タプル、集合）について。それぞれの特徴と使い分け、操作方法を初心者向けに分かりやすく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "データ構造：情報を整理して扱う | Python Master リファレンス",
+        "description": "Pythonの主要なデータ構造（リスト、辞書、タプル、集合）について。それぞれの特徴と使い分け、操作方法を初心者向けに分かりやすく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/py-data-structures.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #3b82f6;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #eab308);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #3b82f6;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .structure-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .structure-card h4 {
+            color: #eab308;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../py_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #3b82f6, #eab308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Python Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="py_index.html">解説一覧</a>
+                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">データ活用</span>
+                    <h1>データ構造</h1>
+                    <p>情報をひとまとめにして管理し、効率よくプログラムを動かそう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>情報をどうまとめるか？：データ構造の重要性</h2>
+                    <p>プログラムでは単一の数値や文字列だけでなく、「複数のデータの集まり」を扱うことがほとんどです。Pythonには、用途に合わせて使い分けられる強力なデータ構造（コンテナとも呼ばれます）が標準で備わっています。
+                    </p>
+                    <p>適切なデータ構造を選ぶことは、プログラムの「読みやすさ」だけでなく「実行速度」にも直結します。名簿を作るなら辞書、履歴を保存するならリスト、といった具合に、それぞれの特性を理解することがプロへの第一歩です。
+                    </p>
+
+                    <div class="structure-grid">
+                        <div class="structure-card">
+                            <h4>リスト [list]</h4>
+                            <p>順番（インデックス）のあるデータの集まり。中身の書き換えが自由自在です。</p>
+                        </div>
+                        <div class="structure-card">
+                            <h4>辞書 {dict}</h4>
+                            <p>「名前（キー）」と「値」をセットで管理。検索スピードが驚異的に速いです。</p>
+                        </div>
+                    </div>
+
+                    <h2>1. リスト [list]：並び順が命の万能選手</h2>
+                    <p>最も頻繁に使われるデータ構造です。カッコ `[ ]` で囲み、カンマで区切ります。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：リストの操作</span>
+                        <pre>colors = ["Red", "Green", "Blue"]
+
+colors.append("Yellow") # 末尾に追加
+colors[0] = "Crimson"   # 0番目を書き換え
+print(colors[1:3])      # スライス：1番目から2番目まで取得</pre>
+                    </div>
+                    <p>リストの強力な機能の一つが **スライス** です。 `[開始:終了]` と書くことで、リストの一部を一気に切り出すことができます。
+                    </p>
+
+                    <h2>2. 辞書 {dict}：膨大なデータから一瞬で見つけ出す</h2>
+                    <p>キー(Key)と値(Value)を組み合わせて保存します。数万件のデータがあっても、キーを指定すれば一瞬で値を取り出せるのが最大の特徴です（ハッシュマップ構造）。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：辞書の活用</span>
+                        <pre>user_scores = {"Alice": 95, "Bob": 80, "Charlie": 70}
+
+# データの取得
+print(user_scores["Alice"])
+
+# データの追加・更新
+user_scores["David"] = 85</pre>
+                    </div>
+
+                    <h2>3. タプル (tuple) と 集合 {set}</h2>
+                    <p>これら二つも、特定の場面で非常に強力な力を発揮します。</p>
+
+                    <h3>タプル：不変(Immutable)なリスト</h3>
+                    <p>丸カッコ `( )` を使います。最大の特徴は、一度作ると **「中身を変更できない」** ことです。
+                        <br>例: `coordinate = (35.6895, 139.6917)` # 座標など、変わっては困るデータに。
+                    </p>
+
+                    <h3>集合：重複を許さない、数学的な集まり</h3>
+                    <p>波カッコ `{ }` を使います。重複する値は自動的に一つにまとめられます。
+                        <br>例: `tags = {"Python", "HTML", "Python"}` # 重複が消え `{"Python", "HTML"}` になる。
+                    </p>
+
+                    <h2>4. Pythonの魔法：リスト内包表記</h2>
+                    <p>Pythonには、既存のリストから新しいリストを一行で作る非常にエレガントな書き方があります。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：リスト内包表記</span>
+                        <pre>numbers = [1, 2, 3, 4, 5]
+# すべてを2倍にした新しいリストを作る
+doubled = [n * 2 for n in numbers]
+# print(doubled) -> [2, 4, 6, 8, 10]</pre>
+                    </div>
+
+                    <div class="structure-card" style="margin-top: 2rem;">
+                        <h4>🚀 パフォーマンスの豆知識：計算量</h4>
+                        <p>・リストから特定の値を「探す」のは、データ量が増えるほど時間がかかります。
+                            <br>・辞書からキーを使って値を「探す」のは、データがどれだけ増えても常に一定の速さです。
+                            <br>賢いデータ構造の選択が、爆速のアプリを生み出します。
+                        </p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: リストの中に別のリストを入れることはできますか？</h4>
+                        <p>A: 可能です。これを「多次元リスト（ネスト）」と呼びます。表形式のデータや、ゲームのマップ情報（X, Y座標）などを表す際によく使われます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 辞書のキーにリストを使うことはできますか？</h4>
+                        <p>A: できません。辞書のキーには「変更不可能なデータ（不変）」である必要があります。そのため、リストの代わりにタプルをキーとして使うことは可能です。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: リストを並び替えるには？</h4>
+                        <p>A: `list.sort()` メソッドを使うと中身を直接書き換えてソートします。元のリストを壊したくない場合は `sorted(list)` 関数を使いましょう。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>それぞれのデータ構造には得意・不得意があります。データの順序が大事なら **リスト**、名前で管理したいなら **辞書**、不変性を保ちたいなら **タプル**、重複を除きたいなら
+                        **集合**。これらを意識して使い分けることで、あなたのPythonコードはより洗練されたものになります！
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 Python Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

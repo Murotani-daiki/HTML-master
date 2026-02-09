@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色と背景：色彩で感情を伝える | HTML Master リファレンス</title>
+    <meta name="description" content="CSSでの色の指定方法（HEX, RGB, HSL）と、背景画像の設置、グラデーションの作り方について初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/css-colors.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/css-colors.html">
+    <meta property="og:title" content="色と背景：色彩で感情を伝える | HTML Master リファレンス">
+    <meta property="og:description" content="CSSでの色の指定方法（HEX, RGB, HSL）と、背景画像の設置、グラデーションの作り方について初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/css-colors.html">
+    <meta name="twitter:title" content="色と背景：色彩で感情を伝える | HTML Master リファレンス">
+    <meta name="twitter:description" content="CSSでの色の指定方法（HEX, RGB, HSL）と、背景画像の設置、グラデーションの作り方について初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "色と背景：色彩で感情を伝える | HTML Master リファレンス",
+        "description": "CSSでの色の指定方法（HEX, RGB, HSL）と、背景画像の設置、グラデーションの作り方について初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/css-colors.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #38bdf8;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .color-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .color-chip {
+            padding: 2rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #38bdf8;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="index.html">解説一覧</a>
+                <a href="../index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.2); color: #38bdf8;">デザイン</span>
+                    <h1>色と背景</h1>
+                    <p>サイトの印象を決める色彩設計と、豊かな背景表現をマスターしよう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>色の魔法：ユーザーの感情をデザインする</h2>
+                    <p>Webサイトを訪れたとき、最初に私たちの心に飛び込んでくるのは「色」です。明るい青は信頼感を、情熱的な赤は力強さを、深緑は安らぎを与えます。CSSでの色彩設計は、単なる装飾ではなく「ユーザー体験（UX）」そのものを左右する重要な要素です。
+                    </p>
+                    <p>このガイドでは、基本の色指定から、アクセシビリティ（見やすさ）を考慮した色の選び方、そしてモダンな背景表現まで、プロが現場で使うテクニックを網羅的に解説します。</p>
+
+                    <div class="color-demo-grid">
+                        <div class="color-chip" style="background: skyblue;">色名<br>skyblue</div>
+                        <div class="color-chip" style="background: #38bdf8;">HEX値<br>#38bdf8</div>
+                        <div class="color-chip" style="background: rgb(56, 189, 248);">RGB<br>rgb(56, 189, 248)</div>
+                        <div class="color-chip" style="background: hsl(198, 93%, 60%);">HSL<br>hsl(198, 93, 60)</div>
+                    </div>
+
+                    <h2>1. CSSで使える4つの色形式</h2>
+                    <p>目的や好みに合わせて、以下の4つの形式を使い分けましょう。</p>
+
+                    <ul>
+                        <li><strong>HEX値（16進数）:</strong> `#38bdf8`
+                            のように書きます。最も一般的で、グラフィックツールからのコピー＆ペーストにも適しています。</li>
+                        <li><strong>RGB / RGBA:</strong> `rgb(56, 189, 248)` と指定します。`rgba`
+                            を使うと4つ目の数値で透明度（0.0〜1.0）をコントロールでき、重ね合わせの表現に最適です。</li>
+                        <li><strong>HSL:</strong> `hsl(200, 100%, 50%)`
+                            のように、色相・彩度・輝度で指定します。「もう少し明るくしたい」という微調整が数値だけで行えるため、開発者に人気があります。</li>
+                        <li><strong>OKLCH (モダン):</strong> 最新のCSSで使用可能。人間の目にとって「均一な明るさ」を保ったまま色を調整できる、次世代の指定形式です。</li>
+                    </ul>
+
+                    <h2>2. 背景（background）を制する</h2>
+                    <p>単色の塗りつぶし以外にも、CSSは豊かな背景表現を可能にします。</p>
+
+                    <h3>グラデーションの表現</h3>
+                    <p>現在のWebデザインで欠かせないのが `linear-gradient` です。方向、色の変化、色の割合を自由に操ることができます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">CSS：グラデーション</span>
+                        <pre>/* 右下に向かって変化するグラデーション */
+background: linear-gradient(135deg, #38bdf8, #818cf8);</pre>
+                    </div>
+
+                    <h3>背景画像の高度な制御</h3>
+                    <p>背景画像を表示するとき、ただ読み込むだけでは不十分です。以下のプロパティを組み合わせて「画面にフィット」させましょう。</p>
+                    <div class="code-block-guide">
+                        <pre>background-image: url("hero.webp");
+background-size: cover;      /* 隙間なく画面を埋める */
+background-attachment: fixed; /* スクロールしても背景が動かない効果 */
+background-position: center;  /* 常に中央を表示 */</pre>
+                    </div>
+
+                    <h2>3. 重要なルール：色のアクセシビリティ</h2>
+                    <p>どんなに美しい色でも、文字が読めなければWebサイトとしての価値を失います。色のコントラスト（明暗の差）には注意を払いましょう。</p>
+                    <div class="a11y-box"
+                        style="background: rgba(234, 179, 8, 0.05); padding: 1.5rem; border-left: 4px solid #eab308; border-radius: 0 12px 12px 0;">
+                        <h4>⚠️ コントラスト比の基準 (WCAG)</h4>
+                        <p>通常のテキストの場合、背景とのコントラスト比は少なくとも **4.5:1**
+                            以上であることが推奨されています。ライトグレーの背景に白文字のような組み合わせは避けましょう。Google Chromeの検証ツールでもこの比率をチェックできます。</p>
+                    </div>
+
+                    <h2>4. CSS変数（カスタムプロパティ）による色の管理</h2>
+                    <p>大規模なサイトでは、色を一箇所で管理するのが賢い方法です。CSS変数を使えば、ブランドカラーの変更も一瞬で完了します。</p>
+                    <div class="code-block-guide">
+                        <pre>:root {
+    --primary-color: #38bdf8;
+}
+
+h1 {
+    color: var(--primary-color);
+}</pre>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 透過させるには opacity と RGBA
+                            どちらが良いですか？</h4>
+                        <p>A: `opacity` はその中の文字まで透けてしまいます。**「背景だけ透かしたい」場合は、`rgba`
+                            や `hsla` を使うのが正解です。**</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 3桁のHEX値（例: #fff）は何ですか？</h4>
+                        <p>A: 短縮記法です。`#ffffff` は `#fff`、`#aabbcc` は `#abc` と省略して書くことができます。ファイルサイズを節約するのに役立ちます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: ダークモードに対応するには？</h4>
+                        <p>A: メディアクエリ `@media (prefers-color-scheme: dark)` を使い、変数に代入した色を上書きするのがモダンな手法です。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>色の指定は単なるコーディング作業ではなく、ユーザーへのメッセージです。色の形式、アクセシビリティ、そしてモダンな管理手法をマスターして、視覚的に心地よく、かつ機能的なウェブサイトを目指しましょう！
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

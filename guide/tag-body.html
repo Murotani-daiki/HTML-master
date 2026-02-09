@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+<body> タグの役割と使い方 | HTML Master リファレンス</title>
+    <meta name="description" content="Webページのメインコンテンツを記述するbodyタグの役割、画面に表示されるすべての要素の親としての機能を解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-body.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-body.html">
+    <meta property="og:title" content="<body> タグの役割と使い方 | HTML Master リファレンス">
+    <meta property="og:description" content="Webページのメインコンテンツを記述するbodyタグの役割、画面に表示されるすべての要素の親としての機能を解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-body.html">
+    <meta name="twitter:title" content="<body> タグの役割と使い方 | HTML Master リファレンス">
+    <meta name="twitter:description" content="Webページのメインコンテンツを記述するbodyタグの役割、画面に表示されるすべての要素の親としての機能を解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "<body> タグの役割と使い方 | HTML Master リファレンス",
+        "description": "Webページのメインコンテンツを記述するbodyタグの役割、画面に表示されるすべての要素の親としての機能を解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-body.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="landing-container">
+            <header class="home-header">
+                <a href="../index.html" class="logo">
+                    <h1>HTML Master</h1>
+                </a>
+                <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+            </header>
+            <main class="detail-container">
+                <article class="detail-content">
+                    <header class="detail-header">
+                        <div class="tag-info-bar"><span class="tag-badge">&lt;body&gt;</span></div>
+                        <h1>本文（body）</h1>
+                        <p>ユーザーが目にする文字、画像、ボタン、動画など、すべてのコンテンツがここに含まれます。</p>
+                    </header>
+                    <div class="detail-body">
+                        <h2>bodyタグとは？：ユーザーが見る全ての「世界」の土台</h2>
+                        <p>Webブラウザがひとつの「舞台」だとすれば、その舞台上で繰り広げられる全てのドラマ（コンテンツ）を保持するのが、この `&lt;body&gt;`
+                            タグです。先ほど学んだ `&lt;head&gt;`
+                            タグが「脳」であり、目に見えない思考や設定を司るのに対し、 `&lt;body&gt;`
+                            は文字通り「体」であり、ユーザーが実際に目で見て、触れて、心に刻む情報の全てを詰め込む箱となります。</p>
+                        <p>このタグの開始と終了の間に書かれたものだけが、ブラウザのキャンバス上に描画されます。見出し、段落、画像、リンク、そしてこのガイドを読んでいるあなたのブラウザに表示されている全ての装飾も、元を辿ればこのbodyタグという大地の上に成り立っています。
+                        </p>
+
+                        <div class="example-box">
+                            <h4>bodyの標準的な構成</h4>
+                            <div class="example-code">
+                                &lt;body&gt;<br>
+                                &nbsp;&nbsp;&lt;header&gt;サイトのヘッダー&lt;/header&gt;<br>
+                                &nbsp;&nbsp;&lt;main&gt;メインコンテンツ&lt;/main&gt;<br>
+                                &nbsp;&nbsp;&lt;footer&gt;フッター情報&lt;/footer&gt;<br>
+                                &lt;/body&gt;
+                            </div>
+                        </div>
+
+                        <h2>1. 画面表示の司令塔としての役割</h2>
+                        <p>bodyタグは、ページ全体のスタイリングを決定する際にも重要な役割を果たします。例えば、サイト全体の背景色や文字の色、フォントの基本サイズをCSSで指定する時、そのターゲットとなるのは多くの場合この
+                            `&lt;body&gt;` 要素です。</p>
+                        <p>また、DOM（Document Object
+                            Model）という仕組みにおいては、画面に見える全ての要素の「唯一の親」となります。JavaScriptでページの内容を動的に変える時も、このbodyを起点として様々な要素へアクセスしていくことになります。
+                        </p>
+
+                        <h2>2. グローバル属性とカスタマイズ</h2>
+                        <p>bodyタグには、サイト全体を制御するための便利な属性を付けることができます。</p>
+                        <ul>
+                            <li><strong>id / class:</strong>
+                                ページごとに異なるクラスを付けることで、「トップページだけ特別な背景にする」といった条件分岐が容易になります。</li>
+                            <li><strong>data-* 属性:</strong>
+                                JavaScriptで使用するためのカスタムデータを埋め込むことができます。例えば、 `data-theme="dark"`
+                                としておくことで、スクリプトが読み込まれた瞬間にダークモードの設定を反映させるといった高度な制御が可能です。</li>
+                        </ul>
+
+                        <h2>3. ブラウザごとの「癖」に注意</h2>
+                        <p>実は、何もCSSを書いていない状態でも、bodyタグにはブラウザごとに微妙な「余白（margin）」が設定されています。多くのモダンブラウザでは **8px**
+                            程度の余白が自動でつきます。「画面の端にぴったり画像がつかない」という現象が起きた時は、CSSで `body { margin: 0; }` と指定することで解決できます。</p>
+
+                        <h2>よくある質問 (Q&A)</h2>
+
+                        <div class="qa-item" style="margin-bottom: 2rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 1つのHTMLに2つ以上の body
+                                タグを書いてもいいですか？</h4>
+                            <p>A:
+                                **絶対にダメです。** 文法上、bodyタグは1つのHTML文書に **たった1つだけ**
+                                存在しなければなりません。複数書くとブラウザが混乱し、表示が崩れたりJavaScriptが動かなくなったりする原因になります。</p>
+                        </div>
+
+                        <div class="qa-item" style="margin-bottom: 2rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: bodyタグを省略しても表示されるのはなぜ？
+                            </h4>
+                            <p>A:
+                                htmlやheadタグと同様、ブラウザには「不足しているタグを推測して補う」という超人的な機能があるからです。しかし、これは「ブラウザの温情」に甘えている状態であり、SEOやアクセシビリティの観点からは非常に好ましくありません。正しく記述するのがWeb制作者の誠実さです。
+                            </p>
+                        </div>
+
+                        <div class="qa-item" style="margin-bottom: 2rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: bodyタグ自体に背景画像を設定できますか？
+                            </h4>
+                            <p>A: はい、非常に一般的です。CSSで `body { background-image: url(...); }`
+                                と指定することで、サイト全体に広がる背景画像を簡単に配置できます。その際は、文字が見づらくならないよう色のコントラストに注意しましょう。</p>
+                        </div>
+
+                        <h2>まとめ</h2>
+                        <p>bodyタグは、あなたのメッセージを形にするための「広大なキャンバス」です。ここをどう彩り、どう整理するか。その一つひとつの選択が、ユーザーにとっての「Web体験」そのものになります。HTML
+                            Masterで学ぶ全てのタグは、このbodyという最高の舞台で輝くために存在しています。
+                        </p>
+                    </div>
+                </article>
+            </main>
+            <footer class="home-footer">
+                <div class="footer-content">
+                    <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                        <a href="../privacy.html"
+                            style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                        <a href="../terms.html"
+                            style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                        <a href="../contact.html"
+                            style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                    </div>
+                    <p>&copy; 2026 HTML Master. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aタグ（リンク）の役割と使い方：繋がるWebの基礎 | HTML Master リファレンス</title>
+    <meta name="description" content="HTMLのリンクタグ（a）の使い方、href属性、target属性の種類、内部リンクと外部リンクの違いなどを詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-a.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-a.html">
+    <meta property="og:title" content="aタグ（リンク）の役割と使い方：繋がるWebの基礎 | HTML Master リファレンス">
+    <meta property="og:description" content="HTMLのリンクタグ（a）の使い方、href属性、target属性の種類、内部リンクと外部リンクの違いなどを詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-a.html">
+    <meta name="twitter:title" content="aタグ（リンク）の役割と使い方：繋がるWebの基礎 | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTMLのリンクタグ（a）の使い方、href属性、target属性の種類、内部リンクと外部リンクの違いなどを詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "aタグ（リンク）の役割と使い方：繋がるWebの基礎 | HTML Master リファレンス",
+        "description": "HTMLのリンクタグ（a）の使い方、href属性、target属性の種類、内部リンクと外部リンクの違いなどを詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-a.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .info-panel {
+            background: rgba(56, 189, 248, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            margin: 2rem 0;
+        }
+
+        .info-panel h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="index.html">一覧に戻る</a>
+                <a href="../levels.html">レベル</a>
+            </nav>
+        </header>
+
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar">
+                        <span class="tag-badge">&lt;a&gt;</span>
+                    </div>
+                    <h1>リンクタグ（Anchor）</h1>
+                    <p>World Wide Webの核となる、ページ同士を繋ぐ「ハイパーリンク」を作成する要素。</p>
+                </header>
+
+                <div class="detail-body">
+                    <h2>aタグとは？：世界を繋ぐ「ハイパーリンク」の正体</h2>
+                    <p>HTML（HyperText Markup
+                        Language）の「HT」は「HyperText（ハイパーテキスト）」を指します。そして、そのハイパーテキストを実現するための主役こそが、この `&lt;a&gt;`
+                        タグ（Anchor）です。このタグがあるおかげで、私たちは一つの文書から別の文書へ、地球の裏側にあるサーバーへと一瞬でジャンプすることができます。</p>
+                    <p>もしaタグが存在しなければ、インターネットは単なる「独立したファイルの詰め合わせ」に過ぎなかったでしょう。ページとページを蜘蛛の巣（Web）のように繋ぎ合わせ、巨大な情報のネットワークへと進化させたのは、この小さなタグの功績なのです。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>リンクの書き方のバリエーション</h4>
+                        <div class="example-code">
+                            &lt;a href="https://google.com"&gt;Googleへ飛ぶ&lt;/a&gt; &lt;!-- 外部サイト --&gt;<br>
+                            &lt;a href="about.html"&gt;自己紹介ページへ&lt;/a&gt; &lt;!-- 同じサイト内 --&gt;<br>
+                            &lt;a href="#contact"&gt;お問い合わせ欄へ移動&lt;/a&gt; &lt;!-- ページ内リンク --&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. href属性：どこへ向かうのか？</h2>
+                    <p>aタグにおいて、最も重要なのが `href`
+                        属性（エイチレフ）です。ここには、リンク先の住所（URLやパス）を記述します。リンク先にはいくつかのパターンがあります。</p>
+                    <ul>
+                        <li><strong>絶対URL:</strong> `https://`
+                            から始まる完全な住所です。主に他人のサイトへリンクを貼る際に使います。</li>
+                        <li><strong>相対パス:</strong>
+                            自分のサイト内の別ファイルへの道順です。ファイル構成が変わってもリンクが切れにくいという利点があります。</li>
+                        <li><strong>ページ内リンク（アンカー）:</strong> `#id名`
+                            と指定することで、同じページ内の特定の場所へ瞬時にスクロールさせることができます。「トップへ戻る」ボタンなどはこれで作られます。</li>
+                    </ul>
+
+                    <h2>2. セキュリティとマナー：target属性とrel属性</h2>
+                    <p>リンクをクリックした時の挙動を制御するのが `target` 属性です。特に `target="_blank"`
+                        を使うと、現在開いているページを残したまま、新しいタブでリンク先を開くことができます。</p>
+                    <p>ただし、ここで **セキュリティ上の注意** があります。新しいタブで開く際は、必ず `rel="noopener"`
+                        をセットで記述しましょう。これがないと、リンク先の悪意あるページが元ページを操作できてしまうリスク（タブジャッキング）が発生します。現代のWeb制作では、外部リンクは「新タブ＋rel属性」がセットとして扱われます。
+                    </p>
+
+                    <h2>3. 電話やメールを起動する特別なリンク</h2>
+                    <p>aタグは、Webページ以外にもリンクを貼ることができます。</p>
+                    <ul>
+                        <li><strong>tel:</strong> `&lt;a href="tel:090..."&gt;` と書けば、スマホでタップした時に直接電話をかけられます。</li>
+                        <li><strong>mailto:</strong> `&lt;a href="mailto:info@..."&gt;` と書けば、メールソフトが自動で立ち上がります。</li>
+                    </ul>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: リンクの下線を消すことはできますか？</h4>
+                        <p>A:
+                            はい、CSSで簡単に消せます。 `a { text-decoration: none; }`
+                            と指定すれば下線は消えます。ただし、下線がないとユーザーが「そこを触れる（リンクである）」と気づかない可能性もあるため、色を変えるなどの配慮を忘れないようにしましょう。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 「ここをクリック」というリンクテキストはなぜダメなの？
+                        </h4>
+                        <p>A:
+                            主にSEO（検索エンジン対策）とアクセシビリティのためです。検索エンジンは「リンクされている文字」を、リンク先の重要キーワードとして認識します。また、視覚障がい者が使うソフトでは「リンクだけの一覧」を表示することがあり、そこが全て「ここをクリック」だと、どこへ飛ぶのか全く分からなくなってしまいます。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 画像全体をリンクにしたい場合は？</h4>
+                        <p>A: `&lt;a&gt;` タグの中に `&lt;img&gt;` タグを丸ごと入れればOKです。 `&lt;a href="..."&gt;&lt;img
+                            src="..."&gt;&lt;/a&gt;`
+                            のように書くことで、その画像をクリックした時に指定のページへ飛ばすことができます。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>aタグは、あなたのサイトを無限に広がるWebの世界へと繋ぐ「扉」です。一つひとつの扉を、安全に（rel属性）、そして分かりやすく（適切なテキスト）記述することで、あなたのサイトはユーザーにとってより信頼できる、使い心地の良い場所へと進化していくでしょう。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

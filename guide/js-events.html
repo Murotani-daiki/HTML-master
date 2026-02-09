@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イベント（Event）：ユーザーの動作に反応する | JavaScript Master リファレンス</title>
+    <meta name="description" content="JavaScriptのイベント処理について。クリック、入力、送信など、ユーザーのアクションを検知してプログラムを動かす方法を初心者向けに解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/js-events.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js-events.html">
+    <meta property="og:title" content="イベント（Event）：ユーザーの動作に反応する | JavaScript Master リファレンス">
+    <meta property="og:description"
+        content="JavaScriptのイベント処理について。クリック、入力、送信など、ユーザーのアクションを検知してプログラムを動かす方法を初心者向けに解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js-events.html">
+    <meta name="twitter:title" content="イベント（Event）：ユーザーの動作に反応する | JavaScript Master リファレンス">
+    <meta name="twitter:description"
+        content="JavaScriptのイベント処理について。クリック、入力、送信など、ユーザーのアクションを検知してプログラムを動かす方法を初心者向けに解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "イベント（Event）：ユーザーの動作に反応する | JavaScript Master リファレンス",
+        "description": "JavaScriptのイベント処理について。クリック、入力、送信など、ユーザーのアクションを検知してプログラムを動かす方法を初心者向けに解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js-events.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #facc15;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .event-card strong {
+            display: block;
+            color: #facc15;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="js_index.html">解説一覧</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">インタラクション</span>
+                    <h1>イベント</h1>
+                    <p>ボタンが押されたら？：ユーザーの「きっかけ」を機能に変える</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>Webを「動かす」きっかけ：イベントの本質</h2>
+                    <p>Webサイトは、ただそこにあるだけの「静的な文書」から、ユーザーの動きに反応する「動的なアプリケーション」へと進化しました。この進化の主役が **イベント（Event）** です。
+                    </p>
+                    <p>「ボタンをクリックする」「画像をマウスでなぞる」「スマホで画面をスワイプする」「入力フォームを送信する」など、ブラウザ上で発生するあらゆるアクションを、JavaScriptは「イベント」という信号として受け取ります。この信号をキャッチし、特定のプログラムを実行させることで、私たちは初めて「生きているWebサイト」を作ることができるのです。
+                    </p>
+
+                    <h2>1. イベントを検知する：addEventListener</h2>
+                    <p>モダンなJavaScript開発において、イベントを待機させるための標準的な方法が `addEventListener()`
+                        メソッドです。これは特定のHTML要素に対して「特定のイベントが発生するのを、耳を澄ませて待っていなさい」という命令を下すものです。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：基本の書き方</span>
+                        <pre>const btn = document.querySelector("#submit-btn");
+
+// 第一引数：イベントの種類、第二引数：実行する関数（コールバック）
+btn.addEventListener("click", () => {
+    console.log("ボタンが元気にクリックされました！");
+});</pre>
+                    </div>
+
+                    <h2>2. 主要なイベントとそのカテゴリ</h2>
+                    <p>ブラウザが検知できるイベントは数百種類に及びますが、まずは以下の主要なものを抑えましょう。</p>
+                    <div class="event-grid">
+                        <div class="event-card">
+                            <strong>マウス系</strong>
+                            <p>click, dblclick, mouseenter, mouseleave</p>
+                        </div>
+                        <div class="event-card">
+                            <strong>キーボード系</strong>
+                            <p>keydown, keyup, keypress</p>
+                        </div>
+                        <div class="event-card">
+                            <strong>フォーム系</strong>
+                            <p>submit, input, change, focus, blur</p>
+                        </div>
+                        <div class="event-card">
+                            <strong>ページ系</strong>
+                            <p>DOMContentLoaded, load, scroll, resize</p>
+                        </div>
+                    </div>
+
+                    <h2>3. イベントオブジェクト：詳細情報の宝庫</h2>
+                    <p>イベントが発生した際、ブラウザは自動的に「その時、何が起きたか」を記した **イベントオブジェクト (event)**
+                        を関数に渡してくれます。「どのボタンが押されたか」「画面のどの座標か」「どのキーが叩かれたか」を知るには、これを使います。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：情報の活用</span>
+                        <pre>document.addEventListener("keydown", (event) => {
+    console.log(`押されたキーのコード: ${event.code}`);
+    if (event.key === "Enter") {
+        console.log("Enterキーが押されました！");
+    }
+});</pre>
+                    </div>
+
+                    <h2>4. イベントの伝搬：バブリングとキャプチャリング</h2>
+                    <p>JavaScriptのイベントには「泡（バブル）」のように上へ広がる性質があります。例えば、ボタンをクリックすると、そのボタンだけでなく、その親要素（div）、さらにその親（body）へとクリックイベントが連鎖的に伝わっていきます。これを
+                        **バブリング (Bubbling)** と呼びます。</p>
+                    <div class="point-card">
+                        <h4>💡 event.stopPropagation() の使いどころ</h4>
+                        <p>子要素のクリックだけで処理を終わらせ、親要素のイベントを発火させたくない場合は `event.stopPropagation()`
+                            を呼び出します。これにより、イベントの連鎖を断ち切ることができます。</p>
+                    </div>
+
+                    <h2>5. 標準動作をキャンセルする：preventDefault()</h2>
+                    <p>ブラウザには「リンクをクリックすると別ページへ飛ぶ」「フォームを送信するとページが更新される」といった、最初から決まっている動き（既定の動作）があります。JavaScriptでこれを制御したい場合に使うのが
+                        `event.preventDefault()` です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：送信キャンセル</span>
+                        <pre>const form = document.querySelector("#my-form");
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); // ページの再読み込みを防ぐ
+    console.log("送信を一時停止し、JSでチェックを行います。");
+});</pre>
+                    </div>
+
+                    <h2>6. 効率的な戦術：イベントデリゲーション</h2>
+                    <p>例えば100個のリスト項目一つ一つに `addEventListener`
+                        を設定するのは、メモリを消費し、コードも複雑になります。代わりに、それらを包む親要素に一つだけ設定し、バブリングしてきたイベントを親がまとめて処理する手法を
+                        **イベントデリゲーション（委譲）** と呼びます。これは大規模開発において必須のテクニックです。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: onclick プロパティと
+                            addEventListener、どちらが良いですか？</h4>
+                        <p>A: 断然 **addEventListener** です。一つの要素に複数の異なる処理を登録でき、あとから解除するのも簡単だからです。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: スマホの「タップ」は click で動きますか？</h4>
+                        <p>A: はい、動きます。ただし、より高速に反応させたり、複数本の指による操作を扱いたい場合は `touchstart` などのタッチイベントを使用します。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: addEventListener
+                            を解除する必要はありますか？</h4>
+                        <p>A: 画面から消える要素に重い処理を仕掛けている場合は、`removeEventListener`
+                            で解除しないと、ブラウザのメモリが徐々に減っていく「メモリリーク」の原因になることがあります。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>イベントを使いこなせば、ただの表示物だったWebページが、ユーザーと対話する「アプリケーション」へと進化します。バブリングや既定の動作の制御など、奥が深い世界ですが、これらを自由に操れるようになれば、あなたのJavaScriptの実力は一段上のレベルに到達します。まずは一番身近な
+                        `click` イベントから、世界を動かしていきましょう！</p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

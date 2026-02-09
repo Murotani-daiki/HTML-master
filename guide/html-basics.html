@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLの基礎知識：ウェブ制作の第一歩 | HTML Master 学習ガイド</title>
+    <meta name="description" content="HTMLの基本構造、タグの意味、セマンティックなマークアップなど、初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/html-basics.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/html-basics.html">
+    <meta property="og:title" content="HTMLの基礎知識：ウェブ制作の第一歩 | HTML Master 学習ガイド">
+    <meta property="og:description" content="HTMLの基本構造、タグの意味、セマンティックなマークアップなど、初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/html-basics.html">
+    <meta name="twitter:title" content="HTMLの基礎知識：ウェブ制作の第一歩 | HTML Master 学習ガイド">
+    <meta name="twitter:description" content="HTMLの基本構造、タグの意味、セマンティックなマークアップなど、初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "HTMLの基礎知識：ウェブ制作の第一歩 | HTML Master 学習ガイド",
+        "description": "HTMLの基本構造、タグの意味、セマンティックなマークアップなど、初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/html-basics.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--accent-color);
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .guide-body ul,
+        .guide-body ol {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .code-block-guide {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #38bdf8;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-nav-box {
+            background: rgba(56, 189, 248, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .guide-nav-box h4 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="../levels.html">レベル</a>
+                <a href="../index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge">学習ガイド</span>
+                    <h1>HTMLの基礎知識</h1>
+                    <p>ウェブ制作の第一歩を、基礎からしっかりと理解しよう</p>
+                </header>
+
+                <div class="guide-nav-box">
+                    <h4>目次</h4>
+                    <ul>
+                        <li>HTMLとは何か？</li>
+                        <li>HTMLの基本構造</li>
+                        <li>タグと属性の役割</li>
+                        <li>セマンティックなマークアップの重要性</li>
+                        <li>まとめ</li>
+                    </ul>
+                </div>
+
+                <div class="guide-body">
+                    <h2>HTMLとは何か？：Webの「骨組み」を作る設計図</h2>
+                    <p>HTML（HyperText Markup Language）は、Webページを構築するための最も基礎的な言語です。よく「プログラミング言語」と混合されますが、正確には
+                        **「マークアップ言語」**
+                        と呼ばれます。マークアップとは、文章の各要素に「タグ」という目印を付け、その部分がどのような役割（見出し、段落、リストなど）を持っているかをコンピュータに伝える作業を指します。
+                    </p>
+                    <p>Webブラウザは、このHTMLファイルを読み込み、その指示に従って文字や画像を画面上に配置します。HTMLがなければ、Webページはただの文字の羅列になってしまい、どこが重要な情報なのかを誰も理解することができません。情報を整理し、構造化するための「設計図」こそがHTMLなのです。
+                    </p>
+
+                    <h2>1. HTML文書の「黄金律」：基本構造を解剖する</h2>
+                    <p>全てのHTMLファイルには、世界共通の決まった「型」があります。これを知るだけで、あなたはWeb制作の入り口に立ったことになります。</p>
+
+                    <div class="code-block-guide">
+                        <pre>&lt;!DOCTYPE html&gt;      &lt;!-- (1) HTML5であることを宣言 --&gt;
+&lt;html lang="ja"&gt;      &lt;!-- (2) HTMLの全範囲を指定 --&gt;
+&lt;head&gt;                &lt;!-- (3) ページの設定情報（画面には出ない） --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;はじめてのWebサイト&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;                &lt;!-- (4) 実際に表示されるコンテンツの範囲 --&gt;
+    &lt;h1&gt;こんにちは！&lt;/h1&gt;
+    &lt;p&gt;ここがページの中身になります。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+                    <ul>
+                        <li><strong>&lt;!DOCTYPE html&gt;:</strong>
+                            おまじないのように見えますが、「このファイルは最新のHTML5で書かれています」とブラウザに教える重要な宣言です。</li>
+                        <li><strong>head セクション:</strong> ページのタイトルや検索エンジン向けのキーワードなど、**「ブラウザが見るための情報」** を記述します。</li>
+                        <li><strong>body セクション:</strong> ユーザーが実際に目で見る **「コンテンツの全て」** を記述します。</li>
+                    </ul>
+
+                    <h2>2. セマンティック・マークアップ：意味のあるHTMLを書こう</h2>
+                    <p>近年のWeb制作で最も重要な概念が「セマンティック（意味論的）なマークアップ」です。単に文字の大きさを変えるためにタグを使うのではなく、**「その情報の意味」** に合わせてタグを選ぶことです。
+                    </p>
+
+                    <div class="item-props"
+                        style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); margin: 2rem 0;">
+                        <ul>
+                            <li><strong>&lt;header&gt;:</strong> サイトのロゴやナビゲーションが含まれる「頭」の部分。</li>
+                            <li><strong>&lt;main&gt;:</strong> そのページの主役となるコンテンツ。</li>
+                            <li><strong>&lt;footer&gt;:</strong> 著作権情報や連絡先が含まれる「足」の部分。</li>
+                            <li><strong>&lt;article&gt;:</strong> ニュース記事やブログ投稿など、それ単体で意味が完結するセクション。</li>
+                        </ul>
+                    </div>
+                    <p>これらを正しく使い分けることで、Googleなどの検索エンジンがあなたのサイトを「質の高い情報」として認識しやすくなり、SEO（検索順位）に好影響を与えます。</p>
+
+                    <h2>3. タグ・属性・要素：三位一体の関係</h2>
+                    <p>HTMLを学ぶ上で避けられない3つのキーワードを整理しましょう。
+                        <br>例えば、`<a href="index.html">リンク</a>` という記述があった時：
+                    </p>
+                    <ul>
+                        <li><strong>タグ:</strong> `<a>` や `</a>`
+                            そのものを指します。&lt; &gt; で囲まれた記号です。</li>
+                        <li><strong>属性:</strong> `href="index.html"`
+                            の部分です。タグに詳細なパラメーター（どこに飛ばすか、どんな画像かなど）を与えます。</li>
+                        <li><strong>要素:</strong> 開始タグから終了タグまでの **「ひと塊のデータ」** を指します。</li>
+                    </ul>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 全部 &lt;div&gt; タグで書いてもいいですか？
+                        </h4>
+                        <p>A: 表示自体は可能ですが、強く **非推奨** です。`
+                        <div>`
+                            は「特に意味を持たない箱」です。全てにこれを使うと、検索エンジンや目の不自由な人が使う読み上げソフト（スクリーンリーダー）がサイトの構造を理解できなくなります。</p>
+                        </div>
+
+                        <div class="qa-item" style="margin-bottom: 2rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: タグの英語は大文字で書いてもいいですか？</h4>
+                            <p>A: 文法上は問題ありませんが、現代のWeb標準では **「全て小文字」**
+                                で書くことが強力に推奨されています（例: &lt;HTML&gt; ではなく &lt;html&gt;）。コードの可読性やメンテナンス性のために統一しましょう。</p>
+                        </div>
+
+                        <div class="qa-item" style="margin-bottom: 2rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 終了タグ（/がついたタグ）を忘れるとどうなりますか？
+                            </h4>
+                            <p>A:
+                                ブラウザが「どこで要素が終わるか」を推測して表示しようとしますが、多くの場合デザインが大きく崩れる原因になります。常に「開けたら閉める」を意識しましょう（一部、&lt;img&gt;のように閉じタグがない「空要素」もあります）。
+                            </p>
+                        </div>
+
+                        <h2>まとめ</h2>
+                        <p>HTMLは一見シンプルに見えますが、その奥には「世界中の情報へ誰でもアクセスできるようにする」という深い思想が流れています。正しいHTMLを書くことは、プロフェッショナルなWeb開発者としての第一歩です。さあ、Lv.1のチャレンジから、実際にあなたのコードをブラウザに写してみましょう！
+                        </p>
+                    </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

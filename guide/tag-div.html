@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>divタグの役割と使い方：レイアウトの基本ブロック | HTML Master リファレンス</title>
+    <meta name="description" content="HTMLのdivタグの役割、意味を持たないタグの重要、CSSとの組み合わせ、セマンティックなタグとの使い分けなどを詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-div.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-div.html">
+    <meta property="og:title" content="divタグの役割と使い方：レイアウトの基本ブロック | HTML Master リファレンス">
+    <meta property="og:description" content="HTMLのdivタグの役割、意味を持たないタグの重要、CSSとの組み合わせ、セマンティックなタグとの使い分けなどを詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-div.html">
+    <meta name="twitter:title" content="divタグの役割と使い方：レイアウトの基本ブロック | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTMLのdivタグの役割、意味を持たないタグの重要、CSSとの組み合わせ、セマンティックなタグとの使い分けなどを詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "divタグの役割と使い方：レイアウトの基本ブロック | HTML Master リファレンス",
+        "description": "HTMLのdivタグの役割、意味を持たないタグの重要、CSSとの組み合わせ、セマンティックなタグとの使い分けなどを詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-div.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .info-panel {
+            background: rgba(139, 92, 246, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            margin: 2rem 0;
+        }
+
+        .info-panel h4 {
+            color: #8b5cf6;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="index.html">一覧に戻る</a>
+                <a href="../levels.html">レベル</a>
+            </nav>
+        </header>
+
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar">
+                        <span class="tag-badge">&lt;div&gt;</span>
+                    </div>
+                    <h1>divタグ（Division）</h1>
+                    <p>特定の意味を持たず、要素をグループ化してデザインを整えるための強力な「箱」。</p>
+                </header>
+
+                <div class="detail-body">
+                    <h2>divタグとは？：Webデザインを司る「万能の箱」</h2>
+                    <p>Webサイトの構成図を描くとき、四角い枠でエリアを区切ることがよくあります。その「四角い枠」をコードで表現するのが `&lt;div&gt;`
+                        タグ（Division）です。このタグ自体には「見出し」や「段落」といった特定の意味が全く含まれていません。いわば、何にでもなれる **「無色透明のコンテナ」**
+                        です。</p>
+                    <p>意味を持たないことは、Web制作において最大の武器になります。特定の意味に縛られず、自由自在に要素をまとめ、CSSでデザイン（色、形、位置）を与えるための「フック」として機能するからです。現代のWebレイアウトは、このdivという箱をパズルのように組み合わせることで成り立っています。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>レイアウトのためのグループ化</h4>
+                        <div class="example-code">
+                            &lt;div class="card"&gt;<br>
+                            &nbsp;&nbsp;&lt;img src="thumb.jpg" alt="..."&gt;<br>
+                            &nbsp;&nbsp;&lt;div class="card-body"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;商品タイトル&lt;/h3&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;商品の説明文が入ります。&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&lt;/div&gt;<br>
+                            &lt;/div&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. なぜ「意味のないタグ」が必要なのか？</h2>
+                    <p>HTMLには `&lt;p&gt;`
+                        などの意味を持つタグ（セマンティックタグ）がありますが、それらだけでは解決できない「純粋なデザイン上の要求」が存在します。例えば、「3つの要素を横に並べたい」「特定のエリアだけに背景にグラデーションをかけたい」といった場合です。
+                    </p>
+                    <p>このような時、意味を持つタグを無理やり使うと、情報の論理構造が壊れてしまいます。そこで登場するのが `&lt;div&gt;`
+                        です。情報の意味を汚さずに、デザインのためだけに要素をラッピングできる。この「役割の分離」こそが、健全なWeb制作の基本となります。</p>
+
+                    <h2>2. モダンレイアウトの主役：FlexboxとGrid</h2>
+                    <p>かつてのWeb制作（2000年代）では、テーブルを組んだり複雑な計算をしたりしてレイアウトを作っていました。しかし現代では、 `&lt;div&gt;`
+                        を親要素にしてCSSの **Flexbox** や **Grid
+                        Layout** を適用するのが標準です。これにより、スマホやPCといった異なる画面サイズに合わせて、要素の順番や幅を自由かつ直感的に入れ替えることが可能になりました。</p>
+
+                    <h2>3. 注意点：div地獄（Div-itis）を避ける</h2>
+                    <p>あまりに便利すぎるため、初心者は何でもかんでも `&lt;div&gt;`
+                        だけで作ってしまいがちです。これを「div地獄」と呼び、コードが非常に読みづらくなる原因となります。</p>
+                    <p>「この箱はニュース記事の一部か？（→ `&lt;article&gt;` ）」「補足情報か？（→ `&lt;aside&gt;`
+                        ）」「ナビゲーションか？（→ `&lt;nav&gt;` ）」と常に自問しましょう。適切な意味を持つタグがあるならそちらを優先し、
+                        **「意味を持たせる必要がない、純粋なデザインのための箱」** としてだけ `&lt;div&gt;` を使うのがプロの証です。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: divタグとspanタグの違いは何ですか？</h4>
+                        <p>A:
+                            最も大きな違いは **「改行されるかどうか」** です。 `&lt;div&gt;`
+                            は「ブロックレベル（またはその性質を持つ）」要素で、前後に改行が入り、1枚の大きな板のような振る舞いをします。一方の `&lt;span&gt;`
+                            は「インライン」要素で、文章の一部として、改行させずに特定の部分だけを囲むのに適しています。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: divの中に別のdivを入れても大丈夫ですか？</h4>
+                        <p>A:
+                            はい、全く問題ありません（入れ子構造）。複雑なレイアウトを作る際は、何重にもdivを重ねることがよくあります。ただし、階層が深くなりすぎると管理が大変になるため、必要最低限の入れ子に留める工夫が大切ですいです。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: divタグを使うとSEOに悪影響がありますか？</h4>
+                        <p>A:
+                            divを使うこと自体がペナルティになることはありません。しかし、本来見出し（hタグ）や段落（pタグ）にすべき場所をすべてdivに置き換えてしまうと、検索エンジンがページの構造を理解できなくなり、結果としてSEO評価が下がる可能性があります。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>divタグは、Webデザイナーにとっての「粘土」のような存在です。形も意味も持たないからこそ、あなたのアイデア次第でどんな美しいページにも姿を変えることができます。一方で、その自由さに溺れず、セマンティックなタグとのバランスを保つこと。これがHTML
+                        Masterとしてワンランク上のエンジニアになるための重要な一歩となります。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

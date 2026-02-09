@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件分岐（if/else）：プログラムに判断をさせる | JavaScript Master リファレンス</title>
+    <meta name="description" content="JavaScriptの条件分岐について。if文、else文、比較演算子を使ったロジックの作り方を初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/js-conditions.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js-conditions.html">
+    <meta property="og:title" content="条件分岐（if/else）：プログラムに判断をさせる | JavaScript Master リファレンス">
+    <meta property="og:description" content="JavaScriptの条件分岐について。if文、else文、比較演算子を使ったロジックの作り方を初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js-conditions.html">
+    <meta name="twitter:title" content="条件分岐（if/else）：プログラムに判断をさせる | JavaScript Master リファレンス">
+    <meta name="twitter:description" content="JavaScriptの条件分岐について。if文、else文、比較演算子を使ったロジックの作り方を初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "条件分岐（if/else）：プログラムに判断をさせる | JavaScript Master リファレンス",
+        "description": "JavaScriptの条件分岐について。if文、else文、比較演算子を使ったロジックの作り方を初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js-conditions.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: #facc15;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #facc15;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .logic-panel {
+            background: rgba(250, 204, 21, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="js_index.html">解説一覧</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">ロジック</span>
+                    <h1>条件分岐</h1>
+                    <p>if文を使ってプログラムに「判断」をさせる</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>「もし〜なら」を組み立てる：思考するプログラム</h2>
+                    <p>私たちの日常生活は選択の連続です。「信号が赤なら止まる」「雨が降っているなら傘を持つ」といった判断を、プログラムの世界で実現するのが **条件分岐** です。
+                    </p>
+                    <p>適切な条件分岐を記述できるようになると、プログラムは単なる命令の羅列から、状況を自ら判断して最適に動く「知的なシステム」へと進化します。Webアプリケーションにおけるログイン判定、ゲームの当たり判定、入力フォームのバリデーションなど、あらゆる動的な処理の基盤となります。
+                    </p>
+
+                    <h2>基本の if 文とスコープ</h2>
+                    <p>最も基本的な構文です。カッコ `()` 内の条件式が評価され、その結果が **true（真）** であれば、続く波カッコ `{ }` 内のコード（ブロック）が実行されます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript</span>
+                        <pre>const score = 85;
+if (score >= 80) {
+    console.log("合格です！"); // scoreが80以上なので実行される
+}</pre>
+                    </div>
+
+                    <h2>else と else if：複雑な分岐の構築</h2>
+                    <p>条件が満たされなかった場合の「さもなくば (else)」や、別の条件をさらに追加する「さもなくば、もし (else if)」を組み合わせることで、多段階の判断ロジックを作ることができます。
+                    </p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：多段階分岐</span>
+                        <pre>if (score >= 90) {
+    console.log("素晴らしい！Sランクです");
+} else if (score >= 70) {
+    console.log("合格！よく頑張りました");
+} else {
+    console.log("不合格... 次回に期待しています");
+}</pre>
+                    </div>
+
+                    <div class="logic-panel">
+                        <h3>✅ 比較演算子の黄金律：=== を使おう</h3>
+                        <p>JavaScriptには `==`（等価）と `===`（厳密等価）がありますが、原則として **常に `===` を使うべき** です。</p>
+                        <ul>
+                            <li>`1 == "1"` は **true** になります（勝手に型を変換してしまいます）。</li>
+                            <li>`1 === "1"` は **false** になります（型まで正しくチェックします）。</li>
+                        </ul>
+                        <p>意図しない挙動（バグ）の多くは `==` による暗黙の型変換から発生します。厳密なチェックを心がけましょう。</p>
+                    </div>
+
+                    <h2>論理演算子：複数の条件を束ねる</h2>
+                    <p>「AかつB（AND）」や「AまたはB（OR）」といった複雑な条件は、論理演算子を使って表現します。</p>
+                    <ul>
+                        <li><strong>&& (AND):</strong> すべての条件が true の時だけ全体が true になります。</li>
+                        <li><strong>|| (OR):</strong> いずれか一つの条件が true なら全体が true になります。</li>
+                        <li><strong>! (NOT):</strong> 条件を反転させます（trueならfalse、falseならtrue）。</li>
+                    </ul>
+
+                    <h3>ショートサーキット評価（短絡評価）の知恵</h3>
+                    <p>JavaScriptの論理演算子は、結果が確定した時点で評価を打ち切ります。例えば `A || B` でAが true なら、Bが何であれ全体は true
+                        なので、Bの処理は実行されません。これを利用して、エラーを防ぐ高度な書き方がされることもあります。</p>
+
+                    <h2>真偽値の正体：Truthy と Falsy</h2>
+                    <p>JavaScriptでは、Boolean型（true/false）そのものでなくても、if文の条件式に入れると自動的に true か false か判断される仕組みがあります。</p>
+                    <p>以下の値は **Falsy（偽とみなされる値）** と呼ばれ、それ以外はすべて **Truthy（真とみなされる値）** です。</p>
+                    <ul>
+                        <li>`false`</li>
+                        <li>`0`（数値のゼロ）</li>
+                        <li>`""`（空の文字列）</li>
+                        <li>`null`</li>
+                        <li>`undefined`</li>
+                        <li>`NaN`（計算不能な数値）</li>
+                    </ul>
+
+                    <h2>三項演算子：簡潔な分岐</h2>
+                    <p>単純な二者択一であれば、`if/else` を使わず一行で書くことができます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：三項演算子</span>
+                        <pre>const status = score >= 80 ? "合格" : "不合格";
+console.log(status);</pre>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: if文が多すぎてコードが読みづらくなりました。</h4>
+                        <p>A: 分岐が多すぎる場合は `switch` 文の検討、あるいは「ガード句（条件を満たさない場合に早めに return
+                            して処理を抜ける手法）」を活用すると、ネスト（階層）が浅くなり読みやすくなります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: empty array `[]` は true ですか
+                            false ですか？</h4>
+                        <p>A: **true** (Truthy) です！ 配列やオブジェクトは、中身が空であっても「存在している」とみなされます。中身があるかチェックしたい場合は `array.length >
+                            0` のように記述が必要です。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: `&&` と `||` はどっちが優先されますか？</h4>
+                        <p>A: `&&` の方が優先順位が高いです。複雑な式を書く場合は `( )` で囲って意図を明確にしましょう。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>条件分岐はプログラミングの「思考力」そのものです。単なる文法の丸暗記ではなく、「どのような状況を想定し、どのように判断させるか（アルゴリズム）」を設計する楽しさを味わいましょう。正確な比較と論理的な組み立てができれば、あなたの作るアプリケーションはより盤石なものになります。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

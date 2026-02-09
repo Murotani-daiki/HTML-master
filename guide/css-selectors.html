@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セレクタと詳細度：適用されるルールを理解する | HTML Master リファレンス</title>
+    <meta name="description" content="CSSのセレクタの種類（要素、クラス、ID）と、スタイルの優先順位を決定する「詳細度」の仕組みについて初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/css-selectors.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/css-selectors.html">
+    <meta property="og:title" content="セレクタと詳細度：適用されるルールを理解する | HTML Master リファレンス">
+    <meta property="og:description" content="CSSのセレクタの種類（要素、クラス、ID）と、スタイルの優先順位を決定する「詳細度」の仕組みについて初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/css-selectors.html">
+    <meta name="twitter:title" content="セレクタと詳細度：適用されるルールを理解する | HTML Master リファレンス">
+    <meta name="twitter:description" content="CSSのセレクタの種類（要素、クラス、ID）と、スタイルの優先順位を決定する「詳細度」の仕組みについて初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "セレクタと詳細度：適用されるルールを理解する | HTML Master リファレンス",
+        "description": "CSSのセレクタの種類（要素、クラス、ID）と、スタイルの優先順位を決定する「詳細度」の仕組みについて初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/css-selectors.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #38bdf8;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #38bdf8;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #38bdf8;
+        }
+
+        .specificity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .specificity-table th,
+        .specificity-table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .specificity-table th {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="index.html">解説一覧</a>
+                <a href="../index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.2); color: #38bdf8;">CSS基礎</span>
+                    <h1>セレクタと詳細度</h1>
+                    <p>「どの要素」にスタイルを当てるか、その優先順位のルールを学ぼう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>セレクタとは何か？：デザインを「狙い撃つ」ための技術</h2>
+                    <p>CSSの記述は「セレクタ」から始まります。セレクタとは、HTMLの中にある膨大な要素の中から、スタイルを適用したいターゲットを正確に見つけ出すための「検索条件」のようなものです。
+                    </p>
+                    <p>単純にタグを選ぶだけでなく、特定の状態（マウスが乗っている時など）や、特定の順番にある要素だけを狙い撃つことができるようになると、CSSの表現力は飛躍的に向上します。このガイドでは、基本のセレクタから、優先順位を決定する「詳細度」の計算まで、プロが日常的に使う知識を深掘りします。
+                    </p>
+
+                    <h2>1. 基本セレクタの使い分け</h2>
+                    <p>まずは基本となる4つの手法を整理しましょう。</p>
+
+                    <div class="item-props"
+                        style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); margin: 2rem 0;">
+                        <ul>
+                            <li><strong>要素セレクタ (`h1`, `p`):</strong>
+                                HTMLタグそのものを指定します。共通のベースデザインを作るのに適しています。</li>
+                            <li><strong>クラスセレクタ (`.card`):</strong>
+                                汎用性が最も高い指定方法です。ページ内の複数の場所に同じデザインを適用したい時に使います。</li>
+                            <li><strong>IDセレクタ (`#header`):</strong>
+                                ページ内で唯一の要素を指定します。優先度が非常に高いため、多用するとスタイルの打ち消しが難しくなる点に注意が必要です。</li>
+                            <li><strong>全称セレクタ (`*`):</strong> 全ての要素に一括で適用します。初期設定のリセットによく使われます。</li>
+                        </ul>
+                    </div>
+
+                    <h2>2. セレクタの組み合わせ（結合子）</h2>
+                    <p>要素同士の関係性（入れ子構造など）を使ってターゲットを絞り込めます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">CSS：結合子の例</span>
+                        <pre>/* 子孫結合子：.nav の中にある a 全て */
+.nav a { color: blue; }
+
+/* 子結合子：.list の直下にある li だけ */
+.list > li { border-bottom: 1px solid; }
+
+/* 隣接兄弟結合子：h2 の直後に来る p だけ */
+h2 + p { margin-top: 0; }</pre>
+                    </div>
+
+                    <h2>3. 擬似クラスと擬似要素：状態と場所を指定する</h2>
+                    <p>HTMLには書かれていない「状態」や「パーツ」をデザインできます。</p>
+                    <ul>
+                        <li><strong>:hover:</strong> マウスが乗った時だけ変化させます（ボタンなどで必須）。</li>
+                        <li><strong>:nth-child(n):</strong>
+                            「3番目の要素だけ」「偶数の要素だけ」といった指定が可能です。表（テーブル）の縞々模様などに便利です。</li>
+                        <li><strong>::before / ::after:</strong>
+                            要素の前後にある「空のスペース」を擬似的に作り出します。アイコンの表示や装飾的なラインを入れるのに重宝します。</li>
+                    </ul>
+
+                    <h2>4. 詳細度（Specificity）：スコアで決まる優先順位</h2>
+                    <p>同じ要素に別のスタイルが指定された場合、ブラウザは以下の「スコア制」で勝敗を決めます。</p>
+
+                    <table class="specificity-table">
+                        <thead>
+                            <tr>
+                                <th>種類</th>
+                                <th>スコア（目安）</th>
+                                <th>例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>インラインスタイル</td>
+                                <td>1000点</td>
+                                <td>style="..."</td>
+                            </tr>
+                            <tr>
+                                <td>IDセレクタ</td>
+                                <td>100点</td>
+                                <td>#title</td>
+                            </tr>
+                            <tr>
+                                <td>クラス / 擬似クラス</td>
+                                <td>10点</td>
+                                <td>.btn, :hover</td>
+                            </tr>
+                            <tr>
+                                <td>要素 / 擬似要素</td>
+                                <td>1点</td>
+                                <td>div, ::before</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>!important</strong>
+                        という魔法の言葉を値の末尾に付けると、この計算を全て無視して最優先されますが、メンテナンス性を著しく下げるため、プロの現場では「最終手段」とされています。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: クラス名を2つ重ねて指定できますか？</h4>
+                        <p>A: はい。`.btn.is-active` のようにスペースを入れずに繋げると、**「両方のクラスを同時に持っている要素」**
+                            にだけ適用されます。これにより詳細度も上がり、より強力な指定になります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 擬似クラスの `:` が1つ、擬似要素の `::`
+                            が2つなのはなぜ？</h4>
+                        <p>A:
+                            歴史的な理由ですが、最新のルールでは「状態」を表すのがコロン1つの擬似クラス、「要素の一部」を作るのがコロン2つの擬似要素と区別されています。ただし、古いブラウザ対応のために擬似要素をコロン1つで書く習慣も残っています。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 思い通りのスタイルが反映されません。</h4>
+                        <p>A:
+                            ほとんどの原因は「詳細度負け」です。ブラウザの検証ツール（Elementsタブ）を見て、自分の書いたスタイルが打ち消し線（横線）で消されていないか確認してみましょう。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>セレクタをマスターすることは、CSSという武器を自由自在に操れるようになることと同じです。詳細度のルールを味方につけ、効率的で美しいコードを目指しましょう！
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

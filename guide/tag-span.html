@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spanタグの役割と使い方：インラインでの細かな装飾 | HTML Master リファレンス</title>
+    <meta name="description" content="インライン要素として部分的なスタイル適用に使うspanタグの基本、divタグとの違いについて分かりやすく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-span.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-span.html">
+    <meta property="og:title" content="spanタグの役割と使い方：インラインでの細かな装飾 | HTML Master リファレンス">
+    <meta property="og:description" content="インライン要素として部分的なスタイル適用に使うspanタグの基本、divタグとの違いについて分かりやすく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-span.html">
+    <meta name="twitter:title" content="spanタグの役割と使い方：インラインでの細かな装飾 | HTML Master リファレンス">
+    <meta name="twitter:description" content="インライン要素として部分的なスタイル適用に使うspanタグの基本、divタグとの違いについて分かりやすく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "spanタグの役割と使い方：インラインでの細かな装飾 | HTML Master リファレンス",
+        "description": "インライン要素として部分的なスタイル適用に使うspanタグの基本、divタグとの違いについて分かりやすく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-span.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;span&gt;</span></div>
+                    <h1>インライン要素（span）</h1>
+                    <p>文章の一部だけに特定のデザインを適用したい時に使う、意味を持たない「インラインの箱」。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>spanタグとは？：文章の中に潜む「透明なデザインのフック」</h2>
+                    <p>Webサイトの文章を読んでいるとき、特定の単語だけが赤くなっていたり、キラリと光っていたりすることがあります。その「一部分だけの装飾」を実現するのが `&lt;span&gt;`
+                        タグです。前述の `&lt;div&gt;` が「大きな箱（ブロック）」だとすれば、 `&lt;span&gt;`
+                        は文章の流れの中に溶け込む「小さな色眼鏡」のような存在です。</p>
+                    <p>このタグ自体には特別な意味（強調すべきである、など）はありません。だからこそ、文章の意味をねじ曲げることなく、純粋にデザインやプログラム（JavaScript）のための目印（フック）として、自由自在に使うことができるのです。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>文章内での活用例</h4>
+                        <div class="example-code">
+                            &lt;p&gt;<br>
+                            &nbsp;&nbsp;HTML Masterでは、&lt;span
+                            class="text-gradient"&gt;最新のWeb技術&lt;/span&gt;を体系的に学ぶことができます。&lt;br&gt;<br>
+                            &nbsp;&nbsp;現在、&lt;span id="user-count"&gt;1,234&lt;/span&gt;人が学習中です。<br>
+                            &lt;/p&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. インライン要素：文章の流れを止めない性質</h2>
+                    <p>spanタグの最大の特徴は、 **「インライン要素」**
+                        であることです。通常、HTMLの要素（タグ）は画面の左から右まで一本の板のように占有しようとしますが（ブロックレベル要素）、spanタグは囲った中身の幅しか取りません。そのため、文中で使っても前後に改行が入らず、自然な文章の続きとして表示されます。
+                    </p>
+                    <ul>
+                        <li><strong>divとの比較:</strong> divは「段落そのもの」を包むのに使い、spanは「段落の中の数文字」を包むのに使います。</li>
+                        <li><strong>NG例:</strong>
+                            インライン要素であるspanの中に、ブロックレベル要素（divやh1など）を入れることはできません。これは「小さな封筒の中に大きな段ボールを入れようとする」ようなもので、HTMLのルール違反となります。
+                        </li>
+                    </ul>
+
+                    <h2>2. セマンティック・インラインタグとの使い分け</h2>
+                    <p>「見た目だけでなく、意味も持たせたい」場合は、span以外のタグを検討すべきです。HTML Masterが推奨する使い分けは以下の通りです：</p>
+                    <ul>
+                        <li><strong>&lt;strong&gt;:</strong>
+                            その言葉が重要であることをブラウザやGoogleに伝えたいとき。（単なる太字ではなく、意味としての強調）</li>
+                        <li><strong>&lt;em&gt;:</strong> 感情を込めて「強調」して読ませたいとき。（斜体になることが多い）</li>
+                        <li><strong>&lt;mark&gt;:</strong>
+                            蛍光ペンで引いたような「注釈」や「検索語のハイライト」を表現したいとき。</li>
+                        <li><strong>&lt;span&gt;:</strong>
+                            上記のどれにも当てはまらない、純粋に「CSSで色を変えたいだけ」「JSで数字だけ書き換えたい」というとき。</li>
+                    </ul>
+
+                    <h2>3. JavaScriptとの強力な連携</h2>
+                    <p>spanタグはプログラム（JavaScript）からも非常に重宝されます。例えば、タイマーが動くサイトで「残り時間」の数字だけをリアルタイムで書き換える場合、その数字を
+                        `&lt;span id="timer"&gt;`
+                        で囲っておけば、JSからその場所をピンポイントで指名して、中身の数字だけを高速に更新することができるのです。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q:
+                            spanタグにwidthやheightを指定しても効きません。なぜですか？</h4>
+                        <p>A:
+                            インライン要素には、幅(width)や高さ(height)を指定することができない決まりになっています。どうしても指定したい場合は、CSSで `display:
+                            inline-block;`
+                            を設定する必要があります。これにより、文中での並び（インライン）を保ちつつ、箱としてのサイズ指定も可能になります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 1つの文の中にspanをいくつも使ってもいいですか？
+                        </h4>
+                        <p>A:
+                            制限はありませんが、あまりに多用するとコードが非常に読みづらくなります（span地獄）。共通のデザインを適用したいなら、できるだけCSSのセレクタを工夫して、タグの数を減らすのがスマートな書き方です。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: spanタグの中にimgタグを入れてもいいですか？</h4>
+                        <p>A:
+                            はい、imgタグもインライン要素（またはインラインに近い振る舞い）なので、spanの中に入れることができます。文章の中に小さなアイコンを埋め込みたい時などに使われる手法です。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>spanタグは、Webサイトというパズルにおける「細かな装飾パーツ」です。大きな構造を作るdivタグと、細部を彩るspanタグ。このブロックレベルとインラインの概念を正確に理解し、使い分けることができれば、あなたのHTMLスキルは一段高いレベルへと到達するでしょう。
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

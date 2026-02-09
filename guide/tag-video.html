@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>videoタグの役割と使い方：モダンな動画埋め込み | HTML Master リファレンス</title>
+    <meta name="description" content="HTML5で動画を直接再生できるvideoタグの設定方法、主要な属性、動画形式の注意点を詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-video.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-video.html">
+    <meta property="og:title" content="videoタグの役割と使い方：モダンな動画埋め込み | HTML Master リファレンス">
+    <meta property="og:description" content="HTML5で動画を直接再生できるvideoタグの設定方法、主要な属性、動画形式の注意点を詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-video.html">
+    <meta name="twitter:title" content="videoタグの役割と使い方：モダンな動画埋め込み | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTML5で動画を直接再生できるvideoタグの設定方法、主要な属性、動画形式の注意点を詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "videoタグの役割と使い方：モダンな動画埋め込み | HTML Master リファレンス",
+        "description": "HTML5で動画を直接再生できるvideoタグの設定方法、主要な属性、動画形式の注意点を詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-video.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;video&gt;</span></div>
+                    <h1>動画タグ（video）</h1>
+                    <p>外部サービスを使わずに、Webサイト上で動画ファイルを直接再生するための要素。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>videoタグとは？：プラグイン不要の動画体験を実現する</h2>
+                    <p>かつてWebサイトで動画を再生するには、Flashなどの外部プラグインをインストールする必要がありました。しかし、HTML5で登場した `&lt;video&gt;`
+                        タグはその常識を打ち破り、ブラウザ標準の機能だけで動画を直接再生することを可能にしました。現在では、YouTubeのような巨大プラットフォームから、サイトの背景で流れる小さな装飾動画まで、幅広く活用されています。
+                    </p>
+                    <p>単に動画を置くだけでなく、再生速度の変更、字幕の表示、さらにはJavaScriptと組み合わせた高度なインタラクションなど、Web開発者にとって強力な武器となるタグです。</p>
+
+                    <div class="example-box">
+                        <h4>最も推奨される動画の書き方（複数形式対応）</h4>
+                        <div class="example-code">
+                            &lt;video controls poster="thumbnail.jpg" width="640" height="360"&gt;<br>
+                            &nbsp;&nbsp;&lt;source src="movie.webm" type="video/webm"&gt;<br>
+                            &nbsp;&nbsp;&lt;source src="movie.mp4" type="video/mp4"&gt;<br>
+                            &nbsp;&nbsp;お使いのブラウザは動画の再生に対応していません。<br>
+                            &lt;/video&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. 基本的な主要属性とその役割</h2>
+                    <p>`&lt;video&gt;` タグには、ユーザー体験を左右する重要な属性が多数用意されています。</p>
+                    <ul>
+                        <li><strong>controls:</strong> 再生・一時停止、音量、シークバーなどの標準コントローラーを表示します。</li>
+                        <li><strong>autoplay &amp; muted:</strong> 自動再生を実現します。現代の多くのブラウザでは、
+                            `muted`（消音）がセットになっていないと自動再生がブロックされる仕様になっています。</li>
+                        <li><strong>poster:</strong>
+                            動画が読み込まれる前、あるいは再生ボタンが押される前に表示しておく「表紙画像（サムネイル）」を指定します。</li>
+                        <li><strong>preload:</strong>
+                            `none`（再生されるまで読み込まない）、 `metadata`（長さなどの情報だけ読む）、
+                            `auto`（ページ読み込み時に動画データも読み込む）から選択し、通信量をコントロールします。</li>
+                    </ul>
+
+                    <h2>2. 互換性のための複数ソース（sourceタグ）</h2>
+                    <p>動画形式にはMP4、WebM、Oggなど複数の種類があり、ブラウザによって得意分野が異なります。 `&lt;video&gt;`
+                        タグの中に複数の `&lt;source&gt;` を記述することで、ブラウザが自分が再生できる最適な形式を上から順に探し出し、自動的に選択してくれます。</p>
+                    <p>特に、高画質で軽量な **WebM** を先に書き、汎用性の高い **MP4** を予備（フォールバック）として後に書くのが、現在のWeb制作におけるベストプラクティスです。</p>
+
+                    <h2>3. アクセシビリティとパフォーマンスの最適化</h2>
+                    <p>動画はWebコンテンツの中でも非常にデータ量が大きいため、扱いに注意が必要です。</p>
+                    <ul>
+                        <li><strong>字幕の追加:</strong> `&lt;track&gt;`
+                            タグを併用することで、VTT形式の字幕ファイルを追加できます。これは聴覚障がい者だけでなく、音が出せない環境のユーザーにとっても有益です。</li>
+                        <li><strong>サイズの明示:</strong> `width` と `height`
+                            を指定しておくことで、動画が読み込まれる前にページレイアウトが崩れる（Layout Shift）のを防ぐことができます。</li>
+                    </ul>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: スマホで動画の自動再生が効きません。</h4>
+                        <p>A: ほとんどのスマートフォン用ブラウザでは、 `playsinline` 属性を付け、かつ
+                            `muted`（消音）設定にしないと自動再生が許可されません。電池の消耗や意図しない通信量の発生を防ぐための安全策です。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 背景動画として使う際の注意点は？</h4>
+                        <p>A: `loop`, `autoplay`, `muted`
+                            を指定し、 `controls`（操作パネル）を外します。また、CSSの `object-fit: cover;`
+                            を使うと、画面いっぱいに比率を保ったまま動画を広げることができます。ただし、低スペックな端末では動作が重くなるため、代替の静止画も用意しておくべきです。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: YouTubeの動画を表示するのもvideoタグですか？
+                        </h4>
+                        <p>A:
+                            いいえ、YouTubeやVimeoなどの外部サービスを埋め込む場合は、一般的に `&lt;iframe&gt;`
+                            タグを使用します。 `&lt;video&gt;`
+                            は、自分のサーバーに直接保存してある動画ファイルを再生するためのものです。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>videoタグは、Webサイトに「動き」と「感動」を与える強力なツールです。適切な形式の選択、属性の使い分け、そしてユーザーへの配慮（字幕や通信量）を忘れないことで、最高のリッチコンテンツ体験を提供することができるでしょう。
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

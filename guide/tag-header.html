@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <header> タグの役割と使い方 | HTML Master リファレンス
+    </title>
+    <meta name="description" content="ウェブページの導入部を定義するheaderタグの役割、ナビゲーションとの関係、複数使用する場合の注意点を詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-header.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-header.html">
+    <meta property="og:title" content="<header> タグの役割と使い方 | HTML Master リファレンス">
+    <meta property="og:description" content="ウェブページの導入部を定義するheaderタグの役割、ナビゲーションとの関係、複数使用する場合の注意点を詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-header.html">
+    <meta name="twitter:title" content="<header> タグの役割と使い方 | HTML Master リファレンス">
+    <meta name="twitter:description" content="ウェブページの導入部を定義するheaderタグの役割、ナビゲーションとの関係、複数使用する場合の注意点を詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "<header> タグの役割と使い方 | HTML Master リファレンス",
+        "description": "ウェブページの導入部を定義するheaderタグの役割、ナビゲーションとの関係、複数使用する場合の注意点を詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-header.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;header&gt;</span></div>
+                    <h1>ヘッダータグ（header）</h1>
+                    <p>ページや各セクションの「顔」となる導入部分を定義するセマンティック要素。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>headerタグとは？：ページや情報の「入り口」を定義する</h2>
+                    <p>Webサイトにアクセスしたとき、最初に目に飛び込んでくる領域——そこにはロゴがあり、メニューがあり、サイトのタイトルがあります。HTML5で導入された `&lt;header&gt;`
+                        タグは、そうしたページ全体の「顔」や、各章（セクション）の「導入部」をひとまとめにするための特別な意味を持つタグです。</p>
+                    <p>かつてのWeb制作では、これらをすべて `&lt;div id="header"&gt;`
+                        などの適当な名前の箱で代用していましたが、 `&lt;header&gt;`
+                        を使うことで、ブラウザや検索エンジン、そして補助技術（スクリーンリーダーなど）に対して「ここがこの情報の概要やナビゲーションが集まっている場所ですよ」とはっきりと伝えることができるようになりました。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>標準的なヘッダーの構造</h4>
+                        <div class="example-code">
+                            &lt;header&gt;<br>
+                            &nbsp;&nbsp;&lt;a href="/"&gt;&lt;img src="logo.svg" alt="サイトロゴ"&gt;&lt;/a&gt;<br>
+                            &nbsp;&nbsp;&lt;nav&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;...メニュー項目...&lt;/ul&gt;<br>
+                            &nbsp;&nbsp;&lt;/nav&gt;<br>
+                            &nbsp;&nbsp;&lt;form action="/search"&gt;...検索...&lt;/form&gt;<br>
+                            &lt;/header&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. サイトヘッダーとセクションヘッダー：1ページに複数あってもいい？</h2>
+                    <p>多くの初心者が「ヘッダーはページの一番上に1つだけ」と勘違いしがちですが、実は **1ページの中で何度でも使うことができます。**
+                        その使われ方は主に2つのパターンに分かれます。</p>
+                    <ul>
+                        <li><strong>グローバルヘッダー（サイトヘッダー）:</strong>
+                            ページ最上部にあり、サイト全体のロゴやナビゲーションを含むもの。通常、 `&lt;body&gt;` 直下に置かれます。</li>
+                        <li><strong>セクションヘッダー:</strong>
+                            `&lt;article&gt;` や `&lt;section&gt;`
+                            の中にあり、その記事のタイトルや公開日、著者情報などをまとめるもの。「その情報のまとまりにおける入口」としての役割を果たします。</li>
+                    </ul>
+
+                    <h2>2. アクセシビリティ：スクリーンリーダーの強力な助け</h2>
+                    <p>視覚障がい者がWebサイトを利用する際、 `&lt;header&gt;`
+                        タグは「ランドマーク」として機能します。多くのスクリーンリーダー（音声読み上げソフト）には、特定の要素へ一瞬でジャンプする機能があり、正しい
+                        `&lt;header&gt;` 指定がされていれば、ユーザーは煩わしい本文を飛ばして、すぐにサイトのメニューやタイトルにアクセスすることができるのです。</p>
+
+                    <h2>3. headerタグの中に入れてはいけないもの</h2>
+                    <p>非常に自由度の高いタグですが、いくつかの「お作法」があります。</p>
+                    <ul>
+                        <li><strong>別のheaderタグを入れない:</strong> `&lt;header&gt;` の中にさらに `&lt;header&gt;` を入れることはできません。
+                        </li>
+                        <li><strong>footerタグと混ぜない:</strong> 原則として、 `&lt;header&gt;` の中に `&lt;footer&gt;`
+                            を入れる構造（あるいはその逆）は避けましょう。情報の「入口」と「出口」を明確に分けるのが良いHTMLの条件です。</li>
+                    </ul>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q:
+                            サイトロゴをh1にすべきですか？（header内のh1の扱い）</h4>
+                        <p>A:
+                            これには諸説ありますが、トップページでは「ロゴをh1にする（＝サイトの名前がページ全体のメインテーマ）」とし、下層ページでは「記事のタイトルをh1にし、ロゴは単なるaタグとして扱う」という構成が、現在のSEOやセマンティクスの観点から一般的で推奨されています。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: headerタグに背景画像を設定してもいいですか？</h4>
+                        <p>A:
+                            はい、CSSで自由に装飾可能です。現代のサイトでは、headerに大きな画像や動画、グラデーションを配置する「ヒーローエリア」と呼ばれるデザインが一般的です。ただし、背景が派手すぎてメニュー文字が見づらくならないよう、視認性（コントラスト）には注意しましょう。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q:
+                            headerタグを使わずに、すべてdivで作ってもいいですか？</h4>
+                        <p>A:
+                            ブラウザ上での「見た目」は変わりませんが、検索エンジンからの評価や、障がい者への優しさ（アクセシビリティ）において、明確に劣るサイトになってしまいます。プロを目指すのであれば、適切な意味を持つタグ（header、footer、mainなど）を使いこなすことが必須条件です。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>ヘッダーは、あなたのサイトが何者であるかをユーザーと機械に伝える、最も重要なステージです。正しい `&lt;header&gt;`
+                        タグの知識を身につけることは、単なるコーディングスキルの向上だけでなく、情報を整理し、すべてのユーザーに等しく届けるための「Webの精神」を理解することに他なりません。
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

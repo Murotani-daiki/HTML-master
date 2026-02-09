@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLタグ・解説一覧 | HTML Master 学習テキスト</title>
+    <meta name="description" content="HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。">
+    <link rel="canonical" href="https://html-master.com/guide/index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/index.html">
+    <meta property="og:title" content="HTMLタグ・解説一覧 | HTML Master 学習テキスト">
+    <meta property="og:description" content="HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/index.html">
+    <meta name="twitter:title" content="HTMLタグ・解説一覧 | HTML Master 学習テキスト">
+    <meta name="twitter:description" content="HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "HTMLタグ・解説一覧 | HTML Master 学習テキスト",
+        "description": "HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/index.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .ref-container {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .ref-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .ref-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ref-header p {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+        }
+
+        .ref-category {
+            margin-bottom: 4rem;
+        }
+
+        .ref-category h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+            color: var(--text-primary);
+        }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ref-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ref-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+        }
+
+        .ref-card code {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ref-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .ref-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .guide-link-box {
+            margin-top: 5rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 204, 248, 0.05));
+            padding: 3rem;
+            border-radius: 32px;
+            text-align: center;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .guide-link-box h2 {
+            margin-bottom: 1rem;
+        }
+
+        .guide-link-box .primary-btn-home {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .ref-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="../levels.html">レベル</a>
+                <a href="../index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="ref-container">
+            <header class="ref-header">
+                <span class="badge">解説一覧</span>
+                <h1>HTML 学習テキスト</h1>
+                <p>HTML Masterで登場する主要な要素と、その使い方を総まとめ。</p>
+            </header>
+            <div class="guide-link-box">
+                <h2>基礎知識</h2>
+                <p>初心者向けに、タグの意味だけでなく「なぜそのタグを使うのか」という設計思想まで解説した学習ガイドをご用意しています。</p>
+                <a href="html-basics.html" class="primary-btn-home">HTMLの基礎学習ガイドを読む</a>
+            </div>
+            <section class="ref-category">
+                <h2>基本構造タグ</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>&lt;!DOCTYPE html&gt;</code>
+                        <h3>文書型宣言</h3>
+                        <p>このファイルがHTML5であることをブラウザに伝えます。ファイルの最上部に記述します。</p>
+                        <a href="tag-doctype.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;html&gt;</code>
+                        <h3>ルート要素</h3>
+                        <p>HTML文書全体の範囲を指定します。すべての要素はこのタグの中に含まれます。</p>
+                        <a href="tag-html.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;head&gt;</code>
+                        <h3>メタ情報</h3>
+                        <p>タイトルや文字コード、検索エンジン向けの情報など、ブラウザに直接表示されない情報を記述します。</p>
+                        <a href="tag-head.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;body&gt;</code>
+                        <h3>本文</h3>
+                        <p>サイトを訪れたユーザーが実際に目にする、文字、画像、ボタンなどのすべてのコンテンツを記述します。</p>
+                        <a href="tag-body.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ref-category">
+                <h2>テキスト系タグ</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>&lt;h1&gt;〜&lt;h6&gt;</code>
+                        <h3>見出し</h3>
+                        <p>情報の重要度に応じた見出しを作成します。h1が最も重要で、SEO的にも非常に重要な役割を持ちます。</p>
+                        <a href="tag-headings.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;p&gt;</code>
+                        <h3>段落</h3>
+                        <p>まとまった文章（テキスト）を記述します。前後に自動的に余白が生まれるのが特徴です。</p>
+                        <a href="tag-p.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;br&gt;</code>
+                        <h3>改行</h3>
+                        <p>文章の途中で強制的に改行を入れます。終了タグを持たない「空要素」のひとつです。</p>
+                        <a href="tag-br.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;span&gt;</code>
+                        <h3>インライン要素</h3>
+                        <p>文章の一部だけに特定のスタイル（色など）を適用したい時に使用します。</p>
+                        <a href="tag-span.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ref-category">
+                <h2>メディア・リンク</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>&lt;a&gt;</code>
+                        <h3>アンカー（リンク）</h3>
+                        <p>他のページや外部のサイトへ移動するためのリンクを作成します。href属性で遷移先を指定します。</p>
+                        <a href="tag-a.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;img&gt;</code>
+                        <h3>画像表示</h3>
+                        <p>ウェブページに画像を挿入します。src属性で場所、alt属性で説明を記述します。</p>
+                        <a href="tag-img.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;video&gt;</code>
+                        <h3>動画埋め込み</h3>
+                        <p>ファイルをサーバーから直接読み込んで動画を再生します。複数の属性でコントロールが可能です。</p>
+                        <a href="tag-video.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ref-category">
+                <h2>レイアウト・グループ</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>&lt;div&gt;</code>
+                        <h3>グループ化</h3>
+                        <p>要素をまとめて箱を作り、デザインを調整しやすくします。最も汎用性の高いタグです。</p>
+                        <a href="tag-div.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;header&gt;</code>
+                        <h3>ヘッダー</h3>
+                        <p>ページや記事全体の導入部。ロゴやナビゲーションが含まれることが多いです。</p>
+                        <a href="tag-header.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;footer&gt;</code>
+                        <h3>フッター</h3>
+                        <p>ページの最後に位置し、著作権情報やサイトマップ、各種リンクが含まれます。</p>
+                        <a href="tag-footer.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>&lt;section&gt;</code>
+                        <h3>セクション</h3>
+                        <p>意味のまとまりごとにコンテンツを区切るための、セマンティックなタグです。</p>
+                        <a href="tag-section.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ref-category">
+                <h2>CSS・デザイン</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>Selectors</code>
+                        <h3>セレクタと詳細度</h3>
+                        <p>特定の要素を選んでスタイルを適用する仕組みと、優先順位のルールを学びます。</p>
+                        <a href="css-selectors.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>Box Model</code>
+                        <h3>ボックスモデル</h3>
+                        <p>全ての要素が持つ「四角い箱」の概念。MarginやPaddingの使い分けを理解します。</p>
+                        <a href="css-box-model.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>Colors</code>
+                        <h3>色と背景</h3>
+                        <p>HEXやRGBAなどの色彩指定方法と、グラデーションや背景画像の設定について。</p>
+                        <a href="css-colors.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>Typography</code>
+                        <h3>文字と単位</h3>
+                        <p>font-sizeやrem, pxといった単位の使い分け、読みやすい行間の作り方を学びます。</p>
+                        <a href="css-typography.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>Flexbox</code>
+                        <h3>レイアウト</h3>
+                        <p>要素を並び替え、中央揃えなどを自在に行うモダンなFlexboxの使い方を解説します。</p>
+                        <a href="css-flexbox.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+
+
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

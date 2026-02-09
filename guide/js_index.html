@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript解説一覧 | JavaScript Master 学習テキスト</title>
+    <meta name="description" content="JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。">
+    <link rel="canonical" href="https://html-master.com/guide/js_index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js_index.html">
+    <meta property="og:title" content="JavaScript解説一覧 | JavaScript Master 学習テキスト">
+    <meta property="og:description" content="JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js_index.html">
+    <meta name="twitter:title" content="JavaScript解説一覧 | JavaScript Master 学習テキスト">
+    <meta name="twitter:description" content="JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JavaScript解説一覧 | JavaScript Master 学習テキスト",
+        "description": "JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js_index.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #facc15;
+            --accent-hover: #eab308;
+        }
+
+        .ref-container {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .ref-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .ref-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ref-header p {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+        }
+
+        .ref-category {
+            margin-bottom: 4rem;
+        }
+
+        .ref-category h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+            color: var(--text-primary);
+        }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ref-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ref-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.1);
+        }
+
+        .ref-card code {
+            display: inline-block;
+            background: rgba(250, 204, 21, 0.1);
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ref-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .ref-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .guide-link-box {
+            margin-top: 5rem;
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.1), rgba(251, 191, 36, 0.05));
+            padding: 3rem;
+            border-radius: 32px;
+            text-align: center;
+            border: 1px solid rgba(250, 204, 21, 0.2);
+        }
+
+        .guide-link-box h2 {
+            margin-bottom: 1rem;
+        }
+
+        .guide-link-box .primary-btn-home {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: var(--accent-color);
+            color: #000;
+        }
+
+        @media (max-width: 640px) {
+            .ref-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="../js_levels.html">レベル</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="ref-container">
+            <header class="ref-header">
+                <span class="badge"
+                    style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">解説一覧</span>
+                <h1>JavaScript 学習テキスト</h1>
+                <p>Webを動かす魔法、JavaScriptの重要コンセプトを総まとめ。</p>
+            </header>
+
+            <div class="guide-link-box">
+                <h2>基礎知識</h2>
+                <p>プログラミングの「考え方」から、実際のWeb開発での活用方法まで。最初のステップに最適な学習ガイドです。</p>
+                <a href="js-basics.html" class="primary-btn-home">JSの基礎学習ガイドを読む</a>
+            </div>
+
+            <section class="ref-category">
+                <h2>基本文法</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>let / const</code>
+                        <h3>変数と定数</h3>
+                        <p>データの入れ物を作る方法。値を後から変えられる let と、変えられない const の使い分けを学びます。</p>
+                        <a href="js-variables.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>console.log()</code>
+                        <h3>コンソール出力</h3>
+                        <p>プログラムの実行結果を確認するための最も重要なツール。デバッグの第一歩です。</p>
+                        <a href="js-console.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>"String" / 123</code>
+                        <h3>データ型</h3>
+                        <p>文字列、数値、真偽値など、JavaScriptが扱うデータの種類と、それぞれの特徴を理解します。</p>
+                        <a href="js-data-types.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ref-category">
+                <h2>制御とロジック</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>if / else</code>
+                        <h3>条件分岐</h3>
+                        <p>「もし〜ならA、そうでなければB」という、プログラムに判断をさせるための基本構造です。</p>
+                        <a href="js-basics.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>for / while</code>
+                        <h3>ループ処理</h3>
+                        <p>同じ処理を何度も繰り返す方法。大量のデータを効率よく処理するために欠かせません。</p>
+                        <a href="js-basics.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>function()</code>
+                        <h3>関数</h3>
+                        <p>一連の処理をまとめて名前を付け、いつでも再利用できるようにする仕組みです。</p>
+                        <a href="js-basics.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ref-category">
+                <h2>Webページとの連携</h2>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <code>DOM</code>
+                        <h3>DOM操作</h3>
+                        <p>HTML要素を取得し、JavaScriptから文字や色、配置などを動的に書き換える魔法の仕組みです。</p>
+                        <a href="js-dom.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                    <div class="ref-card">
+                        <code>addEventListener</code>
+                        <h3>イベント</h3>
+                        <p>「クリックされた」「入力された」など、ユーザーの動作を検知してプログラムを動かす方法です。</p>
+                        <a href="js-dom.html"
+                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
+                            →</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

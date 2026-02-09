@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コンソール出力（console.log）：デバッグの基本 | JavaScript Master リファレンス</title>
+    <meta name="description" content="JavaScript開発で最も重要なツール、コンソール出力について。console.logの使い方から、変数の確認、デバッグのコツまで初心者向けに解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/js-console.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js-console.html">
+    <meta property="og:title" content="コンソール出力（console.log）：デバッグの基本 | JavaScript Master リファレンス">
+    <meta property="og:description"
+        content="JavaScript開発で最も重要なツール、コンソール出力について。console.logの使い方から、変数の確認、デバッグのコツまで初心者向けに解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js-console.html">
+    <meta name="twitter:title" content="コンソール出力（console.log）：デバッグの基本 | JavaScript Master リファレンス">
+    <meta name="twitter:description"
+        content="JavaScript開発で最も重要なツール、コンソール出力について。console.logの使い方から、変数の確認、デバッグのコツまで初心者向けに解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "コンソール出力（console.log）：デバッグの基本 | JavaScript Master リファレンス",
+        "description": "JavaScript開発で最も重要なツール、コンソール出力について。console.logの使い方から、変数の確認、デバッグのコツまで初心者向けに解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js-console.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body h3 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: #facc15;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #facc15;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            background: rgba(250, 204, 21, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #facc15;
+        }
+
+        .point-card {
+            background: rgba(250, 204, 21, 0.05);
+            border-left: 4px solid #facc15;
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="js_index.html">解説一覧</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">デバッグ</span>
+                    <h1>コンソール出力</h1>
+                    <p>console.log()：プログラムの中身をのぞき見る魔法</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>なぜコンソールに出力するのか？：開発者の「目」となるツール</h2>
+                    <p>プログラムは、画面には見えない裏側（メモリやCPUの中）で膨大な数の計算や条件判断、データのやり取りを行っています。ソースコードが期待通りに動かないとき、変数の中身が今この瞬間にどうなっているかを確認できなければ、原因の特定は不可能です。
+                    </p>
+                    <p>開発者は「コンソール（Console）」と呼ばれる特殊な表示領域を使って、プログラムの内部状態をリアルタイムで監視します。JavaScript Masterの演習環境はもちろん、Google
+                        Chromeなどのブラウザに標準搭載されている「デベロッパーツール」のコンソールは、Web開発において欠かすことのできない最も重要なツールです。</p>
+
+                    <h2>基本の出力：console.log()</h2>
+                    <p>最も頻繁に使われるのが `console.log()` です。丸カッコの中に記述した情報が、そのままコンソールに表示されます。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript</span>
+                        <pre>console.log("Hello, World!"); // 文字列を表示
+console.log(123 + 456);       // 計算結果（579）を表示
+const name = "Taro";
+console.log(name);            // 変数の中身を表示</pre>
+                    </div>
+
+                    <h2>情報の重要度に応じた使い分け</h2>
+                    <p>プロフェッショナルな現場では、単に情報を出すだけでなく、その「意味」に応じてメソッドを使い分けます。これにより、膨大なログの中から必要な情報をすぐに見つけ出せるようになります。</p>
+
+                    <ul>
+                        <li><strong style="color: #ef4444;">console.error()</strong>:
+                            エラー情報の出力。コンソール上で赤く表示され、重大な問題であることを示します。</li>
+                        <li><strong style="color: #f59e0b;">console.warn()</strong>:
+                            警告情報の出力。黄色く表示され、エラーではないものの注意が必要な挙動を知らせます。</li>
+                        <li><strong style="color: #3b82f6;">console.info()</strong>:
+                            情報の出力。青いアイコンが表示されるブラウザもあり、一般的な通知に使われます。</li>
+                    </ul>
+
+                    <h2>データの可視化を極める：console.table()</h2>
+                    <p>配列やオブジェクトなどの複雑なデータを扱うとき、`console.log()` では中身を一つずつクリックして開く手間がかかります。そんな時に魔法のような力を発揮するのが
+                        `console.table()` です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：データの表形式表示</span>
+                        <pre>const users = [
+    { id: 1, name: "田中", age: 25 },
+    { id: 2, name: "佐藤", age: 32 }
+];
+console.table(users); // これだけで美しい表として表示されます！</pre>
+                    </div>
+
+                    <h2>応用テクニック：コンソールをデザインする</h2>
+                    <p>意外と知られていないのが、コンソールの出力内容に **CSSスタイルを適用** できる機能です。特定のログを目立たせたい時に非常に有効です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：スタイリッシュな出力</span>
+                        <pre>console.log(
+    "%c 重大ニュース %c システムを起動しました",
+    "background: #ef4444; color: white; padding: 2px 5px; border-radius: 3px;",
+    "color: #facc15;"
+);</pre>
+                    </div>
+                    <p>最初の引数に `%c` を入れると、それ以降のテキストに対して2つ目以降の引数で指定したCSSが適用されます。</p>
+
+                    <h2>パフォーマンスの計測：console.time()</h2>
+                    <p>「この処理にどれくらいの時間がかかっているか？」を正確に知りたいときは、タイマー機能を使います。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：時間計測</span>
+                        <pre>console.time("処理時間");
+// 何か重い処理をここに書く
+console.timeEnd("処理時間"); // "処理時間: 1.234ms" と表示されます</pre>
+                    </div>
+
+                    <div class="point-card">
+                        <h4>💡 実践アドバイス：本番環境でのログ</h4>
+                        <p>開発中に便利な `console.log()`
+                            ですが、完成したWebサイト（本番環境）に大量に残しておくと、動作がわずかに重くなったり、内部のデータ構造が第三者に漏洩したりするリスクがあります。公開前には不要なログを削除するか、ビルドツールを使って自動的に除去するのが一般的です。
+                        </p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: logの中身が [object Object]
+                            と表示されて見えません。</h4>
+                        <p>A: 文字列とオブジェクトを `+` で連結するとそうなります。`console.log("中身は" + obj)` ではなく、`console.log("中身は", obj)`
+                            のようにカンマで区切って渡しましょう。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: logを出しても何も表示されないのですが？</h4>
+                        <p>A: ブラウザのコンソール設定で、「Filter」や「Levels」が「Default levels」以外（Errorsのみ表示など）になっていないか確認してください。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>コンソール出力は、プログラマーにとっての「強力な懐中電灯」です。暗闇の中で何が起きているかを確認するように、コードの至る所で使い分け、JavaScriptの挙動を自分の目で確かめる習慣をつけましょう。出力情報の整理整頓ができるようになれば、あなたはもう初心者卒業です。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

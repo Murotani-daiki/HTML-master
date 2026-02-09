@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <html> タグの役割と使い方 | HTML Master リファレンス
+    </title>
+    <meta name="description" content="HTML文書のすべての要素を包むルート要素、htmlタグの役割とlang属性の重要性について解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-html.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-html.html">
+    <meta property="og:title" content="<html> タグの役割と使い方 | HTML Master リファレンス">
+    <meta property="og:description" content="HTML文書のすべての要素を包むルート要素、htmlタグの役割とlang属性の重要性について解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-html.html">
+    <meta name="twitter:title" content="<html> タグの役割と使い方 | HTML Master リファレンス">
+    <meta name="twitter:description" content="HTML文書のすべての要素を包むルート要素、htmlタグの役割とlang属性の重要性について解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "<html> タグの役割と使い方 | HTML Master リファレンス",
+        "description": "HTML文書のすべての要素を包むルート要素、htmlタグの役割とlang属性の重要性について解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-html.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;html&gt;</span></div>
+                    <h1>ルート要素（html）</h1>
+                    <p>このファイルの中身がすべてHTMLであることを示す、Webページの「一番外側の箱」。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>htmlタグとは？：Web全体の「入れ物」であるルート要素</h2>
+                    <p>WebブラウザがDOCTYPE宣言を読み取った直後、最初に出会うのがこの `&lt;html&gt;`
+                        タグです。これはWebページの全ての要素（head,
+                        body、そしてその中の全てのタグ）を包み込む **「ルート要素（根要素）」**
+                        です。このタグがあることで、ブラウザは「ここからファイルの終わりまでがHTML文書の本体である」と認識します。</p>
+                    <p>全ての要素がこのhtmlタグの子、あるいは子孫になるため、家系図で言えば「全ての先祖」にあたる非常に重要な存在です。視覚的に何かを表示するわけではありませんが、文書全体の性質を決定する司令塔のような役割を担っています。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>標準的な基本構造</h4>
+                        <div class="example-code">
+                            &lt;html lang="ja"&gt;<br>
+                            &nbsp;&nbsp;&lt;head&gt;...&lt;/head&gt;<br>
+                            &nbsp;&nbsp;&lt;body&gt;...&lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </div>
+                    </div>
+
+                    <h2>lang属性の決定的な重要性</h2>
+                    <p>`&lt;html&gt;` タグで最も大切な役割は、属性によって **「このページの言語は何か」**
+                        を宣言することです。日本語のサイトであれば `lang="ja"` 、英語のサイトであれば `lang="en"`
+                        と記述します。これには主に3つの大きなメリットがあります。</p>
+
+                    <h3>1. 検索エンジン最適化 (SEO)</h3>
+                    <p>Googleなどの検索エンジンは、この属性を見て「このページは日本語の話者向けである」と判断します。適切な言語設定は、ターゲットとするユーザーにあなたのサイトを正しく届けるための第一歩です。
+                    </p>
+
+                    <h3>2. アクセシビリティ（読み上げ機能）</h3>
+                    <p>視覚障がいのある方が使うスクリーンリーダー（画面読み上げソフト）は、この属性を見て「日本語の音声エンジンで読むべきか、英語で読むべきか」を切り替えます。これが間違っていると、不自然な発音で読み上げられ、情報を正しく伝えられなくなります。
+                    </p>
+
+                    <h3>3. 自動翻訳機能の制御</h3>
+                    <p>ブラウザの翻訳提案もこの属性に基づいています。例えば、日本語のサイトなのに `lang="en"`
+                        と書かれていると、ブラウザが勝手に「この英語サイトを翻訳しますか？」と日本語話者に聞いてしまうといったトラブルが起こります。</p>
+
+                    <h2>ルート要素へのクラス指定：ダークモードの制御</h2>
+                    <p>最近のWeb制作では、 `&lt;html&gt;` タグに `class`
+                        属性を付けて、サイト全体のテーマを切り替える手法がよく使われます。例えば、 `&lt;html class="dark"&gt;`
+                        とすることで、CSS変数を利用して一括でダークモードのデザインに切り替えるといった制御が可能です。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q:
+                            終了タグ（&lt;/html&gt;）を忘れても表示されるのはなぜ？</h4>
+                        <p>A:
+                            現代のブラウザは非常に寛容で、ファイルの終わり＝HTMLの終わりと推測して補完してくれます。しかし、これは「行儀の悪いコード」であり、予期せぬスクリプトの不具合などを招く可能性があるため、必ず終了タグで閉じるのがプロのルールです。
+                        </p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: xmlns という属性を見かけることがありますが何ですか？
+                        </h4>
+                        <p>A: `xmlns="http://www.w3.org/1999/xhtml"`
+                            のような記述は、かつてのXHTMLという規格で必須だった「名前空間」の指定です。現在のHTML5では **省略可能**
+                            ですが、過去のコードとの互換性のために残されていることがあります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: lang 属性に複数の言語を指定できますか？</h4>
+                        <p>A: `&lt;html&gt;`
+                            タグに指定できるのは、そのページの **主言語（メインの言語）** 1つだけです。もしページの一部分だけ他言語がある場合は、その部分の `&lt;span&gt;` や
+                            `&lt;div&gt;`
+                            に個別に `lang` 属性を付けて指定します。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>htmlタグは、Webサイトという巨大な建物の「土台」です。目には見えませんが、ここで行う言語設定（lang属性）一つが、世界中のユーザー、そして検索エンジンやAIとのコミュニケーションの質を決定づけます。正しい設定で、世界へ向けてあなたのコンテンツを発信しましょう！
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

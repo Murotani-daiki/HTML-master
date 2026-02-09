@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイポグラフィと単位：読みやすさをコントロールする | HTML Master リファレンス</title>
+    <meta name="description" content="CSSのフォントプロパティと、px, rem, em, % など様々な「単位」の使い分けについて。レスポンシブな文字サイズ設定のコツを詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/css-typography.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/css-typography.html">
+    <meta property="og:title" content="タイポグラフィと単位：読みやすさをコントロールする | HTML Master リファレンス">
+    <meta property="og:description"
+        content="CSSのフォントプロパティと、px, rem, em, % など様々な「単位」の使い分けについて。レスポンシブな文字サイズ設定のコツを詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/css-typography.html">
+    <meta name="twitter:title" content="タイポグラフィと単位：読みやすさをコントロールする | HTML Master リファレンス">
+    <meta name="twitter:description"
+        content="CSSのフォントプロパティと、px, rem, em, % など様々な「単位」の使い分けについて。レスポンシブな文字サイズ設定のコツを詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "タイポグラフィと単位：読みやすさをコントロールする | HTML Master リファレンス",
+        "description": "CSSのフォントプロパティと、px, rem, em, % など様々な「単位」の使い分けについて。レスポンシブな文字サイズ設定のコツを詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/css-typography.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #38bdf8;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .unit-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .unit-card h4 {
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #38bdf8;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    HTML Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="index.html">解説一覧</a>
+                <a href="../index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.2); color: #38bdf8;">読みやすさ</span>
+                    <h1>タイポグラフィと単位</h1>
+                    <p>心地よい「読み体験」を作るためのフォント設定と、柔軟な単位の使い分け</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>タイポグラフィの重要性：Webサイトの9割は「文字」でできている</h2>
+                    <p>Webサイトのデザインにおいて、最も影響力が大きいのは「文字（タイポグラフィ）」です。適切なフォント選びと読みやすい配置は、ユーザーに安心感を与え、情報の理解を助けます。逆に、文字が小さすぎたり行間が詰まっていたりすると、ユーザーはすぐにページを離れてしまいます。
+                    </p>
+                    <p>このガイドでは、フォントの指定方法から、現代のWeb制作に不可欠な「相対単位」の使い分けまで、心地よい「読み体験」を作るためのテクニックを詳しく解説します。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">CSS：標準的なタイポグラフィ設定</span>
+                        <pre>p {
+    font-family: 'Inter', sans-serif; /* フォントの種類 */
+    font-size: 1.125rem;            /* 文字の大きさ */
+    line-height: 1.8;               /* 行間（読みやすさの鍵） */
+    letter-spacing: 0.03em;          /* 字間（少し広げると高級感が出る） */
+    color: var(--text-secondary);   /* 文字色 */
+}</pre>
+                    </div>
+
+                    <h2>1. フォントの種類と「フォント・ファミリ」</h2>
+                    <p>Webブラウザには、ユーザーの環境（Windows, Mac,
+                        iPhoneなど）によってインストールされているフォントが異なります。そのため、CSSでは複数の候補をセットで指定する「フォントスタック」という書き方をします。</p>
+                    <ul>
+                        <li><strong>sans-serif (サンセリフ):</strong> ゴシック体に近い装飾のない書体。画面上で読みやすく、現在のWebの主流です。</li>
+                        <li><strong>serif (セリフ):</strong> 明朝体に近い装飾のある書体。伝統的、あるいは高級感を演出したい時に使います。</li>
+                        <li><strong>monospace (等幅):</strong> 全ての文字が同じ幅の書体。コードの表示やデータの一覧に向いています。</li>
+                    </ul>
+
+                    <h2>2. px, rem, em, %：単位の使い分け完全ガイド</h2>
+                    <p>「とりあえずpx」で指定してはいませんか？ Webの単位にはそれぞれ役割があります。</p>
+
+                    <div class="units-grid">
+                        <div class="unit-card">
+                            <h4>px (ピクセル) - 絶対単位</h4>
+                            <p>「画面上の1点」を指定する基本単位です。直感的ですが、ブラウザの設定で文字を大きくしたいユーザーの要望を無視してしまうため、文字サイズへの使用は避ける傾向にあります。</p>
+                        </div>
+                        <div class="unit-card">
+                            <h4>rem (レム) - 推奨単位</h4>
+                            <p>「ルート（html要素）」のサイズを 1 とした単位です。ルートが 16px なら、2rem は 32px
+                                になります。ユーザーがブラウザ設定で文字サイズを変えた際、サイト全体が連動して拡大縮小されるため、アクセシビリティに非常に優れています。</p>
+                        </div>
+                        <div class="unit-card">
+                            <h4>em (エム) - 相対単位</h4>
+                            <p>「親要素」のサイズに対する割合です。アイコンと文字のバランスを維持したい時など、コンポーネント内での微調整に向いています。</p>
+                        </div>
+                        <div class="unit-card">
+                            <h4>vw / vh - ビューポート単位</h4>
+                            <p>画面の幅や高さに対する割合（100vw = 画面幅100%）です。大きな文字を画面幅に合わせて自動調整したい「フルスクリーンデザイン」で活躍します。</p>
+                        </div>
+                    </div>
+
+                    <h2>3. 読みやすさを激変させる「余白」の制御</h2>
+                    <p>文字サイズと同じくらい重要なのが **`line-height`（行間）**
+                        です。日本語の場合、標準設定では行間が狭すぎて読みづらく感じることが多いです。
+                        <br>推奨値は **`1.6` 〜 `1.9`** です。この値は単位をつけずに数値だけ書くのが一般的です（文字サイズに対して自動計算されるため）。
+                    </p>
+
+                    <div class="tip-card"
+                        style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-left: 4px solid #38bdf8; border-radius: 0 12px 12px 0;">
+                        <h4>💡 プロのアドバイス：Google Fontsを活用しよう</h4>
+                        <p>このサイトでも使われている `Inter`
+                            や `Outfit`
+                            のように、Googleが無料で提供しているフォントを使うことで、どのデバイスから見ても同じ美しいタイポグラフィを実現できます。ただし、読み込みすぎるとサイトが重くなるので、必要なウェイト（太さ）だけを選びましょう。
+                        </p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 1rem は何ピクセルですか？</h4>
+                        <p>A: 一般的なブラウザの標準設定では **16px**
+                            です。したがって、1.5rem = 24px、0.75rem = 12px と計算できます。電卓を叩くのが面倒な場合は、ブラウザの検証ツールで実際のピクセル数を確認できます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: text-align: justify
+                            は使ったほうがいいですか？</h4>
+                        <p>A: 両端揃えにするプロパティですが、日本語のWebサイトでは不自然に大きな空白が空く（いわゆる「文字の川」現象）ことが多いため、基本的には `text-align:
+                            left`（左揃え）が推奨されます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: font-weight の数値指定が効きません。</h4>
+                        <p>A: フォント自体がその太さをサポートしている必要があります。例えば 800 (Extra Bold)
+                            を指定しても、読み込んでいるフォントに 400 (Regular) と 700 (Bold) しか用意されていなければ、自動的に 700 が代わりに使用されます。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>タイポグラフィはWebデザインの「声」です。フォント選び、適切な単位の使い分け、そして心地よい行間。これらを一つずつ丁寧に整えることで、あなたのメッセージはより深く、より正確にユーザーへと届くようになります。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

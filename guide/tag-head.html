@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+        <head> タグの役割と使い方 | HTML Master リファレンス
+    </title>
+    <meta name="description" content="Webページのメタ情報、タイトル、外部リソースの読み込みなどを制御するheadタグの機能を詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/tag-head.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/tag-head.html">
+    <meta property="og:title" content="<head> タグの役割と使い方 | HTML Master リファレンス">
+    <meta property="og:description" content="Webページのメタ情報、タイトル、外部リソースの読み込みなどを制御するheadタグの機能を詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/tag-head.html">
+    <meta name="twitter:title" content="<head> タグの役割と使い方 | HTML Master リファレンス">
+    <meta name="twitter:description" content="Webページのメタ情報、タイトル、外部リソースの読み込みなどを制御するheadタグの機能を詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "<head> タグの役割と使い方 | HTML Master リファレンス",
+        "description": "Webページのメタ情報、タイトル、外部リソースの読み込みなどを制御するheadタグの機能を詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/tag-head.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .detail-container {
+            max-width: 850px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tag-info-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+        }
+
+        .detail-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .example-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .example-box h4 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .example-code {
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../index.html" class="logo">
+                <h1>HTML Master</h1>
+            </a>
+            <nav class="home-nav"><a href="index.html">一覧に戻る</a><a href="../levels.html">レベル</a></nav>
+        </header>
+        <main class="detail-container">
+            <article class="detail-content">
+                <header class="detail-header">
+                    <div class="tag-info-bar"><span class="tag-badge">&lt;head&gt;</span></div>
+                    <h1>メタ情報（head）</h1>
+                    <p>ブラウザの画面には映らないが、検索エンジンやブラウザにとって最も重要な「ページの裏側」の設定画面。</p>
+                </header>
+                <div class="detail-body">
+                    <h2>headタグとは？：Webページの「知性」と「設定」を司るエリア</h2>
+                    <p>Webページの構成において、 `&lt;body&gt;` タグが人間に見せるコンテンツを担当するのに対し、この `&lt;head&gt;`
+                        タグは **「マシン（ブラウザや検索エンジン）のための情報」**
+                        を担当します。ここに記述された内容は、基本的にブラウザの白い画面上には一切表示されません（タイトルなどを除く）。</p>
+                    <p>しかし、画面に見えないからといって重要性が低いわけではありません。むしろ、文字化けを防ぎ、スマホで正しく表示させ、Googleの検索結果で上位に表示させるための「司令塔」としての役割を担っています。ここが正しく設定されていないと、どんなに素晴らしいデザインのサイトも、ユーザーに正しく届くことはありません。
+                    </p>
+
+                    <div class="example-box">
+                        <h4>head内の標準的な設定例</h4>
+                        <div class="example-code">
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt; &lt;!-- 文字化け防止 --&gt;<br>
+                            &nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                            &lt;!-- スマホ対応 --&gt;<br>
+                            &nbsp;&nbsp;&lt;title&gt;サイトのタイトル&lt;/title&gt;<br>
+                            &nbsp;&nbsp;&lt;link rel="stylesheet" href="style.css"&gt;<br>
+                            &lt;/head&gt;
+                        </div>
+                    </div>
+
+                    <h2>1. 必須級のメタ情報：文字コードとビューポート</h2>
+                    <p>現代のWeb制作で「お約束」として記述されるのが以下の2つのメタタグです。</p>
+                    <ul>
+                        <li><strong>&lt;meta charset="UTF-8"&gt;:</strong>
+                            「このファイルはUTF-8という形式で書かれています」と宣言します。これを忘れると、日本語が「あいうえお」ではなく意味不明な記号（文字化け）として表示されるリスクがあります。</li>
+                        <li><strong>&lt;meta name="viewport" ...&gt;:</strong>
+                            スマートフォンなどの小さい画面で、サイトを適切な大きさで表示させるための魔法の一行です。これがないと、スマホで見てもPC版が無理やり縮小されたような、非常に使いにくい表示になってしまいます。
+                        </li>
+                    </ul>
+
+                    <h2>2. タイトルとディスクリプション：検索エンジンの顔</h2>
+                    <p>検索結果に表示される情報は、全てheadタグの中で決まります。</p>
+                    <ul>
+                        <li><strong>&lt;title&gt;:</strong>
+                            ブラウザのタブ名、そして検索結果の「青いリンク」になる最も重要なテキストです。1ページにつき1つだけ、その内容を正確に表す名前を付けます。</li>
+                        <li><strong>&lt;meta name="description" ...&gt;:</strong>
+                            検索結果のタイトルの下に表示される「説明文」です。ここを魅力的な文章にすることで、ユーザーのクリック率を劇的に高めることができます。</li>
+                    </ul>
+
+                    <h2>3. リソースの連結：CSSとアイコン</h2>
+                    <p>デザインの命であるCSSファイルや、サイトのアイコン（Favicon）もここで指定します。 `&lt;link&gt;`
+                        タグを使い、外部にあるファイルとこのHTMLを結びつけます。これにより、構造（HTML）とデザイン（CSS）を綺麗に分離して管理できるようになります。</p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: JavaScriptの &lt;script&gt;
+                            タグもここに入れますか？</h4>
+                        <p>A:
+                            可能です。ただし、昔は「ページの読み込みを遅くしないためにbodyの最後に入れる」のが定石でした。現代では `async` や `defer`
+                            といった属性を使うことで、head内に入れてもページの読み込みを邪魔せずにスクリプトを実行できるようになっています。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: SNSでシェアされた時の画像はどう設定しますか？</h4>
+                        <p>A:
+                            **「Open Graph Protocol (OGP)」** という特別なメタタグをhead内に記述します。 `&lt;meta property="og:image"
+                            content="..."&gt;`
+                            のように書くことで、TwitterやLINEでシェアされた際にかっこいいアイキャッチ画像が表示されるようになります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: headの中にコメントを書いてもいいですか？</h4>
+                        <p>A:
+                            はい、全く問題ありません。むしろ、どのメタタグが何の設定なのかをコメントでメモしておくことは、他の開発者がコードを読む際の大きな助けになります。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>headタグは、Webページの「知性」です。ユーザーの目には見えませんが、ここでの丁寧な設定が、あなたのサイトを「単なるデータ」から「世界に開かれた質の高い公式ドキュメント」へと昇華させます。美しいbodyを作るのと同じくらい、賢いheadを作ることに情熱を注いでみましょう！
+                    </p>
+                </div>
+            </article>
+        </main>
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

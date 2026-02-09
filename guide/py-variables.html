@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>変数と代入：データの保存 | Python Master リファレンス</title>
+    <meta name="description" content="Pythonの変数宣言とデータ型について。動的型付けの特徴、命名規則（snake_case）、基本的なデータ型の種類を初心者向けに解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/py-variables.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/py-variables.html">
+    <meta property="og:title" content="変数と代入：データの保存 | Python Master リファレンス">
+    <meta property="og:description" content="Pythonの変数宣言とデータ型について。動的型付けの特徴、命名規則（snake_case）、基本的なデータ型の種類を初心者向けに解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/py-variables.html">
+    <meta name="twitter:title" content="変数と代入：データの保存 | Python Master リファレンス">
+    <meta name="twitter:description" content="Pythonの変数宣言とデータ型について。動的型付けの特徴、命名規則（snake_case）、基本的なデータ型の種類を初心者向けに解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "変数と代入：データの保存 | Python Master リファレンス",
+        "description": "Pythonの変数宣言とデータ型について。動的型付けの特徴、命名規則（snake_case）、基本的なデータ型の種類を初心者向けに解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/py-variables.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #3b82f6;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #eab308);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #3b82f6;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #3b82f6;
+        }
+
+        .tip-card {
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 4px solid #3b82f6;
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../py_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #3b82f6, #eab308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Python Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="py_index.html">解説一覧</a>
+                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">基本文法</span>
+                    <h1>変数と代入</h1>
+                    <p>データに名前（ラベル）をつけて、再利用できるようにしよう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>変数とは？：データに名前をつける「ラベル」</h2>
+                    <p>プログラミングにおける **変数**
+                        とは、数値や文字列などのデータに名前をつけて保存しておく仕組みのことです。よく「箱」に例えられますが、Pythonにおいては「データという実体に名前ラベルを貼り付ける」というイメージの方が正確です。
+                    </p>
+                    <p>変数を使うことで、同じデータを何度も入力する手間が省けるだけでなく、プログラムの意図が読み手に伝わりやすくなり、メンテナンス（修正）も格段に容易になります。</p>
+
+                    <h2>1. 基本の書き方と代入</h2>
+                    <p>Pythonでは、変数名、イコール `=` 、値をこの順で記述します。これを「代入（Assignment）」と呼びます。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：基本</span>
+                        <pre>name = "Python Master"
+version = 3.12
+is_published = True</pre>
+                    </div>
+                    <p>JavaScriptのように `const` や `let` といった宣言キーワードは必要ありません。名前を書いた瞬間に変数が作られます。
+                    </p>
+
+                    <h2>2. Pythonの大きな特徴：動的型付け</h2>
+                    <p>Pythonは **動的型付け (Dynamic Typing)**
+                        言語です。これは、変数が作成される時に「この変数は整数用」「これは文字列用」とあらかじめ決める必要がないことを意味します。中に入れるデータによって、Pythonが実行時に最適な「型」を自動的に判断してくれます。
+                    </p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：柔軟な型変更</span>
+                        <pre>x = 100    # 最初は整数の型 (int)
+x = "Hello" # 後から文字列 (str) を入れてもエラーにならない</pre>
+                    </div>
+                    <p>この柔軟性は素早い開発を可能にしますが、意図しない型が混じってしまうバグの原因にもなるため、注意深い管理が必要です。</p>
+
+                    <h2>3. 命名規則：スネークケースの徹底</h2>
+                    <p>Pythonには公式のスタイルガイド **PEP 8** があり、変数の付け方にも明確なルール（慣習）があります。</p>
+
+                    <div class="tip-card">
+                        <h4>✅ 推奨：snake_case (スネークケース)</h4>
+                        <p>単語を小文字で書き、アンダースコア `_` で繋ぎます。
+                            例: `user_name`, `total_price`, `max_level`</p>
+                        <h4>❌ 非推奨：camelCase / PascalCase</h4>
+                        <p>Pythonの世界では、クラス名以外で大文字を混ぜる書き方はあまり一般的ではありません。
+                            例: `userName` (避けるべき)</p>
+                    </div>
+
+                    <h2>4. 高度なテクニック：同時代入と定数</h2>
+                    <p>Pythonには、コードを簡潔にするためのユニークな代入方法がいくつかあります。</p>
+
+                    <h3>複数代入（アンパック）</h3>
+                    <p>一行で複数の変数に値を割り当てることができます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：アンパック</span>
+                        <pre>x, y, z = 10, 20, 30
+# xは10, yは20, zは30になる</pre>
+                    </div>
+
+                    <h3>Pythonにおける「定数」</h3>
+                    <p>実は、Pythonには言語レベルで「絶対に値を変更できない定数」は存在しません。しかし、プログラマ同士の約束事として **「すべて大文字で書かれた変数は定数として扱い、後から書き換えない」**
+                        というルールがあります。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：定数の慣習</span>
+                        <pre>API_KEY = "secret_key_123" # 大文字は書き換えない約束</pre>
+                    </div>
+
+                    <h2>5. モダンPythonの新常識：型ヒント</h2>
+                    <p>近年では、大規模なプログラムでもバグを防ぎやすくするために、変数に「期待する型」を添える **型ヒント (Type Hints)** が広く使われています。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：型ヒント活用</span>
+                        <pre>score: int = 100
+user_name: str = "Alice"</pre>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 日本語の変数名は使えますか？</h4>
+                        <p>A: 技術的には使えますが（例: `名前 = "田中"`）、現場では **100% 英語（アルファベット）**
+                            が使われます。プログラミングの世界標準に合わせるためにも、英語での命名を強くお勧めします。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 予約語（キーワード）とは何ですか？</h4>
+                        <p>A: `if`, `for`, `def` など、Pythonが特別な意味として使っている単語のことです。これらは変数名として使うことはできません。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 変数を削除することはできますか？</h4>
+                        <p>A: `del variable_name` を使うと削除できます。ただ、通常の開発で意図的に削除が必要になる場面は非常に稀です。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>変数は、コンピュータに指示を出すための「言葉」の一部です。適切な名前をつけ、適切な型を意識することで、あなたのコードは魔法のような読みやすさと安定感を手に入れます。最初はスネークケースに慣れるところから始めてみましょう！
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 Python Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

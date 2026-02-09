@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ループ処理（for）：繰り返しを効率化する | Python Master リファレンス</title>
+    <meta name="description" content="Pythonのループ処理について。for文、range関数の使い方、while文、リストの要素を順番に取り出す方法を初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/py-loops.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/py-loops.html">
+    <meta property="og:title" content="ループ処理（for）：繰り返しを効率化する | Python Master リファレンス">
+    <meta property="og:description" content="Pythonのループ処理について。for文、range関数の使い方、while文、リストの要素を順番に取り出す方法を初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/py-loops.html">
+    <meta name="twitter:title" content="ループ処理（for）：繰り返しを効率化する | Python Master リファレンス">
+    <meta name="twitter:description"
+        content="Pythonのループ処理について。for文、range関数の使い方、while文、リストの要素を順番に取り出す方法を初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "ループ処理（for）：繰り返しを効率化する | Python Master リファレンス",
+        "description": "Pythonのループ処理について。for文、range関数の使い方、while文、リストの要素を順番に取り出す方法を初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/py-loops.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #3b82f6;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #eab308);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #3b82f6;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .range-box {
+            background: rgba(59, 130, 246, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../py_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #3b82f6, #eab308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Python Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="py_index.html">解説一覧</a>
+                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">効率化</span>
+                    <h1>ループ処理</h1>
+                    <p>コンピュータの得意分野：面倒な繰り返し作業を自動化しよう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>ループ処理とは？：面倒な繰り返しを自動化する</h2>
+                    <p>プログラミングを学ぶ上で、最も大きな恩恵を感じる瞬間の一つが「ループ処理（繰り返し）」をマスターした時でしょう。「1万個のデータに名前をつける」「同じ計算を100万回繰り返す」といった、人間が行えば一生かかるような作業を、コンピュータはたった数行のコードで、しかも一瞬で完了させます。
+                    </p>
+                    <p>Pythonのループ処理は非常に直感的で読みやすく設計されています。データ処理、Webスクレイピング、AIの学習プロセスなど、現代のあらゆるテクノロジーの基盤となる技術です。</p>
+
+                    <h2>1. for 文：イテラブル（反復可能）な要素を回す</h2>
+                    <p>Pythonの `for` 文は、リストや文字列などの「要素の集まり」から、中身を一つずつ順番に取り出して処理を行うのが得意です。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：リストのループ</span>
+                        <pre>fruits = ["Apple", "Banana", "Cherry"]
+
+for fruit in fruits:
+    print(f"フルーツの名前: {fruit}")</pre>
+                    </div>
+                    <p>ここで登場する `fruit`
+                        は、リストの中身が代入される一時的な変数です。この変数を自由に使うことで、各要素に対して一括で処理をかけることができます。
+                    </p>
+
+                    <h2>2. range() 関数：回数を指定して繰り返す</h2>
+                    <p>「10回繰り返したい」「1から100まで足し合わせたい」といった、数値をベースにした繰り返しには `range()` 関数を使います。</p>
+
+                    <h3>range() の柔軟な引数パス</h3>
+                    <ul>
+                        <li><strong>range(stop):</strong> 0から(stop-1)まで繰り返す。</li>
+                        <li><strong>range(start, stop):</strong> startから(stop-1)まで。</li>
+                        <li><strong>range(start, stop, step):</strong> stepの間隔で数値を刻む。</li>
+                    </ul>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：rangeの活用</span>
+                        <pre># 0, 2, 4, 6, 8 と表示される
+for i in range(0, 10, 2):
+    print(i)</pre>
+                    </div>
+
+                    <h2>3. ループの制御：break と continue</h2>
+                    <p>ループの途中で逃げ出したり、特定の回だけ処理を飛ばしたりすることも可能です。</p>
+                    <ul>
+                        <li><strong>break:</strong> ループを完全に終了し、外に出ます。 </li>
+                        <li><strong>continue:</strong> 今行っている回だけを中断し、次の回へ進みます。</li>
+                    </ul>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：ループの脱出</span>
+                        <pre>for i in range(1, 10):
+    if i == 5:
+        break # 5になったら強制終了
+    print(i)</pre>
+                    </div>
+
+                    <h2>4. Python特有の機能：ループ後の else</h2>
+                    <p>Pythonのユニークな機能として、ループの後に `else` を書くことができます。これは、**「一度も break せずにループを最後まで完走した時のみ」** 実行されます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：for-else文</span>
+                        <pre>for user in user_list:
+    if user == "Target":
+        print("見つけました！")
+        break
+else:
+    print("最後まで見つかりませんでした。")</pre>
+                    </div>
+
+                    <h2>5. while 文：条件が満たされるまで繰り返す</h2>
+                    <p>繰り返す回数が決まっていない時、例えば「正しいパスワードが入力されるまで」「ユーザーが終了ボタンを押すまで」といった場合には `while` が適しています。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：whileループ</span>
+                        <pre>energy = 3
+while energy > 0:
+    print(f"行動中... 残りパワー: {energy}")
+    energy -= 1
+print("エネルギー切れです")</pre>
+                    </div>
+
+                    <div class="range-box">
+                        <h3>🚀 パフォーマンスの知恵：range関数は「軽い」</h3>
+                        <p>Python 3の `range()`
+                            は、どれほど大きな範囲を指定しても大量のメモリを消費しません。なぜなら、100万個のリストを作るのではなく、ループのたびに「次の数値」をその場で作っているからです。非常に効率的ですね！
+                        </p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 無限ループになってしまいました！</h4>
+                        <p>A: 落ち着いて `Ctrl + C` を押してください。プログラムを強制終了できます。`while` 文を書く時は、必ず「いつかは終わる条件」になっているか確認しましょう。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: インデックス番号も一緒に取得したい時は？</h4>
+                        <p>A: `enumerate()`
+                            関数を使うのがスマートです。`for i, fruit in enumerate(fruits):` と書くことで、番号 `i` と中身 `fruit` を同時に取り出せます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 逆順に回したい時は？</h4>
+                        <p>A: `reversed()` 関数を使うのが簡単です。 `for item in reversed(items):`
+                            とするだけで、リストの後ろから順に取り出すことができます。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>ループ処理をマスターすれば、人間には不可能な速さで大量の仕事を片付けられるプログラムが書けるようになります。Pythonのシンプルで強力な `for`
+                        文を使いこなし、日常の定型業務をどんどん自動化していきましょう！
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 Python Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

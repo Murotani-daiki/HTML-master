@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>関数（Function）：処理を部品化して再利用する | JavaScript Master リファレンス</title>
+    <meta name="description" content="JavaScriptの関数について。関数の定義方法、引数、戻り値、アロー関数の使い方を初心者向けに詳しく解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/js-functions.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/js-functions.html">
+    <meta property="og:title" content="関数（Function）：処理を部品化して再利用する | JavaScript Master リファレンス">
+    <meta property="og:description" content="JavaScriptの関数について。関数の定義方法、引数、戻り値、アロー関数の使い方を初心者向けに詳しく解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/js-functions.html">
+    <meta name="twitter:title" content="関数（Function）：処理を部品化して再利用する | JavaScript Master リファレンス">
+    <meta name="twitter:description" content="JavaScriptの関数について。関数の定義方法、引数、戻り値、アロー関数の使い方を初心者向けに詳しく解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "関数（Function）：処理を部品化して再利用する | JavaScript Master リファレンス",
+        "description": "JavaScriptの関数について。関数の定義方法、引数、戻り値、アロー関数の使い方を初心者向けに詳しく解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/js-functions.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #facc15, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #facc15;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .concept-card {
+            background: rgba(250, 204, 21, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../js_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    JavaScript Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="js_index.html">解説一覧</a>
+                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">プログラム設計</span>
+                    <h1>関数</h1>
+                    <p>レシピをまとめて名付ける：処理の使い回しで効率アップ</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>処理を「部品」にする：関数の本質</h2>
+                    <p>プログラミングにおいて、何度も使う一連の処理をひとまとめにして名前をつけたものを「関数（Function）」と呼びます。料理に例えるなら、関数は「特定の料理を作るためのレシピ」のようなものです。一度レシピを書いておけば、材料（データ）を渡すだけで、何度でも同じ味（結果）を再現できます。
+                    </p>
+                    <p>大規模なアプリケーション開発では、一つの大きなプログラムを一から書くのではなく、小さくて再利用可能な「関数の部品」をたくさん作り、それらを組み合わせて全体を構築していきます。これにより、コードの再利用性が高まり、バグの修正や機能の追加が格段に楽になります。
+                    </p>
+
+                    <h2>1. 関数の作り方と使い方</h2>
+                    <p>もっとも標準的な「関数宣言」の書き方です。キーワード `function` の後に任意の関数名をつけ、続く `{ }` の中に実行したい処理を記述します。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：関数宣言</span>
+                        <pre>function greet() {
+    console.log("こんにちは！");
+    console.log("プログラミングの学習は順調ですか？");
+}
+
+greet(); // 関数の呼び出し（実行）</pre>
+                    </div>
+                    <p>注意点として、関数を「作る（定義する）」ことと「使う（実行する）」ことは別物です。定義しただけでは何も起きず、名前にカッコ `()` をつけて呼び出すことで初めて中のコードが動き出します。
+                    </p>
+
+                    <h2>2. 引数と戻り値：情報のやり取り</h2>
+                    <p>関数をより強力にするのが、情報を渡すための「引数（ひきすう）」と、結果を受け取るための「戻り値（もどりち）」です。</p>
+
+                    <h3>引数：関数の「材料」</h3>
+                    <p>呼び出し側から関数へ渡すデータです。関数の中で変数のように扱うことができます。現代のJavaScriptでは、値を渡さなかった時のための「デフォルト引数」も設定可能です。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：引数の活用</span>
+                        <pre>function sayHello(name = "ゲスト") {
+    console.log(`こんにちは、${name}さん！`);
+}
+
+sayHello("田中"); // "こんにちは、田中さん！"
+sayHello();      // "こんにちは、ゲストさん！"（デフォルト値）</pre>
+                    </div>
+
+                    <h3>戻り値：関数の「結果」</h3>
+                    <p>キーワード `return` を使うと、関数の処理結果を呼び出し元に返すことができます。返された値は変数に代入して再利用できます。また、`return`
+                        が実行された瞬間に、その関数の処理は終了します。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：計算結果を返す</span>
+                        <pre>function add(a, b) {
+    if (a < 0 || b < 0) return 0; // 0未満なら即座に終了（ガード句）
+    return a + b;
+}
+
+const total = add(10, 20); // total に 30 が格納される</pre>
+                    </div>
+
+                    <h2>3. アロー関数：モダンスタイルの標準</h2>
+                    <p>ES6で登場した「アロー関数（Arrow Function）」は、現在のフロントエンド開発において最も好まれる書き方です。 `=>` （矢の形）を使って、より簡潔に記述できます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript：アロー関数</span>
+                        <pre>// 従来の書き方
+const double = function(x) { return x * 2; };
+
+// アロー関数の書き方
+const doubleArrow = (x) => x * 2; // 一行なら return も省略可能！</pre>
+                    </div>
+
+                    <div class="point-card">
+                        <h4>💡 関数と「スコープ」の重要な関係</h4>
+                        <p>関数の中で `const` や `let`
+                            を使って宣言した変数は、その関数の外からは一切見ることができません（ローカルスコープ）。これにより、同じ変数名を使っていても他の場所のコードと干渉し合うことがなく、安全にプログラムを管理できます。逆に関数の外で宣言された変数は、関数の中から参照することが可能です。
+                        </p>
+                    </div>
+
+                    <h2>4. 高度な手法：コールバック関数</h2>
+                    <p>JavaScriptの大きな特徴の一つは、**「関数自体を別の関数の引数として渡せる」**ことです。これをコールバック関数と呼びます。ボタンがクリックされた時の処理（イベントリスナー）や、一定時間後の処理（setTimeout）などで頻繁に利用されます。
+                    </p>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 関数宣言とアロー関数、どちらを使うべきですか？</h4>
+                        <p>A: 現代の開発では、短く書ける **アロー関数**
+                            が主流です。ただし、関数宣言には「巻き上げ（実行コードより後ろに定義があっても動く）」という性質があるため、好みに応じて使い分けられます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 引数の数に制限はありますか？</h4>
+                        <p>A: 理論上はありませんが、引数が多すぎると（例えば5つ以上など）使うのが難しくなります。その場合は、複数の引数を一つの「オブジェクト」にまとめて渡すのがプロのテクニックです。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: return を書かないとどうなりますか？</h4>
+                        <p>A: 戻り値として `undefined` が返ります。結果を期待して呼び出す関数の場合は、必ず `return` を忘れずに記述しましょう。</p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>関数は、プログラムを整理整頓し、論理的に組み立てるための最も協力な道具です。最初は「引数」や「戻り値」の概念に戸惑うかもしれませんが、これらを使いこなせるようになると、あなたのコードは格段に美しく、再利用しやすいものに変わります。小さな成功（関数の動作確認）を積み重ねて、部品化のメリットを肌で感じてみてください。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

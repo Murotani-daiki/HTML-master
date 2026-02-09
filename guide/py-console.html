@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出力とデバッグ（print）：プログラムの中身を見る | Python Master リファレンス</title>
+    <meta name="description" content="Pythonのprint関数について。基本的な使い方から、f-stringを使った文字列への変数埋め込み、デバッグの重要性を初心者向けに解説します。">
+    <link rel="canonical" href="https://html-master.com/guide/py-console.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://html-master.com/guide/py-console.html">
+    <meta property="og:title" content="出力とデバッグ（print）：プログラムの中身を見る | Python Master リファレンス">
+    <meta property="og:description"
+        content="Pythonのprint関数について。基本的な使い方から、f-stringを使った文字列への変数埋め込み、デバッグの重要性を初心者向けに解説します。">
+    <meta property="og:image" content="https://html-master.com/favicon.webp">
+    <meta property="og:site_name" content="HTML Master">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://html-master.com/guide/py-console.html">
+    <meta name="twitter:title" content="出力とデバッグ（print）：プログラムの中身を見る | Python Master リファレンス">
+    <meta name="twitter:description"
+        content="Pythonのprint関数について。基本的な使い方から、f-stringを使った文字列への変数埋め込み、デバッグの重要性を初心者向けに解説します。">
+    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "出力とデバッグ（print）：プログラムの中身を見る | Python Master リファレンス",
+        "description": "Pythonのprint関数について。基本的な使い方から、f-stringを使った文字列への変数埋め込み、デバッグの重要性を初心者向けに解説します。",
+        "image": "https://html-master.com/favicon.webp",
+        "author": {
+            "@type": "Organization",
+            "name": "HTML Master"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HTML Master",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://html-master.com/favicon.webp"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://html-master.com/guide/py-console.html"
+        }
+    }
+    </script>
+    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <style>
+        :root {
+            --accent-color: #3b82f6;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .guide-content {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #eab308);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .guide-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .code-block-guide {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            color: #3b82f6;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #3b82f6;
+        }
+
+        @media (max-width: 640px) {
+            .guide-content {
+                padding: 2rem;
+            }
+
+            .guide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <header class="home-header">
+            <a href="../py_index.html" class="logo" style="text-decoration: none;">
+                <h1
+                    style="background: linear-gradient(135deg, #3b82f6, #eab308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Python Master</h1>
+            </a>
+            <nav class="home-nav">
+                <a href="py_index.html">解説一覧</a>
+                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+            </nav>
+        </header>
+
+        <main class="guide-container">
+            <article class="guide-content">
+                <header class="guide-header">
+                    <span class="badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">デバッグ</span>
+                    <h1>出力とデバッグ</h1>
+                    <p>print()：プログラムの実行結果を画面に表示しよう</p>
+                </header>
+
+                <div class="guide-body">
+                    <h2>print() 関数：プログラムの「声」を聞く</h2>
+                    <p>プログラムの中で起きていることは、通常、コンピュータのメモリという目に見えない場所で処理されています。その中身を私たちの目に見える形にする魔法の道具が `print()` 関数です。
+                    </p>
+                    <p>「正しく計算できているか？」「どこまで処理が進んだか？」といった確認作業（デバッグ）において、`print()`
+                        はプログラマーにとって最も身近で強力な相棒となります。Pythonの学習において、最初から最後までお世話になる、最も重要な関数の一つです。</p>
+
+                    <h2>1. 基本から一歩進んだ使い方</h2>
+                    <p>ただ一つの値を出すだけでなく、カンマ `,` で区切ることで複数の情報を一度に表示できます。その際、Pythonは自動的に単語の間に半角スペースを挿入してくれます。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：基本的な出力</span>
+                        <pre>name = "Python"
+score = 100
+print("言語:", name, " | スコア:", score)
+# 結果: 言語: Python | スコア: 100</pre>
+                    </div>
+
+                    <h3>出力をカスタマイズする引数</h3>
+                    <p>`print()` には、出力を細かく制御するための隠れたオプションがあります。</p>
+                    <ul>
+                        <li><strong>sep (separator):</strong> 区切り文字を指定します。デフォルトは半角スペースです。</li>
+                        <li><strong>end:</strong> 出力後の末尾を指定します。デフォルトは改行 (`\n`) です。</li>
+                    </ul>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：sepとendの活用</span>
+                        <pre># 区切りをハイフンにする
+print("apple", "orange", "banana", sep="-") 
+# apple-orange-banana
+
+# 改行せずに繋げる
+print("Hello", end="")
+print("World")
+# HelloWorld</pre>
+                    </div>
+
+                    <h2>2. 文字列フォーマットの進化：f-strings</h2>
+                    <p>現代のPython（3.6以降）で最も推奨されるのが、**f文字列 (f-strings)** です。文字列の先頭に `f` をつけ、入れたい変数を `{ }`
+                        で囲むだけで、驚くほど直感的に文章を組み立てられます。</p>
+
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：f-stringsの威力</span>
+                        <pre>user = "管理者"
+count = 5
+print(f"ようこそ、{user}さん。未読メッセージが{count}件あります。")</pre>
+                    </div>
+
+                    <h3>数値を綺麗に整える</h3>
+                    <p>f-stringsを使うと、桁数の指定や小数点の丸め込みも一瞬で行えます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：書式指定</span>
+                        <pre>pi = 3.14159265
+print(f"円周率は約{pi:.2f}です") # 小数点第2位まで (3.14)
+
+price = 1280000
+print(f"価格: {price:,}円")       # カンマ区切り (1,280,000)</pre>
+                    </div>
+
+                    <h2>3. デバッグの裏技：f"{var=}"</h2>
+                    <p>Python 3.8から導入された最強のデバッグ機能がこれです。変数名の後に `=` をつけるだけで、「変数名とその中身」を同時に出力してくれます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python：爆速デバッグ</span>
+                        <pre>x = 10
+y = 20
+print(f"{x=}, {y=}")
+# 結果: x=10, y=20 (いちいち文字を書く手間が省ける！)</pre>
+                    </div>
+
+                    <div class="point-card">
+                        <h4>💡 昔の書き方に遭遇したら</h4>
+                        <p>古い教材やコードでは `%` を使う方法や `.format()` を使う方法が見られます。現在は `f-strings`
+                            が最も高速で推奨されていますが、これらを見かけても「古い書き方だな」と理解できれば十分です。</p>
+                    </div>
+
+                    <h2>よくある質問 (Q&A)</h2>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 画面ではなく「ファイル」に書き出すことはできますか？
+                        </h4>
+                        <p>A: 可能です！ `print("text", file=open("log.txt", "w"))` のように `file`
+                            引数を使うことで、コンソールではなくファイルへ直接書き出すことができます。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: print() で改行したくない時は？</h4>
+                        <p>A: `end=""` を指定してください。これで次の `print()` の内容が同じ行に続けて表示されるようになります。</p>
+                    </div>
+
+                    <div class="qa-item" style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Q: 複雑なリストや辞書を見やすく表示するには？</h4>
+                        <p>A: Python標準の `pprint` モジュールを使うのがお勧めです（Pretty Printの略）。階層構造を綺麗にインデントして表示してくれます。
+                        </p>
+                    </div>
+
+                    <h2>まとめ</h2>
+                    <p>「バグかな？」と思ったら、まずは迷わず `print()`
+                        を使って中のデータを確認しましょう。f-stringsを使いこなし、データの変化をリアルタイムで「見る」習慣をつけることが、脱・初心者への最短ルートです。あなたのプログラムが何を考えているのか、`print()`
+                        を通じて対話を楽しんでください！</p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <a href="../privacy.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                    <a href="../terms.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                    <a href="../contact.html"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+                </div>
+                <p>&copy; 2026 Python Master. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
