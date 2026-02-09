@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="1日に何回でもできるWordle - 無料で遊べる英単語推測ゲーム。毎日新しい5文字の英単語を推測して、ブラウザで楽しく学べます。">
+    <meta name="keywords" content="Wordle, 英単語ゲーム, 言葉ゲーム, パズルゲーム, 英語学習, 無料ゲーム">
+    <meta name="author" content="Wordle Game">
+    <meta name="theme-color" content="#121213">
+    <meta name="robots" content="index, follow">
+    <title>Wordle - 1日に何回でもできる英単語推測ゲーム | html-master.com</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://html-master.com/wordle/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://html-master.com/wordle/">
+    <meta property="og:title" content="Wordle - 1日に何回でもできる英単語推測ゲーム">
+    <meta property="og:description" content="無料で遊べる英単語推測ゲーム。何回でもチャレンジできます。">
+    <meta property="og:image" content="https://html-master.com/wordle/og-image.png">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wordle - 1日に何回でもできる英単語推測ゲーム">
+    <meta name="twitter:description" content="無料で遊べる英単語推測ゲーム。何回でもチャレンジできます。">
+    <meta name="twitter:image" content="https://html-master.com/wordle/og-image.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Wordle",
+      "description": "1日に何回でもできる英単語推測ゲーム",
+      "url": "https://html-master.com/wordle/",
+      "applicationCategory": "GameApplication",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "html-master.com"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-left">
+            <button id="helpBtn" class="icon-btn" aria-label="ヘルプ">
+                <i class="fas fa-circle-question"></i>
+            </button>
+        </div>
+        <div class="header-center">
+            <h1>WORDLE</h1>
+        </div>
+        <div class="header-right">
+            <button id="statsBtn" class="icon-btn" aria-label="統計">
+                <i class="fas fa-chart-bar"></i>
+            </button>
+            <button id="settingsBtn" class="icon-btn" aria-label="設定">
+                <i class="fas fa-gear"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Game Board -->
+    <main id="game">
+        <div id="board-container">
+            <div id="board"></div>
+        </div>
+
+        <!-- Keyboard -->
+        <div id="keyboard">
+            <div class="keyboard-row">
+                <button data-key="Q">Q</button>
+                <button data-key="W">W</button>
+                <button data-key="E">E</button>
+                <button data-key="R">R</button>
+                <button data-key="T">T</button>
+                <button data-key="Y">Y</button>
+                <button data-key="U">U</button>
+                <button data-key="I">I</button>
+                <button data-key="O">O</button>
+                <button data-key="P">P</button>
+            </div>
+            <div class="keyboard-row">
+                <div class="spacer-half"></div>
+                <button data-key="A">A</button>
+                <button data-key="S">S</button>
+                <button data-key="D">D</button>
+                <button data-key="F">F</button>
+                <button data-key="G">G</button>
+                <button data-key="H">H</button>
+                <button data-key="J">J</button>
+                <button data-key="K">K</button>
+                <button data-key="L">L</button>
+                <div class="spacer-half"></div>
+            </div>
+            <div class="keyboard-row">
+                <button data-key="ENTER" class="key-wide">ENTER</button>
+                <button data-key="Z">Z</button>
+                <button data-key="X">X</button>
+                <button data-key="C">C</button>
+                <button data-key="V">V</button>
+                <button data-key="B">B</button>
+                <button data-key="N">N</button>
+                <button data-key="M">M</button>
+                <button data-key="BACKSPACE" class="key-wide" aria-label="削除">
+                    <i class="fas fa-delete-left"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast notifications -->
+    <div id="toast-container"></div>
+
+    <!-- Modal: Help -->
+    <div id="helpModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            <h2>遊び方</h2>
+            <p>6回以内に5文字の英単語を当てましょう！</p>
+            <div class="help-examples">
+                <p><strong>各推測の後、タイルの色が変わります：</strong></p>
+                <div class="example-row">
+                    <div class="example-tiles">
+                        <div class="tile-example correct">W</div>
+                        <div class="tile-example">E</div>
+                        <div class="tile-example">A</div>
+                        <div class="tile-example">R</div>
+                        <div class="tile-example">Y</div>
+                    </div>
+                    <p><strong class="green-text">緑</strong> — 正しい文字が正しい位置にあります</p>
+                </div>
+                <div class="example-row">
+                    <div class="example-tiles">
+                        <div class="tile-example">P</div>
+                        <div class="tile-example present">I</div>
+                        <div class="tile-example">L</div>
+                        <div class="tile-example">L</div>
+                        <div class="tile-example">S</div>
+                    </div>
+                    <p><strong class="yellow-text">黄</strong> — 正しい文字ですが位置が違います</p>
+                </div>
+                <div class="example-row">
+                    <div class="example-tiles">
+                        <div class="tile-example">V</div>
+                        <div class="tile-example">A</div>
+                        <div class="tile-example">G</div>
+                        <div class="tile-example absent">U</div>
+                        <div class="tile-example">E</div>
+                    </div>
+                    <p><strong class="gray-text">灰</strong> — 単語に含まれない文字です</p>
+                </div>
+            </div>
+            <hr>
+            <p>毎日新しい単語が出題されます。<br>「New Game」ボタンでランダムに再挑戦もできます！</p>
+        </div>
+    </div>
+
+    <!-- Modal: Stats -->
+    <div id="statsModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            <h2>統計</h2>
+            <div id="stats-summary">
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-played">0</div>
+                    <div class="stat-label">プレイ数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-win-pct">0</div>
+                    <div class="stat-label">勝率%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-streak">0</div>
+                    <div class="stat-label">連勝中</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-max-streak">0</div>
+                    <div class="stat-label">最大連勝</div>
+                </div>
+            </div>
+            <h3>推測回数の分布</h3>
+            <div id="guess-distribution"></div>
+        </div>
+    </div>
+
+    <!-- Modal: Settings -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            <h2>設定</h2>
+            <div class="setting-item">
+                <div>
+                    <div class="setting-label">ダークモード</div>
+                    <div class="setting-desc">背景色を暗くします</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <div class="setting-label">ハイコントラスト</div>
+                    <div class="setting-desc">色覚多様性に対応した配色</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="highContrastToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <div class="setting-label">ハードモード</div>
+                    <div class="setting-desc">ヒントで得た文字を必ず使う</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="hardModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content game-over-content">
+            <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            <div id="gameOverIcon"></div>
+            <h2 id="gameOverTitle"></h2>
+            <p id="gameOverMessage"></p>
+            <div id="answerReveal">
+                <span class="answer-label">正解：</span>
+                <span id="answerWord" class="answer-word"></span>
+                <a id="googleSearchLink" href="#" target="_blank" rel="noopener noreferrer" class="google-search-btn">
+                    <i class="fas fa-magnifying-glass"></i> 意味をGoogle検索
+                </a>
+            </div>
+            <div id="gameOverStats"></div>
+            <div class="game-over-actions">
+                <button id="shareBtn" class="action-btn share-btn">
+                    <i class="fas fa-share-nodes"></i> 結果を共有
+                </button>
+                <button id="newGameBtn" class="action-btn new-game-btn">
+                    <i class="fas fa-rotate-right"></i> New Game
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/words.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
