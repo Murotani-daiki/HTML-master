@@ -4,175 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python解説一覧 | Python Master 学習テキスト</title>
-    <meta name="description" content="Python Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からデータ構造、関数まで詳しく学べます。">
-    <link rel="canonical" href="https://html-master.com/guide/py_index.html">
+    <link rel="icon" href="favicon.webp" type="image/webp">
+    <title>Python Master | 完全無料・最速でPythonをマスター</title>
+    <meta name="description" content="完全無料・登録不要。実践形式でPythonを学べる最速の学習プラットフォーム。データサイエンスやAI開発への第一歩をここから。">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://html-master.com/guide/py_index.html">
-    <meta property="og:title" content="Python解説一覧 | Python Master 学習テキスト">
-    <meta property="og:description" content="Python Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からデータ構造、関数まで詳しく学べます。">
-    <meta property="og:image" content="https://html-master.com/favicon.webp">
-    <meta property="og:site_name" content="HTML Master">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104"
+        crossorigin="anonymous"></script>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://html-master.com/guide/py_index.html">
-    <meta name="twitter:title" content="Python解説一覧 | Python Master 学習テキスト">
-    <meta name="twitter:description" content="Python Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からデータ構造、関数まで詳しく学べます。">
-    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Python Master | 完全無料・最速でPythonをマスター">
+    <meta property="og:description" content="完全無料・登録不要。実践形式でPythonを学べる最速の学習プラットフォーム。">
+    <meta property="og:image" content="favicon.webp">
+    <meta property="og:url" content="py_index.html">
 
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Python解説一覧 | Python Master 学習テキスト",
-        "description": "Python Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からデータ構造、関数まで詳しく学べます。",
-        "image": "https://html-master.com/favicon.webp",
-        "author": {
-            "@type": "Organization",
-            "name": "HTML Master"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "HTML Master",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://html-master.com/favicon.webp"
-            }
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://html-master.com/guide/py_index.html"
-        }
-    }
-    </script>
-    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@EduKodomo98564">
+    <meta name="twitter:title" content="Python Master | 完全無料・最速でPythonをマスター">
+    <meta name="twitter:description" content="完全無料・登録不要。実践形式でPythonを学べる最速の学習プラットフォーム。">
+    <meta name="twitter:image" content="favicon.webp">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../home.css">
+    <link rel="stylesheet" href="home.css">
     <style>
         :root {
             --accent-color: #3b82f6;
+            /* Python Blue */
             --accent-hover: #2563eb;
             --secondary-color: #eab308;
+            /* Python Yellow */
         }
 
-        .ref-container {
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 5%;
-        }
-
-        .ref-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .ref-header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+        .logo h1,
+        .hero-content h1 span {
             background: linear-gradient(135deg, #3b82f6, #eab308);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .ref-header p {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-        }
-
-        .ref-category {
-            margin-bottom: 4rem;
-        }
-
-        .ref-category h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--accent-color);
-            color: var(--text-primary);
-        }
-
-        .ref-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .ref-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .ref-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
-        }
-
-        .ref-card code {
-            display: inline-block;
+        .badge {
             background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.2);
             color: var(--accent-color);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            font-family: 'Fira Code', monospace;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
         }
 
-        .ref-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-primary);
-        }
-
-        .ref-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .guide-link-box {
-            margin-top: 5rem;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(234, 179, 8, 0.05));
-            padding: 3rem;
-            border-radius: 32px;
-            text-align: center;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .guide-link-box h2 {
-            margin-bottom: 1rem;
-        }
-
-        .guide-link-box .primary-btn-home {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 1rem 2rem;
+        .primary-btn-home {
             background: var(--accent-color);
             color: #fff;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            white-space: nowrap;
         }
 
-        @media (max-width: 640px) {
-            .ref-header h1 {
-                font-size: 2.5rem;
-            }
+        .primary-btn-home:hover {
+            background: var(--accent-hover);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .nav-btn {
+            background: var(--accent-color);
+            color: #fff !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            white-space: nowrap;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .feature-card:hover .icon {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Update floating cards code */
+        .floating-card code {
+            color: #eab308;
+        }
+
+        .lvl {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+        }
+
+        .level-curriculum li span {
+            color: var(--accent-color);
+            background: rgba(59, 130, 246, 0.1);
         }
     </style>
 </head>
@@ -180,140 +102,290 @@
 <body>
     <div class="landing-container">
         <header class="home-header">
-            <a href="../py_index.html" class="logo">
-                <h1
-                    style="background: linear-gradient(135deg, #3b82f6, #eab308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                    Python Master</h1>
+            <a href="py_index.html" class="logo">
+                <h1>Python Master</h1>
             </a>
             <nav class="home-nav">
-                <a href="../py_levels.html">レベル</a>
-                <a href="../py_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+                <a href="py_levels.html">レベル</a>
+                <a href="guide/py_index.html">Python解説</a>
+                <a href="index.html">HTML</a>
+                <a href="js_index.html">JavaScript</a>
+                <a href="py_levels.html" class="nav-btn">今すぐ始める</a>
             </nav>
         </header>
 
-        <main class="ref-container">
-            <header class="ref-header">
-                <span class="badge"
-                    style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #3b82f6;">解説一覧</span>
-                <h1>Python 学習テキスト</h1>
-                <p>シンプルかつ強力。Pythonの重要コンセプトを網羅した詳細リファレンス。</p>
-            </header>
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="badge">完全無料・登録不要</span>
+                    <h1><span>完全無料</span><br>演習を通して<span>Python</span>を最速で学ぼう。</h1>
+                    <p>Python Masterは、AI開発やデータ分析で必須の言語Pythonを、ブラウザだけで実践的に学べるプラットフォームです。環境構築不要で、今すぐコードを書き始められます。</p>
+                    <div class="hero-btns">
+                        <a href="py_levels.html" class="primary-btn-home">今すぐ無料で始める</a>
+                        <a href="py_levels.html" class="secondary-btn-home">カリキュラムを見る</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="background.webp" alt="Coding Background" width="1280" height="720">
+                        <div class="floating-card c1"><code>print("Hello")</code></div>
+                        <div class="floating-card c2"><code>x = [1, 2, 3]</code></div>
+                    </div>
+                </div>
+            </section>
+            <section id="reference" class="reference-promo"
+                style="background: rgba(59, 130, 246, 0.05); padding: 6rem 5%; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+                <div class="section-title">
+                    <span class="badge" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">NEW
+                        REFERENCE</span>
+                    <h2>Python 学習テキスト一覧</h2>
+                    <p>演習の合間に。基本文法からデータ構造まで、Pythonの核心を深く学べる詳細リファレンスを用意しました。</p>
+                </div>
 
-            <div class="guide-link-box">
-                <h2>基礎知識</h2>
-                <p>Pythonの特徴や、プログラミングを始める上での心構え。まずはここから始めましょう。</p>
-                <a href="py-basics.html" class="primary-btn-home">Pythonの基礎学習ガイドを読む</a>
-            </div>
+                <div class="reference-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto;">
+                    <div class="ref-item"
+                        style="background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border-color);">
+                        <code style="color: #3b82f6; font-size: 0.9rem;">Variables</code>
+                        <h3 style="margin: 1rem 0; font-size: 1.25rem;">変数とデータ型</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            Pythonの動的型付けと、推奨される命名規則（snake_case）について。</p>
+                    </div>
+                    <div class="ref-item"
+                        style="background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border-color);">
+                        <code style="color: #3b82f6; font-size: 0.9rem;">Control Flow</code>
+                        <h3 style="margin: 1rem 0; font-size: 1.25rem;">ロジックとループ</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            インデントによるブロック構造と、効率的な繰り返し処理の書き方。</p>
+                    </div>
+                    <div class="ref-item"
+                        style="background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border-color);">
+                        <code style="color: #3b82f6; font-size: 0.9rem;">Functions</code>
+                        <h3 style="margin: 1rem 0; font-size: 1.25rem;">関数の定義</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            defキーワードを使った処理の部品化と、引数・戻り値の活用方法。</p>
+                    </div>
+                </div>
 
-            <section class="ref-category">
-                <h2>基本文法</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>x = 100</code>
-                        <h3>変数と代入</h3>
-                        <p>名づけて保存する。Pythonの柔軟な変数宣言と、推奨される命名規則（snake_case）を学びます。</p>
-                        <a href="py-variables.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+                <div style="text-align: center; margin-top: 4rem;">
+                    <a href="guide/py_index.html" class="primary-btn-home" style="display: inline-block;">すべての解説を読む</a>
+                </div>
+            </section>
+            <section id="features" class="features">
+                <div class="section-title">
+                    <h2>なぜ Python Master なのか？</h2>
+                    <p>挫折せずにスキルを身につけるための、3つの特徴。</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">🚀</div>
+                        <h3>環境構築不要</h3>
+                        <p>面倒なインストールの手間はゼロ。ブラウザを開けば、そこがもう開発環境です。</p>
                     </div>
-                    <div class="ref-card">
-                        <code>print()</code>
-                        <h3>出力とデバッグ</h3>
-                        <p>最も重要なデバッグツール。文字列の埋め込み（f-string）などの便利な出力方法を解説します。</p>
-                        <a href="py-console.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+                    <div class="feature-card">
+                        <div class="icon">📊</div>
+                        <h3>実践スキル</h3>
+                        <p>基礎文法からリスト操作、関数まで。データ分析や自動化に繋がる力を養います。</p>
                     </div>
-                    <div class="ref-card">
-                        <code>"str" / 123</code>
-                        <h3>基本データ型</h3>
-                        <p>数値、文字列、真偽値。Pythonが扱う基本的なデータの種類とその使い分けを理解します。</p>
-                        <a href="py-variables.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+                    <div class="feature-card">
+                        <div class="icon">✨</div>
+                        <h3>完全無料</h3>
+                        <p>すべてのカリキュラムが無料。学びたいという気持ちを全力で応援します。</p>
                     </div>
-                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d61941.b5507013.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI1OCIsImJhbiI6MzIzMDk1MSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/50d61941.b5507013.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3230951&t=pict" border="0" style="margin:2px" alt="" title=""></a>
                 </div>
             </section>
 
-            <section class="ref-category">
-                <h2>制御とロジック</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>if / elif / else</code>
-                        <h3>条件分岐</h3>
-                        <p>インデント（字下げ）によるブロック構造。プログラムに判断をさせるための基本ルールを学びます。</p>
-                        <a href="py-conditions.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+            <section id="levels" class="levels-preview">
+                <div class="levels-content" style="text-align: center;">
+                    <h2>カリキュラム構成</h2>
+                    <p style="margin-bottom: 3rem; color: #94a3b8;">
+                        スモールステップで着実に。初心者でも迷わず進めるロードマップ。</p>
+
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                        <div class="level-item">
+                            <span class="lvl">Lv. 1</span>
+                            <div class="lvl-text">
+                                <h3>基本構文</h3>
+                                <p>変数とprint関数</p>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <span class="lvl" style="background: rgba(234, 179, 8, 0.2); color: #eab308;">Lv. 5</span>
+                            <div class="lvl-text">
+                                <h3>データ構造</h3>
+                                <p>リストと辞書</p>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <span class="lvl" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6;">Lv. 10</span>
+                            <div class="lvl-text">
+                                <h3>応用ロジック</h3>
+                                <p>ループと条件分岐</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ref-card">
-                        <code>for / while</code>
-                        <h3>ループ処理</h3>
-                        <p>range関数を使った繰り返しや、リスト内包表記など、Pythonらしい効率的な反復処理を解説します。</p>
-                        <a href="py-loops.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>def my_func():</code>
-                        <h3>関数</h3>
-                        <p>処理の部品化。引数や戻り値の仕組み、そして再利用性の高いコードの書き方を理解します。</p>
-                        <a href="py-functions.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d65448.4924f11a.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxMDIiLCJiYW4iOjE1MjQxNTIsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/50d65448.4924f11a.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=1524152&t=pict" border="0" style="margin:2px" height="250px" alt="" title=""></a>
+
+                    <a href="py_levels.html" class="primary-btn-home">カリキュラム一覧を見る</a>
+                </div>
+            </section>
+            <section class="other-courses">
+                <div class="section-title">
+                    <h2>Master シリーズでさらに学ぶ</h2>
+                    <p>プログラミングの基礎を固めたら、Webの表現力も身につけよう。</p>
+                </div>
+                <div class="course-grid">
+                    <a href="index.html" class="course-card" style="border-color: rgba(56, 189, 248, 0.2);">
+                        <div class="course-icon"
+                            style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 2px solid rgba(56, 189, 248, 0.2);">
+                            HTML</div>
+                        <div class="course-info">
+                            <h3>HTML Master</h3>
+                            <p>すべてのウェブ制作の基盤となる、HTML/CSSの構成とデザインをマスター。</p>
+                            <span class="view-btn" style="color: #38bdf8;">コースを見る →</span>
+                        </div>
+                    </a>
+                    <a href="js_index.html" class="course-card js">
+                        <div class="course-icon">JS</div>
+                        <div class="course-info">
+                            <h3>JavaScript Master</h3>
+                            <p>動的なウェブサイト制作の基礎から応用まで、演習を通して身につけます。</p>
+                            <span class="view-btn">コースを見る →</span>
+                        </div>
+                    </a>
                 </div>
             </section>
 
-            <section class="ref-category">
-                <h2>データ構造</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>[list]</code>
-                        <h3>リスト</h3>
-                        <p>複数のデータをまとめて管理する配列。追加、削除、スライスなど、強力な操作方法を学びます。</p>
-                        <a href="py-data-structures.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+            <section id="about" class="about-section">
+                <div class="about-content">
+                    <div class="section-title">
+                        <h2>Python Master について</h2>
+                        <p>シンプルで強力。Pythonの無限の可能性を、ここから。</p>
                     </div>
-                    <div class="ref-card">
-                        <code>{"key": "value"}</code>
-                        <h3>辞書（dict）</h3>
-                        <p>キーと値をセットで管理。膨大なデータの中から必要な情報を瞬時に取り出すための構造です。</p>
-                        <a href="py-data-structures.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+                    <div class="about-text-grid">
+                        <div class="about-text-card">
+                            <h3>直感的なプログラミング体験を</h3>
+                            <p>Pythonは、その読みやすさと汎用性の高さから、現在世界中で最も人気のあるプログラミング言語のひとつです。AI（人工知能）、データ分析、Web開発、業務自動化など、あらゆる分野で活用されています。
+                            </p>
+                            <p>Python
+                                Masterでは、「プログラムは人間が読みやすいものであるべき」というPythonの哲学に基づき、初心者が直感的にコードを理解し、記述できる力を養います。複雑な記法を覚えることよりも、Pythonらしいシンプルで美しいコードを書く楽しさを体験してください。
+                            </p>
+                        </div>
+                        <div class="about-text-card">
+                            <h3>最先端のスキルへの架け橋</h3>
+                            <p>プログラミングの基礎を学んだ先には、膨大なライブラリを活用した実践的な開発が待っています。私たちは、文法の習得から始まり、リスト内包表記や関数、クラスといったPythonの核心的な機能を段階的に学べるカリキュラムを提供しています。
+                            </p>
+                            <p>Python
+                                Masterは、あなたがデータサイエンティストやエンジニア、あるいは業務効率化のプロフェッショナルとして第一歩を踏み出すための強力なパートナーとなります。環境構築の煩わしさを一切排除したこの場所で、今すぐPythonの世界へ飛び込みましょう。
+                            </p>
+                        </div>
                     </div>
-                    <div class="ref-card">
-                        <code>(tuple) / {set}</code>
-                        <h3>タプルと集合</h3>
-                        <p>変更できないタプルや、重複を許さない集合。特徴的なデータ構造の使い所を解説します。</p>
-                        <a href="py-data-structures.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d65618.342e1eef.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI5NSIsImJhbiI6MzI0OTQ0MSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/50d65618.342e1eef.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3249441&t=pict" border="0" style="margin:2px" height="250px" alt="" title=""></a>
                 </div>
             </section>
 
+
+
+            <section id="faq" class="faq-section">
+                <div class="faq-content">
+                    <div class="section-title">
+                        <h2>よくある質問</h2>
+                        <p>Python学習に関するよくある疑問にお答えします。</p>
+                    </div>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3>Q. Pythonは他の言語より簡単ですか？</h3>
+                            <p>A. はい、初心者にとって最も学びやすい言語のひとつと言われています。構文が非常にシンプルで、英語に近い感覚で書けるため、ロジックの学習に集中しやすいのが特徴です。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. 数学が苦手でも大丈夫ですか？</h3>
+                            <p>A.
+                                全く問題ありません。基本的な計算ができれば、ほとんどの開発は可能です。高度なデータ分析やAI開発に進む際には数学の知識が必要になりますが、まずはプログラミングそのものを楽しむことから始めましょう。
+                            </p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. 本当に環境構築はいらないのですか？</h3>
+                            <p>A. はい。通常、Pythonの学習にはインストールや設定が必要ですが、当サイトはブラウザ上でPythonエンジンが動作するため、アクセスした瞬間にコードを書いて実行できます。
+                            </p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. Pythonを学んだ後は何ができますか？</h3>
+                            <p>A.
+                                Excelの自動化、Webサイトのスクレイピング、Webサービス開発、AIモデルの構築など、活用の幅は非常に広いです。まずは基礎を完璧にして、自分の興味がある分野へ進んでみましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="home-footer">
             <div class="footer-content">
-                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
-                    <a href="../privacy.html"
+                <div class="logo">
+                    <h1>Python Master</h1>
+                </div>
+                <p>&copy; 2026 Python Master. Built for the future of coding education.</p>
+                <div class="footer-upcoming">
+                    <div class="upcoming-card">
+                        <a href="index.html"
+                            style="text-decoration: none; color: inherit; display: flex; gap: 0.6rem; align-items: center;">
+                            <span>HTML Master</span>
+                            <span class="upcoming-badge">公開中</span>
+                        </a>
+                    </div>
+                    <div class="upcoming-card">
+                        <a href="js_index.html"
+                            style="text-decoration: none; color: inherit; display: flex; gap: 0.6rem; align-items: center;">
+                            <span>JavaScript Master</span>
+                            <span class="upcoming-badge" style="color: #facc15; border-color: #facc15;">NEW</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links"
+                    style="display: flex; gap: 2rem; margin-bottom: 1rem; justify-content: center;">
+                    <a href="privacy.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
-                    <a href="../terms.html"
+                    <a href="terms.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
-                    <a href="../contact.html"
+                    <a href="contact.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
                 </div>
-                <p>&copy; 2026 Python Master. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/EduKodomo98564" target="_blank" rel="noopener noreferrer" class="social-link"
+                        title="X (Twitter) をフォロー">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        <span>Follow on X</span>
+                    </a>
+                </div>
             </div>
         </footer>
+        <button class="scroll-to-top" id="scrollToTop" aria-label="ページトップへ戻る">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </button>
     </div>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 
 </html>

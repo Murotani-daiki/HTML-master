@@ -4,171 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript解説一覧 | JavaScript Master 学習テキスト</title>
-    <meta name="description" content="JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。">
-    <link rel="canonical" href="https://html-master.com/guide/js_index.html">
+    <link rel="icon" href="favicon.webp" type="image/webp">
+    <title>JavaScript Master | 完全無料・最速でJSをマスター</title>
+    <meta name="description" content="完全無料・登録不要。実践形式でJavaScriptを学べる最速の学習プラットフォーム。手を動かしながら最短でプログラミングスキルを身につけよう。">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://html-master.com/guide/js_index.html">
-    <meta property="og:title" content="JavaScript解説一覧 | JavaScript Master 学習テキスト">
-    <meta property="og:description" content="JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。">
-    <meta property="og:image" content="https://html-master.com/favicon.webp">
-    <meta property="og:site_name" content="HTML Master">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104"
+        crossorigin="anonymous"></script>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://html-master.com/guide/js_index.html">
-    <meta name="twitter:title" content="JavaScript解説一覧 | JavaScript Master 学習テキスト">
-    <meta name="twitter:description" content="JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。">
-    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="JavaScript Master | 完全無料・最速でJSをマスター">
+    <meta property="og:description" content="完全無料・登録不要。実践形式でJavaScriptを学べる最速の学習プラットフォーム。">
+    <meta property="og:image" content="favicon.webp">
+    <meta property="og:url" content="js_index.html">
 
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "JavaScript解説一覧 | JavaScript Master 学習テキスト",
-        "description": "JavaScript Masterで学ぶ主要な構文や概念を一覧で解説。プログラミングの基礎からDOM操作まで詳しく学べます。",
-        "image": "https://html-master.com/favicon.webp",
-        "author": {
-            "@type": "Organization",
-            "name": "HTML Master"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "HTML Master",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://html-master.com/favicon.webp"
-            }
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://html-master.com/guide/js_index.html"
-        }
-    }
-    </script>
-    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@EduKodomo98564">
+    <meta name="twitter:title" content="JavaScript Master | 完全無料・最速でJSをマスター">
+    <meta name="twitter:description" content="完全無料・登録不要。実践形式でJavaScriptを学べる最速の学習プラットフォーム。">
+    <meta name="twitter:image" content="favicon.webp">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../home.css">
+    <link rel="stylesheet" href="home.css">
     <style>
         :root {
             --accent-color: #facc15;
             --accent-hover: #eab308;
         }
 
-        .ref-container {
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 5%;
-        }
-
-        .ref-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .ref-header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+        .logo h1,
+        .hero-content h1 span {
             background: linear-gradient(135deg, #facc15, #fbbf24);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .ref-header p {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-        }
-
-        .ref-category {
-            margin-bottom: 4rem;
-        }
-
-        .ref-category h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--accent-color);
-            color: var(--text-primary);
-        }
-
-        .ref-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .ref-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .ref-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.1);
-        }
-
-        .ref-card code {
-            display: inline-block;
+        .badge {
             background: rgba(250, 204, 21, 0.1);
+            border-color: rgba(250, 204, 21, 0.2);
             color: var(--accent-color);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            font-family: 'Fira Code', monospace;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
         }
 
-        .ref-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-primary);
-        }
-
-        .ref-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .guide-link-box {
-            margin-top: 5rem;
-            background: linear-gradient(135deg, rgba(250, 204, 21, 0.1), rgba(251, 191, 36, 0.05));
-            padding: 3rem;
-            border-radius: 32px;
-            text-align: center;
-            border: 1px solid rgba(250, 204, 21, 0.2);
-        }
-
-        .guide-link-box h2 {
-            margin-bottom: 1rem;
-        }
-
-        .guide-link-box .primary-btn-home {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 1rem 2rem;
-            background: var(--accent-color);
+        .primary-btn-home {
             color: #000;
+            box-shadow: 0 10px 20px rgba(250, 204, 21, 0.2);
         }
 
-        @media (max-width: 640px) {
-            .ref-header h1 {
-                font-size: 2.5rem;
-            }
+        .primary-btn-home:hover {
+            box-shadow: 0 15px 30px rgba(250, 204, 21, 0.4);
+        }
+
+        .nav-btn {
+            box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .feature-card:hover .icon {
+            text-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+        }
+
+        /* Update floating cards code */
+        .floating-card code {
+            color: #facc15;
         }
     </style>
 </head>
@@ -176,130 +83,318 @@
 <body>
     <div class="landing-container">
         <header class="home-header">
-            <a href="../js_index.html" class="logo">
-                <h1
-                    style="background: linear-gradient(135deg, #facc15, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                    JavaScript Master</h1>
+            <a href="js_index.html" class="logo">
+                <h1>JavaScript Master</h1>
             </a>
             <nav class="home-nav">
-                <a href="../js_levels.html">レベル</a>
-                <a href="../js_index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+                <a href="guide/js_index.html">JS解説</a>
+                <a href="js_levels.html">レベル</a>
+                <a href="index.html">HTML</a>
+                <a href="py_index.html">Python</a>
+                <a href="js_levels.html" class="nav-btn">今すぐ始める</a>
             </nav>
         </header>
 
-        <main class="ref-container">
-            <header class="ref-header">
-                <span class="badge"
-                    style="background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.2); color: #facc15;">解説一覧</span>
-                <h1>JavaScript 学習テキスト</h1>
-                <p>Webを動かす魔法、JavaScriptの重要コンセプトを総まとめ。</p>
-            </header>
-
-            <div class="guide-link-box">
-                <h2>基礎知識</h2>
-                <p>プログラミングの「考え方」から、実際のWeb開発での活用方法まで。最初のステップに最適な学習ガイドです。</p>
-                <a href="js-basics.html" class="primary-btn-home">JSの基礎学習ガイドを読む</a>
-            </div>
-
-            <section class="ref-category">
-                <h2>基本文法</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>let / const</code>
-                        <h3>変数と定数</h3>
-                        <p>データの入れ物を作る方法。値を後から変えられる let と、変えられない const の使い分けを学びます。</p>
-                        <a href="js-variables.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="badge">完全無料・登録不要</span>
+                    <h1><span>完全無料</span><br>演習を通して<span>JavaScript</span>を最速で学ぼう。</h1>
+                    <p>JavaScript
+                        Masterは、実際にプログラミングをしながらJavaScriptを効率的に学べる学習プラットフォームです。Webに動きをつける魔法の言語を、ブラウザだけで最速で身につけましょう。
+                    </p>
+                    <div class="hero-btns">
+                        <a href="js_levels.html" class="primary-btn-home">今すぐ無料で始める</a>
+                        <a href="js_levels.html" class="secondary-btn-home">カリキュラムを見る</a>
                     </div>
-                    <div class="ref-card">
-                        <code>console.log()</code>
-                        <h3>コンソール出力</h3>
-                        <p>プログラムの実行結果を確認するための最も重要なツール。デバッグの第一歩です。</p>
-                        <a href="js-console.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>"String" / 123</code>
-                        <h3>データ型</h3>
-                        <p>文字列、数値、真偽値など、JavaScriptが扱うデータの種類と、それぞれの特徴を理解します。</p>
-                        <a href="js-data-types.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d61941.b5507013.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI1OCIsImJhbiI6MzIzMDk1MSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/50d61941.b5507013.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3230951&t=pict" border="0" style="margin:2px" alt="" title=""></a>
-            </section>
-
-            <section class="ref-category">
-                <h2>制御とロジック</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>if / else</code>
-                        <h3>条件分岐</h3>
-                        <p>「もし〜ならA、そうでなければB」という、プログラムに判断をさせるための基本構造です。</p>
-                        <a href="js-basics.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>for / while</code>
-                        <h3>ループ処理</h3>
-                        <p>同じ処理を何度も繰り返す方法。大量のデータを効率よく処理するために欠かせません。</p>
-                        <a href="js-basics.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>function()</code>
-                        <h3>関数</h3>
-                        <p>一連の処理をまとめて名前を付け、いつでも再利用できるようにする仕組みです。</p>
-                        <a href="js-basics.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="50d5f10d.1e41aff4.50d5f10e.5c928699";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="300x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1770623658296";</script><script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
                 </div>
-            </section>
-
-            <section class="ref-category">
-                <h2>Webページとの連携</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>DOM</code>
-                        <h3>DOM操作</h3>
-                        <p>HTML要素を取得し、JavaScriptから文字や色、配置などを動的に書き換える魔法の仕組みです。</p>
-                        <a href="js-dom.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>addEventListener</code>
-                        <h3>イベント</h3>
-                        <p>「クリックされた」「入力された」など、ユーザーの動作を検知してプログラムを動かす方法です。</p>
-                        <a href="js-dom.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="background.webp" alt="Coding Background" width="1280" height="720">
+                        <div class="floating-card c1"><code>console.log("Hello")</code></div>
+                        <div class="floating-card c2"><code>const app = "JS"</code></div>
                     </div>
                 </div>
             </section>
+            <section id="reference" class="reference-promo"
+                style="background: rgba(250, 204, 21, 0.05); padding: 6rem 5%; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+                <div
+                    style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 4rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 320px;">
+                        <span class="badge"
+                            style="background: rgba(250, 204, 21, 0.1); color: var(--accent-color); margin-bottom: 1.5rem;">辞書・リファレンス</span>
+                        <h2
+                            style="font-size: 2.8rem; font-family: 'Outfit', sans-serif; margin-bottom: 1.5rem; line-height: 1.2;">
+                            <span>コードの意味</span>を、<br>深く、分かりやすく。
+                        </h2>
+                        <p
+                            style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.8;">
+                            「なぜこう動くのか？」を徹底解説。JavaScriptの基本構文からDOM操作まで、演習とセットで読める充実の学習テキストを公開しています。
+                        </p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;">
+                            <div style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-primary);">
+                                <span
+                                    style="background: var(--accent-color); color: #000; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                構文の徹底解説
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-primary);">
+                                <span
+                                    style="background: var(--accent-color); color: #000; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                実践的なサンプル
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-primary);">
+                                <span
+                                    style="background: var(--accent-color); color: #000; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                DOMの仕組み
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-primary);">
+                                <span
+                                    style="background: var(--accent-color); color: #000; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                初心者向け設計
+                            </div>
+                        </div>
+                        <a href="guide/js_index.html" class="primary-btn-home"
+                            style="display: inline-block;">JS・解説一覧を見る</a>
+                    </div>
+                    <div style="flex: 1; min-width: 320px; display: flex; justify-content: center; position: relative;">
+                        <!-- Visual representation of JS concepts -->
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div
+                                style="background: var(--card-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--border-color); width: 140px; text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">{ }</div>
+                                <div style="font-weight: 700; color: var(--accent-color);">Logic</div>
+                            </div>
+                            <div
+                                style="background: var(--card-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--border-color); width: 140px; text-align: center; margin-top: 2rem;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">&lt;/&gt;</div>
+                                <div style="font-weight: 700; color: var(--accent-color);">DOM</div>
+                            </div>
+                            <div
+                                style="background: var(--card-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--border-color); width: 140px; text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">( )</div>
+                                <div style="font-weight: 700; color: var(--accent-color);">Event</div>
+                            </div>
+                            <div
+                                style="background: var(--card-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--border-color); width: 140px; text-align: center; margin-top: 2rem;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">[ ]</div>
+                                <div style="font-weight: 700; color: var(--accent-color);">Data</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="features" class="features">
+                <div class="section-title">
+                    <h2>なぜ JavaScript Master なのか？</h2>
+                    <p>最短でプログラミング脳を作るための、3つの最強ツール。</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">💻</div>
+                        <h3>ライブ実行</h3>
+                        <p>書いたプログラムがその場で動く。ロジックのミスにもすぐに気づけます。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🎯</div>
+                        <h3>レベル別課題</h3>
+                        <p>変数からDOM操作まで。無理なく進められるステップアップ方式。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">💎</div>
+                        <h3>完全無料</h3>
+                        <p>登録も課金も一切なし。すべてのコンテンツを今すぐ自由に利用できます。</p>
+                    </div>
+                </div>
+            </section>
 
+            <section id="levels" class="levels-preview">
+                <div class="levels-content" style="text-align: center;">
+                    <h2>完全制覇へのロードマップ</h2>
+                    <p style="margin-bottom: 3rem; color: #94a3b8;">
+                        基礎的な構文から、インタラクティブなアプリ制作まで。<br>自分のペースで、着実にエンジニアスキルを身につけましょう。</p>
+
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                        <div class="level-item">
+                            <span class="lvl">Lv. 1</span>
+                            <div class="lvl-text">
+                                <h3>JS基礎</h3>
+                                <p>変数とデータ型</p>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <span class="lvl" style="background: rgba(250, 204, 21, 0.2); color: #facc15;">Lv. 5</span>
+                            <div class="lvl-text">
+                                <h3>論理と制御</h3>
+                                <p>if文とループ処理</p>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <span class="lvl" style="background: rgba(250, 204, 21, 0.3); color: #facc15;">Lv. 10</span>
+                            <div class="lvl-text">
+                                <h3>DOM操作</h3>
+                                <p>ページを動かす</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="js_levels.html" class="primary-btn-home">カリキュラム一覧を見る</a>
+                </div>
+            </section>
+            <section class="other-courses">
+                <div class="section-title">
+                    <h2>Master シリーズでさらに学ぶ</h2>
+                    <p>スキルを掛け合わせて、さらに高度なものづくりへ。</p>
+                </div>
+                <div class="course-grid">
+                    <a href="index.html" class="course-card" style="border-color: rgba(56, 189, 248, 0.2);">
+                        <div class="course-icon"
+                            style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 2px solid rgba(56, 189, 248, 0.2);">
+                            HTML</div>
+                        <div class="course-info">
+                            <h3>HTML Master</h3>
+                            <p>すべてのウェブ制作の基盤となる、HTML/CSSの構成とデザインをマスター。</p>
+                            <span class="view-btn" style="color: #38bdf8;">コースを見る →</span>
+                        </div>
+                    </a>
+                    <a href="py_index.html" class="course-card py">
+                        <div class="course-icon">Py</div>
+                        <div class="course-info">
+                            <h3>Python Master</h3>
+                            <p>AIやデータ分析、自動化に必須の言語を、ブラウザだけで最速マスター。</p>
+                            <span class="view-btn">コースを見る →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="about" class="about-section">
+                <div class="about-content">
+                    <div class="section-title">
+                        <h2>JavaScript Master について</h2>
+                        <p>Webに命を吹き込む、JavaScriptの力をすべての手に。</p>
+                    </div>
+                    <div class="about-text-grid">
+                        <div class="about-text-card">
+                            <h3>現代のWebの心臓部を学ぶ</h3>
+                            <p>JavaScriptは、現代のインターネットにおいて最も重要なプログラミング言語のひとつです。単なる動的な表現にとどまらず、サーバーサイド、モバイルアプリ、そしてAIの分野まで、その活動領域は無限に広がっています。
+                            </p>
+                            <p>JavaScript
+                                Masterでは、初心者が最もつまずきやすい「論理的思考」の壁を、実際に手を動かす演習を通じて乗り越えることを目的としています。抽象的な理論よりも、実際にコードを書いて「動いた！」という感動を積み重ねることが、エンジニアへの最短ルートだと私たちは信じています。
+                            </p>
+                        </div>
+                        <div class="about-text-card">
+                            <h3>継続的な学習を支援するプラットフォーム</h3>
+                            <p>JavaScriptの学習は、基本構文を覚えるだけでなく、非同期処理やDOM操作といった独特な概念を理解する必要があります。私たちは、これらの複雑な概念をレベル別に分解し、ひとつずつ着実にステップアップできる環境を構築しました。
+                            </p>
+                            <p>私たちの目標は、ただ「コードが書ける」ようになることではありません。問題を解決するためのロジックを自分で組み立てられるようになる「自走できるエンジニア」を育てることです。完全無料・登録不要のこの場所で、あなたの可能性を解き放ちましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section id="faq" class="faq-section">
+                <div class="faq-content">
+                    <div class="section-title">
+                        <h2>よくある質問</h2>
+                        <p>JavaScript学習に関する疑問を解決します。</p>
+                    </div>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3>Q. まったくの未経験でも始められますか？</h3>
+                            <p>A.
+                                はい、もちろんです。HTML/CSSの知識があればより理解が進みますが、JavaScriptの基本文法から丁寧に解説しているため、プログラミング未経験の方でも安心してスタートできます。
+                            </p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. jQueryではなく最新の書き方を学べますか？</h3>
+                            <p>A. はい。当サイトでは現在主流となっている「モダンJavaScript（ES6+）」の構文をベースにしています。将来に役立つ本質的なスキルを身につけることができます。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. 演習でエラーが出て進めなくなったら？</h3>
+                            <p>A. 「ヒント」や「解説」ボタンを活用してください。エラーは上達のプロセスです。なぜエラーが起きたのかを確認しながら進めることで、デバッグ能力も鍛えられます。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. 全てのレベルを終えた後のステップは？</h3>
+                            <p>A. 基礎を固めた後は、ReactやNext.jsといったフレームワークの学習、または Python Master で他の言語との違いを学んでみるのがおすすめです。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="home-footer">
             <div class="footer-content">
-                <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
-                    <a href="../privacy.html"
+                <div class="logo">
+                    <h1>JavaScript Master</h1>
+                </div>
+                <p>&copy; 2026 JavaScript Master. Built for the future of coding education.</p>
+                <div class="footer-upcoming">
+                    <div class="upcoming-card">
+                        <a href="index.html"
+                            style="text-decoration: none; color: inherit; display: flex; gap: 0.6rem; align-items: center;">
+                            <span>HTML Master</span>
+                            <span class="upcoming-badge">公開中</span>
+                        </a>
+                    </div>
+                    <div class="upcoming-card">
+                        <a href="py_index.html"
+                            style="text-decoration: none; color: inherit; display: flex; gap: 0.6rem; align-items: center;">
+                            <span>Python Master</span>
+                            <span class="upcoming-badge"
+                                style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border-color: rgba(59, 130, 246, 0.3);">NEW</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links"
+                    style="display: flex; gap: 2rem; margin-bottom: 1rem; justify-content: center;">
+                    <a href="privacy.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
-                    <a href="../terms.html"
+                    <a href="terms.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
-                    <a href="../contact.html"
+                    <a href="contact.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
                 </div>
-                <p>&copy; 2026 JavaScript Master. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/EduKodomo98564" target="_blank" rel="noopener noreferrer" class="social-link"
+                        title="X (Twitter) をフォロー">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        <span>Follow on X</span>
+                    </a>
+                </div>
             </div>
         </footer>
+        <button class="scroll-to-top" id="scrollToTop" aria-label="ページトップへ戻る">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </button>
     </div>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 
 </html>

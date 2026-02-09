@@ -2,405 +2,385 @@
 <html lang="ja">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTMLタグ・解説一覧 | HTML Master 学習テキスト</title>
-    <meta name="description" content="HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。">
-    <link rel="canonical" href="https://html-master.com/guide/index.html">
+    <link rel="icon" href="favicon.webp" type="image/webp">
+    <title>HTML Master | 完全無料・最速でHTML/CSSをマスター</title>
+    <meta name="description" content="完全無料・登録不要。実践形式でHTML/CSSを学べる最速の学習プラットフォーム。手を動かしながら最短でコーディングスキルを身につけよう。">
+
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104"
-     crossorigin="anonymous"></script>
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://html-master.com/guide/index.html">
-    <meta property="og:title" content="HTMLタグ・解説一覧 | HTML Master 学習テキスト">
-    <meta property="og:description" content="HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。">
-    <meta property="og:image" content="https://html-master.com/favicon.webp">
-    <meta property="og:site_name" content="HTML Master">
+        crossorigin="anonymous"></script>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://html-master.com/guide/index.html">
-    <meta name="twitter:title" content="HTMLタグ・解説一覧 | HTML Master 学習テキスト">
-    <meta name="twitter:description" content="HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。">
-    <meta name="twitter:image" content="https://html-master.com/favicon.webp">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HTML Master | 完全無料・最速でHTML/CSSをマスター">
+    <meta property="og:description" content="完全無料・登録不要。実践形式でHTML/CSSを学べる最速の学習プラットフォーム。">
+    <meta property="og:image" content="favicon.webp">
+    <meta property="og:url" content="index.html">
 
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "HTMLタグ・解説一覧 | HTML Master 学習テキスト",
-        "description": "HTML Masterで学ぶ主要なタグや概念を一覧で解説。ウェブ制作に必要な知識をカテゴリ別に整理しました。",
-        "image": "https://html-master.com/favicon.webp",
-        "author": {
-            "@type": "Organization",
-            "name": "HTML Master"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "HTML Master",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://html-master.com/favicon.webp"
-            }
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://html-master.com/guide/index.html"
-        }
-    }
-    </script>
-    <link rel="icon" href="../favicon.webp" type="image/webp">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@EduKodomo98564">
+    <meta name="twitter:title" content="HTML Master | 完全無料・最速でHTML/CSSをマスター">
+    <meta name="twitter:description" content="完全無料・登録不要。実践形式でHTML/CSSを学べる最速の学習プラットフォーム。">
+    <meta name="twitter:image" content="favicon.webp">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../home.css">
-    <style>
-        .ref-container {
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 5%;
-        }
-
-        .ref-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .ref-header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .ref-header p {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-        }
-
-        .ref-category {
-            margin-bottom: 4rem;
-        }
-
-        .ref-category h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--accent-color);
-            color: var(--text-primary);
-        }
-
-        .ref-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .ref-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .ref-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
-        }
-
-        .ref-card code {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-color);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            font-family: 'Fira Code', monospace;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .ref-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-primary);
-        }
-
-        .ref-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .guide-link-box {
-            margin-top: 5rem;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 204, 248, 0.05));
-            padding: 3rem;
-            border-radius: 32px;
-            text-align: center;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-        }
-
-        .guide-link-box h2 {
-            margin-bottom: 1rem;
-        }
-
-        .guide-link-box .primary-btn-home {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 1rem 2rem;
-        }
-
-        @media (max-width: 640px) {
-            .ref-header h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
     <div class="landing-container">
         <header class="home-header">
-            <a href="../index.html" class="logo">
+            <a href="index.html" class="logo">
                 <h1>HTML Master</h1>
             </a>
             <nav class="home-nav">
-                <a href="../levels.html">レベル</a>
-                <a href="../index.html" class="secondary-btn-home" style="padding: 0.5rem 1rem;">ホーム</a>
+                <a href="levels.html">レベル</a>
+                <a href="guide/index.html">解説テキスト</a>
+                <a href="js_index.html">JavaScript</a>
+                <a href="py_index.html">Python</a>
+                <a href="levels.html" class="nav-btn">今すぐ始める</a>
             </nav>
         </header>
 
-        <main class="ref-container">
-            <header class="ref-header">
-                <span class="badge">解説一覧</span>
-                <h1>HTML 学習テキスト</h1>
-                <p>HTML Masterで登場する主要な要素と、その使い方を総まとめ。</p>
-            </header>
-            <div class="guide-link-box">
-                <h2>基礎知識</h2>
-                <p>初心者向けに、タグの意味だけでなく「なぜそのタグを使うのか」という設計思想まで解説した学習ガイドをご用意しています。</p>
-                <a href="html-basics.html" class="primary-btn-home">HTMLの基礎学習ガイドを読む</a>
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="badge">完全無料・登録不要</span>
+                    <h1><span>完全無料</span><br>演習を通して<span>HTML/CSS</span>を最速で学ぼう。</h1>
+                    <p>HTML
+                        Masterは、実際にプログラミングをしながらHTML/CSSを効率的に学べる学習プラットフォームです。環境構築不要、料金も一切不要。今すぐブラウザだけで、HTML/CSSを最速で身につけましょう。
+                    </p>
+                    <div class="hero-btns">
+                        <a href="levels.html" class="primary-btn-home">今すぐ無料で始める</a>
+                        <a href="levels.html" class="secondary-btn-home">カリキュラムを見る</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="background.webp" alt="Coding Background" width="1280" height="720">
+                        <div class="floating-card c1"><code>&lt;h1&gt;Hello World&lt;/h1&gt;</code></div>
+                        <div class="floating-card c2"><code>&lt;div class="hero"&gt;</code></div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section class="reference-promo"
+                style="background: rgba(56, 189, 248, 0.05); padding: 6rem 5%; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+                <div
+                    style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 4rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 320px;">
+                        <span class="badge"
+                            style="background: rgba(56, 189, 248, 0.1); color: var(--accent-color); margin-bottom: 1.5rem;">辞書・リファレンス</span>
+                        <h2
+                            style="font-family: 'Outfit', sans-serif; font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); line-height: 1.2;">
+                            辞書不要。充実の<br><span style="color: var(--accent-color);">解説テキスト</span>。</h2>
+                        <p
+                            style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2.5rem; font-size: 1.1rem;">
+                            すべてのHTMLタグに詳細な解説ページを用意しました。演習中に分からないタグが出てきても、その場で深く学ぶことができます。SEO効果や正しい使い分けまで網羅した、プロも納得の高品質リファレンスです。
+                        </p>
+                        <a href="guide/index.html" class="primary-btn-home"
+                            style="display: inline-block; padding: 1.2rem 2.5rem; text-decoration: none;">タグ・解説一覧を見る</a>
+                    </div>
+                    <div
+                        style="flex: 1; min-width: 320px; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem;">
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); text-align: center;">
+                            <code
+                                style="color: var(--accent-color); font-weight: 700; font-size: 1.1rem;">&lt;h1&gt;</code>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">見出し</p>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); text-align: center;">
+                            <code
+                                style="color: var(--accent-color); font-weight: 700; font-size: 1.1rem;">&lt;p&gt;</code>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">段落</p>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); text-align: center;">
+                            <code
+                                style="color: var(--accent-color); font-weight: 700; font-size: 1.1rem;">&lt;a&gt;</code>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">リンク</p>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); text-align: center;">
+                            <code
+                                style="color: var(--accent-color); font-weight: 700; font-size: 1.1rem;">&lt;img&gt;</code>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">画像</p>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); text-align: center;">
+                            <code
+                                style="color: var(--accent-color); font-weight: 700; font-size: 1.1rem;">&lt;div&gt;</code>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">グループ</p>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); text-align: center;">
+                            <code
+                                style="color: var(--accent-color); font-weight: 700; font-size: 1.1rem;">&lt;section&gt;</code>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">区分</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="features">
+                <div class="section-title">
+                    <h2>なぜ HTML Master なのか？</h2>
+                    <p>最短で結果を出すための、3つの最強ツール。</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">💻</div>
+                        <h3>ライブエディタ</h3>
+                        <p>書いたコードがその場で画面に反映。ミスにもすぐに気づけます。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🎯</div>
+                        <h3>レベル別課題</h3>
+                        <p>無理なく進められる3段階のステップ。一歩ずつ着実に成長できます。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">💎</div>
+                        <h3>完全無料</h3>
+                        <p>登録も課金も一切なし。すべてのコンテンツを今すぐ自由に利用できます。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="levels" class="levels-preview">
+                <div class="levels-content" style="text-align: center;">
+                    <h2>完全制覇へのロードマップ</h2>
+                    <p style="margin-bottom: 3rem; color: #94a3b8;">
+                        基礎のタグから、実践的なLP制作まで。全12レベルのステップアップ。<br>自分のペースで、着実にスキルを身につけましょう。</p>
+
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                        <div class="level-item">
+                            <span class="lvl">Lv. 1</span>
+                            <div class="lvl-text">
+                                <h3>HTML基礎</h3>
+                                <p>基本タグと構造</p>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <span class="lvl" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">Lv. 5</span>
+                            <div class="lvl-text">
+                                <h3>CSS基礎</h3>
+                                <p>色と文字の装飾</p>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <span class="lvl" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">Lv. 10</span>
+                            <div class="lvl-text">
+                                <h3>実践編</h3>
+                                <p>サイト制作演習</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="levels.html" class="primary-btn-home">カリキュラム一覧を見る</a>
+                </div>
+            </section>
+            <section class="other-courses">
+                <div class="section-title">
+                    <h2>Master シリーズでさらに学ぶ</h2>
+                    <p>HTML/CSSの次は、本格的なプログラミングの世界へ。実践形式で最速マスター。</p>
+                </div>
+                <div class="course-grid">
+                    <a href="js_index.html" class="course-card js">
+                        <div class="course-icon">JS</div>
+                        <div class="course-info">
+                            <h3>JavaScript Master</h3>
+                            <p>動的なウェブサイト制作の基礎から応用まで、演習を通して身につけます。</p>
+                            <span class="view-btn">コースを見る →</span>
+                        </div>
+                    </a>
+                    <a href="py_index.html" class="course-card py">
+                        <div class="course-icon">Py</div>
+                        <div class="course-info">
+                            <h3>Python Master</h3>
+                            <p>AIやデータ分析、自動化に必須の言語を、環境構築不要で今すぐスタート。</p>
+                            <span class="view-btn">コースを見る →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="about" class="about-section">
+                <div class="about-content">
+                    <div class="section-title">
+                        <h2>HTML Master について</h2>
+                        <p>私たちのミッションと、このプラットフォームへの想い。</p>
+                    </div>
+                    <div class="about-text-grid">
+                        <div class="about-text-card">
+                            <h3>プログラミング教育の未来を創る</h3>
+                            <p>HTML
+                                Masterは、「プログラミングを学びたい」と願うすべての人が、場所や経済的な制約に縛られることなく学習を始められる世界を目指しています。私たちは、プログラミングこそが現代の魔法であり、誰もがその魔法を使えるようになるべきだと信じています。
+                            </p>
+                            <p>従来の学習方法は、分厚い参考書を読み込んだり、高額なスクールに通ったりすることが主流でした。しかし、本来プログラミングは「手を動かしながら学ぶ」のが最も効率的です。そこで私たちは、環境構築不要で、ブラウザひとつあれば今すぐ始められるインタラクティブな学習環境を構築しました。
+                            </p>
+                        </div>
+                        <div class="about-text-card">
+                            <h3>なぜ「完全無料」なのか</h3>
+                            <p>質の高い教育は、一部の特権層だけのものであってはなりません。当サイトが提供するすべてのカリキュラム、ライブエディタ、そして今後追加される新機能も、すべて無料で提供し続けます。これにより、次世代の才能あるクリエイターたちが、スキルを磨き、新しい価値を創造することを支援します。
+                            </p>
+                            <p>当サイトの活動は、理念に共感してくださるユーザーの皆様と、最小限の広告収益によって支えられています。私たちは、過度な広告で学習体験を損なうことなく、持続可能な教育プラットフォームを運営し続けることを約束します。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="guides" class="guides-section" style="padding: 6rem 5%; max-width: 1200px; margin: 0 auto;">
+                <div class="section-title">
+                    <h2>学習ガイド</h2>
+                    <p>より深く学びたい方のための、テキスト形式の技術解説。</p>
+                </div>
+                <div class="guide-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <a href="guide/html-basics.html" class="guide-card"
+                        style="text-decoration: none; background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border-color); transition: all 0.3s;">
+                        <span class="badge" style="margin-bottom: 1rem;">HTML</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">HTMLの基礎知識</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            ウェブ制作の根幹となるHTMLの構造、タグ、セマンティックなマークアップについて詳しく解説します。</p>
+                        <span style="color: var(--accent-color); font-weight: 700;">詳しく読む →</span>
+                    </a>
+                    <a href="guide/css-basics.html" class="guide-card"
+                        style="text-decoration: none; background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border-color); transition: all 0.3s;">
+                        <span class="badge"
+                            style="margin-bottom: 1rem; background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.2);">CSS</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">CSSの基礎知識</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            デザインを制御するCSSの基本。ボックスモデルからセレクタ、色の指定方法までを網羅しています。</p>
+                        <span style="color: #fbbf24; font-weight: 700;">詳しく読む →</span>
+                    </a>
+                    <a href="guide/index.html" class="guide-card"
+                        style="text-decoration: none; background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border-color); transition: all 0.3s;">
+                        <span class="badge"
+                            style="margin-bottom: 1rem; background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-color: rgba(139, 92, 246, 0.2);">Reference</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">タグ・解説一覧</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">HTML
+                            Masterで扱う主要なタグをカテゴリ別に一覧化。辞書代わりに使用できるリファレンスです。</p>
+                        <span style="color: #8b5cf6; font-weight: 700;">一覧を見る →</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="faq" class="faq-section">
+                <div class="faq-content">
+                    <div class="section-title">
+                        <h2>よくある質問</h2>
+                        <p>疑問に思ったことがあれば、こちらをご確認ください。</p>
+                    </div>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3>Q. 本当にすべて無料ですか？</h3>
+                            <p>A. はい、すべてのコンテンツが完全無料です。会員登録による課金や、後から料金が発生することも一切ありません。安心して学習に集中してください。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. 初心者ですが大丈夫ですか？</h3>
+                            <p>A. もちろんです。Lv.1の基本タグから順を追って進められるよう設計されています。ライブエディタで結果を確認しながら進めるので、直感的に理解を深めることができます。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. スマートフォンでも学習できますか？</h3>
+                            <p>A. ブラウザでアクセス可能ですが、コードの入力が必要なため、キーボードのあるPC環境での学習を強く推奨しています。閲覧や解説の確認はスマホからでも快適に行えます。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Q. 学習した後はどうすればいいですか？</h3>
+                            <p>A. HTML/CSSをマスターしたら、次は JavaScript や Python
+                                のコースに挑戦してみてください。動的なサイト制作やデータ分析など、さらに広い世界が待っています。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                        <div style="display: flex; justify-content: center; margin: 20px 0;">
+                <script
+                    type="text/javascript">rakuten_design = "slide"; rakuten_affiliateId = "50d5f10d.1e41aff4.50d5f10e.5c928699"; rakuten_items = "ctsmatch"; rakuten_genreId = "0"; rakuten_size = "600x200"; rakuten_target = "_blank"; rakuten_theme = "gray"; rakuten_border = "off"; rakuten_auto_mode = "on"; rakuten_genre_title = "off"; rakuten_recommend = "on"; rakuten_ts = "1770620559067";</script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
             </div>
-            <section class="ref-category">
-                <h2>基本構造タグ</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>&lt;!DOCTYPE html&gt;</code>
-                        <h3>文書型宣言</h3>
-                        <p>このファイルがHTML5であることをブラウザに伝えます。ファイルの最上部に記述します。</p>
-                        <a href="tag-doctype.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;html&gt;</code>
-                        <h3>ルート要素</h3>
-                        <p>HTML文書全体の範囲を指定します。すべての要素はこのタグの中に含まれます。</p>
-                        <a href="tag-html.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;head&gt;</code>
-                        <h3>メタ情報</h3>
-                        <p>タイトルや文字コード、検索エンジン向けの情報など、ブラウザに直接表示されない情報を記述します。</p>
-                        <a href="tag-head.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;body&gt;</code>
-                        <h3>本文</h3>
-                        <p>サイトを訪れたユーザーが実際に目にする、文字、画像、ボタンなどのすべてのコンテンツを記述します。</p>
-                        <a href="tag-body.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="ref-category">
-                <h2>テキスト系タグ</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>&lt;h1&gt;〜&lt;h6&gt;</code>
-                        <h3>見出し</h3>
-                        <p>情報の重要度に応じた見出しを作成します。h1が最も重要で、SEO的にも非常に重要な役割を持ちます。</p>
-                        <a href="tag-headings.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;p&gt;</code>
-                        <h3>段落</h3>
-                        <p>まとまった文章（テキスト）を記述します。前後に自動的に余白が生まれるのが特徴です。</p>
-                        <a href="tag-p.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;br&gt;</code>
-                        <h3>改行</h3>
-                        <p>文章の途中で強制的に改行を入れます。終了タグを持たない「空要素」のひとつです。</p>
-                        <a href="tag-br.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;span&gt;</code>
-                        <h3>インライン要素</h3>
-                        <p>文章の一部だけに特定のスタイル（色など）を適用したい時に使用します。</p>
-                        <a href="tag-span.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="ref-category">
-                <h2>メディア・リンク</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>&lt;a&gt;</code>
-                        <h3>アンカー（リンク）</h3>
-                        <p>他のページや外部のサイトへ移動するためのリンクを作成します。href属性で遷移先を指定します。</p>
-                        <a href="tag-a.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;img&gt;</code>
-                        <h3>画像表示</h3>
-                        <p>ウェブページに画像を挿入します。src属性で場所、alt属性で説明を記述します。</p>
-                        <a href="tag-img.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;video&gt;</code>
-                        <h3>動画埋め込み</h3>
-                        <p>ファイルをサーバーから直接読み込んで動画を再生します。複数の属性でコントロールが可能です。</p>
-                        <a href="tag-video.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d61941.b5507013.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI1OCIsImJhbiI6MzIzMDk1MSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/50d61941.b5507013.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3230951&t=pict" border="0" style="margin:2px" alt="" title=""></a>
-                </div>
-            </section>
-
-            <section class="ref-category">
-                <h2>レイアウト・グループ</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>&lt;div&gt;</code>
-                        <h3>グループ化</h3>
-                        <p>要素をまとめて箱を作り、デザインを調整しやすくします。最も汎用性の高いタグです。</p>
-                        <a href="tag-div.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;header&gt;</code>
-                        <h3>ヘッダー</h3>
-                        <p>ページや記事全体の導入部。ロゴやナビゲーションが含まれることが多いです。</p>
-                        <a href="tag-header.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;footer&gt;</code>
-                        <h3>フッター</h3>
-                        <p>ページの最後に位置し、著作権情報やサイトマップ、各種リンクが含まれます。</p>
-                        <a href="tag-footer.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>&lt;section&gt;</code>
-                        <h3>セクション</h3>
-                        <p>意味のまとまりごとにコンテンツを区切るための、セマンティックなタグです。</p>
-                        <a href="tag-section.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="ref-category">
-                <h2>CSS・デザイン</h2>
-                <div class="ref-grid">
-                    <div class="ref-card">
-                        <code>Selectors</code>
-                        <h3>セレクタと詳細度</h3>
-                        <p>特定の要素を選んでスタイルを適用する仕組みと、優先順位のルールを学びます。</p>
-                        <a href="css-selectors.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>Box Model</code>
-                        <h3>ボックスモデル</h3>
-                        <p>全ての要素が持つ「四角い箱」の概念。MarginやPaddingの使い分けを理解します。</p>
-                        <a href="css-box-model.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>Colors</code>
-                        <h3>色と背景</h3>
-                        <p>HEXやRGBAなどの色彩指定方法と、グラデーションや背景画像の設定について。</p>
-                        <a href="css-colors.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>Typography</code>
-                        <h3>文字と単位</h3>
-                        <p>font-sizeやrem, pxといった単位の使い分け、読みやすい行間の作り方を学びます。</p>
-                        <a href="css-typography.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <div class="ref-card">
-                        <code>Flexbox</code>
-                        <h3>レイアウト</h3>
-                        <p>要素を並び替え、中央揃えなどを自在に行うモダンなFlexboxの使い方を解説します。</p>
-                        <a href="css-flexbox.html"
-                            style="display: block; margin-top: 1rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 700; text-decoration: none;">詳しく読む
-                            →</a>
-                    </div>
-                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d6381c.2ca7fe9e.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI0NCIsImJhbiI6MzI0MzY4NSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/50d6381c.2ca7fe9e.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3243685&t=pict" border="0" style="margin:2px" height="250px" alt="" title=""></a>
-                </div>
-            </section>
-
-
-
         </main>
 
         <footer class="home-footer">
             <div class="footer-content">
+                <div class="logo">
+                    <h1>HTML Master</h1>
+                </div>
+                <p>&copy; 2026 HTML Master. Built for the future of coding education.</p>
+                <div class="footer-upcoming">
+                    <div class="upcoming-card">
+                        <a href="js_index.html"
+                            style="text-decoration: none; color: inherit; display: flex; gap: 0.6rem; align-items: center;">
+                            <span>JavaScript Master</span>
+                            <span class="upcoming-badge"
+                                style="background: rgba(250, 204, 21, 0.2); color: #facc15; border-color: rgba(250, 204, 21, 0.3);">NEW</span>
+                        </a>
+                    </div>
+                    <div class="upcoming-card">
+                        <a href="py_index.html"
+                            style="text-decoration: none; color: inherit; display: flex; gap: 0.6rem; align-items: center;">
+                            <span>Python Master</span>
+                            <span class="upcoming-badge"
+                                style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border-color: rgba(59, 130, 246, 0.3);">NEW</span>
+                        </a>
+                    </div>
+                </div>
                 <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
-                    <a href="../privacy.html"
+                    <a href="privacy.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
-                    <a href="../terms.html"
+                    <a href="terms.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
-                    <a href="../contact.html"
+                    <a href="contact.html"
                         style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
                 </div>
-                <p>&copy; 2026 HTML Master. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/EduKodomo98564" target="_blank" rel="noopener noreferrer" class="social-link"
+                        title="X (Twitter) をフォロー">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        <span>Follow on X</span>
+                    </a>
+                </div>
             </div>
         </footer>
+        <button class="scroll-to-top" id="scrollToTop" aria-label="ページトップへ戻る">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </button>
     </div>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 
 </html>
