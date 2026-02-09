@@ -130,6 +130,73 @@ body {
     background: var(--bg-secondary);
 }
 
+/* ---- Game Wrapper with Ads ---- */
+.game-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    padding: 8px 16px;
+    overflow: hidden;
+}
+
+/* ---- Advertisement Sidebars ---- */
+.ad-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 160px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 8px 4px;
+}
+
+.ad-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ad-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ad-sidebar::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.ad-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+}
+
+.ad-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .ad-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ad-item a {
+    display: block;
+    width: 100%;
+}
+
+.ad-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
 /* ---- Game Board ---- */
 #game {
     flex: 1;
@@ -819,6 +886,49 @@ input:checked + .slider::before {
 
 /* ---- Print ---- */
 @media print {
-    #keyboard, #header, #toast-container { display: none; }
+    #keyboard, #header, #toast-container, .ad-sidebar { display: none; }
     #game { justify-content: flex-start; }
+}
+
+/* ---- Mobile Responsive for Ads ---- */
+@media (max-width: 920px) {
+    .ad-sidebar {
+        width: 120px;
+    }
+
+    .game-wrapper {
+        gap: 12px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-wrapper {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .ad-sidebar {
+        width: 100%;
+        max-height: 100px;
+        flex-direction: row;
+        padding: 4px;
+    }
+
+    .ad-item {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-wrapper {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 4px;
+    }
+
+    .ad-sidebar {
+        display: none;
+    }
 }
