@@ -174,6 +174,8 @@ body {
     padding: 6px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
+    max-height: 100px;
+    overflow: hidden;
 }
 
 .ad-item:hover {
@@ -188,13 +190,17 @@ body.dark .ad-item:hover {
 .ad-item a {
     display: block;
     width: 100%;
+    height: 100%;
 }
 
 .ad-item img {
     max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
     display: block;
     border-radius: 4px;
+    object-fit: contain;
 }
 
 /* ---- Game Board ---- */
@@ -206,6 +212,8 @@ body.dark .ad-item:hover {
     justify-content: space-between;
     padding: 8px 0;
     overflow: hidden;
+    min-width: 400px;
+    width: auto;
 }
 
 #board-container {
