@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,37 +12,40 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>日本の地名でWordle - 毎日の地名当てチャレンジゲーム</title>
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="日本の地名でWordle">
-    <meta property="og:description" content="日本の地名当てゲーム『地名でWordle』。毎日5回の機会で日本の都市や地域を当てるゲーム。楽しながら地理を学べます。">
+    <meta property="og:description" content="日本の地名当てゲーム『地名でWordle』。毎日6回の機会で日本の都市や地域を当てるゲーム。楽しながら地理を学べます。">
     <meta property="og:url" content="https://html-master.com/chimei-de-wordle/">
     <meta property="og:site_name" content="日本の地名でWordle">
-    
+    <meta property="og:image" content="https://html-master.com/chimei-de-wordle/OIG2.jpeg">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="日本の地名でWordle">
     <meta name="twitter:description" content="日本の地名当てゲーム『地名でWordle』。毎日5回の機会で日本の都市や地域を当てるゲーム。">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://html-master.com/chimei-de-wordle/">
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23ff69b4'>⛩</text></svg>">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23ff69b4'>⛩</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QW2BGSDCLF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QW2BGSDCLF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-QW2BGSDCLF');
-</script>
-    
+        gtag('config', 'G-QW2BGSDCLF');
+    </script>
+
     <style>
         :root {
             --correct: #6aaa64;
@@ -54,7 +58,7 @@
             --text: #1a1a2e;
             --tile-text: #ffffff;
             --header-bg: #1a1a2e;
-            --modal-bg: rgba(0,0,0,0.6);
+            --modal-bg: rgba(0, 0, 0, 0.6);
             --sakura: #f8b4c8;
             --sakura-dark: #e8849a;
         }
@@ -99,9 +103,19 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(-20px) rotate(0deg) translateX(0px); opacity: 0.7; }
-            50% { opacity: 0.4; }
-            100% { transform: translateY(100vh) rotate(720deg) translateX(80px); opacity: 0; }
+            0% {
+                transform: translateY(-20px) rotate(0deg) translateX(0px);
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg) translateX(80px);
+                opacity: 0;
+            }
         }
 
         /* Header */
@@ -112,7 +126,7 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         header h1 {
@@ -251,25 +265,63 @@
         }
 
         @keyframes popIn {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         @keyframes flipIn {
-            0% { transform: rotateX(0deg); }
-            45% { transform: rotateX(90deg); }
-            55% { transform: rotateX(90deg); }
-            100% { transform: rotateX(0deg); }
+            0% {
+                transform: rotateX(0deg);
+            }
+
+            45% {
+                transform: rotateX(90deg);
+            }
+
+            55% {
+                transform: rotateX(90deg);
+            }
+
+            100% {
+                transform: rotateX(0deg);
+            }
         }
 
         @keyframes bounce {
-            0%, 20% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            50% { transform: translateY(5px); }
-            60% { transform: translateY(-10px); }
-            80% { transform: translateY(2px); }
-            100% { transform: translateY(0); }
+
+            0%,
+            20% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+
+            80% {
+                transform: translateY(2px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
 
         .tile.win {
@@ -281,9 +333,26 @@
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
-            20%, 40%, 60%, 80% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-4px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(4px);
+            }
         }
 
         /* Keyboard */
@@ -375,10 +444,23 @@
         }
 
         @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateY(-10px); }
-            15% { opacity: 1; transform: translateY(0); }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            15% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         /* Modal */
@@ -401,8 +483,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal {
@@ -413,14 +500,21 @@
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.3s ease;
             position: relative;
         }
 
         @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .modal-close {
@@ -548,7 +642,7 @@
         .btn-primary:hover {
             background: #5a9a54;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(106,170,100,0.4);
+            box-shadow: 0 4px 12px rgba(106, 170, 100, 0.4);
         }
 
         .btn-secondary {
@@ -564,6 +658,18 @@
         .btn-share {
             background: var(--correct);
             color: #fff;
+        }
+
+        .btn-ranking {
+            background: #f1c40f;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(241, 196, 15, 0.2);
+        }
+
+        .btn-ranking:hover {
+            background: #f39c12;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(241, 196, 15, 0.4);
         }
 
         .modal-buttons {
@@ -635,8 +741,15 @@
         }
 
         @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* Responsive */
@@ -646,10 +759,12 @@
                 max-width: 54px;
                 max-height: 54px;
             }
+
             .key {
                 height: 46px;
                 font-size: 0.8rem;
             }
+
             header h1 {
                 font-size: 1.3rem;
             }
@@ -894,9 +1009,17 @@
             color: #666;
         }
 
-        .ranking-rank.gold { color: #ffd700; }
-        .ranking-rank.silver { color: #c0c0c0; }
-        .ranking-rank.bronze { color: #cd7f32; }
+        .ranking-rank.gold {
+            color: #ffd700;
+        }
+
+        .ranking-rank.silver {
+            color: #c0c0c0;
+        }
+
+        .ranking-rank.bronze {
+            color: #cd7f32;
+        }
 
         .ranking-name {
             flex: 1;
@@ -1015,8 +1138,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .my-ranking-bar {
@@ -1041,7 +1169,7 @@
             font-size: 1.3rem;
         }
     </style>
-    
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -1063,924 +1191,941 @@
     }
     </script>
 </head>
+
 <body>
 
-<!-- Sakura petals -->
-<div class="sakura-container" id="sakura"></div>
+    <!-- Sakura petals -->
+    <div class="sakura-container" id="sakura"></div>
 
-<!-- Header -->
-<header>
-    <h1>
-        <span class="torii">⛩️</span>
-        日本の地名でWordle
-    </h1>
-    <div class="subtitle">Japanese Place Name Wordle</div>
-    <div class="header-buttons">
-        <button class="header-btn" id="rankingBtn" title="ランキング"><i class="fas fa-trophy"></i></button>
-        <button class="header-btn" id="helpBtn" title="遊び方"><i class="fas fa-question-circle"></i></button>
-        <button class="header-btn" id="statsBtn" title="統計"><i class="fas fa-chart-bar"></i></button>
-    </div>
-</header>
+    <!-- Header -->
+    <header>
+        <h1>
+            <span class="torii">⛩️</span>
+            日本の地名でWordle
+        </h1>
+        <div class="subtitle">Japanese Place Name Wordle</div>
+        <div class="header-buttons">
+            <button class="header-btn" id="rankingBtn" title="ランキング"><i class="fas fa-trophy"></i></button>
+            <button class="header-btn" id="helpBtn" title="遊び方"><i class="fas fa-question-circle"></i></button>
+            <button class="header-btn" id="statsBtn" title="統計"><i class="fas fa-chart-bar"></i></button>
+        </div>
+    </header>
 
-<!-- Main -->
-<main>
-    <div class="game-info">
-        <span><i class="fas fa-map-marker-alt"></i> 日本の地名 (5文字)</span>
-        <span id="game-number"></span>
-    </div>
-
-    <div class="game-with-banners">
-        <!-- Left Banner -->
-        <aside class="banner-aside banner-left">
-            <div class="banner-wrapper">
-                <a href="https://hb.afl.rakuten.co.jp/hsc/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI1OCIsImJhbiI6MzIzMDk1MiwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">
-                    <img src="https://hbb.afl.rakuten.co.jp/hsb/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3230952&t=pict" alt="楽天バナー1" title="">
-                </a>
-                <a href="https://hb.afl.rakuten.co.jp/hsc/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI0NCIsImJhbiI6Mjc5NDg4OSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">
-                    <img src="https://hbb.afl.rakuten.co.jp/hsb/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=2794889&t=pict" alt="楽天バナー2" title="">
-                </a>
-                <a href="https://hb.afl.rakuten.co.jp/hsc/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI4NSIsImJhbiI6MTE2MzIwMCwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">
-                    <img src="https://hbb.afl.rakuten.co.jp/hsb/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=1163200&t=pict" alt="楽天バナー3" title="">
-                </a>
-            </div>
-        </aside>
-
-        <!-- Game Content -->
-        <div class="game-content">
-            <div id="board"></div>
-            <div id="keyboard"></div>
+    <!-- Main -->
+    <main>
+        <div class="game-info">
+            <span><i class="fas fa-map-marker-alt"></i> 日本の地名 (5文字)</span>
+            <span id="game-number"></span>
         </div>
 
-        <!-- Right Banner -->
-        <aside class="banner-aside banner-right">
-            <div class="banner-wrapper">
-                <a href="https://hb.afl.rakuten.co.jp/hsc/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI1OCIsImJhbiI6MzIzMDk1MiwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">
-                    <img src="https://hbb.afl.rakuten.co.jp/hsb/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3230952&t=pict" alt="楽天バナー1" title="">
-                </a>
-                <a href="https://hb.afl.rakuten.co.jp/hsc/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI0NCIsImJhbiI6Mjc5NDg4OSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">
-                    <img src="https://hbb.afl.rakuten.co.jp/hsb/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=2794889&t=pict" alt="楽天バナー2" title="">
-                </a>
-                <a href="https://hb.afl.rakuten.co.jp/hsc/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI4NSIsImJhbiI6MTE2MzIwMCwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">
-                    <img src="https://hbb.afl.rakuten.co.jp/hsb/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=1163200&t=pict" alt="楽天バナー3" title="">
-                </a>
-            </div>
-        </aside>
-    </div>
-</main>
+        <div class="game-with-banners">
+            <!-- Left Banner -->
+            <aside class="banner-aside banner-left">
+                <div class="banner-wrapper">
+                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI1OCIsImJhbiI6MzIzMDk1MiwiYW1wIjpmYWxzZX0%3D"
+                        target="_blank" rel="nofollow sponsored noopener">
+                        <img src="https://hbb.afl.rakuten.co.jp/hsb/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3230952&t=pict"
+                            alt="楽天バナー1" title="">
+                    </a>
+                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI0NCIsImJhbiI6Mjc5NDg4OSwiYW1wIjpmYWxzZX0%3D"
+                        target="_blank" rel="nofollow sponsored noopener">
+                        <img src="https://hbb.afl.rakuten.co.jp/hsb/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=2794889&t=pict"
+                            alt="楽天バナー2" title="">
+                    </a>
+                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI4NSIsImJhbiI6MTE2MzIwMCwiYW1wIjpmYWxzZX0%3D"
+                        target="_blank" rel="nofollow sponsored noopener">
+                        <img src="https://hbb.afl.rakuten.co.jp/hsb/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=1163200&t=pict"
+                            alt="楽天バナー3" title="">
+                    </a>
+                </div>
+            </aside>
 
-<!-- Toast container -->
-<div id="toast-container"></div>
+            <!-- Game Content -->
+            <div class="game-content">
+                <div id="board"></div>
+                <div id="keyboard"></div>
+            </div>
 
-<!-- Result Modal -->
-<div class="modal-overlay" id="resultModal">
-    <div class="modal">
-        <button class="modal-close" id="resultClose">&times;</button>
-        <div class="result-icon" id="resultIcon"></div>
-        <h2 id="resultTitle"></h2>
-        <div class="result-answer" id="resultAnswer"></div>
-        <div class="result-kanji" id="resultKanji"></div>
-        <div id="map-container"></div>
-        <div class="map-label"><i class="fas fa-map-marker-alt"></i> <span id="mapLabelText"></span></div>
-        <div class="result-stats">
-            <div class="stat">
-                <div class="stat-value" id="statPlayed">0</div>
-                <div class="stat-label">プレイ</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="statWin">0</div>
-                <div class="stat-label">勝率%</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="statStreak">0</div>
-                <div class="stat-label">連勝</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="statBest">0</div>
-                <div class="stat-label">最大連勝</div>
-            </div>
+            <!-- Right Banner -->
+            <aside class="banner-aside banner-right">
+                <div class="banner-wrapper">
+                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI1OCIsImJhbiI6MzIzMDk1MiwiYW1wIjpmYWxzZX0%3D"
+                        target="_blank" rel="nofollow sponsored noopener">
+                        <img src="https://hbb.afl.rakuten.co.jp/hsb/50d61940.084dfcc5.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=3230952&t=pict"
+                            alt="楽天バナー1" title="">
+                    </a>
+                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI0NCIsImJhbiI6Mjc5NDg4OSwiYW1wIjpmYWxzZX0%3D"
+                        target="_blank" rel="nofollow sponsored noopener">
+                        <img src="https://hbb.afl.rakuten.co.jp/hsb/50d6155e.4f47c313.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=2794889&t=pict"
+                            alt="楽天バナー2" title="">
+                    </a>
+                    <a href="https://hb.afl.rakuten.co.jp/hsc/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI4NSIsImJhbiI6MTE2MzIwMCwiYW1wIjpmYWxzZX0%3D"
+                        target="_blank" rel="nofollow sponsored noopener">
+                        <img src="https://hbb.afl.rakuten.co.jp/hsb/50d8691e.071ac45f.50d5f9c2.39a6d3ac/?me_id=1&me_adv_id=1163200&t=pict"
+                            alt="楽天バナー3" title="">
+                    </a>
+                </div>
+            </aside>
         </div>
-        <div class="modal-buttons">
-            <button class="btn btn-share" id="shareBtn"><i class="fas fa-share-alt"></i> 結果をシェア</button>
-            <button class="btn btn-primary" id="newGameBtn"><i class="fas fa-redo"></i> 次の地名</button>
-        </div>
-    </div>
-</div>
+    </main>
 
-<!-- Share Options Modal -->
-<div class="modal-overlay" id="shareModal">
-    <div class="modal" style="width: 300px;">
-        <button class="modal-close" id="shareClose">&times;</button>
-        <h2 style="text-align: center;">結果をシェア</h2>
-        <div class="modal-buttons" style="flex-direction: column; gap: 10px; margin-top: 20px;">
-            <button class="btn btn-primary" id="twitterShareBtn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                <i class="fab fa-twitter"></i> Twitterで共有
-            </button>
-            <button class="btn btn-share" id="copyShareBtn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                <i class="fas fa-copy"></i> 結果をコピー
-            </button>
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <!-- Result Modal -->
+    <div class="modal-overlay" id="resultModal">
+        <div class="modal">
+            <button class="modal-close" id="resultClose">&times;</button>
+            <div class="result-icon" id="resultIcon"></div>
+            <h2 id="resultTitle"></h2>
+            <div class="result-answer" id="resultAnswer"></div>
+            <div class="result-kanji" id="resultKanji"></div>
+            <div id="map-container"></div>
+            <div class="map-label"><i class="fas fa-map-marker-alt"></i> <span id="mapLabelText"></span></div>
+            <div class="result-stats">
+                <div class="stat">
+                    <div class="stat-value" id="statPlayed">0</div>
+                    <div class="stat-label">プレイ</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="statWin">0</div>
+                    <div class="stat-label">勝率%</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="statStreak">0</div>
+                    <div class="stat-label">連勝</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="statBest">0</div>
+                    <div class="stat-label">最大連勝</div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-share" id="shareBtn"><i class="fas fa-share-alt"></i> 結果をシェア</button>
+                <button class="btn btn-ranking" id="resultRankingBtn"><i class="fas fa-trophy"></i> ランキングを見る！</button>
+                <button class="btn btn-primary" id="newGameBtn"><i class="fas fa-redo"></i> 次の地名</button>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- How to play Modal -->
-<div class="modal-overlay" id="helpModal">
-    <div class="modal">
-        <button class="modal-close" id="helpClose">&times;</button>
-        <h2>🗺️ 地名Wordle（5 Letters）ルール</h2>
-        <p>5文字の「日本の地名（都道府県・市区町村）」を当てるゲームです。<br>6回以内に正解を見つけてください！</p>
-
-        <hr>
-
-        <h3 style="font-size:0.95rem; margin-bottom:8px;">1. 綴りのルール（ヘボン式）</h3>
-        <p class="how-text" style="margin-bottom:6px;">表記は、道路標識や駅名標で使われる<strong>「標準的なヘボン式ローマ字」</strong>を採用しています。</p>
-
-        <p class="how-text" style="margin-bottom:4px;">🔹 <strong>長音（ー）は重ねない：</strong><br>「オオ」「オウ」などは母音を重ねず1文字で表記します。</p>
-        <div class="how-example">
-            <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">O</div>
-            <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">S</div>
-            <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">A</div>
-            <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">K</div>
-            <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">A</div>
-        </div>
-        <p class="how-text" style="text-align:center;">大阪：OSAKA ／ 東京：TOKYO ／ 京都：KYOTO</p>
-
-        <p class="how-text" style="margin-bottom:4px;">🔹 <strong>「っ」は子音を重ねる：</strong></p>
-        <div class="how-example">
-            <div class="how-tile" style="background:var(--present);border-color:var(--present);">B</div>
-            <div class="how-tile" style="background:var(--present);border-color:var(--present);">E</div>
-            <div class="how-tile" style="background:var(--present);border-color:var(--present);">P</div>
-            <div class="how-tile" style="background:var(--present);border-color:var(--present);">P</div>
-            <div class="how-tile" style="background:var(--present);border-color:var(--present);">U</div>
-        </div>
-        <p class="how-text" style="text-align:center;">別府：BEPPU</p>
-
-        <p class="how-text" style="margin-bottom:4px;">🔹 <strong>「ん」は「N」で固定：</strong></p>
-        <p class="how-text" style="text-align:center;">群馬：GUNMA ／ 湖南：KONAN</p>
-
-        <hr>
-
-        <h3 style="font-size:0.95rem; margin-bottom:8px;">2. 当てはまる単語</h3>
-        <p class="how-text" style="margin-bottom:4px;">📏 <strong>文字数：</strong> ローマ字でちょうど5文字の地名。</p>
-        <p class="how-text" style="margin-bottom:4px;">🗾 <strong>範囲：</strong> 日本全国の都道府県名・市区町村名。</p>
-        <p class="how-text" style="text-align:center;">例）AICHI（県）、SUITA（市）、TAIKI（町）、UMAJI（村）</p>
-
-        <hr>
-
-        <h3 style="font-size:0.95rem; margin-bottom:8px;">3. ヒントの見方</h3>
-        <p class="how-text" style="margin-bottom:6px;">各推測の後、タイルの色が変わります：</p>
-
-        <div class="how-example">
-            <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">T</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">O</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">K</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">Y</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">O</div>
-        </div>
-        <p class="how-text">🟩 <strong>T</strong> は正解の文字で、正しい位置にあります。</p>
-
-        <div class="how-example">
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">O</div>
-            <div class="how-tile" style="background:var(--present);border-color:var(--present);">S</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">A</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">K</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">A</div>
-        </div>
-        <p class="how-text">🟨 <strong>S</strong> は正解に含まれますが、位置が違います。</p>
-
-        <div class="how-example">
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">C</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">H</div>
-            <div class="how-tile" style="background:var(--absent);border-color:var(--absent);">I</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">B</div>
-            <div class="how-tile" style="border-color:var(--tile-border-filled);">A</div>
-        </div>
-        <p class="how-text">⬛ <strong>I</strong> は正解に含まれていません。</p>
-
-        <hr>
-        <p style="font-size:0.85rem; color:#888; text-align:center;">🗺️ 正解すると、Google Mapでその地名の場所が表示されます！</p>
-    </div>
-</div>
-
-<!-- Stats Modal -->
-<div class="modal-overlay" id="statsModal">
-    <div class="modal">
-        <button class="modal-close" id="statsClose">&times;</button>
-        <h2>📊 統計</h2>
-        <div class="result-stats">
-            <div class="stat">
-                <div class="stat-value" id="sStatPlayed">0</div>
-                <div class="stat-label">プレイ</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="sStatWin">0</div>
-                <div class="stat-label">勝率%</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="sStatStreak">0</div>
-                <div class="stat-label">連勝</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="sStatBest">0</div>
-                <div class="stat-label">最大連勝</div>
+    <!-- Share Options Modal -->
+    <div class="modal-overlay" id="shareModal">
+        <div class="modal" style="width: 300px;">
+            <button class="modal-close" id="shareClose">&times;</button>
+            <h2 style="text-align: center;">結果をシェア</h2>
+            <div class="modal-buttons" style="flex-direction: column; gap: 10px; margin-top: 20px;">
+                <button class="btn btn-primary" id="twitterShareBtn"
+                    style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-twitter"></i> Twitterで共有
+                </button>
+                <button class="btn btn-share" id="copyShareBtn"
+                    style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fas fa-copy"></i> 結果をコピー
+                </button>
             </div>
         </div>
-        <div id="guessDistribution" style="padding: 0 20px;"></div>
     </div>
-</div>
 
-<!-- Ranking Modal -->
-<div class="modal-overlay" id="rankingModal">
-    <div class="modal" style="max-width: 500px;">
-        <button class="modal-close" id="rankingClose">&times;</button>
-        <h2>🏆 ランキング</h2>
-        
-        <div id="nicknameSection"></div>
+    <!-- How to play Modal -->
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal">
+            <button class="modal-close" id="helpClose">&times;</button>
+            <h2>🗺️ 地名Wordle（5 Letters）ルール</h2>
+            <p>5文字の「日本の地名（都道府県・市区町村）」を当てるゲームです。<br>6回以内に正解を見つけてください！</p>
 
-        <div class="ranking-tabs">
-            <button class="ranking-tab active" data-tab="streak" id="tabStreak">🔥 現在の連勝</button>
-            <button class="ranking-tab" data-tab="best" id="tabBest">⭐ 最大連勝</button>
-            <button class="ranking-tab" data-tab="winrate" id="tabWinrate">📊 勝率</button>
-        </div>
+            <hr>
 
-        <div id="myRankingBar"></div>
-        <div class="ranking-list" id="rankingList">
-            <div class="ranking-loading"><i class="fas fa-spinner"></i><br>読み込み中...</div>
+            <h3 style="font-size:0.95rem; margin-bottom:8px;">1. 綴りのルール（ヘボン式）</h3>
+            <p class="how-text" style="margin-bottom:6px;">表記は、道路標識や駅名標で使われる<strong>「標準的なヘボン式ローマ字」</strong>を採用しています。</p>
+
+            <p class="how-text" style="margin-bottom:4px;">🔹
+                <strong>長音（ー）は重ねない：</strong><br>「オオ」「オウ」などは母音を重ねず1文字で表記します。</p>
+            <div class="how-example">
+                <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">O</div>
+                <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">S</div>
+                <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">A</div>
+                <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">K</div>
+                <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">A</div>
+            </div>
+            <p class="how-text" style="text-align:center;">大阪：OSAKA ／ 東京：TOKYO ／ 京都：KYOTO</p>
+
+            <p class="how-text" style="margin-bottom:4px;">🔹 <strong>「っ」は子音を重ねる：</strong></p>
+            <div class="how-example">
+                <div class="how-tile" style="background:var(--present);border-color:var(--present);">B</div>
+                <div class="how-tile" style="background:var(--present);border-color:var(--present);">E</div>
+                <div class="how-tile" style="background:var(--present);border-color:var(--present);">P</div>
+                <div class="how-tile" style="background:var(--present);border-color:var(--present);">P</div>
+                <div class="how-tile" style="background:var(--present);border-color:var(--present);">U</div>
+            </div>
+            <p class="how-text" style="text-align:center;">別府：BEPPU</p>
+
+            <p class="how-text" style="margin-bottom:4px;">🔹 <strong>「ん」は「N」で固定：</strong></p>
+            <p class="how-text" style="text-align:center;">群馬：GUNMA ／ 湖南：KONAN</p>
+
+            <hr>
+
+            <h3 style="font-size:0.95rem; margin-bottom:8px;">2. 当てはまる単語</h3>
+            <p class="how-text" style="margin-bottom:4px;">📏 <strong>文字数：</strong> ローマ字でちょうど5文字の地名。</p>
+            <p class="how-text" style="margin-bottom:4px;">🗾 <strong>範囲：</strong> 日本全国の都道府県名・市区町村名。</p>
+            <p class="how-text" style="text-align:center;">例）AICHI（県）、SUITA（市）、TAIKI（町）、UMAJI（村）</p>
+
+            <hr>
+
+            <h3 style="font-size:0.95rem; margin-bottom:8px;">3. ヒントの見方</h3>
+            <p class="how-text" style="margin-bottom:6px;">各推測の後、タイルの色が変わります：</p>
+
+            <div class="how-example">
+                <div class="how-tile" style="background:var(--correct);border-color:var(--correct);">T</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">O</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">K</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">Y</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">O</div>
+            </div>
+            <p class="how-text">🟩 <strong>T</strong> は正解の文字で、正しい位置にあります。</p>
+
+            <div class="how-example">
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">O</div>
+                <div class="how-tile" style="background:var(--present);border-color:var(--present);">S</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">A</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">K</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">A</div>
+            </div>
+            <p class="how-text">🟨 <strong>S</strong> は正解に含まれますが、位置が違います。</p>
+
+            <div class="how-example">
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">C</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">H</div>
+                <div class="how-tile" style="background:var(--absent);border-color:var(--absent);">I</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">B</div>
+                <div class="how-tile" style="border-color:var(--tile-border-filled);">A</div>
+            </div>
+            <p class="how-text">⬛ <strong>I</strong> は正解に含まれていません。</p>
+
+            <hr>
+            <p style="font-size:0.85rem; color:#888; text-align:center;">🗺️ 正解すると、Google Mapでその地名の場所が表示されます！</p>
         </div>
     </div>
-</div>
 
-<!-- Nickname Registration Modal -->
-<div class="modal-overlay" id="nicknameModal">
-    <div class="modal" style="max-width: 380px;">
-        <button class="modal-close" id="nicknameClose">&times;</button>
-        <h2>👤 ニックネーム登録</h2>
-        <p style="font-size:0.85rem; color:#666;">ランキングに表示される名前を設定してください。</p>
-        <div class="nickname-input-group">
-            <input type="text" id="nicknameInput" placeholder="ニックネーム" maxlength="12">
-            <button id="nicknameSubmit">登録</button>
+    <!-- Stats Modal -->
+    <div class="modal-overlay" id="statsModal">
+        <div class="modal">
+            <button class="modal-close" id="statsClose">&times;</button>
+            <h2>📊 統計</h2>
+            <div class="result-stats">
+                <div class="stat">
+                    <div class="stat-value" id="sStatPlayed">0</div>
+                    <div class="stat-label">プレイ</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="sStatWin">0</div>
+                    <div class="stat-label">勝率%</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="sStatStreak">0</div>
+                    <div class="stat-label">連勝</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="sStatBest">0</div>
+                    <div class="stat-label">最大連勝</div>
+                </div>
+            </div>
+            <div id="guessDistribution" style="padding: 0 20px;"></div>
         </div>
-        <p style="font-size:0.75rem; color:#aaa; text-align:center;">※ 1〜12文字で設定できます</p>
     </div>
-</div>
 
-<!-- Confetti container -->
-<div class="confetti-container" id="confetti"></div>
+    <!-- Ranking Modal -->
+    <div class="modal-overlay" id="rankingModal">
+        <div class="modal" style="max-width: 500px;">
+            <button class="modal-close" id="rankingClose">&times;</button>
+            <h2>🏆 ランキング</h2>
 
-<!-- Firebase SDK (compat) -->
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+            <div id="nicknameSection"></div>
 
-<script>
-// ==============================
-// FIREBASE INIT
-// ==============================
-const firebaseConfig = {
-  apiKey: "AIzaSyCb_JgYML7rxfIloqjxt5y_1YSF__MiSaU",
-  authDomain: "japan-wordle.firebaseapp.com",
-  projectId: "japan-wordle",
-  storageBucket: "japan-wordle.firebasestorage.app",
-  messagingSenderId: "642967595639",
-  appId: "1:642967595639:web:60f77076db8f984bf1b472",
-  measurementId: "G-6YZRNSHTDW"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-// ==============================
-// WORD LIST - 5文字の日本の地名
-// ==============================
-const WORD_LIST = [
-    { romaji: "AICHI", kanji: "愛知", search: "愛知県 日本" },
-    { romaji: "AKITA", kanji: "秋田", search: "秋田県 日本" },
-    { romaji: "CHIBA", kanji: "千葉", search: "千葉県 日本" },
-    { romaji: "EHIME", kanji: "愛媛", search: "愛媛県 日本" },
-    { romaji: "FUKUI", kanji: "福井", search: "福井県 日本" },
-    { romaji: "GUNMA", kanji: "群馬", search: "群馬県 日本" },
-    { romaji: "HYOGO", kanji: "兵庫", search: "兵庫県 日本" },
-    { romaji: "IWATE", kanji: "岩手", search: "岩手県 日本" },
-    { romaji: "KOCHI", kanji: "高知", search: "高知県 日本" },
-    { romaji: "KYOTO", kanji: "京都", search: "京都 日本" },
-    { romaji: "OSAKA", kanji: "大阪", search: "大阪 日本" },
-    { romaji: "SHIGA", kanji: "滋賀", search: "滋賀県 日本" },
-    { romaji: "TOKYO", kanji: "東京", search: "東京 日本" },
-    { romaji: "ATAMI", kanji: "熱海", search: "熱海市 日本" },
-    { romaji: "NIKKO", kanji: "日光", search: "日光市 日本" },
-    { romaji: "OTARU", kanji: "小樽", search: "小樽市 日本" },
-    { romaji: "ASAHI", kanji: "旭", search: "旭市 千葉 日本" },
-    { romaji: "SAKAI", kanji: "堺", search: "堺市 大阪 日本" },
-    { romaji: "SUITA", kanji: "吹田", search: "吹田市 大阪 日本" },
-    { romaji: "FUCHU", kanji: "府中", search: "府中市 東京 日本" },
-    { romaji: "IZUMO", kanji: "出雲", search: "出雲市 島根 日本" },
-    { romaji: "BEPPU", kanji: "別府", search: "別府市 大分 日本" },
-    { romaji: "FUSSA", kanji: "福生", search: "福生市 東京 日本" },
-    { romaji: "CHOFU", kanji: "調布", search: "調布市 東京 日本" },
-    { romaji: "IWAKI", kanji: "いわき", search: "いわき市 福島 日本" },
-    { romaji: "OMIYA", kanji: "大宮", search: "大宮 埼玉 日本" },
-    { romaji: "TENRI", kanji: "天理", search: "天理市 奈良 日本" },
-    { romaji: "BIZEN", kanji: "備前", search: "備前市 岡山 日本" },
-    { romaji: "ABIKO", kanji: "我孫子", search: "我孫子市 日本" },
-    { romaji: "AMAMI", kanji: "奄美", search: "奄美大島 日本" },
-    { romaji: "ASAGO", kanji: "朝来", search: "朝来市 兵庫 日本" },
-    { romaji: "AWAJI", kanji: "淡路", search: "淡路島 日本" },
-    { romaji: "AYASE", kanji: "綾瀬", search: "綾瀬市 神奈川 日本" },
-    { romaji: "BIBAI", kanji: "美唄", search: "美唄市 北海道 日本" },
-    { romaji: "BANDO", kanji: "坂東", search: "坂東市 茨城 日本" },
-    { romaji: "BUNGO", kanji: "豊後", search: "豊後 大分 日本" },
-    { romaji: "CHINO", kanji: "茅野", search: "茅野市 長野 日本" },
-    { romaji: "CHITA", kanji: "知多", search: "知多市 愛知 日本" },
-    { romaji: "CHIZU", kanji: "智頭", search: "智頭町 鳥取 日本" },
-    { romaji: "DAITO", kanji: "大東", search: "大東市 大阪 日本" },
-    { romaji: "EBINA", kanji: "海老名", search: "海老名市 神奈川 日本" },
-    { romaji: "ENIWA", kanji: "恵庭", search: "恵庭市 北海道 日本" },
-    { romaji: "ENZAN", kanji: "塩山", search: "塩山 山梨 日本" },
-    { romaji: "FUKAE", kanji: "深江", search: "深江 兵庫 日本" },
-    { romaji: "GYODA", kanji: "行田", search: "行田市 埼玉 日本" },
-    { romaji: "GOSEN", kanji: "五泉", search: "五泉市 新潟 日本" },
-    { romaji: "GOTSU", kanji: "江津", search: "江津市 島根 日本" },
-    { romaji: "HANDA", kanji: "半田", search: "半田市 愛知 日本" },
-    { romaji: "HANYU", kanji: "羽生", search: "羽生市 埼玉 日本" },
-    { romaji: "HANNO", kanji: "飯能", search: "飯能市 埼玉 日本" },
-    { romaji: "HAPPO", kanji: "八峰", search: "八峰町 秋田 日本" },
-    { romaji: "HIOKI", kanji: "日置", search: "日置市 鹿児島 日本" },
-    { romaji: "HIROO", kanji: "広尾", search: "広尾町 北海道 日本" },
-    { romaji: "HIZEN", kanji: "肥前", search: "肥前 佐賀 日本" },
-    { romaji: "HONJO", kanji: "本庄", search: "本庄市 埼玉 日本" },
-    { romaji: "HYUGA", kanji: "日向", search: "日向市 宮崎 日本" },
-    { romaji: "IKEDA", kanji: "池田", search: "池田市 大阪 日本" },
-    { romaji: "IKOMA", kanji: "生駒", search: "生駒市 奈良 日本" },
-    { romaji: "IMARI", kanji: "伊万里", search: "伊万里市 佐賀 日本" },
-    { romaji: "INABE", kanji: "いなべ", search: "いなべ市 三重 日本" },
-    { romaji: "INAGI", kanji: "稲城", search: "稲城市 東京 日本" },
-    { romaji: "INAMI", kanji: "印南", search: "印南町 和歌山 日本" },
-    { romaji: "IRUMA", kanji: "入間", search: "入間市 埼玉 日本" },
-    { romaji: "ISUMI", kanji: "いすみ", search: "いすみ市 千葉 日本" },
-    { romaji: "ITAKO", kanji: "潮来", search: "潮来市 茨城 日本" },
-    { romaji: "ITAMI", kanji: "伊丹", search: "伊丹市 兵庫 日本" },
-    { romaji: "ITANO", kanji: "板野", search: "板野町 徳島 日本" },
-    { romaji: "IWADE", kanji: "岩出", search: "岩出市 和歌山 日本" },
-    { romaji: "IWAMI", kanji: "岩美", search: "岩美町 鳥取 日本" },
-    { romaji: "IWATA", kanji: "磐田", search: "磐田市 静岡 日本" },
-    { romaji: "IZUMI", kanji: "和泉", search: "和泉市 大阪 日本" },
-    { romaji: "KAIZU", kanji: "海津", search: "海津市 岐阜 日本" },
-    { romaji: "KANIE", kanji: "蟹江", search: "蟹江町 愛知 日本" },
-    { romaji: "KANNA", kanji: "神流", search: "神流町 群馬 日本" },
-    { romaji: "KANRA", kanji: "甘楽", search: "甘楽町 群馬 日本" },
-    { romaji: "KASAI", kanji: "加西", search: "加西市 兵庫 日本" },
-    { romaji: "KAWAI", kanji: "河合", search: "河合町 奈良 日本" },
-    { romaji: "KINKO", kanji: "錦江", search: "錦江町 鹿児島 日本" },
-    { romaji: "KIRYU", kanji: "桐生", search: "桐生市 群馬 日本" },
-    { romaji: "KOMAE", kanji: "狛江", search: "狛江市 東京 日本" },
-    { romaji: "KONAN", kanji: "湖南", search: "湖南市 滋賀 日本" },
-    { romaji: "KORYO", kanji: "広陵", search: "広陵町 奈良 日本" },
-    { romaji: "KOSAI", kanji: "湖西", search: "湖西市 静岡 日本" },
-    { romaji: "KOSHI", kanji: "合志", search: "合志市 熊本 日本" },
-    { romaji: "MEIWA", kanji: "明和", search: "明和町 三重 日本" },
-    { romaji: "MINOO", kanji: "箕面", search: "箕面市 大阪 日本" },
-    { romaji: "MIURA", kanji: "三浦", search: "三浦市 神奈川 日本" },
-    { romaji: "MUTSU", kanji: "むつ", search: "むつ市 青森 日本" },
-    { romaji: "MYOKO", kanji: "妙高", search: "妙高市 新潟 日本" },
-    { romaji: "NAGAI", kanji: "長井", search: "長井市 山形 日本" },
-    { romaji: "NAMIE", kanji: "浪江", search: "浪江町 福島 日本" },
-    { romaji: "NANBU", kanji: "南部", search: "南部町 山梨 日本" },
-    { romaji: "NANJO", kanji: "南城", search: "南城市 沖縄 日本" },
-    { romaji: "NANTO", kanji: "南砺", search: "南砺市 富山 日本" },
-    { romaji: "NANYO", kanji: "南陽", search: "南陽市 山形 日本" },
-    { romaji: "OBAMA", kanji: "小浜", search: "小浜市 福井 日本" },
-    { romaji: "OGAKI", kanji: "大垣", search: "大垣市 岐阜 日本" },
-    { romaji: "OGANO", kanji: "小鹿野", search: "小鹿野町 埼玉 日本" },
-    { romaji: "OGAWA", kanji: "小川", search: "小川町 埼玉 日本" },
-    { romaji: "OGIMI", kanji: "大宜味", search: "大宜味村 沖縄 日本" },
-    { romaji: "OGUNI", kanji: "小国", search: "小国町 熊本 日本" },
-    { romaji: "OHARA", kanji: "大原", search: "大原 京都 日本" },
-    { romaji: "OJIYA", kanji: "小千谷", search: "小千谷市 新潟 日本" },
-    { romaji: "OKAWA", kanji: "大川", search: "大川市 福岡 日本" },
-    { romaji: "OKAYA", kanji: "岡谷", search: "岡谷市 長野 日本" },
-    { romaji: "OMURA", kanji: "大村", search: "大村市 長崎 日本" },
-    { romaji: "OMUTA", kanji: "大牟田", search: "大牟田市 福岡 日本" },
-    { romaji: "ONOJO", kanji: "大野城", search: "大野城市 福岡 日本" },
-    { romaji: "OTAKE", kanji: "大竹", search: "大竹市 広島 日本" },
-    { romaji: "OTAKI", kanji: "大多喜", search: "大多喜町 千葉 日本" },
-    { romaji: "OTARI", kanji: "小谷", search: "小谷村 長野 日本" },
-    { romaji: "OWASE", kanji: "尾鷲", search: "尾鷲市 三重 日本" },
-    { romaji: "OYAMA", kanji: "小山", search: "小山市 栃木 日本" },
-    { romaji: "OYODO", kanji: "大淀", search: "大淀町 奈良 日本" },
-    { romaji: "OZORA", kanji: "大空", search: "大空町 北海道 日本" },
-    { romaji: "SABAE", kanji: "鯖江", search: "鯖江市 福井 日本" },
-    { romaji: "SAIJO", kanji: "西条", search: "西条市 愛媛 日本" },
-    { romaji: "SEIYO", kanji: "西予", search: "西予市 愛媛 日本" },
-    { romaji: "SHIKA", kanji: "志賀", search: "志賀町 石川 日本" },
-    { romaji: "SHOWA", kanji: "昭和", search: "昭和町 山梨 日本" },
-    { romaji: "TAIKI", kanji: "大樹", search: "大樹町 北海道 日本" },
-    { romaji: "TAIJI", kanji: "太地", search: "太地町 和歌山 日本" },
-    { romaji: "TAIWA", kanji: "大和", search: "大和町 宮城 日本" },
-    { romaji: "TARUI", kanji: "垂井", search: "垂井町 岐阜 日本" },
-    { romaji: "TSURU", kanji: "都留", search: "都留市 山梨 日本" },
-    { romaji: "USUKI", kanji: "臼杵", search: "臼杵市 大分 日本" },
-    { romaji: "YAESE", kanji: "八重瀬", search: "八重瀬町 沖縄 日本" },
-    { romaji: "YAITA", kanji: "矢板", search: "矢板市 栃木 日本" },
-    { romaji: "YORII", kanji: "寄居", search: "寄居町 埼玉 日本" },
-    { romaji: "YUASA", kanji: "湯浅", search: "湯浅町 和歌山 日本" },
-    { romaji: "PIPPU", kanji: "比布", search: "比布町 北海道 日本" },
-    { romaji: "ERIMO", kanji: "襟裳", search: "えりも町 北海道 日本" },
-    { romaji: "OKETO", kanji: "置戸", search: "置戸町 北海道 日本" },
-    { romaji: "RAUSU", kanji: "羅臼", search: "羅臼町 北海道 日本" },
-    { romaji: "OKUMA", kanji: "大熊", search: "大熊町 福島 日本" },
-    { romaji: "OARAI", kanji: "大洗", search: "大洗町 茨城 日本" },
-    { romaji: "DAIGO", kanji: "大子", search: "大子町 茨城 日本" },
-    { romaji: "OGOSE", kanji: "越生", search: "越生町 埼玉 日本" },
-    { romaji: "DOSHI", kanji: "道志", search: "道志村 山梨 日本" },
-    { romaji: "KANAN", kanji: "河南", search: "河南町 大阪 日本" },
-    { romaji: "KAITA", kanji: "海田", search: "海田町 広島 日本" },
-    { romaji: "IKATA", kanji: "伊方", search: "伊方町 愛媛 日本" },
-    { romaji: "AINAN", kanji: "愛南", search: "愛南町 愛媛 日本" },
-    { romaji: "UMAJI", kanji: "馬路", search: "馬路村 高知 日本" },
-    { romaji: "SHIME", kanji: "志免", search: "志免町 福岡 日本" },
-    { romaji: "KANDA", kanji: "苅田", search: "苅田町 福岡 日本" },
-    { romaji: "SOEDA", kanji: "添田", search: "添田町 福岡 日本" },
-    { romaji: "ITODA", kanji: "糸田", search: "糸田町 福岡 日本" },
-    { romaji: "OJIKA", kanji: "小値賀", search: "小値賀町 長崎 日本" },
-    { romaji: "YAMAE", kanji: "山江", search: "山江村 熊本 日本" },
-    { romaji: "TSUNO", kanji: "都農", search: "都農町 宮崎 日本" },
-    { romaji: "KIKAI", kanji: "喜界", search: "喜界町 鹿児島 日本" },
-    { romaji: "CHINA", kanji: "知名", search: "知名町 鹿児島 日本" },
-    { romaji: "YORON", kanji: "与論", search: "与論町 鹿児島 日本" },
-    { romaji: "AGUNI", kanji: "粟国", search: "粟国村 沖縄 日本" },
-    { romaji: "IHEYA", kanji: "伊平屋", search: "伊平屋村 沖縄 日本" },
-    { romaji: "IZENA", kanji: "伊是名", search: "伊是名村 沖縄 日本" },
-    { romaji: "UMEDA", kanji: "梅田", search: "梅田 大阪 日本" },
-    { romaji: "NAMBA", kanji: "難波", search: "難波 大阪 日本" },
-    { romaji: "SAKAE", kanji: "栄", search: "栄 名古屋 日本" },
-    { romaji: "EBISU", kanji: "恵比寿", search: "恵比寿 東京 日本" },
-    { romaji: "GINZA", kanji: "銀座", search: "銀座 東京 日本" },
-];
+            <div class="ranking-tabs">
+                <button class="ranking-tab active" data-tab="streak" id="tabStreak">🔥 現在の連勝</button>
+                <button class="ranking-tab" data-tab="best" id="tabBest">⭐ 最大連勝</button>
+                <button class="ranking-tab" data-tab="winrate" id="tabWinrate">📊 勝率</button>
+            </div>
 
-// Remove duplicates by romaji
-const uniqueWords = [];
-const seenRomaji = new Set();
-WORD_LIST.forEach(w => {
-    const key = w.romaji.toUpperCase();
-    if (!seenRomaji.has(key)) {
-        seenRomaji.add(key);
-        uniqueWords.push(w);
-    }
-});
+            <div id="myRankingBar"></div>
+            <div class="ranking-list" id="rankingList">
+                <div class="ranking-loading"><i class="fas fa-spinner"></i><br>読み込み中...</div>
+            </div>
+        </div>
+    </div>
 
-// All valid romaji words (for checking if input is valid)
-const VALID_WORDS = new Set(uniqueWords.map(w => w.romaji.toUpperCase()));
+    <!-- Nickname Registration Modal -->
+    <div class="modal-overlay" id="nicknameModal">
+        <div class="modal" style="max-width: 380px;">
+            <button class="modal-close" id="nicknameClose">&times;</button>
+            <h2>👤 ニックネーム登録</h2>
+            <p style="font-size:0.85rem; color:#666;">ランキングに表示される名前を設定してください。</p>
+            <div class="nickname-input-group">
+                <input type="text" id="nicknameInput" placeholder="ニックネーム" maxlength="12">
+                <button id="nicknameSubmit">登録</button>
+            </div>
+            <p style="font-size:0.75rem; color:#aaa; text-align:center;">※ 1〜12文字で設定できます</p>
+        </div>
+    </div>
 
-// ==============================
-// GAME STATE
-// ==============================
-const MAX_GUESSES = 6;
-const WORD_LENGTH = 5;
+    <!-- Confetti container -->
+    <div class="confetti-container" id="confetti"></div>
 
-let answer = null;
-let currentRow = 0;
-let currentCol = 0;
-let guesses = [];
-let gameOver = false;
-let isRevealing = false;
-let currentGuess = "";
+    <!-- Firebase SDK (compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 
-// ==============================
-// STATS
-// ==============================
-function loadStats() {
-    const def = { played: 0, won: 0, streak: 0, bestStreak: 0, distribution: {1:0,2:0,3:0,4:0,5:0,6:0} };
-    try {
-        return JSON.parse(localStorage.getItem('chimeidle-stats')) || def;
-    } catch { return def; }
-}
+    <script>
+        // ==============================
+        // FIREBASE INIT
+        // ==============================
+        const firebaseConfig = {
+            apiKey: "AIzaSyCb_JgYML7rxfIloqjxt5y_1YSF__MiSaU",
+            authDomain: "japan-wordle.firebaseapp.com",
+            projectId: "japan-wordle",
+            storageBucket: "japan-wordle.firebasestorage.app",
+            messagingSenderId: "642967595639",
+            appId: "1:642967595639:web:60f77076db8f984bf1b472",
+            measurementId: "G-6YZRNSHTDW"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        // ==============================
+        // WORD LIST - 5文字の日本の地名
+        // ==============================
+        const WORD_LIST = [
+            { romaji: "AICHI", kanji: "愛知", search: "愛知県 日本" },
+            { romaji: "AKITA", kanji: "秋田", search: "秋田県 日本" },
+            { romaji: "CHIBA", kanji: "千葉", search: "千葉県 日本" },
+            { romaji: "EHIME", kanji: "愛媛", search: "愛媛県 日本" },
+            { romaji: "FUKUI", kanji: "福井", search: "福井県 日本" },
+            { romaji: "GUNMA", kanji: "群馬", search: "群馬県 日本" },
+            { romaji: "HYOGO", kanji: "兵庫", search: "兵庫県 日本" },
+            { romaji: "IWATE", kanji: "岩手", search: "岩手県 日本" },
+            { romaji: "KOCHI", kanji: "高知", search: "高知県 日本" },
+            { romaji: "KYOTO", kanji: "京都", search: "京都 日本" },
+            { romaji: "OSAKA", kanji: "大阪", search: "大阪 日本" },
+            { romaji: "SHIGA", kanji: "滋賀", search: "滋賀県 日本" },
+            { romaji: "TOKYO", kanji: "東京", search: "東京 日本" },
+            { romaji: "ATAMI", kanji: "熱海", search: "熱海市 日本" },
+            { romaji: "NIKKO", kanji: "日光", search: "日光市 日本" },
+            { romaji: "OTARU", kanji: "小樽", search: "小樽市 日本" },
+            { romaji: "ASAHI", kanji: "旭", search: "旭市 千葉 日本" },
+            { romaji: "SAKAI", kanji: "堺", search: "堺市 大阪 日本" },
+            { romaji: "SUITA", kanji: "吹田", search: "吹田市 大阪 日本" },
+            { romaji: "FUCHU", kanji: "府中", search: "府中市 東京 日本" },
+            { romaji: "IZUMO", kanji: "出雲", search: "出雲市 島根 日本" },
+            { romaji: "BEPPU", kanji: "別府", search: "別府市 大分 日本" },
+            { romaji: "FUSSA", kanji: "福生", search: "福生市 東京 日本" },
+            { romaji: "CHOFU", kanji: "調布", search: "調布市 東京 日本" },
+            { romaji: "IWAKI", kanji: "いわき", search: "いわき市 福島 日本" },
+            { romaji: "OMIYA", kanji: "大宮", search: "大宮 埼玉 日本" },
+            { romaji: "TENRI", kanji: "天理", search: "天理市 奈良 日本" },
+            { romaji: "BIZEN", kanji: "備前", search: "備前市 岡山 日本" },
+            { romaji: "ABIKO", kanji: "我孫子", search: "我孫子市 日本" },
+            { romaji: "AMAMI", kanji: "奄美", search: "奄美大島 日本" },
+            { romaji: "ASAGO", kanji: "朝来", search: "朝来市 兵庫 日本" },
+            { romaji: "AWAJI", kanji: "淡路", search: "淡路島 日本" },
+            { romaji: "AYASE", kanji: "綾瀬", search: "綾瀬市 神奈川 日本" },
+            { romaji: "BIBAI", kanji: "美唄", search: "美唄市 北海道 日本" },
+            { romaji: "BANDO", kanji: "坂東", search: "坂東市 茨城 日本" },
+            { romaji: "BUNGO", kanji: "豊後", search: "豊後 大分 日本" },
+            { romaji: "CHINO", kanji: "茅野", search: "茅野市 長野 日本" },
+            { romaji: "CHITA", kanji: "知多", search: "知多市 愛知 日本" },
+            { romaji: "CHIZU", kanji: "智頭", search: "智頭町 鳥取 日本" },
+            { romaji: "DAITO", kanji: "大東", search: "大東市 大阪 日本" },
+            { romaji: "EBINA", kanji: "海老名", search: "海老名市 神奈川 日本" },
+            { romaji: "ENIWA", kanji: "恵庭", search: "恵庭市 北海道 日本" },
+            { romaji: "ENZAN", kanji: "塩山", search: "塩山 山梨 日本" },
+            { romaji: "FUKAE", kanji: "深江", search: "深江 兵庫 日本" },
+            { romaji: "GYODA", kanji: "行田", search: "行田市 埼玉 日本" },
+            { romaji: "GOSEN", kanji: "五泉", search: "五泉市 新潟 日本" },
+            { romaji: "GOTSU", kanji: "江津", search: "江津市 島根 日本" },
+            { romaji: "HANDA", kanji: "半田", search: "半田市 愛知 日本" },
+            { romaji: "HANYU", kanji: "羽生", search: "羽生市 埼玉 日本" },
+            { romaji: "HANNO", kanji: "飯能", search: "飯能市 埼玉 日本" },
+            { romaji: "HAPPO", kanji: "八峰", search: "八峰町 秋田 日本" },
+            { romaji: "HIOKI", kanji: "日置", search: "日置市 鹿児島 日本" },
+            { romaji: "HIROO", kanji: "広尾", search: "広尾町 北海道 日本" },
+            { romaji: "HIZEN", kanji: "肥前", search: "肥前 佐賀 日本" },
+            { romaji: "HONJO", kanji: "本庄", search: "本庄市 埼玉 日本" },
+            { romaji: "HYUGA", kanji: "日向", search: "日向市 宮崎 日本" },
+            { romaji: "IKEDA", kanji: "池田", search: "池田市 大阪 日本" },
+            { romaji: "IKOMA", kanji: "生駒", search: "生駒市 奈良 日本" },
+            { romaji: "IMARI", kanji: "伊万里", search: "伊万里市 佐賀 日本" },
+            { romaji: "INABE", kanji: "いなべ", search: "いなべ市 三重 日本" },
+            { romaji: "INAGI", kanji: "稲城", search: "稲城市 東京 日本" },
+            { romaji: "INAMI", kanji: "印南", search: "印南町 和歌山 日本" },
+            { romaji: "IRUMA", kanji: "入間", search: "入間市 埼玉 日本" },
+            { romaji: "ISUMI", kanji: "いすみ", search: "いすみ市 千葉 日本" },
+            { romaji: "ITAKO", kanji: "潮来", search: "潮来市 茨城 日本" },
+            { romaji: "ITAMI", kanji: "伊丹", search: "伊丹市 兵庫 日本" },
+            { romaji: "ITANO", kanji: "板野", search: "板野町 徳島 日本" },
+            { romaji: "IWADE", kanji: "岩出", search: "岩出市 和歌山 日本" },
+            { romaji: "IWAMI", kanji: "岩美", search: "岩美町 鳥取 日本" },
+            { romaji: "IWATA", kanji: "磐田", search: "磐田市 静岡 日本" },
+            { romaji: "IZUMI", kanji: "和泉", search: "和泉市 大阪 日本" },
+            { romaji: "KAIZU", kanji: "海津", search: "海津市 岐阜 日本" },
+            { romaji: "KANIE", kanji: "蟹江", search: "蟹江町 愛知 日本" },
+            { romaji: "KANNA", kanji: "神流", search: "神流町 群馬 日本" },
+            { romaji: "KANRA", kanji: "甘楽", search: "甘楽町 群馬 日本" },
+            { romaji: "KASAI", kanji: "加西", search: "加西市 兵庫 日本" },
+            { romaji: "KAWAI", kanji: "河合", search: "河合町 奈良 日本" },
+            { romaji: "KINKO", kanji: "錦江", search: "錦江町 鹿児島 日本" },
+            { romaji: "KIRYU", kanji: "桐生", search: "桐生市 群馬 日本" },
+            { romaji: "KOMAE", kanji: "狛江", search: "狛江市 東京 日本" },
+            { romaji: "KONAN", kanji: "湖南", search: "湖南市 滋賀 日本" },
+            { romaji: "KORYO", kanji: "広陵", search: "広陵町 奈良 日本" },
+            { romaji: "KOSAI", kanji: "湖西", search: "湖西市 静岡 日本" },
+            { romaji: "KOSHI", kanji: "合志", search: "合志市 熊本 日本" },
+            { romaji: "MEIWA", kanji: "明和", search: "明和町 三重 日本" },
+            { romaji: "MINOO", kanji: "箕面", search: "箕面市 大阪 日本" },
+            { romaji: "MIURA", kanji: "三浦", search: "三浦市 神奈川 日本" },
+            { romaji: "MUTSU", kanji: "むつ", search: "むつ市 青森 日本" },
+            { romaji: "MYOKO", kanji: "妙高", search: "妙高市 新潟 日本" },
+            { romaji: "NAGAI", kanji: "長井", search: "長井市 山形 日本" },
+            { romaji: "NAMIE", kanji: "浪江", search: "浪江町 福島 日本" },
+            { romaji: "NANBU", kanji: "南部", search: "南部町 山梨 日本" },
+            { romaji: "NANJO", kanji: "南城", search: "南城市 沖縄 日本" },
+            { romaji: "NANTO", kanji: "南砺", search: "南砺市 富山 日本" },
+            { romaji: "NANYO", kanji: "南陽", search: "南陽市 山形 日本" },
+            { romaji: "OBAMA", kanji: "小浜", search: "小浜市 福井 日本" },
+            { romaji: "OGAKI", kanji: "大垣", search: "大垣市 岐阜 日本" },
+            { romaji: "OGANO", kanji: "小鹿野", search: "小鹿野町 埼玉 日本" },
+            { romaji: "OGAWA", kanji: "小川", search: "小川町 埼玉 日本" },
+            { romaji: "OGIMI", kanji: "大宜味", search: "大宜味村 沖縄 日本" },
+            { romaji: "OGUNI", kanji: "小国", search: "小国町 熊本 日本" },
+            { romaji: "OHARA", kanji: "大原", search: "大原 京都 日本" },
+            { romaji: "OJIYA", kanji: "小千谷", search: "小千谷市 新潟 日本" },
+            { romaji: "OKAWA", kanji: "大川", search: "大川市 福岡 日本" },
+            { romaji: "OKAYA", kanji: "岡谷", search: "岡谷市 長野 日本" },
+            { romaji: "OMURA", kanji: "大村", search: "大村市 長崎 日本" },
+            { romaji: "OMUTA", kanji: "大牟田", search: "大牟田市 福岡 日本" },
+            { romaji: "ONOJO", kanji: "大野城", search: "大野城市 福岡 日本" },
+            { romaji: "OTAKE", kanji: "大竹", search: "大竹市 広島 日本" },
+            { romaji: "OTAKI", kanji: "大多喜", search: "大多喜町 千葉 日本" },
+            { romaji: "OTARI", kanji: "小谷", search: "小谷村 長野 日本" },
+            { romaji: "OWASE", kanji: "尾鷲", search: "尾鷲市 三重 日本" },
+            { romaji: "OYAMA", kanji: "小山", search: "小山市 栃木 日本" },
+            { romaji: "OYODO", kanji: "大淀", search: "大淀町 奈良 日本" },
+            { romaji: "OZORA", kanji: "大空", search: "大空町 北海道 日本" },
+            { romaji: "SABAE", kanji: "鯖江", search: "鯖江市 福井 日本" },
+            { romaji: "SAIJO", kanji: "西条", search: "西条市 愛媛 日本" },
+            { romaji: "SEIYO", kanji: "西予", search: "西予市 愛媛 日本" },
+            { romaji: "SHIKA", kanji: "志賀", search: "志賀町 石川 日本" },
+            { romaji: "SHOWA", kanji: "昭和", search: "昭和町 山梨 日本" },
+            { romaji: "TAIKI", kanji: "大樹", search: "大樹町 北海道 日本" },
+            { romaji: "TAIJI", kanji: "太地", search: "太地町 和歌山 日本" },
+            { romaji: "TAIWA", kanji: "大和", search: "大和町 宮城 日本" },
+            { romaji: "TARUI", kanji: "垂井", search: "垂井町 岐阜 日本" },
+            { romaji: "TSURU", kanji: "都留", search: "都留市 山梨 日本" },
+            { romaji: "USUKI", kanji: "臼杵", search: "臼杵市 大分 日本" },
+            { romaji: "YAESE", kanji: "八重瀬", search: "八重瀬町 沖縄 日本" },
+            { romaji: "YAITA", kanji: "矢板", search: "矢板市 栃木 日本" },
+            { romaji: "YORII", kanji: "寄居", search: "寄居町 埼玉 日本" },
+            { romaji: "YUASA", kanji: "湯浅", search: "湯浅町 和歌山 日本" },
+            { romaji: "PIPPU", kanji: "比布", search: "比布町 北海道 日本" },
+            { romaji: "ERIMO", kanji: "襟裳", search: "えりも町 北海道 日本" },
+            { romaji: "OKETO", kanji: "置戸", search: "置戸町 北海道 日本" },
+            { romaji: "RAUSU", kanji: "羅臼", search: "羅臼町 北海道 日本" },
+            { romaji: "OKUMA", kanji: "大熊", search: "大熊町 福島 日本" },
+            { romaji: "OARAI", kanji: "大洗", search: "大洗町 茨城 日本" },
+            { romaji: "DAIGO", kanji: "大子", search: "大子町 茨城 日本" },
+            { romaji: "OGOSE", kanji: "越生", search: "越生町 埼玉 日本" },
+            { romaji: "DOSHI", kanji: "道志", search: "道志村 山梨 日本" },
+            { romaji: "KANAN", kanji: "河南", search: "河南町 大阪 日本" },
+            { romaji: "KAITA", kanji: "海田", search: "海田町 広島 日本" },
+            { romaji: "IKATA", kanji: "伊方", search: "伊方町 愛媛 日本" },
+            { romaji: "AINAN", kanji: "愛南", search: "愛南町 愛媛 日本" },
+            { romaji: "UMAJI", kanji: "馬路", search: "馬路村 高知 日本" },
+            { romaji: "SHIME", kanji: "志免", search: "志免町 福岡 日本" },
+            { romaji: "KANDA", kanji: "苅田", search: "苅田町 福岡 日本" },
+            { romaji: "SOEDA", kanji: "添田", search: "添田町 福岡 日本" },
+            { romaji: "ITODA", kanji: "糸田", search: "糸田町 福岡 日本" },
+            { romaji: "OJIKA", kanji: "小値賀", search: "小値賀町 長崎 日本" },
+            { romaji: "YAMAE", kanji: "山江", search: "山江村 熊本 日本" },
+            { romaji: "TSUNO", kanji: "都農", search: "都農町 宮崎 日本" },
+            { romaji: "KIKAI", kanji: "喜界", search: "喜界町 鹿児島 日本" },
+            { romaji: "CHINA", kanji: "知名", search: "知名町 鹿児島 日本" },
+            { romaji: "YORON", kanji: "与論", search: "与論町 鹿児島 日本" },
+            { romaji: "AGUNI", kanji: "粟国", search: "粟国村 沖縄 日本" },
+            { romaji: "IHEYA", kanji: "伊平屋", search: "伊平屋村 沖縄 日本" },
+            { romaji: "IZENA", kanji: "伊是名", search: "伊是名村 沖縄 日本" },
+            { romaji: "UMEDA", kanji: "梅田", search: "梅田 大阪 日本" },
+            { romaji: "NAMBA", kanji: "難波", search: "難波 大阪 日本" },
+            { romaji: "SAKAE", kanji: "栄", search: "栄 名古屋 日本" },
+            { romaji: "EBISU", kanji: "恵比寿", search: "恵比寿 東京 日本" },
+            { romaji: "GINZA", kanji: "銀座", search: "銀座 東京 日本" },
+        ];
 
-function saveStats(stats) {
-    localStorage.setItem('chimeidle-stats', JSON.stringify(stats));
-}
-
-function updateStatsDisplay(prefix) {
-    const stats = loadStats();
-    const winRate = stats.played > 0 ? Math.round((stats.won / stats.played) * 100) : 0;
-    document.getElementById(prefix + 'Played').textContent = stats.played;
-    document.getElementById(prefix + 'Win').textContent = winRate;
-    document.getElementById(prefix + 'Streak').textContent = stats.streak;
-    document.getElementById(prefix + 'Best').textContent = stats.bestStreak;
-}
-
-// ==============================
-// GAME FUNCTIONS
-// ==============================
-function pickWord() {
-    const idx = Math.floor(Math.random() * uniqueWords.length);
-    return uniqueWords[idx];
-}
-
-function initGame() {
-    answer = pickWord();
-    currentRow = 0;
-    currentCol = 0;
-    guesses = [];
-    gameOver = false;
-    isRevealing = false;
-    currentGuess = "";
-    
-    buildBoard();
-    buildKeyboard();
-    
-    console.log("Debug answer:", answer.romaji);
-}
-
-function buildBoard() {
-    const board = document.getElementById('board');
-    board.innerHTML = '';
-    for (let r = 0; r < MAX_GUESSES; r++) {
-        const row = document.createElement('div');
-        row.className = 'row';
-        row.id = `row-${r}`;
-        for (let c = 0; c < WORD_LENGTH; c++) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            tile.id = `tile-${r}-${c}`;
-            row.appendChild(tile);
-        }
-        board.appendChild(row);
-    }
-}
-
-function buildKeyboard() {
-    const kb = document.getElementById('keyboard');
-    kb.innerHTML = '';
-    const rows = [
-        ['Q','W','E','R','T','Y','U','I','O','P'],
-        ['A','S','D','F','G','H','J','K','L'],
-        ['ENTER','Z','X','C','V','B','N','M','⌫']
-    ];
-    
-    rows.forEach(row => {
-        const rowDiv = document.createElement('div');
-        rowDiv.className = 'kb-row';
-        row.forEach(key => {
-            const btn = document.createElement('button');
-            btn.className = 'key' + (key === 'ENTER' || key === '⌫' ? ' wide' : '');
-            btn.textContent = key;
-            btn.id = `key-${key}`;
-            btn.setAttribute('data-key', key);
-            btn.addEventListener('click', () => handleKey(key));
-            rowDiv.appendChild(btn);
+        // Remove duplicates by romaji
+        const uniqueWords = [];
+        const seenRomaji = new Set();
+        WORD_LIST.forEach(w => {
+            const key = w.romaji.toUpperCase();
+            if (!seenRomaji.has(key)) {
+                seenRomaji.add(key);
+                uniqueWords.push(w);
+            }
         });
-        kb.appendChild(rowDiv);
-    });
-}
 
-function handleKey(key) {
-    if (gameOver || isRevealing) return;
-    if (key === 'ENTER') {
-        submitGuess();
-    } else if (key === '⌫') {
-        deleteLetter();
-    } else if (/^[A-Z]$/.test(key)) {
-        addLetter(key);
-    }
-}
+        // All valid romaji words (for checking if input is valid)
+        const VALID_WORDS = new Set(uniqueWords.map(w => w.romaji.toUpperCase()));
 
-function addLetter(letter) {
-    if (currentCol >= WORD_LENGTH) return;
-    
-    const tile = document.getElementById(`tile-${currentRow}-${currentCol}`);
-    tile.textContent = letter;
-    tile.classList.add('filled');
-    currentGuess += letter;
-    currentCol++;
-}
+        // ==============================
+        // GAME STATE
+        // ==============================
+        const MAX_GUESSES = 6;
+        const WORD_LENGTH = 5;
 
-function deleteLetter() {
-    if (currentCol <= 0) return;
-    
-    currentCol--;
-    const tile = document.getElementById(`tile-${currentRow}-${currentCol}`);
-    tile.textContent = '';
-    tile.classList.remove('filled');
-    currentGuess = currentGuess.slice(0, -1);
-}
+        let answer = null;
+        let currentRow = 0;
+        let currentCol = 0;
+        let guesses = [];
+        let gameOver = false;
+        let isRevealing = false;
+        let currentGuess = "";
 
-function submitGuess() {
-    if (currentGuess.length < WORD_LENGTH) {
-        shakeRow(currentRow);
-        showToast("5文字入力してください");
-        return;
-    }
-    
-    if (!VALID_WORDS.has(currentGuess.toUpperCase())) {
-        shakeRow(currentRow);
-        showToast("リストにない地名です");
-        return;
-    }
-    
-    const guess = currentGuess.toUpperCase();
-    const answerStr = answer.romaji.toUpperCase();
-    guesses.push(guess);
-    
-    // Calculate results
-    const result = evaluateGuess(guess, answerStr);
-    
-    // Reveal tiles with animation
-    isRevealing = true;
-    revealRow(currentRow, result, guess);
-    
-    const won = guess === answerStr;
-    const lastGuess = currentRow === MAX_GUESSES - 1;
-    
-    setTimeout(() => {
-        isRevealing = false;
-        updateKeyboard(result, guess);
-        
-        if (won) {
-            gameOver = true;
-            // Win animation
-            setTimeout(() => {
+        // ==============================
+        // STATS
+        // ==============================
+        function loadStats() {
+            const def = { played: 0, won: 0, streak: 0, bestStreak: 0, distribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 } };
+            try {
+                return JSON.parse(localStorage.getItem('chimeidle-stats')) || def;
+            } catch { return def; }
+        }
+
+        function saveStats(stats) {
+            localStorage.setItem('chimeidle-stats', JSON.stringify(stats));
+        }
+
+        function updateStatsDisplay(prefix) {
+            const stats = loadStats();
+            const winRate = stats.played > 0 ? Math.round((stats.won / stats.played) * 100) : 0;
+            document.getElementById(prefix + 'Played').textContent = stats.played;
+            document.getElementById(prefix + 'Win').textContent = winRate;
+            document.getElementById(prefix + 'Streak').textContent = stats.streak;
+            document.getElementById(prefix + 'Best').textContent = stats.bestStreak;
+        }
+
+        // ==============================
+        // GAME FUNCTIONS
+        // ==============================
+        function pickWord() {
+            const idx = Math.floor(Math.random() * uniqueWords.length);
+            return uniqueWords[idx];
+        }
+
+        function initGame() {
+            answer = pickWord();
+            currentRow = 0;
+            currentCol = 0;
+            guesses = [];
+            gameOver = false;
+            isRevealing = false;
+            currentGuess = "";
+
+            buildBoard();
+            buildKeyboard();
+
+            console.log("Debug answer:", answer.romaji);
+        }
+
+        function buildBoard() {
+            const board = document.getElementById('board');
+            board.innerHTML = '';
+            for (let r = 0; r < MAX_GUESSES; r++) {
+                const row = document.createElement('div');
+                row.className = 'row';
+                row.id = `row-${r}`;
                 for (let c = 0; c < WORD_LENGTH; c++) {
-                    const tile = document.getElementById(`tile-${currentRow}-${c}`);
-                    setTimeout(() => tile.classList.add('win'), c * 100);
+                    const tile = document.createElement('div');
+                    tile.className = 'tile';
+                    tile.id = `tile-${r}-${c}`;
+                    row.appendChild(tile);
                 }
-            }, 200);
-            
-            // Update stats
-            const stats = loadStats();
-            stats.played++;
-            stats.won++;
-            stats.streak++;
-            if (stats.streak > stats.bestStreak) stats.bestStreak = stats.streak;
-            stats.distribution[currentRow + 1]++;
-            saveStats(stats);
-            
-            // Sync ranking to server
-            syncRankingToServer();
-            
-            setTimeout(() => {
-                showConfetti();
-                showResult(true, currentRow + 1);
-            }, 1500);
-        } else if (lastGuess) {
-            gameOver = true;
-            
-            const stats = loadStats();
-            stats.played++;
-            stats.streak = 0;
-            saveStats(stats);
-            
-            // Sync ranking to server
-            syncRankingToServer();
-            
-            setTimeout(() => {
-                showResult(false, null);
-            }, 1200);
-        }
-        
-        currentRow++;
-        currentCol = 0;
-        currentGuess = "";
-    }, WORD_LENGTH * 350 + 200);
-}
-
-function evaluateGuess(guess, answerStr) {
-    const result = Array(WORD_LENGTH).fill('absent');
-    const answerArr = answerStr.split('');
-    const guessArr = guess.split('');
-    const used = Array(WORD_LENGTH).fill(false);
-    
-    // First pass: correct
-    for (let i = 0; i < WORD_LENGTH; i++) {
-        if (guessArr[i] === answerArr[i]) {
-            result[i] = 'correct';
-            used[i] = true;
-        }
-    }
-    
-    // Second pass: present
-    for (let i = 0; i < WORD_LENGTH; i++) {
-        if (result[i] === 'correct') continue;
-        for (let j = 0; j < WORD_LENGTH; j++) {
-            if (!used[j] && guessArr[i] === answerArr[j]) {
-                result[i] = 'present';
-                used[j] = true;
-                break;
+                board.appendChild(row);
             }
         }
-    }
-    
-    return result;
-}
 
-function revealRow(row, result, guess) {
-    for (let c = 0; c < WORD_LENGTH; c++) {
-        const tile = document.getElementById(`tile-${row}-${c}`);
-        setTimeout(() => {
-            tile.classList.add('reveal');
-            setTimeout(() => {
-                tile.classList.add(result[c]);
-            }, 250);
-        }, c * 350);
-    }
-}
+        function buildKeyboard() {
+            const kb = document.getElementById('keyboard');
+            kb.innerHTML = '';
+            const rows = [
+                ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+                ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+                ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '⌫']
+            ];
 
-function updateKeyboard(result, guess) {
-    const priority = { 'correct': 3, 'present': 2, 'absent': 1 };
-    
-    for (let i = 0; i < WORD_LENGTH; i++) {
-        const letter = guess[i];
-        const key = document.getElementById(`key-${letter}`);
-        if (!key) continue;
-        
-        const currentClass = key.classList.contains('correct') ? 'correct' : 
-                           key.classList.contains('present') ? 'present' : 
-                           key.classList.contains('absent') ? 'absent' : null;
-        
-        const currentPriority = currentClass ? priority[currentClass] : 0;
-        const newPriority = priority[result[i]];
-        
-        if (newPriority > currentPriority) {
-            key.classList.remove('correct', 'present', 'absent');
-            key.classList.add(result[i]);
+            rows.forEach(row => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'kb-row';
+                row.forEach(key => {
+                    const btn = document.createElement('button');
+                    btn.className = 'key' + (key === 'ENTER' || key === '⌫' ? ' wide' : '');
+                    btn.textContent = key;
+                    btn.id = `key-${key}`;
+                    btn.setAttribute('data-key', key);
+                    btn.addEventListener('click', () => handleKey(key));
+                    rowDiv.appendChild(btn);
+                });
+                kb.appendChild(rowDiv);
+            });
         }
-    }
-}
 
-function shakeRow(row) {
-    const rowEl = document.getElementById(`row-${row}`);
-    rowEl.querySelectorAll('.tile').forEach(tile => {
-        tile.classList.add('shake');
-        setTimeout(() => tile.classList.remove('shake'), 500);
-    });
-}
+        function handleKey(key) {
+            if (gameOver || isRevealing) return;
+            if (key === 'ENTER') {
+                submitGuess();
+            } else if (key === '⌫') {
+                deleteLetter();
+            } else if (/^[A-Z]$/.test(key)) {
+                addLetter(key);
+            }
+        }
 
-// ==============================
-// TOAST
-// ==============================
-function showToast(msg) {
-    const container = document.getElementById('toast-container');
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = msg;
-    container.appendChild(toast);
-    setTimeout(() => toast.remove(), 1600);
-}
+        function addLetter(letter) {
+            if (currentCol >= WORD_LENGTH) return;
 
-// ==============================
-// RESULT MODAL + GOOGLE MAP
-// ==============================
-function showResult(won, attempts) {
-    const modal = document.getElementById('resultModal');
-    
-    document.getElementById('resultIcon').textContent = won ? '🎉' : '😢';
-    document.getElementById('resultTitle').textContent = won ? 'すばらしい！' : '残念...';
-    
-    const answerEl = document.getElementById('resultAnswer');
-    answerEl.textContent = answer.romaji;
-    answerEl.className = 'result-answer' + (won ? '' : ' lost');
-    
-    document.getElementById('resultKanji').textContent = answer.kanji;
-    
-    // Google Map embed
-    const mapContainer = document.getElementById('map-container');
-    const searchQuery = encodeURIComponent(answer.search);
-    mapContainer.innerHTML = `<iframe 
+            const tile = document.getElementById(`tile-${currentRow}-${currentCol}`);
+            tile.textContent = letter;
+            tile.classList.add('filled');
+            currentGuess += letter;
+            currentCol++;
+        }
+
+        function deleteLetter() {
+            if (currentCol <= 0) return;
+
+            currentCol--;
+            const tile = document.getElementById(`tile-${currentRow}-${currentCol}`);
+            tile.textContent = '';
+            tile.classList.remove('filled');
+            currentGuess = currentGuess.slice(0, -1);
+        }
+
+        function submitGuess() {
+            if (currentGuess.length < WORD_LENGTH) {
+                shakeRow(currentRow);
+                showToast("5文字入力してください");
+                return;
+            }
+
+            if (!VALID_WORDS.has(currentGuess.toUpperCase())) {
+                shakeRow(currentRow);
+                showToast("リストにない地名です");
+                return;
+            }
+
+            const guess = currentGuess.toUpperCase();
+            const answerStr = answer.romaji.toUpperCase();
+            guesses.push(guess);
+
+            // Calculate results
+            const result = evaluateGuess(guess, answerStr);
+
+            // Reveal tiles with animation
+            isRevealing = true;
+            revealRow(currentRow, result, guess);
+
+            const won = guess === answerStr;
+            const lastGuess = currentRow === MAX_GUESSES - 1;
+
+            setTimeout(() => {
+                isRevealing = false;
+                updateKeyboard(result, guess);
+
+                if (won) {
+                    gameOver = true;
+                    // Win animation
+                    setTimeout(() => {
+                        for (let c = 0; c < WORD_LENGTH; c++) {
+                            const tile = document.getElementById(`tile-${currentRow}-${c}`);
+                            setTimeout(() => tile.classList.add('win'), c * 100);
+                        }
+                    }, 200);
+
+                    // Update stats
+                    const stats = loadStats();
+                    stats.played++;
+                    stats.won++;
+                    stats.streak++;
+                    if (stats.streak > stats.bestStreak) stats.bestStreak = stats.streak;
+                    stats.distribution[currentRow + 1]++;
+                    saveStats(stats);
+
+                    // Sync ranking to server
+                    syncRankingToServer();
+
+                    setTimeout(() => {
+                        showConfetti();
+                        showResult(true, currentRow + 1);
+                    }, 1500);
+                } else if (lastGuess) {
+                    gameOver = true;
+
+                    const stats = loadStats();
+                    stats.played++;
+                    stats.streak = 0;
+                    saveStats(stats);
+
+                    // Sync ranking to server
+                    syncRankingToServer();
+
+                    setTimeout(() => {
+                        showResult(false, null);
+                    }, 1200);
+                }
+
+                currentRow++;
+                currentCol = 0;
+                currentGuess = "";
+            }, WORD_LENGTH * 350 + 200);
+        }
+
+        function evaluateGuess(guess, answerStr) {
+            const result = Array(WORD_LENGTH).fill('absent');
+            const answerArr = answerStr.split('');
+            const guessArr = guess.split('');
+            const used = Array(WORD_LENGTH).fill(false);
+
+            // First pass: correct
+            for (let i = 0; i < WORD_LENGTH; i++) {
+                if (guessArr[i] === answerArr[i]) {
+                    result[i] = 'correct';
+                    used[i] = true;
+                }
+            }
+
+            // Second pass: present
+            for (let i = 0; i < WORD_LENGTH; i++) {
+                if (result[i] === 'correct') continue;
+                for (let j = 0; j < WORD_LENGTH; j++) {
+                    if (!used[j] && guessArr[i] === answerArr[j]) {
+                        result[i] = 'present';
+                        used[j] = true;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        function revealRow(row, result, guess) {
+            for (let c = 0; c < WORD_LENGTH; c++) {
+                const tile = document.getElementById(`tile-${row}-${c}`);
+                setTimeout(() => {
+                    tile.classList.add('reveal');
+                    setTimeout(() => {
+                        tile.classList.add(result[c]);
+                    }, 250);
+                }, c * 350);
+            }
+        }
+
+        function updateKeyboard(result, guess) {
+            const priority = { 'correct': 3, 'present': 2, 'absent': 1 };
+
+            for (let i = 0; i < WORD_LENGTH; i++) {
+                const letter = guess[i];
+                const key = document.getElementById(`key-${letter}`);
+                if (!key) continue;
+
+                const currentClass = key.classList.contains('correct') ? 'correct' :
+                    key.classList.contains('present') ? 'present' :
+                        key.classList.contains('absent') ? 'absent' : null;
+
+                const currentPriority = currentClass ? priority[currentClass] : 0;
+                const newPriority = priority[result[i]];
+
+                if (newPriority > currentPriority) {
+                    key.classList.remove('correct', 'present', 'absent');
+                    key.classList.add(result[i]);
+                }
+            }
+        }
+
+        function shakeRow(row) {
+            const rowEl = document.getElementById(`row-${row}`);
+            rowEl.querySelectorAll('.tile').forEach(tile => {
+                tile.classList.add('shake');
+                setTimeout(() => tile.classList.remove('shake'), 500);
+            });
+        }
+
+        // ==============================
+        // TOAST
+        // ==============================
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = msg;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 1600);
+        }
+
+        // ==============================
+        // RESULT MODAL + GOOGLE MAP
+        // ==============================
+        function showResult(won, attempts) {
+            const modal = document.getElementById('resultModal');
+
+            document.getElementById('resultIcon').textContent = won ? '🎉' : '😢';
+            document.getElementById('resultTitle').textContent = won ? 'すばらしい！' : '残念...';
+
+            const answerEl = document.getElementById('resultAnswer');
+            answerEl.textContent = answer.romaji;
+            answerEl.className = 'result-answer' + (won ? '' : ' lost');
+
+            document.getElementById('resultKanji').textContent = answer.kanji;
+
+            // Google Map embed
+            const mapContainer = document.getElementById('map-container');
+            const searchQuery = encodeURIComponent(answer.search);
+            mapContainer.innerHTML = `<iframe 
         src="https://maps.google.com/maps?q=${searchQuery}&output=embed&z=10" 
         allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>`;
-    
-    document.getElementById('mapLabelText').textContent = `${answer.kanji}（${answer.romaji}）の場所`;
-    
-    updateStatsDisplay('stat');
-    
-    modal.classList.add('active');
-}
 
-function closeResult() {
-    document.getElementById('resultModal').classList.remove('active');
-}
+            document.getElementById('mapLabelText').textContent = `${answer.kanji}（${answer.romaji}）の場所`;
 
-// ==============================
-// SHARE
-// ==============================
-function getShareText() {
-    const won = guesses[guesses.length - 1] === answer.romaji.toUpperCase();
-    const attemptStr = won ? guesses.length : 'X';
-    
-    let text = `⛩️ 日本の地名でWordle ${attemptStr}/6\n\n`;
-    
-    const answerStr = answer.romaji.toUpperCase();
-    guesses.forEach(guess => {
-        const result = evaluateGuess(guess, answerStr);
-        const emojiMap = { correct: '🟩', present: '🟨', absent: '⬛' };
-        text += result.map(r => emojiMap[r]).join('') + '\n';
-    });
-    
-    return text;
-}
+            updateStatsDisplay('stat');
 
-function copyResultToClipboard() {
-    const text = getShareText();
-    
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(() => {
-            showToast("結果をコピーしました！");
+            modal.classList.add('active');
+        }
+
+        function closeResult() {
+            document.getElementById('resultModal').classList.remove('active');
+        }
+
+        // ==============================
+        // SHARE
+        // ==============================
+        function getShareText() {
+            const won = guesses[guesses.length - 1] === answer.romaji.toUpperCase();
+            const attemptStr = won ? guesses.length : 'X';
+
+            let text = `⛩️ 日本の地名でWordle ${attemptStr}/6\n\n`;
+
+            const answerStr = answer.romaji.toUpperCase();
+            guesses.forEach(guess => {
+                const result = evaluateGuess(guess, answerStr);
+                const emojiMap = { correct: '🟩', present: '🟨', absent: '⬛' };
+                text += result.map(r => emojiMap[r]).join('') + '\n';
+            });
+
+            return text;
+        }
+
+        function copyResultToClipboard() {
+            const text = getShareText();
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast("結果をコピーしました！");
+                    closeShareModal();
+                });
+            } else {
+                // Fallback
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast("結果をコピーしました！");
+                closeShareModal();
+            }
+        }
+
+        function shareOnTwitter() {
+            const text = getShareText();
+            const gameUrl = window.location.href;
+            const tweetText = `${text}\n${gameUrl}`;
+
+            // Twitter Web Intent
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+            window.open(twitterUrl, 'twitter-share', 'width=600,height=400');
             closeShareModal();
-        });
-    } else {
-        // Fallback
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showToast("結果をコピーしました！");
-        closeShareModal();
-    }
-}
+        }
 
-function shareOnTwitter() {
-    const text = getShareText();
-    const gameUrl = window.location.href;
-    const tweetText = `${text}\n${gameUrl}`;
-    
-    // Twitter Web Intent
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
-    window.open(twitterUrl, 'twitter-share', 'width=600,height=400');
-    closeShareModal();
-}
+        function openShareModal() {
+            document.getElementById('shareModal').classList.add('active');
+        }
 
-function openShareModal() {
-    document.getElementById('shareModal').classList.add('active');
-}
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.remove('active');
+        }
 
-function closeShareModal() {
-    document.getElementById('shareModal').classList.remove('active');
-}
+        function shareResult() {
+            openShareModal();
+        }
 
-function shareResult() {
-    openShareModal();
-}
+        // ==============================
+        // CONFETTI
+        // ==============================
+        function showConfetti() {
+            const container = document.getElementById('confetti');
+            container.innerHTML = '';
+            const colors = ['#6aaa64', '#c9b458', '#f8b4c8', '#ff6b6b', '#4ecdc4', '#45b7d1', '#ffd93d'];
 
-// ==============================
-// CONFETTI
-// ==============================
-function showConfetti() {
-    const container = document.getElementById('confetti');
-    container.innerHTML = '';
-    const colors = ['#6aaa64', '#c9b458', '#f8b4c8', '#ff6b6b', '#4ecdc4', '#45b7d1', '#ffd93d'];
-    
-    for (let i = 0; i < 60; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = (Math.random() * 8 + 5) + 'px';
-        confetti.style.height = (Math.random() * 8 + 5) + 'px';
-        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        confetti.style.animationDelay = Math.random() * 0.5 + 's';
-        container.appendChild(confetti);
-    }
-    
-    setTimeout(() => container.innerHTML = '', 4000);
-}
+            for (let i = 0; i < 60; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 8 + 5) + 'px';
+                confetti.style.height = (Math.random() * 8 + 5) + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                container.appendChild(confetti);
+            }
 
-// ==============================
-// SAKURA PETALS
-// ==============================
-function createSakura() {
-    const container = document.getElementById('sakura');
-    for (let i = 0; i < 15; i++) {
-        const petal = document.createElement('div');
-        petal.className = 'sakura-petal';
-        petal.style.left = Math.random() * 100 + '%';
-        petal.style.animationDuration = (Math.random() * 8 + 6) + 's';
-        petal.style.animationDelay = Math.random() * 10 + 's';
-        petal.style.width = (Math.random() * 8 + 8) + 'px';
-        petal.style.height = (Math.random() * 8 + 8) + 'px';
-        petal.style.opacity = Math.random() * 0.4 + 0.2;
-        container.appendChild(petal);
-    }
-}
+            setTimeout(() => container.innerHTML = '', 4000);
+        }
 
-// ==============================
-// MODALS
-// ==============================
-function showHelp() {
-    document.getElementById('helpModal').classList.add('active');
-}
+        // ==============================
+        // SAKURA PETALS
+        // ==============================
+        function createSakura() {
+            const container = document.getElementById('sakura');
+            for (let i = 0; i < 15; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'sakura-petal';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                petal.style.animationDelay = Math.random() * 10 + 's';
+                petal.style.width = (Math.random() * 8 + 8) + 'px';
+                petal.style.height = (Math.random() * 8 + 8) + 'px';
+                petal.style.opacity = Math.random() * 0.4 + 0.2;
+                container.appendChild(petal);
+            }
+        }
 
-function showStats() {
-    const stats = loadStats();
-    updateStatsDisplay('sStat');
-    
-    // Distribution
-    const dist = document.getElementById('guessDistribution');
-    dist.innerHTML = '<h3 style="text-align:center; margin-bottom:12px; font-size:0.9rem;">推測の分布</h3>';
-    const maxVal = Math.max(...Object.values(stats.distribution || {}), 1);
-    
-    for (let i = 1; i <= 6; i++) {
-        const val = (stats.distribution && stats.distribution[i]) || 0;
-        const pct = (val / maxVal) * 100;
-        dist.innerHTML += `
+        // ==============================
+        // MODALS
+        // ==============================
+        function showHelp() {
+            document.getElementById('helpModal').classList.add('active');
+        }
+
+        function showStats() {
+            const stats = loadStats();
+            updateStatsDisplay('sStat');
+
+            // Distribution
+            const dist = document.getElementById('guessDistribution');
+            dist.innerHTML = '<h3 style="text-align:center; margin-bottom:12px; font-size:0.9rem;">推測の分布</h3>';
+            const maxVal = Math.max(...Object.values(stats.distribution || {}), 1);
+
+            for (let i = 1; i <= 6; i++) {
+                const val = (stats.distribution && stats.distribution[i]) || 0;
+                const pct = (val / maxVal) * 100;
+                dist.innerHTML += `
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
                 <span style="font-weight:700; width:14px; text-align:right;">${i}</span>
                 <div style="flex:1; background:#eee; border-radius:4px; overflow:hidden; height:22px;">
@@ -1990,178 +2135,178 @@ function showStats() {
                 </div>
             </div>
         `;
-    }
-    
-    document.getElementById('statsModal').classList.add('active');
-}
+            }
 
-// ==============================
-// RANKING SYSTEM
-// ==============================
-let currentRankingTab = 'streak';
-
-function getPlayerId() {
-    let id = localStorage.getItem('chimeidle-player-id');
-    if (!id) {
-        // Fallback for crypto.randomUUID (only works in secure contexts)
-        if (window.crypto && window.crypto.randomUUID) {
-            id = 'p_' + crypto.randomUUID();
-        } else {
-            id = 'p_' + Date.now() + Math.random().toString(36).substring(2);
+            document.getElementById('statsModal').classList.add('active');
         }
-        localStorage.setItem('chimeidle-player-id', id);
-    }
-    return id;
-}
 
-function getPlayerName() {
-    return localStorage.getItem('chimeidle-player-name') || '';
-}
+        // ==============================
+        // RANKING SYSTEM
+        // ==============================
+        let currentRankingTab = 'streak';
 
-function setPlayerName(name) {
-    localStorage.setItem('chimeidle-player-name', name);
-}
+        function getPlayerId() {
+            let id = localStorage.getItem('chimeidle-player-id');
+            if (!id) {
+                // Fallback for crypto.randomUUID (only works in secure contexts)
+                if (window.crypto && window.crypto.randomUUID) {
+                    id = 'p_' + crypto.randomUUID();
+                } else {
+                    id = 'p_' + Date.now() + Math.random().toString(36).substring(2);
+                }
+                localStorage.setItem('chimeidle-player-id', id);
+            }
+            return id;
+        }
 
-function renderNicknameSection() {
-    const section = document.getElementById('nicknameSection');
-    const name = getPlayerName();
-    if (name) {
-        section.innerHTML = `
+        function getPlayerName() {
+            return localStorage.getItem('chimeidle-player-name') || '';
+        }
+
+        function setPlayerName(name) {
+            localStorage.setItem('chimeidle-player-name', name);
+        }
+
+        function renderNicknameSection() {
+            const section = document.getElementById('nicknameSection');
+            const name = getPlayerName();
+            if (name) {
+                section.innerHTML = `
             <div class="nickname-display">
                 <i class="fas fa-user"></i> <strong>${escapeHTML(name)}</strong>
                 <span class="change-name" id="changeNameBtn">変更</span>
             </div>
         `;
-        document.getElementById('changeNameBtn').addEventListener('click', () => {
-            openNicknameModal();
-        });
-    } else {
-        section.innerHTML = `
+                document.getElementById('changeNameBtn').addEventListener('click', () => {
+                    openNicknameModal();
+                });
+            } else {
+                section.innerHTML = `
             <div style="text-align:center; margin: 12px 0;">
                 <button class="btn btn-primary" id="registerNameBtn" style="font-size:0.85rem; padding:8px 20px;">
                     <i class="fas fa-user-plus"></i> ニックネームを登録してランキングに参加
                 </button>
             </div>
         `;
-        document.getElementById('registerNameBtn').addEventListener('click', () => {
-            openNicknameModal();
-        });
-    }
-}
-
-function escapeHTML(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
-
-function openNicknameModal() {
-    const modal = document.getElementById('nicknameModal');
-    const input = document.getElementById('nicknameInput');
-    input.value = getPlayerName();
-    modal.classList.add('active');
-    setTimeout(() => input.focus(), 100);
-}
-
-function closeNicknameModal() {
-    document.getElementById('nicknameModal').classList.remove('active');
-}
-
-async function submitNickname() {
-    const input = document.getElementById('nicknameInput');
-    const name = input.value.trim();
-    if (!name || name.length < 1 || name.length > 12) {
-        showToast('1〜12文字で入力してください');
-        return;
-    }
-    setPlayerName(name);
-    closeNicknameModal();
-    showToast('ニックネームを設定しました！');
-    
-    // 現在の統計をサーバーに送信
-    await syncRankingToServer();
-    renderNicknameSection();
-    loadRanking(currentRankingTab);
-}
-
-async function syncRankingToServer() {
-    const name = getPlayerName();
-    if (!name) return;
-    
-    const playerId = getPlayerId();
-    const stats = loadStats();
-    const winRate = stats.played > 0 ? Math.round((stats.won / stats.played) * 100) : 0;
-    
-    const data = {
-        player_name: name,
-        player_id: playerId,
-        current_streak: stats.streak,
-        best_streak: stats.bestStreak,
-        played: stats.played,
-        won: stats.won,
-        win_rate: winRate,
-        updated_at: firebase.firestore.FieldValue.serverTimestamp()
-    };
-    
-    try {
-        // player_idをドキュメントIDとして使用（upsert）
-        await db.collection('rankings').doc(playerId).set(data, { merge: true });
-    } catch (err) {
-        console.error('Ranking sync error:', err);
-    }
-}
-
-async function loadRanking(tab) {
-    currentRankingTab = tab;
-    const listEl = document.getElementById('rankingList');
-    const myBarEl = document.getElementById('myRankingBar');
-    listEl.innerHTML = '<div class="ranking-loading"><i class="fas fa-spinner"></i><br>読み込み中...</div>';
-    myBarEl.innerHTML = '';
-    
-    // Update tab styles
-    document.querySelectorAll('.ranking-tab').forEach(t => t.classList.remove('active'));
-    document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
-    
-    try {
-        // Firestoreからランキングデータを取得
-        const sortField = getSortField(tab);
-        const snapshot = await db.collection('rankings')
-            .orderBy(sortField, 'desc')
-            .limit(100)
-            .get();
-        
-        let items = [];
-        snapshot.forEach(doc => {
-            items.push({ id: doc.id, ...doc.data() });
-        });
-        
-        // 同率の場合のクライアント側ソート（サブソート：勝率やプレイ回数）
-        items.sort((a, b) => {
-            const field = getSortField(tab);
-            if (b[field] !== a[field]) {
-                return (b[field] || 0) - (a[field] || 0);
+                document.getElementById('registerNameBtn').addEventListener('click', () => {
+                    openNicknameModal();
+                });
             }
-            // スコアが同じ場合はプレイ回数や別の指標で比較
-            if (field === 'win_rate') return (b.played || 0) - (a.played || 0);
-            return (b.win_rate || 0) - (a.win_rate || 0);
-        });
-        
-        // Limit to top 20
-        const top = items.slice(0, 20);
-        
-        if (top.length === 0) {
-            listEl.innerHTML = '<div class="ranking-empty"><i class="fas fa-trophy"></i>まだランキングデータがありません。<br>ゲームをプレイしてランキングに参加しよう！</div>';
-            return;
         }
-        
-        const playerId = getPlayerId();
-        
-        // My ranking bar
-        const myIdx = items.findIndex(r => r.player_id === playerId);
-        if (myIdx >= 0) {
-            const my = items[myIdx];
-            const rank = myIdx + 1;
-            myBarEl.innerHTML = `
+
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function openNicknameModal() {
+            const modal = document.getElementById('nicknameModal');
+            const input = document.getElementById('nicknameInput');
+            input.value = getPlayerName();
+            modal.classList.add('active');
+            setTimeout(() => input.focus(), 100);
+        }
+
+        function closeNicknameModal() {
+            document.getElementById('nicknameModal').classList.remove('active');
+        }
+
+        async function submitNickname() {
+            const input = document.getElementById('nicknameInput');
+            const name = input.value.trim();
+            if (!name || name.length < 1 || name.length > 12) {
+                showToast('1〜12文字で入力してください');
+                return;
+            }
+            setPlayerName(name);
+            closeNicknameModal();
+            showToast('ニックネームを設定しました！');
+
+            // 現在の統計をサーバーに送信
+            await syncRankingToServer();
+            renderNicknameSection();
+            loadRanking(currentRankingTab);
+        }
+
+        async function syncRankingToServer() {
+            const name = getPlayerName();
+            if (!name) return;
+
+            const playerId = getPlayerId();
+            const stats = loadStats();
+            const winRate = stats.played > 0 ? Math.round((stats.won / stats.played) * 100) : 0;
+
+            const data = {
+                player_name: name,
+                player_id: playerId,
+                current_streak: stats.streak,
+                best_streak: stats.bestStreak,
+                played: stats.played,
+                won: stats.won,
+                win_rate: winRate,
+                updated_at: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            try {
+                // player_idをドキュメントIDとして使用（upsert）
+                await db.collection('rankings').doc(playerId).set(data, { merge: true });
+            } catch (err) {
+                console.error('Ranking sync error:', err);
+            }
+        }
+
+        async function loadRanking(tab) {
+            currentRankingTab = tab;
+            const listEl = document.getElementById('rankingList');
+            const myBarEl = document.getElementById('myRankingBar');
+            listEl.innerHTML = '<div class="ranking-loading"><i class="fas fa-spinner"></i><br>読み込み中...</div>';
+            myBarEl.innerHTML = '';
+
+            // Update tab styles
+            document.querySelectorAll('.ranking-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+
+            try {
+                // Firestoreからランキングデータを取得
+                const sortField = getSortField(tab);
+                const snapshot = await db.collection('rankings')
+                    .orderBy(sortField, 'desc')
+                    .limit(100)
+                    .get();
+
+                let items = [];
+                snapshot.forEach(doc => {
+                    items.push({ id: doc.id, ...doc.data() });
+                });
+
+                // 同率の場合のクライアント側ソート（サブソート：勝率やプレイ回数）
+                items.sort((a, b) => {
+                    const field = getSortField(tab);
+                    if (b[field] !== a[field]) {
+                        return (b[field] || 0) - (a[field] || 0);
+                    }
+                    // スコアが同じ場合はプレイ回数や別の指標で比較
+                    if (field === 'win_rate') return (b.played || 0) - (a.played || 0);
+                    return (b.win_rate || 0) - (a.win_rate || 0);
+                });
+
+                // Limit to top 20
+                const top = items.slice(0, 20);
+
+                if (top.length === 0) {
+                    listEl.innerHTML = '<div class="ranking-empty"><i class="fas fa-trophy"></i>まだランキングデータがありません。<br>ゲームをプレイしてランキングに参加しよう！</div>';
+                    return;
+                }
+
+                const playerId = getPlayerId();
+
+                // My ranking bar
+                const myIdx = items.findIndex(r => r.player_id === playerId);
+                if (myIdx >= 0) {
+                    const my = items[myIdx];
+                    const rank = myIdx + 1;
+                    myBarEl.innerHTML = `
                 <div class="my-ranking-bar">
                     <div class="ranking-rank">${getRankDisplay(rank)}</div>
                     <div class="ranking-name"><i class="fas fa-user"></i> ${escapeHTML(my.player_name)}（あなた）</div>
@@ -2171,20 +2316,20 @@ async function loadRanking(tab) {
                     </div>
                 </div>
             `;
-        }
-        
-        // Render list
-        let html = '';
-        top.forEach((item, idx) => {
-            const rank = idx + 1;
-            const isMe = item.player_id === playerId;
-            let cls = 'ranking-item';
-            if (isMe) cls += ' me';
-            if (rank === 1) cls += ' top1';
-            else if (rank === 2) cls += ' top2';
-            else if (rank === 3) cls += ' top3';
-            
-            html += `
+                }
+
+                // Render list
+                let html = '';
+                top.forEach((item, idx) => {
+                    const rank = idx + 1;
+                    const isMe = item.player_id === playerId;
+                    let cls = 'ranking-item';
+                    if (isMe) cls += ' me';
+                    if (rank === 1) cls += ' top1';
+                    else if (rank === 2) cls += ' top2';
+                    else if (rank === 3) cls += ' top3';
+
+                    html += `
                 <div class="${cls}">
                     <div class="ranking-rank ${rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : ''}">${getRankDisplay(rank)}</div>
                     <div class="ranking-name">${escapeHTML(item.player_name)}${isMe ? ' 👈' : ''}</div>
@@ -2195,147 +2340,152 @@ async function loadRanking(tab) {
                     <div class="ranking-detail">${getRankingDetail(item, tab)}</div>
                 </div>
             `;
+                });
+
+                listEl.innerHTML = html;
+
+            } catch (err) {
+                console.error('Load ranking error:', err);
+                listEl.innerHTML = '<div class="ranking-empty"><i class="fas fa-exclamation-triangle"></i>ランキングの読み込みに失敗しました。</div>';
+            }
+        }
+
+        function getSortField(tab) {
+            switch (tab) {
+                case 'streak': return 'current_streak';
+                case 'best': return 'best_streak';
+                case 'winrate': return 'win_rate';
+                default: return 'current_streak';
+            }
+        }
+
+        function getScoreValue(item, tab) {
+            switch (tab) {
+                case 'streak': return item.current_streak || 0;
+                case 'best': return item.best_streak || 0;
+                case 'winrate': return (item.win_rate || 0) + '%';
+                default: return item.current_streak || 0;
+            }
+        }
+
+        function getScoreLabel(tab) {
+            switch (tab) {
+                case 'streak': return '連勝中';
+                case 'best': return '最大連勝';
+                case 'winrate': return '勝率';
+                default: return '連勝中';
+            }
+        }
+
+        function getRankingDetail(item, tab) {
+            switch (tab) {
+                case 'streak': return `最大 ${item.best_streak || 0} / ${item.played || 0}回`;
+                case 'best': return `現在 ${item.current_streak || 0} / ${item.played || 0}回`;
+                case 'winrate': return `${item.won || 0}勝 / ${item.played || 0}回`;
+                default: return '';
+            }
+        }
+
+        function getRankDisplay(rank) {
+            if (rank === 1) return '🥇';
+            if (rank === 2) return '🥈';
+            if (rank === 3) return '🥉';
+            return rank;
+        }
+
+        function showRanking() {
+            renderNicknameSection();
+            loadRanking(currentRankingTab);
+            document.getElementById('rankingModal').classList.add('active');
+        }
+
+        // ==============================
+        // KEYBOARD HANDLER
+        // ==============================
+        document.addEventListener('keydown', (e) => {
+            if (document.querySelector('.modal-overlay.active')) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+                }
+                return;
+            }
+
+            if (e.key === 'Enter') {
+                handleKey('ENTER');
+            } else if (e.key === 'Backspace') {
+                handleKey('⌫');
+            } else if (/^[a-zA-Z]$/.test(e.key)) {
+                handleKey(e.key.toUpperCase());
+            }
         });
-        
-        listEl.innerHTML = html;
-        
-    } catch (err) {
-        console.error('Load ranking error:', err);
-        listEl.innerHTML = '<div class="ranking-empty"><i class="fas fa-exclamation-triangle"></i>ランキングの読み込みに失敗しました。</div>';
-    }
-}
 
-function getSortField(tab) {
-    switch (tab) {
-        case 'streak': return 'current_streak';
-        case 'best': return 'best_streak';
-        case 'winrate': return 'win_rate';
-        default: return 'current_streak';
-    }
-}
+        // ==============================
+        // EVENT LISTENERS
+        // ==============================
+        document.getElementById('helpBtn').addEventListener('click', showHelp);
+        document.getElementById('statsBtn').addEventListener('click', showStats);
+        document.getElementById('rankingBtn').addEventListener('click', showRanking);
+        document.getElementById('helpClose').addEventListener('click', () => {
+            document.getElementById('helpModal').classList.remove('active');
+        });
+        document.getElementById('statsClose').addEventListener('click', () => {
+            document.getElementById('statsModal').classList.remove('active');
+        });
+        document.getElementById('rankingClose').addEventListener('click', () => {
+            document.getElementById('rankingModal').classList.remove('active');
+        });
+        document.getElementById('nicknameClose').addEventListener('click', closeNicknameModal);
+        document.getElementById('nicknameSubmit').addEventListener('click', submitNickname);
+        document.getElementById('nicknameInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') submitNickname();
+        });
 
-function getScoreValue(item, tab) {
-    switch (tab) {
-        case 'streak': return item.current_streak || 0;
-        case 'best': return item.best_streak || 0;
-        case 'winrate': return (item.win_rate || 0) + '%';
-        default: return item.current_streak || 0;
-    }
-}
+        // Ranking tab clicks
+        document.getElementById('tabStreak').addEventListener('click', () => loadRanking('streak'));
+        document.getElementById('tabBest').addEventListener('click', () => loadRanking('best'));
+        document.getElementById('tabWinrate').addEventListener('click', () => loadRanking('winrate'));
+        document.getElementById('resultClose').addEventListener('click', closeResult);
+        document.getElementById('shareBtn').addEventListener('click', shareResult);
+        document.getElementById('resultRankingBtn').addEventListener('click', () => {
+            closeResult();
+            showRanking();
+        });
+        document.getElementById('shareClose').addEventListener('click', closeShareModal);
+        document.getElementById('twitterShareBtn').addEventListener('click', shareOnTwitter);
+        document.getElementById('copyShareBtn').addEventListener('click', copyResultToClipboard);
+        document.getElementById('newGameBtn').addEventListener('click', () => {
+            closeResult();
+            initGame();
+        });
 
-function getScoreLabel(tab) {
-    switch (tab) {
-        case 'streak': return '連勝中';
-        case 'best': return '最大連勝';
-        case 'winrate': return '勝率';
-        default: return '連勝中';
-    }
-}
+        // Close modals on overlay click
+        ['resultModal', 'helpModal', 'statsModal', 'rankingModal', 'nicknameModal'].forEach(id => {
+            document.getElementById(id).addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    e.currentTarget.classList.remove('active');
+                }
+            });
+        });
 
-function getRankingDetail(item, tab) {
-    switch (tab) {
-        case 'streak': return `最大 ${item.best_streak || 0} / ${item.played || 0}回`;
-        case 'best': return `現在 ${item.current_streak || 0} / ${item.played || 0}回`;
-        case 'winrate': return `${item.won || 0}勝 / ${item.played || 0}回`;
-        default: return '';
-    }
-}
+        // ==============================
+        // INIT
+        // ==============================
+        createSakura();
+        initGame();
 
-function getRankDisplay(rank) {
-    if (rank === 1) return '🥇';
-    if (rank === 2) return '🥈';
-    if (rank === 3) return '🥉';
-    return rank;
-}
-
-function showRanking() {
-    renderNicknameSection();
-    loadRanking(currentRankingTab);
-    document.getElementById('rankingModal').classList.add('active');
-}
-
-// ==============================
-// KEYBOARD HANDLER
-// ==============================
-document.addEventListener('keydown', (e) => {
-    if (document.querySelector('.modal-overlay.active')) {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+        // Show help on first visit
+        if (!localStorage.getItem('chimeidle-visited')) {
+            localStorage.setItem('chimeidle-visited', 'true');
+            setTimeout(showHelp, 500);
         }
-        return;
-    }
-    
-    if (e.key === 'Enter') {
-        handleKey('ENTER');
-    } else if (e.key === 'Backspace') {
-        handleKey('⌫');
-    } else if (/^[a-zA-Z]$/.test(e.key)) {
-        handleKey(e.key.toUpperCase());
-    }
-});
 
-// ==============================
-// EVENT LISTENERS
-// ==============================
-document.getElementById('helpBtn').addEventListener('click', showHelp);
-document.getElementById('statsBtn').addEventListener('click', showStats);
-document.getElementById('rankingBtn').addEventListener('click', showRanking);
-document.getElementById('helpClose').addEventListener('click', () => {
-    document.getElementById('helpModal').classList.remove('active');
-});
-document.getElementById('statsClose').addEventListener('click', () => {
-    document.getElementById('statsModal').classList.remove('active');
-});
-document.getElementById('rankingClose').addEventListener('click', () => {
-    document.getElementById('rankingModal').classList.remove('active');
-});
-document.getElementById('nicknameClose').addEventListener('click', closeNicknameModal);
-document.getElementById('nicknameSubmit').addEventListener('click', submitNickname);
-document.getElementById('nicknameInput').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') submitNickname();
-});
-
-// Ranking tab clicks
-document.getElementById('tabStreak').addEventListener('click', () => loadRanking('streak'));
-document.getElementById('tabBest').addEventListener('click', () => loadRanking('best'));
-document.getElementById('tabWinrate').addEventListener('click', () => loadRanking('winrate'));
-document.getElementById('resultClose').addEventListener('click', closeResult);
-document.getElementById('shareBtn').addEventListener('click', shareResult);
-document.getElementById('shareClose').addEventListener('click', closeShareModal);
-document.getElementById('twitterShareBtn').addEventListener('click', shareOnTwitter);
-document.getElementById('copyShareBtn').addEventListener('click', copyResultToClipboard);
-document.getElementById('newGameBtn').addEventListener('click', () => {
-    closeResult();
-    initGame();
-});
-
-// Close modals on overlay click
-['resultModal', 'helpModal', 'statsModal', 'rankingModal', 'nicknameModal'].forEach(id => {
-    document.getElementById(id).addEventListener('click', (e) => {
-        if (e.target === e.currentTarget) {
-            e.currentTarget.classList.remove('active');
-        }
-    });
-});
-
-// ==============================
-// INIT
-// ==============================
-createSakura();
-initGame();
-
-// Show help on first visit
-if (!localStorage.getItem('chimeidle-visited')) {
-    localStorage.setItem('chimeidle-visited', 'true');
-    setTimeout(showHelp, 500);
-}
-
-// Game number
-const today = new Date();
-const start = new Date(2026, 0, 1);
-const dayNum = Math.floor((today - start) / 86400000) + 1;
-document.getElementById('game-number').innerHTML = `<i class="fas fa-gamepad"></i> #${dayNum}`;
-</script>
+        // Game number
+        const today = new Date();
+        const start = new Date(2026, 0, 1);
+        const dayNum = Math.floor((today - start) / 86400000) + 1;
+        document.getElementById('game-number').innerHTML = `<i class="fas fa-gamepad"></i> #${dayNum}`;
+    </script>
 
 </body>
+
 </html>
