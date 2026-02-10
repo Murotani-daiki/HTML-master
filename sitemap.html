@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サイトマップ | HTML Master</title>
+    <meta name="description" content="HTML Masterの全コンテンツ一覧。レベル別演習、プログラミング解説、アニメーション実験室など、すべてのページにここからアクセスできます。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <style>
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .sitemap-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .sitemap-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .sitemap-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .sitemap-list a:hover {
+            color: var(--text-primary);
+        }
+
+        .sitemap-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sitemap-list li::before {
+            content: '→';
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="home-header">
+        <a href="index.html" class="logo">
+            <h1>HTML Master</h1>
+        </a>
+        <nav class="home-nav">
+            <a href="levels.html">レベル</a>
+            <a href="guide/index.html">解説テキスト</a>
+            <a href="css-lab/index.html">CSS Lab</a>
+            <a href="js_index.html">JavaScript</a>
+            <a href="py_index.html">Python</a>
+            <a href="levels.html" class="nav-btn">今すぐ始める</a>
+        </nav>
+    </header>
+
+    <main class="sitemap-container">
+        <div class="section-title">
+            <h1>サイトマップ</h1>
+            <p>HTML Masterのすべてのコンテンツを網羅しています。</p>
+        </div>
+
+        <div class="sitemap-grid">
+            <section class="sitemap-section">
+                <h2>メインメニュー</h2>
+                <ul class="sitemap-list">
+                    <li><a href="index.html">トップページ</a></li>
+                    <li><a href="levels.html">レベル別演習一覧</a></li>
+                    <li><a href="guide/index.html">タグ・解説リファレンス</a></li>
+                    <li><a href="css-lab/index.html">CSS Animation Lab</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </section>
+
+            <section class="sitemap-section">
+                <h2>プログラミングコース</h2>
+                <ul class="sitemap-list">
+                    <li><a href="js_index.html">JavaScript Master</a></li>
+                    <li><a href="py_index.html">Python Master</a></li>
+                </ul>
+            </section>
+
+            <section class="sitemap-section">
+                <h2>HTML/CSS 解説ガイド</h2>
+                <ul class="sitemap-list">
+                    <li><a href="guide/html-basics.html">HTMLの基礎知識</a></li>
+                    <li><a href="guide/css-basics.html">CSSの基礎知識</a></li>
+                    <li><a href="guide/css-selectors.html">CSSセレクタ</a></li>
+                    <li><a href="guide/css-box-model.html">ボックスモデル</a></li>
+                    <li><a href="guide/css-colors.html">色の指定方法</a></li>
+                    <li><a href="guide/css-flexbox.html">Flexboxレイアウト</a></li>
+                    <li><a href="guide/css-typography.html">タイポグラフィ</a></li>
+                </ul>
+            </section>
+
+            <section class="sitemap-section">
+                <h2>JS/Python 解説ガイド</h2>
+                <ul class="sitemap-list">
+                    <li><a href="guide/js-basics.html">JSの基本</a></li>
+                    <li><a href="guide/js-variables.html">変数とデータ型</a></li>
+                    <li><a href="guide/js-functions.html">関数</a></li>
+                    <li><a href="guide/py-basics.html">Pythonの基本</a></li>
+                    <li><a href="guide/py-variables.html">変数（Python）</a></li>
+                    <li><a href="guide/py-functions.html">関数（Python）</a></li>
+                </ul>
+            </section>
+
+            <section class="sitemap-section">
+                <h2>その他</h2>
+                <ul class="sitemap-list">
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
+                    <li><a href="terms.html">利用規約</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="home-footer">
+        <div class="footer-content">
+            <div class="logo">
+                <h1>HTML Master</h1>
+            </div>
+            <p>&copy; 2026 HTML Master. Built for the future of coding education.</p>
+            <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                <a href="sitemap.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">サイトマップ</a>
+                <a href="privacy.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                <a href="terms.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                <a href="contact.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/EduKodomo98564" target="_blank" rel="noopener noreferrer" class="social-link"
+                    title="X (Twitter) をフォロー">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    <span>Follow on X</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,241 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-<!--  created with free sitemap generation system www.sitemapxml.jp  --> 
-<url>
-  <loc>https://www.html-master.com/</loc>
-  <priority>1.0</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/index.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/levels.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/index.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/js_index.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/py_index.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/html-basics.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/css-basics.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/privacy.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/terms.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/contact.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-doctype.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-html.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-head.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-body.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-headings.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-p.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-br.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-span.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-a.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-img.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-video.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-div.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-header.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-footer.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/tag-section.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/css-selectors.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/css-box-model.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/css-colors.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/css-typography.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/css-flexbox.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/js_index.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/js_levels.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/py_levels.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py_index.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/js-basics.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/js-variables.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/js-console.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/js-data-types.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/js-dom.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py-basics.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py-variables.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py-console.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py-conditions.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py-loops.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py-functions.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-<url>
-  <loc>https://www.html-master.com/guide/py-data-structures.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2026-02-07T16:28:27+09:00</lastmod>
-</url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.com/index.html</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://example.com/levels.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://example.com/contact.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://example.com/privacy.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://example.com/terms.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://example.com/js_index.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://example.com/py_index.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://example.com/css-lab/index.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://example.com/guide/index.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <!-- Guide Pages -->
+  <url><loc>https://example.com/guide/html-basics.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/css-basics.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/css-selectors.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/css-box-model.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/css-colors.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/css-flexbox.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/css-typography.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-basics.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-variables.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-data-types.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-functions.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-conditions.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-loops.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-dom.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-events.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/js-console.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/py-basics.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/py-variables.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/py-functions.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/py-conditions.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/py-loops.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/py-data-structures.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/guide/py-console.html</loc><priority>0.7</priority></url>
 </urlset>
