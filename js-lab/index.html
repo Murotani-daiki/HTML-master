@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Playground | JavaScript Master 実験室</title>
+    <meta name="description" content="JavaScriptをブラウザ上で即座に実行できるプレイグラウンド。コードを書いて、結果をリアルタイムに確認。コンソール出力も視覚的に表示します。">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.html-master.com/js-lab/index.html">
+    <meta property="og:title" content="JS Playground | JavaScript Master 実験室">
+    <meta property="og:description" content="JavaScriptをブラウザ上で即座に実行できるインタラクティブなプレイグラウンド。">
+    <meta property="og:image" content="https://www.html-master.com/favicon.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.html-master.com/js-lab/index.html">
+    <meta name="twitter:title" content="JS Playground | JavaScript Master 実験室">
+    <meta name="twitter:description" content="JavaScriptコードを即時実行。最高の学習体験を。">
+    <meta name="twitter:image" content="https://www.html-master.com/favicon.webp">
+    <link rel="canonical" href="https://www.html-master.com/js-lab/index.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Fira+Code&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../home.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="home-header">
+        <a href="../index.html" class="logo">
+            <h1>HTML Master</h1>
+        </a>
+        <nav class="home-nav">
+            <a href="../levels.html">レベル</a>
+            <a href="../guide/index.html">解説テキスト</a>
+            <a href="../css-lab/index.html">CSS Lab</a>
+            <a href="index.html" class="active">JS Lab</a>
+            <a href="../py_index.html">Python</a>
+            <a href="../levels.html" class="nav-btn">今すぐ始める</a>
+        </nav>
+    </header>
+
+    <div class="lab-intro">
+        <span class="badge">INTERACTIVE</span>
+        <h1>JS Playground</h1>
+        <p>JavaScriptコードを書いて、即実行。コンソール出力や、プレビュー領域でのDOM操作をリアルタイムに体験しよう。</p>
+    </div>
+
+    <main class="playground-container">
+        <div class="editor-section card">
+            <div class="panel-header">
+                <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                    </svg> Editor</h3>
+                <div class="actions">
+                    <button id="run-btn" class="btn btn-primary">Run Code</button>
+                    <button id="clear-editor-btn" class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+            <div class="code-editor-wrapper">
+                <textarea id="js-editor" spellcheck="false" placeholder="// ここにJavaScriptを記述してください...
+console.log('Hello JS Lab!');
+document.getElementById('demo').textContent = 'Hello from JS!';"></textarea>
+            </div>
+        </div>
+
+        <div class="side-panels">
+            <div class="console-section card">
+                <div class="panel-header">
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 17l6-6-6-6M12 19h8" />
+                        </svg> Console</h3>
+                    <button id="clear-console-btn" class="btn-text">Clear Logs</button>
+                </div>
+                <div id="console-output" class="console-output">
+                    <div class="log-message system">Playground ready. Type code and click 'Run'.</div>
+                </div>
+            </div>
+
+            <div class="preview-section card">
+                <div class="panel-header">
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg> Preview</h3>
+                    <button id="reset-preview-btn" class="btn-text">Reset DOM</button>
+                </div>
+                <div class="preview-content" id="preview-area">
+                    <div id="demo-container">
+                        <h2 id="demo">Interactive Area</h2>
+                        <p>このテキストや背景をJavaScriptで操作してみよう。</p>
+                        <div class="box" id="box">BOX</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="home-footer">
+        <div class="footer-content">
+            <div class="logo">
+                <h1>HTML Master</h1>
+            </div>
+            <p>&copy; 2026 HTML Master. Mastering the web through practice.</p>
+            <div class="footer-links" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                <a href="../sitemap.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">サイトマップ</a>
+                <a href="../privacy.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">プライバシーポリシー</a>
+                <a href="../terms.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">利用規約</a>
+                <a href="../contact.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">お問い合わせ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
