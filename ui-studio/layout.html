@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout & Grid | UI/UX Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="layout-page">
+    <header class="studio-header">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Studio Top
+        </a>
+        <div class="logo">Layout & Grid</div>
+    </header>
+
+    <main>
+        <section class="tool-hero">
+            <h1>Invisible Structure</h1>
+            <p>優れたデザインには、見えない「骨組み」があります。グリッドシステムと余白のルールを学びましょう。</p>
+        </section>
+
+        <section class="layout-tool-section">
+            <div class="controls-bar">
+                <label class="switch-label">
+                    <input type="checkbox" id="toggle-grid">
+                    <span class="toggle-text">Show 8pt Grid</span>
+                </label>
+                <label class="switch-label">
+                    <input type="checkbox" id="toggle-columns">
+                    <span class="toggle-text">Show 12-Col Grid</span>
+                </label>
+            </div>
+
+            <div class="layout-workspace" id="layout-workspace">
+                <div class="grid-overlay-8pt" id="grid-8pt"></div>
+                <div class="grid-overlay-cols" id="grid-cols">
+                    <!-- Just 12 cols -->
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+
+                <!-- Content Mockup -->
+                <div class="mock-content">
+                    <div class="mock-card">
+                        <div class="mock-img"></div>
+                        <div class="mock-text">
+                            <h3>Card Title</h3>
+                            <p>Content aligned to grid.</p>
+                        </div>
+                    </div>
+                    <div class="mock-card">
+                        <div class="mock-img"></div>
+                        <div class="mock-text">
+                            <h3>Card Title</h3>
+                            <p>Consistent spacing (16px/24px).</p>
+                        </div>
+                    </div>
+                    <div class="mock-card">
+                        <div class="mock-img"></div>
+                        <div class="mock-text">
+                            <h3>Card Title</h3>
+                            <p>Visual rhythm created by grid.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-info">
+                <h3>Why 8pt Grid?</h3>
+                <p>画面解像度の多様化に対応するため、多くのデバイスサイズが8で割り切れることを利用したルールです。余白やサイズを8の倍数（8, 16, 24, 32...）にすることで、一貫性と実装の効率性が向上します。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initLayoutTool === 'function') initLayoutTool();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Studio | デザインの原則を学ぶ</title>
+    <meta name="description" content="優れたUI/UXデザインの原則を、インタラクティブに学べるスタジオ。配色、タイポグラフィ、余白の魔法を体験しよう。">
+
+    <!-- OGP & Twitter Card -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.html-master.com/ui-studio/index.html">
+    <meta property="og:title" content="UI/UX Studio | デザインの原則を学ぶ">
+    <meta property="og:description" content="優れたデザインには理由がある。UI/UXの原則をインタラクティブに体験。">
+    <meta property="og:image" content="https://www.html-master.com/favicon.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.html-master.com/ui-studio/index.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Shared portal styles for header/footer consistency if needed, but UI Studio has unique style -->
+</head>
+
+<body>
+    <header class="studio-header">
+        <a href="../portal/index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Portal
+        </a>
+        <div class="logo">UI/UX Studio</div>
+        <nav class="studio-nav">
+            <a href="#principles">Principles</a>
+            <a href="#playground">Playground</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Design with <span class="serif">In-ten-tion.</span></h1>
+                <p>優れたデザインは、偶然ではありません。そこには明確な「意図」と「原則」が存在します。見て、触れて、美しいUIの法則を解き明かしましょう。</p>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <section id="principles" class="principles-section">
+            <div class="section-title">
+                <h2>Three Pillars of UI</h2>
+                <p>デザインを支える3つの柱。それぞれの原則を深く学びましょう。</p>
+            </div>
+
+            <div class="card-grid">
+                <!-- Color Card -->
+                <a href="color.html" class="principle-card" data-topic="color">
+                    <div class="card-visual color-visual">
+                        <div class="palette p1"></div>
+                        <div class="palette p2"></div>
+                        <div class="palette p3"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Color & Harmony</h3>
+                        <p>色は感情を動かし、視線を誘導します。60-30-10の法則と、アクセシビリティを考慮した配色の魔法。</p>
+                        <span class="learn-more">Explore Theory →</span>
+                    </div>
+                </a>
+
+                <!-- Typography Card -->
+                <a href="typography.html" class="principle-card" data-topic="typography">
+                    <div class="card-visual type-visual">
+                        <span class="Aa">Aa</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Typography</h3>
+                        <p>文字は読む術なく、見るもの。フォント選び、行間、階層構造が読みやすさと印象を決定づけます。</p>
+                        <span class="learn-more">Explore Rhythm →</span>
+                    </div>
+                </a>
+
+                <!-- Spacing/Interactions Card -->
+                <a href="interactions.html" class="principle-card" data-topic="interactions">
+                    <div class="card-visual space-visual">
+                        <div class="box b1"></div>
+                        <div class="box b2"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Micro-interactions</h3>
+                        <p>神は細部に宿る。ユーザーに反応し、状態を伝える「心地よい動き」のライブラリ。</p>
+                        <span class="learn-more">Explore Motion →</span>
+                    </div>
+                </a>
+
+                <!-- Layout Card -->
+                <a href="layout.html" class="principle-card" data-topic="layout">
+                    <div class="card-visual layout-visual">
+                        <div class="grid-lines"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Layout & Grid</h3>
+                        <p>見えない骨組みがデザインを支える。8ptグリッドと12カラムシステムの構造美。</p>
+                        <span class="learn-more">Explore Structure →</span>
+                    </div>
+                </a>
+
+                <!-- UX Laws Card -->
+                <a href="ux-laws.html" class="principle-card" data-topic="ux-laws">
+                    <div class="card-visual ux-visual">
+                        <div class="target-circle-sm"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Psychology of UX</h3>
+                        <p>デザインの背後には心理学がある。Fittsの法則などを実験を通して体感。</p>
+                        <span class="learn-more">Explore Laws →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="playground" class="comparison-section">
+            <div class="section-title">
+                <h2>Good UI vs Bad UI</h2>
+                <p>スイッチを切り替えて、デザインの違いを体感してください。</p>
+            </div>
+
+            <div class="comparison-container">
+                <div class="toggle-wrapper">
+                    <span class="toggle-label left active">Bad Design</span>
+                    <label class="switch">
+                        <input type="checkbox" id="design-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label right">Good Design</span>
+                </div>
+
+                <div class="ui-preview-card" id="ui-preview">
+                    <div class="preview-header">
+                        <h3>Sign Up</h3>
+                    </div>
+                    <form class="preview-form">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="john@example.com">
+                        </div>
+                        <button type="button" class="preview-btn">Create Account</button>
+                    </form>
+                    <div class="preview-footer">
+                        <p>Already have an account? <a href="#">Log in</a></p>
+                    </div>
+                </div>
+
+                <div class="analysis-panel">
+                    <h3>Analysis</h3>
+                    <ul id="analysis-list">
+                        <!-- Points injected by JS -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="studio-footer">
+        <p>&copy; 2026 UI/UX Studio. Part of HTML Master ecosystem.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

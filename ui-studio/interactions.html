@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro-interactions | UI/UX Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="interactions-page">
+    <header class="studio-header">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Studio Top
+        </a>
+        <div class="logo">Micro-interactions</div>
+    </header>
+
+    <main>
+        <section class="tool-hero">
+            <h1>Detail makes Design</h1>
+            <p>神は細部に宿る。ユーザー体験を向上させる、心地よい「動き」のコレクション。</p>
+        </section>
+
+        <section class="gallery-section">
+            <div class="gallery-grid">
+
+                <!-- Card 1: Buttons -->
+                <div class="interaction-card">
+                    <div class="preview-area center">
+                        <button class="btn-interaction btn-bounce">Hover Me</button>
+                    </div>
+                    <div class="card-info">
+                        <h3>Bounce Hover</h3>
+                        <p>遊び心のある弾むようなインタラクション。</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Loading -->
+                <div class="interaction-card">
+                    <div class="preview-area center">
+                        <button class="btn-interaction btn-load" id="load-btn">
+                            <span class="btn-text">Submit</span>
+                            <div class="loader"></div>
+                        </button>
+                    </div>
+                    <div class="card-info">
+                        <h3>State Change</h3>
+                        <p>送信中（Loading）の状態をユーザーに明確に伝える。</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Toggle -->
+                <div class="interaction-card">
+                    <div class="preview-area center">
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider-track"></span>
+                        </label>
+                        <label class="toggle-switch ios">
+                            <input type="checkbox" checked>
+                            <span class="slider-track"></span>
+                        </label>
+                    </div>
+                    <div class="card-info">
+                        <h3>Toggle Switch</h3>
+                        <p>即時反映される設定項目に最適なUI。</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Input Focus -->
+                <div class="interaction-card">
+                    <div class="preview-area center">
+                        <div class="input-wrapper">
+                            <input type="text" class="input-anim" placeholder=" ">
+                            <label class="label-anim">Floating Label</label>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Floating Label</h3>
+                        <p>入力エリアを確保しつつ、ラベルを表示し続けるMaterial Designの手法。</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Local logic for loading button demo
+            const loadBtn = document.getElementById('load-btn');
+            loadBtn.addEventListener('click', () => {
+                loadBtn.classList.add('loading');
+                setTimeout(() => {
+                    loadBtn.classList.remove('loading');
+                    loadBtn.classList.add('success');
+                    setTimeout(() => loadBtn.classList.remove('success'), 1500);
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>

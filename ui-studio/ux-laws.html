@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Laws | UI/UX Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific Fitts Game Styles */
+        #fitts-game-area {
+            position: relative;
+            height: 400px;
+            background: #f0f9ff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #bae6fd;
+            cursor: crosshair;
+        }
+
+        .target-circle {
+            position: absolute;
+            background: #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .target-circle:active {
+            transform: scale(0.95);
+        }
+
+        .stats-panel {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body class="ux-page">
+    <header class="studio-header">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Studio Top
+        </a>
+        <div class="logo">Psychology of UX</div>
+    </header>
+
+    <main>
+        <section class="tool-hero">
+            <h1>Design Psychology</h1>
+            <p>ユーザーの行動は予測可能です。有名な心理学の法則を、実験を通して体感してください。</p>
+        </section>
+
+        <section class="ux-tool-section">
+            <div class="law-container">
+                <h2>Fitts's Law (フィッツの法則)</h2>
+                <p class="law-desc">「ターゲットまでの距離が遠く、ターゲットのサイズが小さいほど、到達にかかる時間は長くなる」。ボタンを大きく、近くに配置する重要性を証明してみましょう。</p>
+
+                <div class="game-container">
+                    <div id="fitts-game-area">
+                        <div class="start-msg"
+                            style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center;">
+                            <button id="start-fitts" class="btn-interaction">Start Experiment</button>
+                        </div>
+                    </div>
+                    <div class="stats-panel">
+                        <div>Size: <span id="stat-size">--</span>px</div>
+                        <div>Distance: <span id="stat-dist">--</span>px</div>
+                        <div>Time: <span id="stat-time">--</span>ms</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future: Hick's Law, Miller's Law -->
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initFittsTool === 'function') initFittsTool();
+        });
+    </script>
+</body>
+
+</html>

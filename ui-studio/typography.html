@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography | UI/UX Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="type-page">
+    <header class="studio-header">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Studio Top
+        </a>
+        <div class="logo">Typography</div>
+    </header>
+
+    <main>
+        <section class="tool-hero">
+            <h1>Type Scale & Rhythm</h1>
+            <p>適切な行間とサイズ比率（モジュラースケール）が、読みやすさと美しいリズムを生み出します。</p>
+        </section>
+
+        <section class="type-tool-section">
+            <div class="controls">
+                <div class="control-group">
+                    <label>Base Size (px)</label>
+                    <input type="range" id="base-size" min="12" max="24" value="16">
+                    <span id="base-val">16px</span>
+                </div>
+                <div class="control-group">
+                    <label>Scale Ratio</label>
+                    <select id="scale-ratio">
+                        <option value="1.125">Major Second (1.125)</option>
+                        <option value="1.2">Minor Third (1.2)</option>
+                        <option value="1.25" selected>Major Third (1.25)</option>
+                        <option value="1.414">Augmented Fourth (1.414)</option>
+                        <option value="1.5">Perfect Fifth (1.5)</option>
+                        <option value="1.618">Golden Ratio (1.618)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Font Pairing</label>
+                    <select id="font-pair">
+                        <option value="modern" selected>Modern (Outfit + Noto Sans)</option>
+                        <option value="classic">Classic (Playfair + Noto Sans)</option>
+                        <option value="mono">Technical (Roboto Mono + Noto Sans)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="type-preview" id="type-preview">
+                <h1 class="h1">Heading Level 1</h1>
+                <p class="meta">Size: <span id="s-h1">--</span> | Scale: 3.052</p>
+
+                <h2 class="h2">Heading Level 2</h2>
+                <p class="meta">Size: <span id="s-h2">--</span> | Scale: 2.441</p>
+
+                <h3 class="h3">Heading Level 3</h3>
+                <p class="meta">Size: <span id="s-h3">--</span> | Scale: 1.953</p>
+
+                <p class="body-text">
+                    これは本文のサンプルです。適切な行間（line-height）とフォントサイズを設定することで、
+                    ユーザーはストレスなく長文を読むことができます。視覚的な階層構造が明確であればあるほど、
+                    情報は正しく伝わります。The quick brown fox jumps over the lazy dog.
+                </p>
+                <p class="meta">Body Size: <span id="s-body">--</span> | Scale: 1</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initTypeTool === 'function') initTypeTool();
+        });
+    </script>
+</body>
+
+</html>
