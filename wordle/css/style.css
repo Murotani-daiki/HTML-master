@@ -17,13 +17,15 @@
     --absent: #787c7e;
     --tile-text: #ffffff;
     --modal-bg: #ffffff;
-    --modal-overlay: rgba(0,0,0,0.5);
+    --modal-overlay: rgba(0, 0, 0, 0.5);
     --header-border: #d3d6da;
     --toast-bg: #1a1a2e;
     --toast-text: #ffffff;
     --google-btn: #4285f4;
     --google-btn-hover: #3367d6;
     --share-btn: #6aaa64;
+    --twitter-btn: #000000;
+    --twitter-btn-hover: #333333;
     --new-game-btn: #4a90d9;
 }
 
@@ -43,6 +45,8 @@ body.dark {
     --header-border: #3a3a3c;
     --toast-bg: #f0f0f0;
     --toast-text: #121213;
+    --twitter-btn: #ffffff;
+    --twitter-btn-hover: #e0e0e0;
 }
 
 body.high-contrast {
@@ -56,7 +60,9 @@ body.dark.high-contrast {
 }
 
 /* ---- Reset & Base ---- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -95,7 +101,8 @@ body {
     flex-shrink: 0;
 }
 
-.header-left, .header-right {
+.header-left,
+.header-right {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -287,9 +294,17 @@ body.dark .ad-item:hover {
 }
 
 @keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .tile.flip {
@@ -297,10 +312,21 @@ body.dark .ad-item:hover {
 }
 
 @keyframes flip {
-    0% { transform: rotateX(0); }
-    45% { transform: rotateX(90deg); }
-    55% { transform: rotateX(90deg); }
-    100% { transform: rotateX(0); }
+    0% {
+        transform: rotateX(0);
+    }
+
+    45% {
+        transform: rotateX(90deg);
+    }
+
+    55% {
+        transform: rotateX(90deg);
+    }
+
+    100% {
+        transform: rotateX(0);
+    }
 }
 
 .tile.bounce {
@@ -308,9 +334,19 @@ body.dark .ad-item:hover {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-20px); }
-    60% { transform: translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-20px);
+    }
+
+    60% {
+        transform: translateY(-8px);
+    }
 }
 
 .row.shake {
@@ -318,9 +354,22 @@ body.dark .ad-item:hover {
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 50%, 90% { transform: translateX(-6px); }
-    30%, 70% { transform: translateX(6px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    50%,
+    90% {
+        transform: translateX(-6px);
+    }
+
+    30%,
+    70% {
+        transform: translateX(6px);
+    }
 }
 
 /* ---- Keyboard ---- */
@@ -408,7 +457,7 @@ body.dark .ad-item:hover {
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 600;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     animation: toastIn 0.2s ease;
     white-space: nowrap;
 }
@@ -418,13 +467,25 @@ body.dark .ad-item:hover {
 }
 
 @keyframes toastIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes toastOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 /* ---- Modals ---- */
@@ -458,18 +519,30 @@ body.dark .ad-item:hover {
     width: calc(100% - 32px);
     max-height: 85vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: modalSlideIn 0.3s ease;
 }
 
 @keyframes modalIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes modalSlideIn {
-    from { transform: translateY(20px) scale(0.95); opacity: 0; }
-    to { transform: translateY(0) scale(1); opacity: 1; }
+    from {
+        transform: translateY(20px) scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 .modal-close {
@@ -521,7 +594,7 @@ body.dark .ad-item:hover {
     margin: 16px 0;
 }
 
-.help-examples > p {
+.help-examples>p {
     margin-bottom: 16px;
 }
 
@@ -566,9 +639,17 @@ body.dark .ad-item:hover {
     border-color: transparent;
 }
 
-.green-text { color: var(--correct); }
-.yellow-text { color: var(--present); }
-.gray-text { color: var(--absent); }
+.green-text {
+    color: var(--correct);
+}
+
+.yellow-text {
+    color: var(--present);
+}
+
+.gray-text {
+    color: var(--absent);
+}
 
 /* ---- Stats Modal ---- */
 #stats-summary {
@@ -683,14 +764,14 @@ body.dark .ad-item:hover {
     background: white;
     border-radius: 50%;
     transition: 0.3s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background: var(--correct);
 }
 
-input:checked + .slider::before {
+input:checked+.slider::before {
     transform: translateX(20px);
 }
 
@@ -811,6 +892,21 @@ input:checked + .slider::before {
     box-shadow: 0 4px 16px rgba(106, 170, 100, 0.4);
 }
 
+.twitter-btn {
+    background: var(--twitter-btn);
+    color: var(--twitter-btn-text, #fff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .twitter-btn {
+    color: #000;
+}
+
+.twitter-btn:hover {
+    background: var(--twitter-btn-hover);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
 .new-game-btn {
     background: var(--new-game-btn);
     box-shadow: 0 2px 8px rgba(74, 144, 217, 0.3);
@@ -896,8 +992,17 @@ input:checked + .slider::before {
 
 /* ---- Print ---- */
 @media print {
-    #keyboard, #header, #toast-container, .ad-sidebar { display: none; }
-    #game { justify-content: flex-start; }
+
+    #keyboard,
+    #header,
+    #toast-container,
+    .ad-sidebar {
+        display: none;
+    }
+
+    #game {
+        justify-content: flex-start;
+    }
 }
 
 /* ---- Mobile Responsive for Ads ---- */
