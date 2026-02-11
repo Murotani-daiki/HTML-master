@@ -119,42 +119,75 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>関数とは？</h2>
-                    <p>何度も使う一連の処理をひとまとめにして名前をつけたものを「関数」と呼びます。料理のレシピに名前を付けて、いつでもその通りに作れるようにするのと似ています。</p>
+                    <h2>関数とは？処理の「部品化」</h2>
+                    <p>プログラミングにおいて、関数（Function）は「処理のまとまりに名前をつけて、再利用できるようにしたもの」です。料理に例えるなら、「野菜を切って、炒めて、盛り付ける」という一連の工程に「野菜炒めを作る」という名前をつけるようなものです。一度定義してしまえば、あとはその名前を呼ぶだけで、何度でもおなじ処理を実行できます。
+                    </p>
 
-                    <h2>関数の定義 (def)</h2>
-                    <p>Pythonでは `def` キーワードを使って関数を作ります。関数の中身はインデントして書きます。</p>
-
+                    <h2>基本構文：def で定義する</h2>
+                    <p>Pythonでは `def` キーワードを使って関数を定義します。</p>
                     <div class="code-block-guide">
-                        <pre>def say_hello():
-    print("こんにちは、Python Masterへようこそ！")</pre>
+                        <span class="code-label">Python</span>
+                        <pre>def greet(name):
+    """挨拶を表示する関数"""
+    print(f"こんにちは、{name}さん！")
+    print("Pythonの世界へようこそ。")
+
+# 呼び出し
+greet("佐藤")
+greet("鈴木")</pre>
+                    </div>
+                    <p>関数名の直下に書く `"""..."""` は「Docstring（ドックストリング）」と呼ばれ、関数の説明書として機能します。</p>
+
+                    <h2>引数（ひきすう）をマスターする</h2>
+                    <p>関数に渡すデータのことを引数と呼びます。Pythonの関数は、引数の扱いが非常に柔軟です。</p>
+
+                    <h3>1. デフォルト引数</h3>
+                    <p>引数が渡されなかった時の「初期値」を設定できます。</p>
+                    <div class="code-block-guide">
+                        <pre>def power(base, exponent=2):
+    return base ** exponent
+
+print(power(3))    # 3の2乗 = 9 (exponentは省略されたので2)
+print(power(3, 3)) # 3の3乗 = 27</pre>
                     </div>
 
-                    <h2>関数の呼び出し</h2>
-                    <p>名前にカッコ `()` をつけて呼び出すことで実行されます。</p>
-
+                    <h3>2. キーワード引数</h3>
+                    <p>引数の順番を気にせず、名前を指定して値を渡すことができます。</p>
                     <div class="code-block-guide">
-                        <pre>say_hello() # これで実行される</pre>
+                        <pre>def create_user(name, age):
+    print(f"{name} ({age}歳)")
+
+create_user(age=25, name="田中") # 順番が逆でもOK</pre>
                     </div>
 
-                    <div class="def-card">
-                        <h3>💡 引数と戻り値</h3>
-                        <p><strong>引数:</strong> 関数に渡す「データ」</p>
-                        <p><strong>戻り値:</strong> 関数から返ってくる「結果」</p>
-                        <div class="code-block-guide">
-                            <pre>def calculate_sum(a, b):
+                    <h2>戻り値（Return）</h2>
+                    <p>`print` と `return` の違いは重要です。`print` は画面に表示するだけですが、`return`
+                        は計算結果を関数の呼び出し元に「返却」します。返された値は、変数に入れたり、別の計算に使ったりできます。</p>
+                    <div class="code-block-guide">
+                        <span class="code-label">Python</span>
+                        <pre>def add(a, b):
     return a + b
 
-result = calculate_sum(10, 20)
-print(result) # 30 と表示される</pre>
-                        </div>
+result = add(10, 20) # resultに30が入る
+print(result * 2)    # 60</pre>
                     </div>
 
-                    <h2>メリット</h2>
-                    <p>同じコードを何度も書く必要がなくなり、メンテナンスが楽になります。また、関数に良い名前をつけることで、プログラムが何をしようとしているのか読みやすくなります。</p>
+                    <h2>変数の有効範囲（スコープ）</h2>
+                    <p>関数の中で作った変数は、その関数の中でしか使えません（ローカル変数）。逆に関数の外で作った変数は、関数の中から参照することはできますが、書き換えるには `global`
+                        キーワードが必要です（ただし、globalの使用は推奨されません）。</p>
+
+                    <div class="def-card">
+                        <h3>💡 型ヒントで読みやすく</h3>
+                        <p>最近のPythonでは、引数と戻り値に型を指定することが推奨されています。</p>
+                        <div class="code-block-guide">
+                            <pre>def double(number: int) -> int:
+    return number * 2</pre>
+                        </div>
+                        <p>これにより、「この関数は整数を受け取って、整数を返すんだな」と一目で分かります。</p>
+                    </div>
 
                     <h2>まとめ</h2>
-                    <p>関数は、大きなプログラムを小さな「部品」に分けるための非常に重要な道具です。再利用性の高い関数を作れるようになると、プログラミングの中級者への道が開けます。</p>
+                    <p>関数を使いこなせば、冗長なコードが消え、スッキリとして読みやすいプログラムになります。「同じ処理を2回書いたら関数にする」という原則を意識して、どんどん部品化を進めていきましょう。</p>
                 </div>
             </article>
         </main>

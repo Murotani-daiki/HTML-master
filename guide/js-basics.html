@@ -125,42 +125,70 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>JavaScriptとは何か？</h2>
-                    <p>JavaScriptは、ウェブサイトにインタラクティブな動きを加えるためのプログラミング言語です。1995年に誕生して以来、ウェブの進化とともに成長し、現在ではブラウザ上だけでなく、サーバー（Node.js）やアプリ開発など、あらゆる場所で使用されています。
+                    <h2>JavaScriptとは何か？Webを動かす魔法</h2>
+                    <p>JavaScript（ジャバスクリプト）は、1995年にNetscape社のBrendan
+                        Eich（ブレンダン・アイク）氏によって開発されたプログラミング言語です。当初は単にWebページにちょっとした動きをつけるための補助的な言語でしたが、現在ではWeb開発において「最も重要な言語」と言っても過言ではありません。
                     </p>
-                    <p>HTMLが「骨格」、CSSが「見た目」なら、JavaScriptは「筋肉」や「神経」に例えられます。ボタンをクリックした時の動作、データの読み込み、アニメーションの制御など、ユーザーの操作に反応してウェブページを変化させるのがJavaScriptの役割です。
+                    <p>HTMLが「骨格」、CSSが「見た目」を作るなら、JavaScriptは「動き」や「知能」を与えます。ユーザーのクリックに反応したり、サーバーから新しい情報を取得して表示したり、複雑な計算を行ったりと、Webサイトを「静的な文書」から「動的なアプリケーション」へと進化させるのがJavaScriptの役割です。さらに、Node.jsの登場により、サーバーサイドの開発も可能になり、Webの全領域をカバーする万能言語へと成長しました。
                     </p>
 
-                    <h2>基本文法：変数と定数</h2>
-                    <p>プログラミングの基本は、データを一時的に保存する「変数」を扱うことです。モダンなJavaScriptでは、値を書き換えられる変数には `let`、一度決めたら変えない定数には `const`
-                        を使用します。</p>
-
+                    <h2>基本文法：変数と定数の使い分け</h2>
+                    <p>現代のJavaScript（ES6以降）では、変数の宣言方法が明確化されています。古い解説記事にある `var` は現在では推奨されず、主に以下の2つを使い分けます。</p>
+                    <ul>
+                        <li><strong>const (定数):</strong> 一度代入したら変更できない変数。安全なコードを書くため、基本的にはこれを使います。</li>
+                        <li><strong>let (変数):</strong> 後から値を書き換える必要がある場合に使います（例：スコアの計算など）。</li>
+                    </ul>
                     <div class="code-block-guide">
-                        <pre>const name = "JavaScript Master";
-let score = 100;
+                        <pre>const siteName = "JS Master";
+// siteName = "New Name"; // エラーになる
 
-score = score + 10; // 値の更新
-console.log(name + "のスコアは" + score);</pre>
+let score = 0;
+score = score + 10; // OK
+console.log(`${siteName}のスコア: ${score}`);</pre>
                     </div>
 
-                    <h2>データ型と演算</h2>
-                    <p>JavaScriptが扱うデータにはいくつかの「型」があります：</p>
+                    <h2>データ型とオブジェクト：情報の器</h2>
+                    <p>JavaScriptは動的型付け言語であり、状況に応じてデータの種類（型）が変わりますが、基本となる型を知っておくことは重要です。</p>
                     <ul>
-                        <li><strong>文字列 (String):</strong> "あいうえお" のようなテキスト。</li>
-                        <li><strong>数値 (Number):</strong> 10 や 3.14 などの数字。</li>
-                        <li><strong>真偽値 (Boolean):</strong> true（正しい）か false（間違い）かの2択。</li>
-                        <li><strong>配列 (Array):</strong> 複数のデータをまとめて管理する棚のようなもの。</li>
+                        <li><strong>プリミティブ型:</strong> 文字列（String）、数値（Number）、真偽値（Boolean）、null、undefinedなど。</li>
+                        <li><strong>オブジェクト型:</strong> 複数のデータをまとめるための構造です。</li>
                     </ul>
+                    <p>特に「配列（Array）」と「オブジェクト（Object）」は頻繁に使用します。</p>
+                    <div class="code-block-guide">
+                        <pre>// オブジェクトの例
+const user = {
+    name: "Tanaka",
+    age: 25,
+    skills: ["HTML", "CSS", "JS"] // 配列
+};</pre>
+                    </div>
 
-                    <h2>DOM操作：ページを書き換える</h2>
-                    <p>JavaScriptの真髄は「DOM（Document Object
-                        Model）操作」にあります。これは、JavaScriptを使ってHTML要素を自由自在に書き換える仕組みのことです。例えば、ボタンを押した時に文字の色を変えたり、新しいメッセージを表示したりするのは、すべてこのDOM操作によって行われています。
-                    </p>
+                    <h2>関数：処理をまとめる魔法</h2>
+                    <p>一連の処理をまとめて名前をつけたものを「関数」と呼びます。最近のJavaScriptでは、「アロー関数」という短い書き方が人気です。</p>
+                    <div class="code-block-guide">
+                        <pre>// 従来の書き方
+function greet(name) {
+    return "こんにちは、" + name + "さん";
+}
 
-                    <h2>まとめ</h2>
-                    <p>JavaScriptは非常に奥が深い言語ですが、まずは「コードを書いて、画面が変わる」という楽しさを知ることが大切です。プログラミングの基本ロジックは他の言語とも共通しているため、JavaScriptをマスターすることは、エンジニアとしての確かな一歩になります。
+// アロー関数（モダンな書き方）
+const greet = (name) => `こんにちは、${name}さん`;</pre>
+                    </div>
+
+                    <h2>DOM操作：ページをリアルタイムに操る</h2>
+                    <p>JavaScriptの最大の武器は「DOM（Document Object Model）」の操作です。これは、HTMLの要素をJavaScriptから自由に検索し、書き換える仕組みです。</p>
+                    <p>例えば、`document.querySelector('#btn')` でボタン要素を探し、`addEventListener`
+                        でクリック時の動作を登録する。これだけで、「ボタンを押したら画面の色が変わる」といったインタラクティブな機能が実現できます。</p>
+
+                    <h2>非同期処理：現代Web開発の要</h2>
+                    <p>Webサイトが読み込み中（ローディング）でも操作できるようにするために、「非同期処理」という技術が使われます。JavaScriptでは `Promise` や `async/await`
+                        という構文を使って、「サーバーからデータを取ってくる間、別の処理を進める」といった高度な制御が簡単に書けるようになっています。</p>
+
+                    <h2>まとめ：無限の可能性へ</h2>
+                    <p>JavaScriptを習得することは、エンジニアとしての可能性を大きく広げます。世界中で使われているReactやVue.jsといったフレームワークも、すべてJavaScriptで作られています。
                     </p>
-                    <p>JavaScript Masterでは、環境構築不要で今すぐコードを試すことができます。さあ、あなたもWebに命を吹き込む魔法を使ってみませんか？</p>
+                    <p>JavaScript Masterでは、面倒な環境構築は不要です。ブラウザさえあれば、今すぐコードを書いて動かす楽しさを体験できます。さあ、あなたのアイデアでWebの世界に命を吹き込みましょう！
+                    </p>
                 </div>
             </article>
         </main>

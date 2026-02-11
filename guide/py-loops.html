@@ -118,47 +118,76 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>ループ処理とは？</h2>
-                    <p>同じ作業を何度も繰り返すことを「ループ処理」と呼びます。1万個のデータに同じ処理をしたり、画面に100枚の画像を並べたりするのも、ループを使えば瞬時に終わります。</p>
+                    <h2>ループ処理とは？自動化の魔法</h2>
+                    <p>プログラミングを学ぶ最大のメリットの一つが、この「ループ処理」です。人間がやると数時間かかるような単純作業（例：エクセルの1万行のデータを処理する、1000個のファイル名を一括変更するなど）も、ループを使えば一瞬で終わります。
+                    </p>
 
-                    <h2>for 文と range 関数</h2>
-                    <p>決まった回数繰り返す場合は、`range()` 関数と組み合わせて使います。</p>
-
+                    <h2>Pythonの for 文：「順番に取り出す」</h2>
+                    <p>Pythonの `for`
+                        文は、他の言語（CやJavaなど）とは少し性質が異なります。数字をカウントアップするだけでなく、「リストや文字列から中身を1つずつ取り出す」ことに特化しています。これを「イテレーション（反復）」と呼びます。
+                    </p>
                     <div class="code-block-guide">
-                        <pre>for i in range(5):
-    print(f"{i}回目の繰り返し")</pre>
-                    </div>
-                    <p>※0から始まり、4まで(計5回)繰り返されます。</p>
+                        <span class="code-label">Python</span>
+                        <pre>team = ["Aさん", "Bさん", "Cさん"]
 
-                    <h2>リストの中身をループする</h2>
-                    <p>Pythonの `for` 文は、リストなどの要素を順番に取り出すのが非常に得意です。</p>
-
-                    <div class="code-block-guide">
-                        <pre>fruits = ["Apple", "Banana", "Cherry"]
-for fruit in fruits:
-    print(f"私は{fruit}が好きです")</pre>
+for member in team:
+    # member変数に順番に名前が入る
+    print(f"{member}、準備はいいですか？")</pre>
                     </div>
 
-                    <h2>while 文（条件によるループ）</h2>
-                    <p>「条件が正しい限りずっと繰り返す」のが `while` 文です。</p>
-
+                    <h2>回数を指定する：range() 関数</h2>
+                    <p>「単純に10回繰り返したい」という場合は、`range()` 関数を使います。この関数は、指定された範囲の数字を生成します。</p>
                     <div class="code-block-guide">
-                        <pre>count = 0
-while count < 3:
-    print(count)
-    count += 1</pre>
+                        <span class="code-label">Python</span>
+                        <pre># 0から4まで（5回）繰り返す
+for i in range(5):
+    print(f"現在、{i}回目です")
+
+# 1から10まで、2つ飛ばしで（1, 3, 5, 7, 9）
+for i in range(1, 11, 2):
+    print(f"奇数：{i}")</pre>
                     </div>
 
                     <div class="range-box">
-                        <h3>💡 range関数の高度な使い方</h3>
-                        <ul>
-                            <li>`range(1, 11)` : 1から10まで</li>
-                            <li>`range(0, 10, 2)` : 0, 2, 4, 6, 8 (2飛ばし)</li>
-                        </ul>
+                        <h3>💡 インデックスも欲しい時：enumerate()</h3>
+                        <p>中身だけでなく、「今何番目か」という数字も一緒に使いたい時は `enumerate()` を使うと非常にスマートに書けます。</p>
+                        <div class="code-block-guide">
+                            <pre>fruits = ["Apple", "Orange", "Grape"]
+for i, fruit in enumerate(fruits, 1):
+    print(f"{i}番目のフルーツは{fruit}です")</pre>
+                        </div>
+                    </div>
+
+                    <h2>条件で繰り返す：while 文</h2>
+                    <p>「回数は決まっていないが、ある条件を満たす間はずっと続けたい」という場合は `while` 文を使います。</p>
+                    <div class="code-block-guide">
+                        <pre>battery = 100
+while battery > 0:
+    print(f"稼働中... バッテリー残量{battery}%")
+    battery -= 20  # これを忘れると無限ループ！
+print("バッテリー切れです")</pre>
+                    </div>
+
+                    <h2>ループの制御：break と continue</h2>
+                    <ul>
+                        <li><strong>break:</strong> ループをその場で完全に終了させます。「正解が出たら終了」などで使います。</li>
+                        <li><strong>continue:</strong> 今の周回をスキップして、次の周回へ進みます。「特定のエラー値だけ飛ばして集計」などで使います。</li>
+                    </ul>
+
+                    <h2>応用：リスト内包表記</h2>
+                    <p>Pythonには、ループを使って新しいリストを作るための「リスト内包表記」という強力な書き方があります。慣れるとコードが劇的に短くなります。</p>
+                    <div class="code-block-guide">
+                        <pre># 普通の書き方
+squares = []
+for i in range(5):
+    squares.append(i ** 2)
+
+# リスト内包表記（たった1行！）
+squares = [i ** 2 for i in range(5)]</pre>
                     </div>
 
                     <h2>まとめ</h2>
-                    <p>ループ処理をマスターすれば、人間には不可能な速さで大量の仕事を片付けられるプログラムが書けるようになります。Pythonのシンプルで強力な `for` 文をぜひ使いこなしてください。</p>
+                    <p>Pythonのループ処理は非常に直感的で強力です。特に `for x in list` の形や `enumerate` は頻繁に使うので、何も見ずに書けるようになるまで練習しましょう。</p>
                 </div>
             </article>
         </main>

@@ -112,47 +112,78 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>処理を部品にする</h2>
-                    <p>何度も使う一連の処理をひとまとめにして名前をつけたものを「関数」と呼びます。例えば、「挨拶を表示して日付を出力する」という処理に関数を作っておけば、1行呼び出すだけでいつでもその処理を再現できます。
+                    <h2>関数とは？「魔法の呪文」を定義する</h2>
+                    <p>プログラミングの世界では、同じ処理を何度も書くのは「罪」とされています。変更が必要になった時、全ての箇所を修正しなければならないからです。そこで登場するのが「関数（Function）」です。一連の処理をひとまとめにして名前をつけ、いつでも呼び出せるようにした「魔法の呪文」のようなものです。
                     </p>
 
-                    <h2>関数の作り方 (定義)</h2>
-                    <p>もっとも一般的な「関数宣言」の書き方です。</p>
+                    <h2>1. 基本的な関数の作り方</h2>
+                    <p>最もオーソドックスな「関数宣言」です。</p>
                     <div class="code-block-guide">
-                        <pre>function sayHi() {
-    console.log("こんにちは！");
-    console.log("JS Masterへようこそ！");
-}</pre>
-                    </div>
-
-                    <h2>関数を使う (実行)</h2>
-                    <p>定義しただけでは動きません。名前にカッコ `()` をつけて呼び出します。</p>
-                    <div class="code-block-guide">
-                        <pre>sayHi(); // これで中の処理が実行される</pre>
-                    </div>
-
-                    <div class="concept-card">
-                        <h3>💡 引数と戻り値</h3>
-                        <p><strong>引数（ひきすう）:</strong> 関数に渡す「材料」です。</p>
-                        <p><strong>戻り値（もどりち）:</strong> 関数の「結果」を返すものです。</p>
-                        <div class="code-block-guide">
-                            <pre>function add(a, b) {
-    return a + b; // 結果を返す
+                        <span class="code-label">JavaScript</span>
+                        <pre>// 定義：呪文を作る
+function greet(name) {
+    console.log("こんにちは、" + name + "さん！");
+    console.log("今日は良い天気ですね。");
 }
-const result = add(5, 3); // 8 が返ってくる</pre>
-                        </div>
+
+// 実行：呪文を唱える
+greet("佐藤");
+greet("田中");</pre>
                     </div>
 
-                    <h2>アロー関数</h2>
-                    <p>モダンなJavaScriptで非常に好まれる、短く書ける関数の書き方です。</p>
+                    <h2>2. 引数（ひきすう）と戻り値（もどりち）</h2>
+                    <p>関数はただ命令を実行するだけではありません。「材料」を受け取り、加工して「成果物」を返すことができます。</p>
+                    <ul>
+                        <li><strong>引数 (Arguments):</strong> 関数に渡すデータ。「材料」にあたります。コンマ区切りで複数渡せます。</li>
+                        <li><strong>戻り値 (Return Value):</strong> 関数から返ってくる結果。「成果物」にあたります。`return`
+                            を使うと、そこで関数の処理は終了し、値が呼び出し元に返されます。</li>
+                    </ul>
                     <div class="code-block-guide">
-                        <pre>const sayHi = () => {
-    console.log("Hi!");
-};</pre>
+                        <pre>function add(a, b) {
+    // a と b が「引数」
+    const result = a + b;
+    return result; // これが「戻り値」
+}
+
+const total = add(100, 50); // totalには150が入る</pre>
                     </div>
+
+                    <h2>3. アロー関数 (Arrow Function)</h2>
+                    <p>現代のJavaScript（ES6以降）で主流となっている、短くてスマートな書き方です。`function` キーワードの代わりに `=>`（矢印）を使います。</p>
+                    <div class="code-block-guide">
+                        <pre>// 従来の書き方
+const oldWay = function(x) {
+    return x * x;
+};
+
+// アロー関数
+const newWay = (x) => {
+    return x * x;
+};
+
+// さらに省略可能（引数が1つ、処理が1行の場合）
+const simple = x => x * x;</pre>
+                    </div>
+                    <p>特にReactなどのフレームワークでは頻繁に使われるため、この形に慣れておきましょう。</p>
+
+                    <h2>4. コールバック関数</h2>
+                    <p>JavaScriptの大きな特徴の一つが、「関数も値（データ）として扱える」という点です。つまり、関数を他の関数の引数として渡すことができます。これを「コールバック関数」と呼びます。</p>
+                    <div class="code-block-guide">
+                        <pre>function doSomething(callback) {
+    console.log("処理を開始します...");
+    // 渡された関数を実行する
+    callback();
+}
+
+doSomething(() => {
+    console.log("終わりました！");
+});</pre>
+                    </div>
+                    <p>「クリックされたら実行」「データ読み込みが終わったら実行」といったイベント処理は、すべてこのコールバック関数で成り立っています。</p>
 
                     <h2>まとめ</h2>
-                    <p>関数は、プログラムを整理整頓するための道具です。大きなプログラムも、小さな関数の集まりとして作ることで、バグが少なくメンテナンスしやすいコードになります。</p>
+                    <p>関数を使いこなすことは、プログラムを整理整頓する力そのものです。「長い処理は分割する」「同じ処理はまとめる」。この原則を守るだけで、あなたのコードは驚くほど読みやすく、バグの少ないものになります。
+                    </p>
                 </div>
             </article>
         </main>

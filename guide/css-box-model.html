@@ -144,18 +144,23 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>ボックスの4層構造</h2>
-                    <p>ウェブページの全ての要素は、4つの境界線を持つ長方形として扱われます。これを正確に操れるようになると、思い通りのレイアウトが作れるようになります。</p>
+                    <h2>CSSにおける「箱」の概念</h2>
+                    <p>Webデザインを学ぶ上で、避けて通れない最重要概念が「ボックスモデル」です。画面に表示されるすべてのHTML要素（見出し、段落、画像、ボタンなど）は、実はすべて「見えない長方形の箱」の中に収まっています。CSSを使ってレイアウトを作る作業は、いわばこの「箱」のサイズや隙間を調整して、積み木のように組み立てていく作業そのものです。
+                    </p>
+
+                    <h2>ボックスを構成する4つの要素</h2>
+                    <p>一つの箱は、内側から順に以下の4つの層でできています。この順序と役割を完全に理解することが、脱初心者への第一歩です。</p>
 
                     <div class="box-visual">
                         <div class="margin-box">
-                            <span style="font-size: 0.7rem; color: #eab308;">Margin (外側の余白)</span>
+                            <span style="font-size: 0.8rem; color: #ca8a04; font-weight: bold;">Margin (外側の余白)</span>
                             <div class="border-box">
-                                <span style="font-size: 0.7rem; color: #38bdf8;">Border (枠線)</span>
+                                <span style="font-size: 0.8rem; color: #0ea5e9; font-weight: bold;">Border (境界線)</span>
                                 <div class="padding-box">
-                                    <span style="font-size: 0.7rem; color: #818cf8;">Padding (内側の余白)</span>
+                                    <span style="font-size: 0.8rem; color: #6366f1; font-weight: bold;">Padding
+                                        (内側の余白)</span>
                                     <div class="content-box">
-                                        Content (中身)
+                                        Content (実体)
                                     </div>
                                 </div>
                             </div>
@@ -163,28 +168,40 @@
                     </div>
 
                     <h3>1. Content (コンテンツ)</h3>
-                    <p>テキストや画像が実際に表示される部分です。`width` や `height` で大きさを指定します。</p>
+                    <p>箱の「中身」そのものです。テキストや画像が表示される領域で、`width`（幅）や `height`（高さ）プロパティで指定されたサイズがここに適用されます。</p>
 
                     <h3>2. Padding (パディング)</h3>
-                    <p>コンテンツと枠線の間の**内側の余白**です。文字が枠にくっつくのを防ぎ、要素の中にゆとりを持たせます。</p>
+                    <p>コンテンツと枠線の間の「緩衝材」です。これがないと、テキストが枠線にピタッとくっついてしまい、窮屈で読みづらくなります。「内側の余白」と覚えましょう。背景色を指定すると、このパディング領域まで色が塗られます。
+                    </p>
 
                     <h3>3. Border (ボーダー)</h3>
-                    <p>要素を囲む**枠線**です。太さ、線種（実線や点線）、色を指定できます。</p>
+                    <p>箱の「皮」にあたる境界線です。太さ、色、スタイル（実線、点線など）を指定できます。デバッグ時に `border: 1px solid red;`
+                        をつけて箱の範囲を可視化するのは、プロもよくやるテクニックです。</p>
 
                     <h3>4. Margin (マージン)</h3>
-                    <p>枠線の外側にある、他の要素との**間隔**です。要素同士がくっつきすぎるのを防ぎ、ページ全体のバランスを整えます。</p>
+                    <p>箱と箱の間の「隙間」です。「隣の要素とどれくらい離れるか」を指定します。マージンには背景色は塗られず、常に透明です。「外側の余白」と覚えましょう。</p>
 
-                    <h2>注意点：全体の幅はどう決まる？</h2>
-                    <p>デフォルトでは、要素の合計幅は `width + padding + border` になります。マージンは要素の外側に計算されます。</p>
+                    <h2>レイアウト崩れの元凶とその解決策</h2>
+                    <p>初心者が最もハマりやすい罠が、「widthを100%にしたのに、paddingをつけたらはみ出した！」という現象です。</p>
+                    <p>デフォルトのCSS（content-box）では、`width` は「コンテンツの幅」だけを指します。そのため、全体の幅は `width + padding + border`
+                        になり、指定したサイズよりも箱が大きくなってしまうのです。</p>
 
                     <div class="tip-card"
                         style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-left: 4px solid #38bdf8; border-radius: 0 12px 12px 0;">
-                        <p style="margin-bottom: 0;">`box-sizing: border-box;` という設定を使うと、padding も border も含めて `width`
-                            ぴったりに収まるようになり、レイアウトの計算が非常に楽になります。現代のWeb制作では必須の設定です。</p>
+                        <h4>✅ 魔法の呪文: box-sizing: border-box</h4>
+                        <p>この問題を一発で解決するのが `box-sizing: border-box;` です。これを指定すると、paddingやborderを含めたサイズが `width`
+                            になります。計算が直感的になり、レイアウト崩れが激減します。</p>
+                        <div class="code-block-guide">
+                            <pre>* {
+    box-sizing: border-box;
+}</pre>
+                        </div>
+                        <p>現代のWeb制作では、全ての要素にこれを適用するのが常識となっています。</p>
                     </div>
 
                     <h2>まとめ</h2>
-                    <p>「内側の余白は Padding、外側の間隔は Margin」と覚えましょう。この4つのプロパティをマスターすることが、プロのような洗練されたデザインへの近道です。</p>
+                    <p>「paddingは内側、marginは外側」。そして「box-sizing: border-box
+                        を使う」。この2点を抑えておけば、CSSレイアウトの9割は怖くありません。箱の構造をイメージしながら、自在にデザインを組めるようになりましょう。</p>
                 </div>
             </article>
         </main>

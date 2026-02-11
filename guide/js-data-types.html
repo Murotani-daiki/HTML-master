@@ -138,51 +138,65 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>データには「型」がある</h2>
-                    <p>プログラミングで扱うデータには、それぞれ決まった種類（型）があります。JavaScriptは、数値として計算するのか、文字として繋げるのかを、このデータ型を見て判断します。</p>
+                    <h2>データ型とは？（基本のキ）</h2>
+                    <p>プログラミングで扱う情報には「種類」があります。数字なのか、文字なのか、それとも「真か偽か」なのか。JavaScriptは、この「データ型」を自動的に判断して処理してくれますが、プログラマー自身が型を理解していないと、予期せぬバグの原因になります。
+                    </p>
+
+                    <h2>1. 基本的なデータ型（プリミティブ型）</h2>
+                    <p>これ以上分解できない、シンプルな値です。</p>
 
                     <div class="type-grid">
                         <div class="type-card">
                             <h4>String (文字列)</h4>
-                            <p>名前や文章など、引用符 `"` や `'` で囲まれたテキストデータです。</p>
+                            <p>引用符 `"` や `'`、`` ` `` で囲みます。文字を扱います。<br>例: `"Hello"`, `'JavaScript'`</p>
                         </div>
                         <div class="type-card">
                             <h4>Number (数値)</h4>
-                            <p>整数や小数。計算に使用される数字データです。</p>
+                            <p>整数も小数もすべて `Number` 型です。計算に使います。<br>例: `100`, `3.14`, `-50`</p>
                         </div>
                         <div class="type-card">
                             <h4>Boolean (真偽値)</h4>
-                            <p>`true`（真）か `false`（偽）の2つの値しか持たない型です。</p>
+                            <p>論理的な「はい/いいえ」を表します。条件分岐で大活躍します。<br>値: `true` (真), `false` (偽)</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Undefined</h4>
+                            <p>「値がまだ定義されていない」状態を表します。変数を作ったけれど中身を入れていない時などはこれになります。</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Null</h4>
+                            <p>意図的に「何もない」ことを示す値です。プログラマーが明示的に設定します。</p>
                         </div>
                     </div>
 
-                    <h2>1. 文字列 (String)</h2>
-                    <p>文字列は自由に文字を繋げることができます。また、`backtick` ( ` ) を使うと、文字列の中に変数を埋め込むこともできます。</p>
+                    <h2>2. 複雑なデータ型（オブジェクト型）</h2>
+                    <p>複数のデータをまとめて管理できる、高度な型です。</p>
+
+                    <h3>配列 (Array)</h3>
+                    <p>データを順番に並べて管理します。</p>
                     <div class="code-block-guide">
-                        <pre>const name = "JavaScript";
-console.log(`Hello, ${name}!`); // テンプレートリテラル</pre>
+                        <span class="code-label">JavaScript</span>
+                        <pre>const colors = ["Red", "Green", "Blue"];
+console.log(colors[0]); // "Red"</pre>
                     </div>
 
-                    <h2>2. 配列 (Array)</h2>
-                    <p>複数のデータをひとまとめにして管理する「棚」のようなデータ型です。各データには `0` から始まる番号（インデックス）でアクセスします。</p>
+                    <h3>オブジェクト (Object)</h3>
+                    <p>データに名前（キー）をつけて管理します。</p>
                     <div class="code-block-guide">
-                        <pre>const colors = ["red", "blue", "yellow"];
-console.log(colors[0]); // "red" を表示</pre>
+                        <pre>const user = { name: "Tanaka", age: 25 };
+console.log(user.name); // "Tanaka"</pre>
                     </div>
 
-                    <h2>3. オブジェクト (Object)</h2>
-                    <p>データに名前（キー）をつけて管理する型です。関連する情報をまとめて扱うのに非常に便利です。</p>
+                    <h2>型の確認方法：typeof</h2>
+                    <p>今扱っているデータが何の型なのか知りたい時は、`typeof` 演算子を使います。</p>
                     <div class="code-block-guide">
-                        <pre>const user = {
-    name: "Taro",
-    level: 10
-};
-console.log(user.name); // "Taro" を表示</pre>
+                        <pre>console.log(typeof 123);      // "number"
+console.log(typeof "Hello");  // "string"
+console.log(typeof true);     // "boolean"</pre>
                     </div>
 
                     <h2>まとめ</h2>
-                    <p>データ型を正しく理解することは、意図しない計算ミス（例：1 + "1" が "11"
-                        になる）を防ぐために不可欠です。今扱っているのがどの型なのかを意識しながらコードを書いてみましょう。型の確認には `typeof` 演算子が役立ちます。</p>
+                    <p>JavaScriptは「動的型付け言語」と呼ばれ、変数の型が柔軟に変わります。これは便利ですが、「数値だと思っていたら文字列だった（"10" + 20 = "1020"
+                        になってしまう）」といようなミスも起こりやすいです。常に「今この変数にはどんな型のデータが入っているか？」を意識することが大切です。</p>
                 </div>
             </article>
         </main>

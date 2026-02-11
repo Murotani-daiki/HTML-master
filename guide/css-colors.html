@@ -127,46 +127,57 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>CSSでの色の指定方法</h2>
-                    <p>CSSでは、主に以下の3つの方法で色を表現します。状況に合わせて使い分けましょう。</p>
+                    <h2>Webサイトの印象を決める「色」の力</h2>
+                    <p>Webデザインにおいて、色は単なる装飾以上の重要な役割を持っています。ユーザーに対して「信頼感」や「活気」といった感情を直感的に伝え、クリックすべき場所を誘導する機能性も担っています。</p>
+
+                    <h2>色の指定方法：3つの基本</h2>
+                    <p>CSSでは、状況に応じて異なる色の指定方法を使い分けます。</p>
 
                     <div class="color-demo-grid">
-                        <div class="color-chip" style="background: skyblue;">色名<br>skyblue</div>
-                        <div class="color-chip" style="background: #38bdf8;">HEX値<br>#38bdf8</div>
+                        <div class="color-chip" style="background: #38bdf8;">HEX<br>#38bdf8</div>
                         <div class="color-chip" style="background: rgb(56, 189, 248);">RGB<br>rgb(56, 189, 248)</div>
-                        <div class="color-chip" style="background: rgba(56, 189, 248, 0.5);">RGBA<br>rgba(..., 0.5)
-                        </div>
+                        <div class="color-chip" style="background: hsl(200, 95%, 60%);">HSL<br>hsl(200, 95%, 60%)</div>
                     </div>
 
                     <h3>1. HEX値（16進数）</h3>
-                    <p>`#` から始まる形式で、Webデザインで最も一般的です。赤、緑、青の強さをそれぞれ16進数（0-F）で表します。</p>
+                    <p>最も一般的な指定方法です。`#` の後に赤(R)、緑(G)、青(B)をそれぞれ2桁の16進数（00〜FF）で表します。コピペしやすく、短い記述で済むのが特徴です。</p>
 
                     <h3>2. RGB / RGBA</h3>
-                    <p>`rgb(255, 0, 0)` のように0〜255の数値で指定します。`rgba` の `a`
-                        は「透明度」を表し、0.0（完全透明）から1.0（不透明）までの値で指定できます。重ね合わせのデザインに重宝します。</p>
-
-                    <h2>背景（background）の設定</h2>
-                    <p>単色だけでなく、画像やグラデーションを設定することで、サイトの質感が一気に向上します。</p>
-
-                    <h3>背景画像</h3>
+                    <p>`rgb(255, 0, 0)` のように、赤・緑・青の強さを0〜255の数値で指定します。直感的に理解しやすい形式です。<br>
+                        末尾に `a` をつけた `rgba` では、不透明度（Alpha）を指定できます。</p>
                     <div class="code-block-guide">
-                        <pre>body {
-    background-image: url("bg.jpg");
-    background-size: cover; /* 画面いっぱいに広げる */
-    background-position: center;
-}</pre>
+                        <pre>background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒 */</pre>
                     </div>
 
-                    <h3>グラデーション</h3>
-                    <p>最近の流行は `linear-gradient` を使った美しい変化です。</p>
+                    <h3>3. HSL / HSLA</h3>
+                    <p>色相 (Hue)、彩度 (Saturation)、輝度 (Lightness)
+                        で色を指定します。「少し明るくしたい」「彩度を落としたい」といった調整が人間にとって直感的に行えるため、デザインシステムを組む際におすすめです。</p>
+
+                    <h2>背景（background）の活用</h2>
+                    <p>単色だけでなく、画像やグラデーションを使ってリッチな表現が可能です。</p>
+
+                    <h3>グラデーションの魔術</h3>
+                    <p>`linear-gradient` を使うと、CSSだけで美しいグラデーションが作れます。</p>
                     <div class="code-block-guide"
-                        style="background: linear-gradient(135deg, #38bdf8, #818cf8); color: #fff;">
+                        style="background: linear-gradient(90deg, #38bdf8, #818cf8); color: white;">
                         <pre
-                            style="text-shadow: none; color: #fff;">background: linear-gradient(135deg, #38bdf8, #818cf8);</pre>
+                            style="color: white; text-shadow: none;">background: linear-gradient(90deg, #38bdf8, #818cf8);</pre>
                     </div>
+
+                    <h3>背景画像の設定</h3>
+                    <p>画像を表示する際は、繰り返しやサイズの設定もセットで行うのが基本です。</p>
+                    <div class="code-block-guide">
+                        <pre>background-image: url('hero.jpg');
+background-size: cover;  /* 画面全体を覆う */
+background-position: center; /* 中央に配置 */</pre>
+                    </div>
+
+                    <h2>アクセシビリティへの配慮</h2>
+                    <p>文字色と背景色のコントラスト比には注意が必要です。淡い背景に白い文字などは読みにくく、ユーザーにとってストレスになります。誰にでも読みやすい配色を心がけましょう。</p>
 
                     <h2>まとめ</h2>
-                    <p>色には「視認性を高める」「ブランドイメージを伝える」といった重要な役割があります。適切な色の指定と背景設定をマスターして、ユーザーを魅了する美しいページを作りましょう。</p>
+                    <p>色はWebサイトの「顔」です。まずはベースカラー（全体の70%）、メインカラー（25%）、アクセントカラー（5%）の3色を決めることから始めてみましょう。統一感のある美しいデザインが生まれます。
+                    </p>
                 </div>
             </article>
         </main>

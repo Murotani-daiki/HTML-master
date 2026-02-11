@@ -130,38 +130,73 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>情報をどうまとめるか？</h2>
-                    <p>プログラムでは単一の数値や文字列だけでなく、「複数のデータの集まり」を扱うことがよくあります。Pythonには、用途に合わせて使い分けられる強力なデータ構造が備わっています。</p>
+                    <h2>データ構造とは？情報の「整理箱」</h2>
+                    <p>プログラムを作る上で、データをどのように保存・管理するか（＝データ構造）は非常に重要です。「順番に並べるのか」「名前をつけて管理するのか」「重複を許さないのか」など、目的に応じて最適な「箱」を選ぶことで、コードの効率と書きやすさが劇的に変わります。
+                    </p>
 
                     <div class="structure-grid">
                         <div class="structure-card">
-                            <h4>リスト [list]</h4>
-                            <p>順番があるデータの集まり。インデックス(0から始まる番号)で管理します。中身を自由に変更できます。</p>
+                            <h4>リスト (list)</h4>
+                            <p><strong>[ ]</strong> 順番に並べる。変更可能。最もよく使われる。</p>
                         </div>
                         <div class="structure-card">
-                            <h4>辞書 {dict}</h4>
-                            <p>「キー」と「値」をセットにして保存。名簿のように、特定の名前から情報を素早く引き出すのに最適です。</p>
+                            <h4>タプル (tuple)</h4>
+                            <p><strong>( )</strong> 順番に並べる。<strong>変更不可</strong>。定数リストとして使う。</p>
+                        </div>
+                        <div class="structure-card">
+                            <h4>辞書 (dict)</h4>
+                            <p><strong>{ }</strong> キーと値のペア。検索が非常に速い。</p>
+                        </div>
+                        <div class="structure-card">
+                            <h4>集合 (set)</h4>
+                            <p><strong>{ }</strong> 重複なし。数学的な集合演算が得意。</p>
                         </div>
                     </div>
 
-                    <h2>1. リストの基本</h2>
+                    <h2>1. リスト (List)：万能選手</h2>
+                    <p>なんでも入れられる、伸縮自在の配列です。</p>
                     <div class="code-block-guide">
-                        <pre>fruits = ["Apple", "Banana"]
-fruits.append("Cherry") # 追加
-print(fruits[0])        # "Apple"を取得</pre>
+                        <span class="code-label">Python</span>
+                        <pre>colors = ["Red", "Green", "Blue"]
+colors.append("Yellow") # 追加
+print(colors[0])        # "Red"（インデックスは0から）
+print(len(colors))      # 4（長さ）</pre>
                     </div>
 
-                    <h2>2. 辞書の基本</h2>
+                    <h2>2. 辞書 (Dictionary)：検索のスペシャリスト</h2>
+                    <p>「ラベル（キー）」を使ってデータを取り出します。リストのように「何番目」と数えるのではなく、「名前」で管理したい時に使います。</p>
                     <div class="code-block-guide">
-                        <pre>user = {"name": "Taro", "age": 20}
-print(user["name"]) # "Taro"を取得</pre>
+                        <pre>profile = {
+    "name": "Tanaka",
+    "age": 25,
+    "email": "tanaka@example.com"
+}
+print(profile["name"]) # "Tanaka"</pre>
                     </div>
 
-                    <h2>3. タプル (tuple)</h2>
-                    <p>丸カッコ `( )` を使います。リストと似ていますが、**一度作った後で中身を変更できない**という特徴があります。設定値など、変えたくないデータを扱うのに適しています。</p>
+                    <h2>3. タプル (Tuple)：書き換え禁止のリスト</h2>
+                    <p>一度作ったら中身を変更・追加・削除できません。これにより、「誤ってデータを書き換えてしまうバグ」を防げます。関数の戻り値や、設定値の定義によく使われます。</p>
+                    <div class="code-block-guide">
+                        <pre># 座標などを表すのに便利
+location = (35.6895, 139.6917)
+# location[0] = 36.0  <- これはエラーになります！</pre>
+                    </div>
 
-                    <h2>まとめ</h2>
-                    <p>それぞれのデータ構造には得意・不得意があります。データの順序が大事ならリスト、名前で管理したいなら辞書、不変性を保ちたいならタプル、というように使い分けていきましょう。</p>
+                    <h2>4. 集合 (Set)：重複を許さない</h2>
+                    <p>ユニークな要素だけを保持します。「リストから重複を取り除きたい」といった時に便利です。</p>
+                    <div class="code-block-guide">
+                        <pre>members = {"A", "B", "A", "C"}
+print(members) # {'A', 'B', 'C'} （重複していたAが1つ消える）</pre>
+                    </div>
+
+                    <h2>まとめ：使い分けのコツ</h2>
+                    <ul>
+                        <li>順序が大事で、変更するなら → <strong>リスト</strong></li>
+                        <li>順序が大事で、変更しないなら → <strong>タプル</strong></li>
+                        <li>名前で検索したいなら → <strong>辞書</strong></li>
+                        <li>重複をなくしたいなら → <strong>集合</strong></li>
+                    </ul>
+                    <p>これらを適切に使い分けることが、脱初心者への第一歩です。</p>
                 </div>
             </article>
         </main>

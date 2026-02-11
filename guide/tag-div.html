@@ -136,39 +136,76 @@
                 </header>
 
                 <div class="detail-body">
-                    <h2>divタグとは？</h2>
-                    <p>`&lt;div&gt;` タグは「Division（区分・分割）」の略で、HTML要素をひとまとめにしてグループ化するために使用されます。</p>
-                    <p>興味深いことに、このタグ自体には特別な意味（見出しである、段落である、など）が一切ありません。ただの「何の色もついていない透明な箱」と考えてください。その代わり、CSSと組み合わせることで、どんな形にも、どんな配置にも変幻自在に操ることができます。
-                    </p>
-
-                    <div class="example-box">
-                        <h4>コード例</h4>
-                        <div class="example-code">
-                            &lt;div class="container"&gt;<br>
-                            &nbsp;&nbsp;&lt;h2&gt;タイトル&lt;/h2&gt;<br>
-                            &nbsp;&nbsp;&lt;p&gt;説明文が入ります。&lt;/p&gt;<br>
-                            &lt;/div&gt;
-                        </div>
-                    </div>
-
-                    <h2>なぜdivを使うのか？</h2>
-                    <p>主に2つの目的で使用されます：</p>
-                    <ul>
-                        <li><strong>レイアウトの制御:</strong> 複数の要素をひとまとめにして、横並びにしたり、中央に寄せたりするために使います。</li>
-                        <li><strong>デザインの適用:</strong> 特定のグループ全体に背景色をつけたり、枠線を引いたりするために、共通の `class` を指定する際に向いています。</li>
-                    </ul>
-
-                    <div class="info-panel">
-                        <h4>セマンティックタグとの使い分け</h4>
-                        <p>モダンなHTML5では、`&lt;header&gt;` や `&lt;footer&gt;`、`&lt;section&gt;`
-                            といった「意味のあるタグ」が推奨されます。divは何でも包める便利なタグですが、使いすぎると「何がどこにあるか分からない」という状態（div地獄）に陥ります。意味を持たない「ただのレイアウト調整」の時だけ使うのがプロの技です。
+                    <h2>Webデザインの「万能コンテナ」</h2>
+                    <p>`
+                    <div>`
+                        タグは、HTMLの中で最もシンプルでありながら、最も強力で頻繁に使われるタグです。「Division（分割）」の名の通り、ページを区画分けし、デザインやレイアウトを構築するための土台となります。
                         </p>
-                    </div>
 
-                    <h2>まとめ</h2>
-                    <p>divタグを使いこなせれば、Webサイトのレイアウトは自由自在になります。HTML
-                        Masterの高度なレベルでは、このdivとCSS（FlexboxやGrid）を組み合わせて、プロ顔負けのモダンなデザインを作る練習も用意しています！</p>
-                </div>
+                        <h2>1. 基本的な使い方：ただの箱として</h2>
+                        <p>`
+                        <div>` 自体には、「文字を太くする」とか「見出しにする」といった特別な機能や意味は一切ありません。本当にただの「透明な箱」です。しかし、この「無色透明」であることが最大の武器です。
+                            </p>
+                            <div class="example-box">
+                                <h4>コード例</h4>
+                                <div class="example-code">
+                                    &lt;div class="card"&gt;<br>
+                                    &nbsp;&nbsp;&lt;img src="icon.png" alt=""&gt;<br>
+                                    &nbsp;&nbsp;&lt;h3&gt;サービス名&lt;/h3&gt;<br>
+                                    &nbsp;&nbsp;&lt;p&gt;説明文がここに入ります。&lt;/p&gt;<br>
+                                    &lt;/div&gt;
+                                </div>
+                            </div>
+                            <p>このように、画像・見出し・文章をひとまとめにすることで、「カード型デザイン」のような塊を作ることができます。</p>
+
+                            <h2>2. CSSレイアウトの主役</h2>
+                            <p>`
+                            <div>` は、CSSの `Flexbox` や `Grid` と組み合わせた時に真価を発揮します。</p>
+
+                                <div class="info-panel"
+                                    style="background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2);">
+                                    <h4 style="color: #8b5cf6;">Flexboxでの活用例</h4>
+                                    <p>親の `
+                                    <div>` に `display: flex;`
+                                        を指定すると、中に入っている子要素たちを横並びにしたり、均等配置したりできます。現代のレスポンシブWebデザインでは必須のテクニックです。</p>
+                                    </div>
+
+                                    <h2>3. div地獄（Div Soup）を避けるには？</h2>
+                                    <p>便利だからといって、何でもかんでも `
+                                    <div>` で囲んでしまうと、コードが非常に読みづらくなり、検索エンジンも文書の構造を理解しにくくなります。これを「div地獄（Div Soup）」と呼びます。
+                                        </p>
+                                        <p>HTML5では、意味を持った代替タグ（セマンティックタグ）が用意されています。これらを優先して使いましょう。</p>
+                                        <ul>
+                                            <li><strong>&lt;header&gt;:</strong> ページやセクションのヘッダー</li>
+                                            <li><strong>&lt;nav&gt;:</strong> ナビゲーションメニュー</li>
+                                            <li><strong>&lt;main&gt;:</strong> メインコンテンツ</li>
+                                            <li><strong>&lt;article&gt;:</strong> 独立した記事（ブログ記事など）</li>
+                                            <li><strong>&lt;section&gt;:</strong> 章や区切り</li>
+                                            <li><strong>&lt;footer&gt;:</strong> フッター</li>
+                                        </ul>
+                                        <p>「じゃあ `
+                                        <div>` はいつ使うの？」 → 「CSSでデザインするためだけに要素をグループ化したい時」が正解です。</p>
+
+                                            <h2>4. 入れ子構造（ネスト）のルール</h2>
+                                            <p>`
+                                            <div>` の中に `<div>` を入れることは自由にできます。複雑なレイアウトを作るには、箱の中に箱を入れていく作業が不可欠です。</p>
+                                                    <div class="example-code">
+                                                        &lt;div class="container"&gt;<br>
+                                                        &nbsp;&nbsp;&lt;div class="row"&gt;<br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                                                        class="col"&gt;左のカラム&lt;/div&gt;<br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                                                        class="col"&gt;右のカラム&lt;/div&gt;<br>
+                                                        &nbsp;&nbsp;&lt;/div&gt;<br>
+                                                        &lt;/div&gt;
+                                                    </div>
+
+                                                    <h2>まとめ</h2>
+                                                    <p>`
+                                                    <div>`
+                                                        は、積み木の一番基本的なブロックのようなものです。これらをどう組み合わせ、CSSでどう装飾するかによって、Webサイトの見た目は無限に広がります。「必要な時だけ使う」というバランス感覚を大切にしながら、美しい構造を作り上げてください。
+                                                        </p>
+                                                    </div>
             </article>
         </main>
 

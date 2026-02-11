@@ -138,40 +138,77 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>なぜコンソールに出力するのか？</h2>
-                    <p>プログラムは、画面には見えない裏側でたくさんの計算や処理を行っています。プログラムが正しく動いているか、変数の値が今どうなっているかを確認するために、開発者は「コンソール」という場所に情報を表示させます。
+                    <h2>コンソール＝開発者の「聴診器」</h2>
+                    <p>Webサイトを作っていて「あれ？ボタンを押しても動かない」「計算結果がおかしい」という壁にぶつかった時、真っ先に頼るのがコンソールです。プログラムの内部状態を可視化し、目に見えないエラーやデータの流れを診断するための必須ツールです。
                     </p>
-                    <p>JavaScript Masterの演習画面でも、このコンソールを使って自分のコードの実行結果を確認することができます。</p>
 
-                    <h2>基本の使い方</h2>
-                    <p>最もよく使われるのが `console.log()` です。丸カッコの中に表示したい内容を記述します。</p>
-
+                    <h2>1. 基本の console.log()</h2>
+                    <p>最も頻繁に使うメソッドです。文字列、数値、変数、オブジェクトなど、あらゆるデータを表示できます。</p>
                     <div class="code-block-guide">
                         <span class="code-label">JavaScript</span>
-                        <pre>console.log("Hello, World!"); // 文字列を表示
-console.log(123); // 数値を表示
-const name = "Taro";
-console.log(name); // 変数の中身を表示</pre>
+                        <pre>const user = "Tanaka";
+console.log("Welcome,", user); // カンマで区切るとスペースが入る
+console.log(`Hello ${user}`);  // テンプレートリテラルも便利</pre>
                     </div>
 
-                    <h2>複数の値を同時に表示する</h2>
-                    <p>カンマで区切ることで、複数の情報を一度に表示できます。何の数値なのか説明を添えたい時に非常に便利です。</p>
+                    <h2>2. ログレベルを使い分ける</h2>
+                    <p>ただ表示するだけでなく、メッセージの重要度に応じてメソッドを使い分けると、ログが見やすくなります。</p>
 
+                    <h3>console.error()</h3>
+                    <p>エラーメッセージとして赤色で表示されます。プログラムが予期せぬ状態で止まった時などに使います。</p>
                     <div class="code-block-guide">
-                        <span class="code-label">JavaScript</span>
-                        <pre>const score = 95;
-console.log("現在のスコアは:", score);</pre>
+                        <pre>if (age < 0) {
+    console.error("年齢に負の数は設定できません！");
+}</pre>
+                    </div>
+
+                    <h3>console.warn()</h3>
+                    <p>警告メッセージとして黄色で表示されます。「エラーではないが注意が必要」な場合（例：非推奨の機能を使っている、データが空など）に使います。</p>
+                    <div class="code-block-guide">
+                        <pre>console.warn("この画像はサイズが大きすぎます。圧縮を推奨します。");</pre>
+                    </div>
+
+                    <h3>console.table()</h3>
+                    <p>配列やオブジェクトのデータを、見やすい表形式で表示します。リストデータの確認に革命的に便利です。</p>
+                    <div class="code-block-guide">
+                        <pre>const fruits = [
+    { name: "Apple", price: 100 },
+    { name: "Banana", price: 150 },
+    { name: "Orange", price: 200 }
+];
+console.table(fruits);</pre>
+                    </div>
+
+                    <h2>3. 高度なテクニック</h2>
+
+                    <h3>グループ化 (group / groupEnd)</h3>
+                    <p>関連するログを折りたたみ可能なグループにまとめます。ループ処理のログなど、大量に出力される情報を整理するのに役立ちます。</p>
+                    <div class="code-block-guide">
+                        <pre>console.group("ユーザー詳細");
+console.log("名前: 佐藤");
+console.log("年齢: 30");
+console.groupEnd();</pre>
+                    </div>
+
+                    <h3>処理時間の計測 (time / timeEnd)</h3>
+                    <p>プログラムの実行にかかった時間をミリ秒単位で計測します。パフォーマンス改善（高速化）を行いたい時に重宝します。</p>
+                    <div class="code-block-guide">
+                        <pre>console.time("Loop処理");
+for (let i = 0; i < 10000; i++) {
+    // 重い処理...
+}
+console.timeEnd("Loop処理"); // "Loop処理: 15.23ms" のように表示される</pre>
                     </div>
 
                     <div class="point-card">
-                        <h4>💡 デバッグのコツ</h4>
-                        <p>「if文の分岐に入っているか？」「関数の計算結果は正しいか？」と疑問に思ったら、すかさず `console.log()`
-                            を挟んでみましょう。中身が見えることで、バグの原因を素早く特定できます。</p>
+                        <h4>💡 商用環境での注意</h4>
+                        <p>`console.log`
+                            は開発中は便利ですが、世界中に公開する本番環境のコードには残さないのがマナーです。機密情報（パスワードやAPIキーなど）が表示されてしまうリスクがあるほか、サイトの表示速度をわずかに低下させる原因にもなります。
+                        </p>
                     </div>
 
                     <h2>まとめ</h2>
-                    <p>`console.log()`
-                        は、プログラマーにとっての「強力な懐中電灯」です。暗闇の中で何が起きているかを確認するように、コードの至る所で使って、JavaScriptの挙動を自分の目で確かめてみましょう。</p>
+                    <p>コンソールは単なる文字出力ではありません。表形式で見たり、エラーを目立たせたり、時間を計ったりと、多機能な診断ツールです。これらを使いこなせば、バグ修正の時間は劇的に短縮されます。</p>
                 </div>
             </article>
         </main>

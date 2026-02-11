@@ -136,39 +136,78 @@
                 </header>
 
                 <div class="detail-body">
-                    <h2>imgタグとは？</h2>
-                    <p>`&lt;img&gt;` タグは、ページに写真、図解、ロゴなどの画像を表示するために使用されます。他の多くのタグとは異なり、終了タグ（&lt;/img&gt;）を持たない「空要素」です。
-                    </p>
-                    <p>画像はHTMLファイルの中に直接「埋め込まれている」わけではありません。ブラウザが「ここにこの画像を表示して」という指示を読み取り、指定された場所（URLやパス）から画像ファイルを読み込んで表示します。
-                    </p>
+                    <h2>「百聞は一見に如かず」を実装する</h2>
+                    <p>Webサイトの魅力は、文字だけでなく豊かなビジュアル表現ができる点にあります。`<img>` タグを使いこなすことで、情報を直感的に伝え、ユーザーの心を動かすページを作ることができます。</p>
 
+                    <h2>1. 基本的な書き方と必須属性</h2>
+                    <p>`<img>` タグは「終了タグがない（&lt;/img&gt;と書かない）」特殊なタグです。</p>
                     <div class="example-box">
                         <h4>コード例</h4>
                         <div class="example-code">
-                            &lt;img src="images/photo.jpg" alt="青空を飛ぶ鳥の様子" width="600" height="400"&gt;
+                            &lt;img src="cat.jpg" alt="眠っている三毛猫" width="300" height="200"&gt;
                         </div>
                     </div>
-
-                    <h2>src属性とalt属性</h2>
-                    <p>imgタグには、最低限2つの属性が不可欠です：</p>
                     <ul>
-                        <li><strong>src:</strong> 画像ファイルの場所を指定します。</li>
-                        <li><strong>alt:</strong> 画像の説明を記述します。画像が読み込めなかった時や、目の不自由な方が読み上げソフトで内容を理解するために非常に重要です。</li>
+                        <li><strong>src (Source):</strong> 画像ファイルの場所。絶対パスまたは相対パスで指定します。</li>
+                        <li><strong>alt (Alternative Text):</strong>
+                            代替テキスト。画像が表示できない時や、読み上げソフトを使うユーザーのために、画像の内容を言葉で説明します（SEOにも重要！）。</li>
+                        <li><strong>width / height:</strong>
+                            ブラウザが画像のスペースを確保できるように、サイズを指定することを強く推奨します。レイアウトシフト（読み込み中のガタつき）を防げます。</li>
                     </ul>
 
-                    <div class="warning-box">
-                        <h4>alt属性を忘れずに！</h4>
-                        <p>alt属性を空にするのは避けましょう。検索エンジンは画像の中身を完璧には理解できないため、altテキストを頼りに画像をインデックスします。適切なaltを設定することは、SEO対策としても基本中の基本です。
-                        </p>
+                    <h2>2. 画像形式の使い分け</h2>
+                    <p>Webで使える画像形式はいくつかあり、それぞれ得意分野が異なります。</p>
+                    <div class="info-panel" style="background: transparent; border: none; padding: 0;">
+                        <ul
+                            style="list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <li
+                                style="background: rgba(56, 189, 248, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
+                                <strong style="color: #38bdf8;">JPEG (.jpg)</strong><br>写真に最適。色は綺麗だが、背景透過はできない。
+                            </li>
+                            <li
+                                style="background: rgba(56, 189, 248, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
+                                <strong style="color: #38bdf8;">PNG
+                                    (.png)</strong><br>ロゴやイラストに最適。背景を透明にできる。写真はファイルサイズが大きくなりがち。
+                            </li>
+                            <li
+                                style="background: rgba(56, 189, 248, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
+                                <strong style="color: #38bdf8;">WebP
+                                    (.webp)</strong><br>次世代標準。高画質かつ軽量。JPEGとPNGの良いとこ取りで、現在のWeb制作では第一選択肢です。
+                            </li>
+                            <li
+                                style="background: rgba(56, 189, 248, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
+                                <strong style="color: #38bdf8;">SVG (.svg)</strong><br>ベクター画像。拡大しても荒れないので、アイコンやロゴに最適。
+                            </li>
+                        </ul>
                     </div>
 
-                    <h2>レスポンシブ対応</h2>
-                    <p>スマホとPCで画像のサイズを調整するために、CSSで `max-width: 100%; height: auto;`
-                        を設定するのが一般的です。これにより、画像が親要素の幅を突き抜けず、アスペクト比を維持したまま伸び縮みするようになります。</p>
+                    <h2>3. Figure要素との組み合わせ</h2>
+                    <p>画像にキャプション（説明文）をつけたい時は、HTML5で導入された `
+                    <figure>` と `<figcaption>` を使います。</p>
+                            <div class="example-box">
+                                <div class="example-code">
+                                    &lt;figure&gt;<br>
+                                    &nbsp;&nbsp;&lt;img src="graph.png" alt="2025年の売上推移"&gt;<br>
+                                    &nbsp;&nbsp;&lt;figcaption&gt;図1：2025年度 売上グラフ&lt;/figcaption&gt;<br>
+                                    &lt;/figure&gt;
+                                </div>
+                            </div>
 
-                    <h2>まとめ</h2>
-                    <p>画像を正しく扱うことは、サイトの見た目だけでなく、使いやすさ（アクセシビリティ）にも直結します。HTML
-                        Masterの演習では、画像を適切な位置に配置し、正しい属性を設定するテクニックを磨くことができます！</p>
+                            <h2>4. パフォーマンスへの配慮 (Lazy Loading)</h2>
+                            <p>ページの下の方にある画像まで最初から読み込むと、表示が遅くなります。`loading="lazy"`
+                                を追加するだけで、画面に近づいた時だけ読み込むようになり、サイトが爆速になります。</p>
+                            <div class="example-code">
+                                &lt;img src="huge-photo.jpg" alt="..." loading="lazy"&gt;
+                            </div>
+
+                            <div class="warning-box">
+                                <h4>⚠️ 注意</h4>
+                                <p>ファーストビュー（ページを開いて最初に見える範囲）の画像には `loading="lazy"` をつけないでください。逆に表示が遅れてしまいます。</p>
+                            </div>
+
+                            <h2>まとめ</h2>
+                            <p>ただ画像を貼るだけでなく、「適切なフォーマットを選ぶ」「alt属性をしっかり書く」「遅延読み込みで高速化する」といった工夫を凝らすことで、プロフェッショナルな品質のページに仕上がります。
+                            </p>
                 </div>
             </article>
         </main>

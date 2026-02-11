@@ -120,52 +120,99 @@
 
                 <div class="guide-body">
                     <h2>「もし〜なら」を組み立てる</h2>
-                    <p>私たちの日常生活と同じように、プログラムも「状況に応じて行動を変える」必要があります。例えば、「スコアが80点以上なら合格」、「ボタンが押されたならメッセージを表示」といったロジックを担うのが条件分岐です。
+                    <p>私たちの日常生活と同じように、プログラムも「状況に応じて行動を変える」必要があります。例えば、「スコアが80点以上なら合格」、「ボタンが押されたならメッセージを表示」といったロジックを担うのが条件分岐です。これができると、プログラムは単なる計算機から「考える機械」へと進化します。
                     </p>
 
-                    <h2>基本の if 文</h2>
-                    <p>カッコ `()` の中の条件が正しい（true）場合にのみ、続く波カッコ `{}` の中の処理が実行されます。</p>
+                    <h2>基本の if 文：条件による実行</h2>
+                    <p>JavaScriptの条件分岐の基本は `if` 文です。`if` の後ろの丸括弧 `()` の中に条件を書き、それが「正しい（true）」場合にのみ、波括弧 `{}`
+                        の中の処理が実行されます。</p>
                     <div class="code-block-guide">
+                        <span class="code-label">JavaScript</span>
                         <pre>const score = 85;
+                        
 if (score >= 80) {
+    // 条件が満たされたときだけ実行される
     console.log("合格です！");
 }</pre>
                     </div>
 
-                    <h2>else で「さもなくば」を記述</h2>
-                    <p>条件が正しくなかった（false）場合の処理を `else` を使って記述できます。</p>
+                    <h2>else と else if：分岐を増やす</h2>
+                    <p>「そうでなければ」を表す `else` や、「そうでなくて、もし〜なら」という追加の条件を表す `else if` を使うことで、複雑な分岐を作ることができます。</p>
                     <div class="code-block-guide">
-                        <pre>if (score >= 80) {
-    console.log("合格！");
+                        <span class="code-label">JavaScript</span>
+                        <pre>const time = 15; // 15時
+
+if (time < 12) {
+    console.log("おはようございます");
+} else if (time < 18) {
+    console.log("こんにちは");
 } else {
-    console.log("不合格...");
+    console.log("こんばんは");
 }</pre>
                     </div>
 
-                    <h2>複数の条件 (else if)</h2>
-                    <p>「さらに〜なら」と条件を繋げていくことができます。</p>
-                    <div class="code-block-guide">
-                        <pre>if (score >= 80) {
-    console.log("天才！");
-} else if (score >= 60) {
-    console.log("合格！");
-} else {
-    console.log("次は頑張ろう！");
-}</pre>
-                    </div>
-
+                    <h2>比較演算子の落とし穴：=== と ==</h2>
+                    <p>JavaScriptには「等しい」を表す演算子が2つあります。ここが初心者にとって最初の壁ですが、モダンな開発では答えはシンプルです。</p>
                     <div class="logic-panel">
-                        <h3>💡 比較演算子を覚えよう</h3>
+                        <h3>💡 必ず `===` (厳密等価) を使おう</h3>
                         <ul>
-                            <li>`===`　等しい（JavaScriptでは`==`より推奨されます）</li>
-                            <li>`!==`　等しくない</li>
-                            <li>`>` / `<`　より大きい / より小さい</li>
-                            <li>`>=` / `<=`　以上 / 以下</li>
+                            <li><strong>`===` (厳密等価):</strong> 値だけでなく「型」も同じかどうかチェックします。<br>例: `5 === "5"` は
+                                false（数値と文字だから）</li>
+                            <li><strong>`==` (等価):</strong> 型が違っても、無理やり変換して比較します。<br>例: `5 == "5"` は
+                                true（文字の"5"を数値の5とみなす）</li>
                         </ul>
+                        <p>バグの原因になるため、基本的に `==` は使わず、常に `===` を使う癖をつけましょう。</p>
+                    </div>
+
+                    <h2>論理演算子：かつ、または</h2>
+                    <p>複数の条件を組み合わせたい時は、論理演算子を使います。</p>
+                    <ul>
+                        <li><code>&&</code> (AND): A かつ B</li>
+                        <li><code>||</code> (OR): A または B</li>
+                        <li><code>!</code> (NOT): 〜でない（否定）</li>
+                    </ul>
+                    <div class="code-block-guide">
+                        <pre>const isMember = true;
+const hasCoupon = false;
+
+// 会員 または クーポン持ち なら割引
+if (isMember || hasCoupon) {
+    console.log("割引適用！");
+}</pre>
+                    </div>
+
+                    <h2>Truthy と Falsy：真偽値のようなもの</h2>
+                    <p>JavaScriptでは、`true/false` 以外の値も条件式に使えます。以下の値はすべて「偽（false）」として扱われます（Falsyな値）。</p>
+                    <ul>
+                        <li>`false`</li>
+                        <li>`0` (ゼロ)</li>
+                        <li>`""` (空文字)</li>
+                        <li>`null`</li>
+                        <li>`undefined`</li>
+                        <li>`NaN` (数値ではない)</li>
+                    </ul>
+                    <p>これら以外はすべて「真（true）」として扱われます（Truthyな値）。これを利用して、「データがあるかどうか」を短く書くテクニックがよく使われます。</p>
+
+                    <h2>Switch文：たくさんの分岐</h2>
+                    <p>特定の変数の値によって処理を細かく分けたい場合、`if...else if` を連ねるよりも `switch` 文を使ったほうがスッキリ書けることがあります。</p>
+                    <div class="code-block-guide">
+                        <pre>const fruit = "apple";
+
+switch (fruit) {
+    case "apple":
+        console.log("リンゴです");
+        break; // 忘れずに！
+    case "orange":
+        console.log("ミカンです");
+        break;
+    default:
+        console.log("その他の果物です");
+}</pre>
                     </div>
 
                     <h2>まとめ</h2>
-                    <p>条件分岐はプログラミングの「思考力」そのものです。複雑な条件を組み立てられるようになれば、ゲームの判定やユーザー認証など、あらゆる高度な機能を作れるようになります。</p>
+                    <p>条件分岐はプログラミングの「思考力」そのものです。複雑な条件を組み立てられるようになれば、ゲームの判定やユーザー認証など、あらゆる高度な機能を作れるようになります。まずは基本の `if` と
+                        `===` をしっかりマスターしましょう。</p>
                 </div>
             </article>
         </main>

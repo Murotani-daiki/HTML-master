@@ -126,47 +126,70 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>Webを「動かす」きっかけ</h2>
-                    <p>「ボタンをクリックする」「テキストボックスに入力する」「ページを最後までスクロールする」など、ブラウザ上で発生するあらゆる動作のことを「イベント」と呼びます。</p>
-                    <p>JavaScriptはこれらのイベントを待ち構え、発生した瞬間に特定のプログラムを実行することで、Webサイトにインタラクティブな動きを与えます。</p>
+                    <h2>イベント駆動型プログラミングの基礎</h2>
+                    <p>JavaScriptの最大の特徴は、ユーザーの操作やブラウザの状態変化（＝イベント）をトリガーにしてプログラムを動かせることです。「クリックしたらメニューが開く」「スクロールしたら画像がふわっと現れる」といった動作は、すべてイベントによって制御されています。
+                    </p>
 
-                    <h2>主要なイベント一覧</h2>
+                    <h2>主要なイベントの種類</h2>
+                    <p>ブラウザで発生するイベントは多岐にわたりますが、頻出するものをグルーピングしてみました。</p>
+
                     <div class="event-grid">
                         <div class="event-card">
-                            <strong>click</strong>
-                            <p>要素がクリックされた時</p>
+                            <strong>マウス・タッチ操作</strong>
+                            <p>click, dblclick (ダブルクリック), mouseover (乗せた時), touchstart (タップ開始)</p>
                         </div>
                         <div class="event-card">
-                            <strong>input</strong>
-                            <p>文字が入力された時</p>
+                            <strong>キーボード操作</strong>
+                            <p>keydown (押した瞬間), keyup (離した瞬間), change (入力確定)</p>
                         </div>
                         <div class="event-card">
-                            <strong>submit</strong>
-                            <p>フォームが送信された時</p>
+                            <strong>フォーム操作</strong>
+                            <p>submit (送信), focus (選択中), blur (選択解除)</p>
+                        </div>
+                        <div class="event-card">
+                            <strong>ウィンドウ・読み込み</strong>
+                            <p>load (完了時), scroll (スクロール時), resize (画面サイズ変更)</p>
                         </div>
                     </div>
 
-                    <h2>addEventListener の魔法</h2>
-                    <p>要素に対して「イベントの聞き耳を立てる」命令を出します。第一引数にイベント名、第二引数に実行したい処理を書きます。</p>
-                    <div class="code-block-guide">
-                        <pre>const btn = document.querySelector("#my-btn");
+                    <h2>イベントリスナー：addEventLister</h2>
+                    <p>HTMLの中に直接 `onclick="..."` と書くのは古いやり方です。現代では `addEventListener`
+                        メソッドを使って、HTMLとJavaScriptをきれいに分離するのが定石です。</p>
 
-btn.addEventListener("click", () => {
-    alert("ボタンがクリックされました！");
+                    <div class="code-block-guide">
+                        <span class="code-label">JavaScript</span>
+                        <pre>const button = document.querySelector(".btn");
+
+// basic syntax: 要素.addEventListener("イベント名", 関数)
+button.addEventListener("click", () => {
+    console.log("ボタンが押されました！");
+    button.classList.add("active");
 });</pre>
                     </div>
 
-                    <h2>イベントオブジェクト</h2>
-                    <p>「どこの座標でクリックされたのか」「どのキーが押されたのか」など、イベントに関する詳細な情報を受け取ることもできます。</p>
+                    <h2>イベントオブジェクト (Event Object)</h2>
+                    <p>イベントが発生したとき、その詳細情報（座標、押されたキー、ターゲット要素など）が詰まった「イベントオブジェクト」が関数に渡されます。</p>
+
                     <div class="code-block-guide">
-                        <pre>document.addEventListener("keydown", (event) => {
-    console.log("押されたキーは:", event.key);
+                        <pre>document.addEventListener("keydown", (e) => {
+    // e は event の略
+    if (e.key === "Enter") {
+        console.log("エンターキーが押されました");
+    }
+});</pre>
+                    </div>
+
+                    <h3>デフォルト動作のキャンセル</h3>
+                    <p>フォームの送信やリンクの遷移など、ブラウザが標準で持っている動作を止めたい場合は `preventDefault()` を使います。</p>
+                    <div class="code-block-guide">
+                        <pre>form.addEventListener("submit", (e) => {
+    e.preventDefault(); // ページリロードを防ぐ
+    console.log("JavaScriptで送信処理を行います");
 });</pre>
                     </div>
 
                     <h2>まとめ</h2>
-                    <p>イベントを使いこなせば、ただの表示物だったWebページが、ユーザーと対話する「アプリケーション」へと進化します。どんなアクションがどんな魔法（機能）を引き起こすのか、ワクワクしながら実装してみましょう！
-                    </p>
+                    <p>イベントを制する者がインタラクティブWebを制します。まずは `click` イベントから始めて、ユーザーのあらゆるアクションに反応する楽しいサイトを作ってみてください。</p>
                 </div>
             </article>
         </main>

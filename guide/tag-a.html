@@ -136,41 +136,76 @@
                 </header>
 
                 <div class="detail-body">
-                    <h2>aタグとは？</h2>
-                    <p>`&lt;a&gt;`
-                        タグは「Anchor（アンカー）」の略で、ある場所から別の場所へのリンクを作成するために使用されます。このタグがあるからこそ、私たちはインターネット上でページを次々と移動（サーフィン）することができます。
-                    </p>
-                    <p>`&lt;a&gt;` タグ単体では機能しません。必ずどこへ飛ぶかを指定する `href`（エイチレフ）属性が必要になります。</p>
+                    <h2>Webを「網（Web）」にする最重要タグ</h2>
+                    <p>インターネットが数多の文書の集まりではなく、巨大なネットワークとして機能しているのは、この `<a>`
+                            タグのおかげです。「Anchor（アンカー：船の錨）」に由来し、情報の海に錨を下ろして、ページとページを強固に繋ぎ止める役割を果たしています。</p>
 
+                    <h2>1. 基本的な書き方</h2>
+                    <p>`href`（エイチレフ：Hypertext Reference）属性に、移動先の住所（URL）を指定します。これがないとリンクとして機能しません。</p>
                     <div class="example-box">
                         <h4>コード例</h4>
                         <div class="example-code">
-                            &lt;a href="https://example.com"&gt;外部サイトへのリンク&lt;/a&gt;<br>
-                            &lt;a href="contact.html"&gt;サイト内の別ページへ&lt;/a&gt;
+                            &lt;!-- 外部サイトへ --&gt;<br>
+                            &lt;a href="https://google.com"&gt;Googleへ&lt;/a&gt;<br><br>
+                            &lt;!-- サイト内の別のページへ --&gt;<br>
+                            &lt;a href="about.html"&gt;会社概要&lt;/a&gt;
                         </div>
                     </div>
 
-                    <h2>主要な属性とその役割</h2>
-                    <p>リンクの動作をカスタマイズするために、いくつかの重要な属性があります：</p>
-                    <ul>
-                        <li><strong>href:</strong> リンク先のURLや、ファイルパスを指定します。</li>
-                        <li><strong>target:</strong> リンクをどこで開くか。`_blank` を指定すると新しいタブで開きます。</li>
-                        <li><strong>rel="noopener":</strong> `target="_blank"` を使う際に、セキュリティのために併記することが推奨されます。</li>
-                    </ul>
+                    <h2>2. パスの指定方法：絶対パスと相対パス</h2>
+                    <p>リンク先の指定には2つの種類があります。これらを正しく使い分けることが、リンク切れを防ぐ第一歩です。</p>
 
-                    <div class="info-panel">
-                        <h4>target="_blank" の使い分け</h4>
-                        <p>自分のサイト内の移動は「同じタブ」、外部サイトへ飛ばす場合は「新しいタブ（_blank）」で開くように設定するのが、一般的なウェブ制作のマナーです。これにより、ユーザーが元のページを見失うのを防ぎます。
+                    <div class="info-panel"
+                        style="background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2);">
+                        <h4 style="color: #10b981;">絶対パス (Absolute Path)</h4>
+                        <p>`https://...` から始まる完全なURLです。外部サイト（YoutubeやTwitterなど）にリンクする場合は必ずこれを使います。<br>
+                            <strong>例:</strong> `https://example.com/page.html`
                         </p>
                     </div>
 
-                    <h2>アクセシビリティとリンクテキスト</h2>
-                    <p>「ここをクリック」というリンクテキストは避けましょう。Googleなどの検索エンジンや、読み上げソフトを使うユーザーにとって、「どこへ飛ぶのか」がテキストだけで分かる必要があります。（例：「HTML
-                        Masterの学習レベル一覧」）</p>
+                    <div class="info-panel"
+                        style="background: rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.2);">
+                        <h4 style="color: #3b82f6;">相対パス (Relative Path)</h4>
+                        <p>「今いる場所から見てどこにあるか」を指定します。自分のサイト内の移動によく使われます。<br>
+                            <strong>例:</strong><br>
+                            `./page.html` (同じ階層)<br>
+                            `../index.html` (一つ上の階層に戻る)<br>
+                            `images/pic.jpg` (下の階層へ)
+                        </p>
+                    </div>
+
+                    <h2>3. 便利な属性たち</h2>
+                    <p>リンクの挙動をコントロールする属性を紹介します。</p>
+                    <ul>
+                        <li><strong>target="_blank":</strong> 新しいタブで開きます。外部サイトへのリンクでよく使われます。</li>
+                        <li><strong>rel="noopener noreferrer":</strong> `target="_blank"`
+                            を使う際のセキュリティ対策です。古いブラウザでの脆弱性を防ぎます。</li>
+                        <li><strong>download:</strong> クリックすると画面遷移せず、ファイルをダウンロードさせることができます。</li>
+                    </ul>
+
+                    <h2>4. URL以外のリンク (特殊プロトコル)</h2>
+                    <p>Webページ以外のアクションを呼び出すことも可能です。</p>
+                    <div class="example-box">
+                        <div class="example-code">
+                            &lt;!-- メールソフトを起動 --&gt;<br>
+                            &lt;a href="mailto:info@example.com"&gt;メールを送る&lt;/a&gt;<br><br>
+                            &lt;!-- 電話をかける（スマホで有効） --&gt;<br>
+                            &lt;a href="tel:03-1234-5678"&gt;電話をかける&lt;/a&gt;
+                        </div>
+                    </div>
+
+                    <h2>5. ページ内リンク（アンカーリンク）</h2>
+                    <p>同じページの中の特定の位置にジャンプすることもできます。「目次」などでよく見かけます。</p>
+                    <div class="example-code" style="margin-top: 1rem;">
+                        &lt;!-- ジャンプ元 --&gt;<br>
+                        &lt;a href="#section1"&gt;第1章へジャンプ&lt;/a&gt;<br><br>
+                        &lt;!-- ジャンプ先（idを指定） --&gt;<br>
+                        &lt;h2 id="section1"&gt;第1章&lt;/h2&gt;
+                    </div>
 
                     <h2>まとめ</h2>
-                    <p>リンクはWebの基本です。正しい属性の使い方と、分かりやすいリンクテキストを心がけるだけで、サイトの使い勝手とSEO効果は格段に向上します。HTML
-                        Masterの課題でも、リンクをマスターして自在にページを繋いでみましょう！</p>
+                    <p>リンクはWebサイトの血管のようなものです。ユーザーを迷子にさせないよう、「分かりやすいテキスト」で「正しい場所」へ導く設計を心がけましょう。「ここをクリック」という表現は避け、「お問い合わせはこちら」のように具体的に書くのが親切です。
+                    </p>
                 </div>
             </article>
         </main>

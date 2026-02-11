@@ -123,41 +123,65 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>print関数とは？</h2>
-                    <p>プログラムの中で起きていることを私たちの目に見える形にするのが `print()`
-                        関数です。変数の値が正しく計算されているか、プログラムがどこまで実行されたかを確認するための、プログラマーにとって最も身近な武器です。</p>
+                    <h2>print()は「プログラムの窓」</h2>
+                    <p>プログラムは通常、目に見えないメモリの中で計算を行っています。その計算過程や結果を、私たち人間が見える画面（コンソール）に出力してくれるのが `print()`
+                        関数です。「窓」を開けてプログラムの中を覗き込むようなイメージです。</p>
 
-                    <h2>基本の使い方</h2>
-                    <p>丸カッコの中に表示したいデータ（文字列や数値、変数）を入れます。</p>
-
+                    <h2>1. 基本的な使い方</h2>
+                    <p>文字を表示する時はクォーテーション `"` か `'` で囲みます。数値や変数はそのまま記述します。</p>
                     <div class="code-block-guide">
                         <span class="code-label">Python</span>
-                        <pre>print("Hello Python")
-print(123)
-x = "Master"
-print(x)</pre>
+                        <pre>print("Hello World!")
+score = 100
+print(score)</pre>
                     </div>
 
-                    <h2>f-string（便利な埋め込み）</h2>
-                    <p>Python 3.6から導入された「f文字列」を使うと、文章の中に変数をとても簡単に埋め込むことができます。文字列の前に `f` をつけ、入れたい変数を `{ }` で囲みます。</p>
+                    <h2>2. 出力をカスタマイズする</h2>
+                    <p>`print()` 関数には、あまり知られていないけれど便利なオプションがいくつかあります。</p>
 
+                    <h3>区切り文字を変更する (sep)</h3>
+                    <p>カンマで区切った複数の値を表示する時、デフォルトではスペースが入りますが、`sep` オプションで好きな文字に変更できます。</p>
                     <div class="code-block-guide">
-                        <span class="code-label">Python</span>
-                        <pre>name = "Taro"
-score = 80
-print(f"{name}さんのスコアは{score}点です")</pre>
+                        <pre>print("2024", "01", "01", sep="-")
+# 出力: 2024-01-01
+
+print("A", "B", "C", sep=", ")
+# 出力: A, B, C</pre>
                     </div>
 
-                    <h2>カンマで複数の値を表示</h2>
-                    <p>カンマ `,` で区切ることで、複数の情報を同時に出力できます。自動的にスペースが挿入されるので便利です。</p>
-
+                    <h3>改行を制御する (end)</h3>
+                    <p>通常、`print()` は最後に自動で改行します。これを防ぎたい（続けて表示したい）場合に `end` を使います。</p>
                     <div class="code-block-guide">
-                        <span class="code-label">Python</span>
-                        <pre>print("結果は:", 100)</pre>
+                        <pre>print("Loading", end="...")
+print("Done!")
+# 出力: Loading...Done!</pre>
                     </div>
+
+                    <h2>3. f-string：最強のフォーマット</h2>
+                    <p>Python 3.6以降で使えるようになったこの機能は、文字列の中に変数を埋め込む最も推奨される方法です。文字列の前に `f` を付けるだけです。</p>
+                    <div class="code-block-guide">
+                        <pre>name = "Tanaka"
+age = 25
+# 従来の古い書き方
+print("私は" + name + "です。年齢は" + str(age) + "歳です。")
+
+# f-string（推奨）
+print(f"私は{name}です。年齢は{age}歳です。")</pre>
+                    </div>
+                    <p>計算式も中に書けます: `f"{age + 5}歳"` → `"30歳"`</p>
+
+                    <h2>4. 複雑なデータを見やすく (pprint)</h2>
+                    <p>巨大な辞書やリストをそのまま `print` すると、一行にズラーッと表示されて解読不能になります。そんな時は `pprint` モジュールを使いましょう。</p>
+                    <div class="code-block-guide">
+                        <pre>from pprint import pprint
+
+data = {"users": [{"name": "A", "id": 1}, {"name": "B", "id": 2}]}
+pprint(data)</pre>
+                    </div>
+                    <p>データが整形され、インデント付きで美しく表示されます。</p>
 
                     <h2>まとめ</h2>
-                    <p>「バグかな？」と思ったら、迷わず `print()` を使って中のデータを確認しましょう。プログラムが見える化されることで、理解がぐっと深まります。</p>
+                    <p>プログラミング学習の最初のうちは、とにかくこまめに `print()` して「今、変数はどうなってる？」を確認する癖をつけましょう。これが最強のデバッグ（バグ修正）手法です。</p>
                 </div>
             </article>
         </main>

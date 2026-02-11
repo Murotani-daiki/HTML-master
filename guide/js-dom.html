@@ -144,58 +144,79 @@
                 </header>
 
                 <div class="guide-body">
-                    <h2>DOM（ドム）とは何か？</h2>
-                    <p>DOMは <strong>Document Object Model</strong>
-                        の略称で、ブラウザがHTMLを読み込んだ時に作る「ページの設計図」のようなものです。JavaScriptはこの設計図を通して、HTML要素を新しく作ったり、既存の要素の文字を変えたり、削除したりすることができます。
+                    <h2>DOM（ドム）とは？Webページの制御盤</h2>
+                    <p>DOM (Document Object Model)
+                        は、ブラウザが読み込んだHTML文書を「プログラムから操作可能なオブジェクト」として表現したものです。JavaScriptを使ってDOMを操作することで、以下のようなことが可能になります。
                     </p>
-                    <p>まさに、Webページに「魂」を吹き込み、動的に変化させるためのプラットフォームです。</p>
+                    <ul>
+                        <li>ボタンクリックでポップアップを出す</li>
+                        <li>フォームの入力内容をリアルタイムでチェックする</li>
+                        <li>新しいチャットメッセージを画面に追加する</li>
+                    </ul>
+                    <p>つまり、静的なHTMLに「命」を吹き込むのがDOM操作です。</p>
 
-                    <h2>1. 要素を取得する</h2>
-                    <p>まずは、操作したいHTML要素をJavaScriptの世界に連れてくる必要があります。以下の方法がよく使われます。</p>
+                    <h2>1. 要素を取得する：操作の対象を決める</h2>
+                    <p>何を操作するかを決めるために、まずはHTML要素を取得します。現代の開発では主に以下の2つが使われます。</p>
 
-                    <h3>getElementById</h3>
-                    <p>HTMLで `id="..."` を設定した要素を、名前で直接指名して取得します。</p>
+                    <h3>querySelector / querySelectorAll</h3>
+                    <p>CSSセレクタと同じ書き方で要素を取得できる、最も強力で汎用的なメソッドです。</p>
                     <div class="code-block-guide">
                         <span class="code-label">JavaScript</span>
-                        <pre>const myButton = document.getElementById("main-btn");</pre>
-                    </div>
+                        <pre>// 最初の1つだけ取得
+const title = document.querySelector(".main-title");
 
-                    <h3>querySelector</h3>
-                    <p>CSSと同じセレクタを使って要素を取得します。非常に汎用性が高く、現代のWeb開発で最も推奨される方法です。</p>
-                    <div class="code-block-guide">
-                        <span class="code-label">JavaScript</span>
-                        <pre>const message = document.querySelector(".info-text");</pre>
-                    </div>
-
-                    <h2>2. 内容を書き換える</h2>
-                    <p>取得した要素に対して、中身を書き換えるプロパティを使います。</p>
-
-                    <h3>textContent</h3>
-                    <p>要素の中にある「テキスト」だけを書き換えます。</p>
-                    <div class="code-block-guide">
-                        <span class="code-label">JavaScript</span>
-                        <pre>message.textContent = "読み込みが完了しました！";</pre>
-                    </div>
-
-                    <h2>3. イベントに反応する</h2>
-                    <p>「ボタンがクリックされたら」「キーボードが押されたら」といったユーザーの動作（イベント）を待機し、処理を実行します。</p>
-
-                    <div class="code-block-guide">
-                        <span class="code-label">JavaScript</span>
-                        <pre>myButton.addEventListener("click", () => {
-    console.log("ボタンが押されました");
-    message.style.color = "yellow";
+// 該当するすべてを取得（リストで返る）
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach(btn => {
+    console.log("ボタンが見つかりました");
 });</pre>
                     </div>
 
-                    <div class="point-card">
-                        <h4>💡 「イベントリスナー」は耳を傾ける人</h4>
-                        <p>`addEventListener` は、特定の操作が行われるのをずっと監視している「門番」のような役割を果たします。</p>
+                    <h3>getElementById</h3>
+                    <p>IDを使って特定の要素を高速に取得します。IDはページ内でユニークである必要があるため、必ず1つの要素（またはnull）が返ります。</p>
+                    <div class="code-block-guide">
+                        <pre>const header = document.getElementById("header");</pre>
                     </div>
 
+                    <h2>2. 中身を書き換える</h2>
+                    <p>取得した要素の内容を変更します。</p>
+                    <ul>
+                        <li><strong>textContent:</strong> 安全に「文字」だけを書き換えます。HTMLタグは無視されます。</li>
+                        <li><strong>innerHTML:</strong> HTMLタグを含めて書き変えます。便利ですが、セキュリティリスク（XSS）に注意が必要です。</li>
+                    </ul>
+                    <div class="code-block-guide">
+                        <pre>const message = document.querySelector("#msg");
+message.textContent = "こんにちは！"; 
+// message.innerHTML = "<strong>太字になります</strong>";</pre>
+                    </div>
+
+                    <h2>3. スタイルを変更する</h2>
+                    <p>CSSを直接書き換えることも可能です。プロパティ名はキャメルケース（`backgroundColor`など）になります。</p>
+                    <div class="code-block-guide">
+                        <pre>const box = document.querySelector(".box");
+box.style.backgroundColor = "red";
+box.style.display = "none"; // 非表示にする</pre>
+                    </div>
+
+                    <h2>4. イベントを監視する</h2>
+                    <p>ユーザーの操作（クリック、入力、スクロールなど）を検知するには `addEventListener` を使います。</p>
+                    <div class="code-block-guide">
+                        <pre>const btn = document.querySelector("#save-btn");
+
+btn.addEventListener("click", () => {
+    console.log("保存しました！");
+    btn.textContent = "保存完了";
+    btn.style.backgroundColor = "#ccc";
+});</pre>
+                    </div>
+
+                    <h2>応用：要素を新しく作る</h2>
+                    <p>`document.createElement`
+                        を使うと、HTMLに書かれていない要素をプログラムで生成し、ページに追加（`appendChild`）できます。ToDoリストアプリなどで必須の技術です。</p>
+
                     <h2>まとめ</h2>
-                    <p>「要素を取得し、イベントを待ち、内容を書き換える」。これがモダンなWebフロントエンド開発の基本サイクルです。DOM操作をマスターすれば、ユーザーと対話するインタラクティブなアプリケーションを自由に作れるようになります。
-                    </p>
+                    <p>DOM操作はJavaScriptの「手足」です。これを自在に操れるようになれば、アニメーション、ゲーム、Webアプリなど、ブラウザ上で動くあらゆる表現が可能になります。まずは
+                        `querySelector` と `addEventListener` のペアを確実に覚えましょう。</p>
                 </div>
             </article>
         </main>
