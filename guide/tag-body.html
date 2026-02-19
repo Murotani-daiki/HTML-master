@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104">
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
@@ -118,26 +121,89 @@
                         <p>ユーザーが目にする文字、画像、ボタン、動画など、すべてのコンテンツがここに含まれます。</p>
                     </header>
                     <div class="detail-body">
-                        <h2>bodyタグとは？</h2>
-                        <p>Webページの「本体」であり、ブラウザの白い画面（背景）の一部となる部分です。ここに書いたものだけが、ユーザーの目に触れることになります。</p>
-                        <p>さきほどの `&lt;head&gt;` が「頭脳」なら、`&lt;body&gt;`
-                            は文字通り「体」にあたります。コンテンツとしての価値を決めるのはすべてこのbodyタグの中に含まれる要素たちです。</p>
+                        <h2>bodyタグ＝ユーザーが見る「すべて」</h2>
+                        <p>`
+
+                            <body>`
+                                タグは、HTMLドキュメントの「本体」であり、ブラウザのウィンドウに実際に表示されるすべてのコンテンツを格納します。見出し、段落、画像、リンク、ボタン、動画など、ユーザーが目にし、操作するあらゆる要素がここに含まれます。
+                        </p>
+                        <p>一方、`
+
+                            <head>` タグが「裏方」として設定情報を管理するのに対し、`
+
+                            <body>` は「舞台」そのものです。
+                        </p>
+
                         <div class="example-box">
-                            <h4>コード例</h4>
+                            <h4>基本構造</h4>
                             <div class="example-code">
-                                &lt;body&gt;<br>
-                                &nbsp;&nbsp;&lt;h1&gt;こんにちは！&lt;/h1&gt;<br>
-                                &nbsp;&nbsp;&lt;p&gt;これは本文です。&lt;/p&gt;<br>
+                                &lt;!DOCTYPE html&gt;<br>
+                                &lt;html lang="ja"&gt;<br>
+                                &nbsp;&nbsp;&lt;head&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;ページタイトル&lt;/title&gt;<br>
+                                &nbsp;&nbsp;&lt;/head&gt;<br>
+                                &nbsp;&nbsp;&lt;body&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;ようこそ！&lt;/h1&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;これがメインコンテンツです。&lt;/p&gt;<br>
+                                &nbsp;&nbsp;&lt;/body&gt;<br>
+                                &lt;/html&gt;
+                            </div>
+                        </div>
+
+                        <h2>bodyタグの主要な役割</h2>
+                        <ul>
+                            <li><strong>コンテンツの表示:</strong> テキスト、画像、動画、フォームなど、あらゆるメディアを配置します。</li>
+                            <li><strong>構造化要素の土台:</strong> `<header>`, `<main>`, `<footer>`, `<section>`, `<article>`
+                                                    などのセマンティック要素をすべて保持します。</li>
+                            <li><strong>イベントハンドリング:</strong> JavaScriptでクリックやスクロールなどのユーザー操作を検知する起点となります。</li>
+                        </ul>
+
+                        <h2>CSSでのスタイリング</h2>
+                        <p>`
+
+                            <body>` タグ自体にもCSSを適用できます。ページ全体の背景色、フォント、余白などを設定する際に使われます。
+                        </p>
+                        <div class="example-box">
+                            <h4>CSS例</h4>
+                            <div class="example-code">
+                                body {<br>
+                                &nbsp;&nbsp;background-color: #f0f0f0;<br>
+                                &nbsp;&nbsp;font-family: 'Arial', sans-serif;<br>
+                                &nbsp;&nbsp;margin: 0;<br>
+                                &nbsp;&nbsp;padding: 0;<br>
+                                }
+                            </div>
+                        </div>
+                        <p>特に `margin: 0;` と `padding: 0;` は、ブラウザのデフォルトスタイルをリセットするために頻繁に使われます。</p>
+
+                        <h2>JavaScriptとの連携</h2>
+                        <p>`
+
+                            <body>` タグには、`onload` などのイベント属性を設定することもできます。ページが完全に読み込まれた後に実行したい処理を指定する際に便利です。
+                        </p>
+                        <div class="example-box">
+                            <h4>イベントハンドラの例</h4>
+                            <div class="example-code">
+                                &lt;body onload="alert('ページが読み込まれました！')"&gt;<br>
+                                &nbsp;&nbsp;...<br>
                                 &lt;/body&gt;
                             </div>
                         </div>
-                        <h2>主要な役割</h2>
-                        <ul>
-                            <li><strong>コンテンツの表示:</strong> テキストやマルチメディアの表示。</li>
-                            <li><strong>構造化要素の土台:</strong> header, main, footer などのすべてのセクションを保持します。</li>
-                        </ul>
+                        <p>ただし、現代の開発では、HTMLに直接JavaScriptを書くのではなく、外部ファイルで `addEventListener` を使う方法が推奨されています。</p>
+
+                        <h2>アクセシビリティへの配慮</h2>
+                        <p>スクリーンリーダーなどの支援技術は、`
+
+                            <body>` 内の構造を頼りにページを読み上げます。適切なセマンティックタグ（`<nav>`, `<main>`, `<article>`
+                                            など）を使うことで、すべてのユーザーにとって使いやすいページになります。
+                        </p>
+
                         <h2>まとめ</h2>
-                        <p>bodyタグはあなたのクリエイティビティを発揮する場所です。HTML Masterで学ぶ数多くのタグをここに配置して、素晴らしいページを作り上げていきましょう！</p>
+                        <p>`
+
+                            <body>` タグは、あなたのクリエイティビティを発揮する舞台です。ここに配置するすべての要素が、ユーザー体験を左右します。HTML
+                                Masterで学ぶ数多くのタグを組み合わせて、魅力的なWebページを作り上げましょう！
+                        </p>
                     </div>
                 </article>
             </main>

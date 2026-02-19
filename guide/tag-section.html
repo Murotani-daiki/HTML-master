@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104">
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
@@ -118,23 +121,100 @@
                     <p>文書の意味のまとまり（章や節）を示すためのセマンティック要素。</p>
                 </header>
                 <div class="detail-body">
-                    <h2>sectionタグとは？</h2>
-                    <p>`&lt;section&gt;` は、文書内の一般的な「セクション（意味のまとまり）」を表します。通常は、そのセクションが何であるかを示すための「見出し（h2-h6）」を伴います。</p>
-                    <p>単に「デザインのために横幅を調整したい」といった理由で使うのではなく、「ここからここまでは一つのトピックについての話です」という情報の区切りとして使用します。</p>
-                    <div class="example-box">
-                        <h4>コード例</h4>
-                        <div class="example-code">
-                            &lt;section&gt;<br>
-                            &nbsp;&nbsp;&lt;h2&gt;私たちのミッション&lt;/h2&gt;<br>
-                            &nbsp;&nbsp;&lt;p&gt;私たちはすべての人に教育を届けます...&lt;/p&gt;<br>
-                            &lt;/section&gt;
+                    <h2>sectionタグ＝文書の「章」を作る</h2>
+                    <p>`
+                    <section>` は、HTML5で導入されたセマンティック要素で、文書内の「意味のまとまり（セクション）」を表現します。本や論文における「章」や「節」のような役割を果たします。</p>
+                        <p>単なる「見た目のグループ化」ではなく、「ここからここまでは一つのトピックについての内容です」という情報構造を示すために使います。</p>
+
+                        <div class="example-box">
+                            <h4>基本的な使い方</h4>
+                            <div class="example-code">
+                                &lt;section&gt;<br>
+                                &nbsp;&nbsp;&lt;h2&gt;私たちのミッション&lt;/h2&gt;<br>
+                                &nbsp;&nbsp;&lt;p&gt;私たちはすべての人に教育を届けます...&lt;/p&gt;<br>
+                                &lt;/section&gt;<br><br>
+                                &lt;section&gt;<br>
+                                &nbsp;&nbsp;&lt;h2&gt;サービス内容&lt;/h2&gt;<br>
+                                &nbsp;&nbsp;&lt;p&gt;以下のサービスを提供しています...&lt;/p&gt;<br>
+                                &lt;/section&gt;
+                            </div>
                         </div>
-                    </div>
-                    <h2>divとの使い分け</h2>
-                    <p>最も重要な違いは「意味（セマンティクス）」の有無です。`&lt;div&gt;` は意味を持たない無色の箱ですが、`&lt;section&gt;`
-                        は「一つの情報の塊」という意味を持ちます。検索エンジンはこの情報を元に、ページの構成をより深く理解します。</p>
-                    <h2>まとめ</h2>
-                    <p>適切なセクション分けは、論理的で分かりやすいWebサイトを作る鍵です。HTML Masterの設計パートでは、このセクション構想を練る練習も用意されています。ぜひ習得してください！</p>
+
+                        <h2>見出しタグとの組み合わせ</h2>
+                        <p>`
+                        <section>`
+                            タグを使う際の重要なルールとして、「必ず見出し（h2〜h6）を含める」というものがあります。見出しのないセクションは、そのセクションが何について書かれているのかを読者や検索エンジンが理解できません。
+                            </p>
+
+                            <div class="example-box">
+                                <h4>❌ 悪い例：見出しがない</h4>
+                                <div class="example-code" style="color: #ef4444;">
+                                    &lt;section&gt;<br>
+                                    &nbsp;&nbsp;&lt;p&gt;これは何のセクション？&lt;/p&gt;<br>
+                                    &lt;/section&gt;
+                                </div>
+                            </div>
+
+                            <h2>divタグとの使い分け</h2>
+                            <p>最も重要な違いは「意味（セマンティクス）」の有無です。</p>
+
+                            <table
+                                style="width: 100%; border-collapse: collapse; margin: 2rem 0; color: var(--text-secondary);">
+                                <thead>
+                                    <tr>
+                                        <th
+                                            style="border: 1px solid var(--border-color); padding: 1rem; background: rgba(56, 189, 248, 0.1);">
+                                            タグ</th>
+                                        <th
+                                            style="border: 1px solid var(--border-color); padding: 1rem; background: rgba(56, 189, 248, 0.1);">
+                                            意味</th>
+                                        <th
+                                            style="border: 1px solid var(--border-color); padding: 1rem; background: rgba(56, 189, 248, 0.1);">
+                                            使用場面</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                            <code>&lt;section&gt;</code></td>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">意味のまとまり</td>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                            トピックごとの区切り（章・節）</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                            <code>&lt;div&gt;</code></td>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">意味なし</td>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">純粋なスタイリング目的
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                            <code>&lt;article&gt;</code></td>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">独立したコンテンツ</td>
+                                        <td style="border: 1px solid var(--border-color); padding: 1rem;">ブログ記事、ニュース記事など
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h2>articleタグとの違い</h2>
+                            <p>`
+                            <article>` は「それ単体で完結する独立したコンテンツ」を表します。例えば、ブログ記事やニュース記事は `<article>` が適切です。</p>
+                                    <p>一方、`
+                                    <section>` は「ページ全体の一部分」として機能します。`<article>` の中に複数の `<section>` を配置することもあります。</p>
+
+                                                <h2>SEOとアクセシビリティへの貢献</h2>
+                                                <p>検索エンジンは `
+                                                <section>` タグを見て、ページの構造を理解します。適切に使うことで、検索結果での評価が向上する可能性があります。</p>
+                                                    <p>また、スクリーンリーダーは `
+                                                    <section>` をランドマークとして認識し、ユーザーがページ内を効率的にナビゲートできるようサポートします。</p>
+
+                                                        <h2>まとめ</h2>
+                                                        <p>`
+                                                        <section>`
+                                                            タグは、情報を論理的に整理するための強力なツールです。「見た目」ではなく「意味」で使い分けることで、SEO、アクセシビリティ、保守性のすべてが向上します。
+                                                            </p>
                 </div>
             </article>
         </main>

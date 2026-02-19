@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104">
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
@@ -118,23 +121,77 @@
                     <p>ページやセクションの締めくくり。著者情報、著作権、関連リンクなどを記述する要素。</p>
                 </header>
                 <div class="detail-body">
-                    <h2>footerタグとは？</h2>
-                    <p>`&lt;footer&gt;` は、そのセクションのフッターであることを示します。通常はページの最下部に配置され、コピーライト（著作権）表示やサイトマップなどが含まれます。</p>
-                    <p>また、`&lt;address&gt;` タグを使って連絡先情報を含めることも一般的です。`&lt;header&gt;` 同様、意味のあるマークアップ（セマンティクス）として非常に重要です。
-                    </p>
-                    <div class="example-box">
-                        <h4>コード例</h4>
-                        <div class="example-code">
-                            &lt;footer&gt;<br>
-                            &nbsp;&nbsp;&lt;p&gt;&amp;copy; 2026 HTML Master. All rights reserved.&lt;/p&gt;<br>
-                            &lt;/footer&gt;
-                        </div>
-                    </div>
-                    <h2>SEOと信頼性</h2>
-                    <p>フッターに適切なリンク（プライバシーポリシーや会社概要など）を置くことは、ユーザーの利便性を高めるだけでなく、検索エンジンに対しても「運営主体のしっかりしたサイトである」という信頼感を与えることにつながります。
-                    </p>
-                    <h2>まとめ</h2>
-                    <p>ページの終わりまで丁寧に。フッターを正しく構成することで、サイトの完成度はぐっと引き締まります。HTML Masterの各コースでも、最後はフッターで美しく締めくくる練習をします！</p>
+                    <h2>footerタグ＝ページの「締めくくり」</h2>
+                    <p>`
+                    <footer>`
+                        は、HTML5で導入されたセマンティック要素で、ページ全体またはセクションの「フッター（締めくくり部分）」を表します。通常はページの最下部に配置され、著作権表示、サイトマップ、連絡先情報、SNSリンクなどが含まれます。
+                        </p>
+                        <p>`
+                        <header>` が「始まり」なら、`<footer>` は「終わり」です。どちらもWebサイトの信頼性とユーザビリティを高める重要な要素です。</p>
+
+                                <div class="example-box">
+                                    <h4>基本的な使い方</h4>
+                                    <div class="example-code">
+                                        &lt;footer&gt;<br>
+                                        &nbsp;&nbsp;&lt;p&gt;&amp;copy; 2026 HTML Master. All rights
+                                        reserved.&lt;/p&gt;<br>
+                                        &nbsp;&nbsp;&lt;nav&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="/privacy"&gt;プライバシーポリシー&lt;/a&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="/terms"&gt;利用規約&lt;/a&gt;<br>
+                                        &nbsp;&nbsp;&lt;/nav&gt;<br>
+                                        &lt;/footer&gt;
+                                    </div>
+                                </div>
+
+                                <h2>footerタグに含めるべき要素</h2>
+                                <ul>
+                                    <li><strong>著作権表示:</strong> `&copy; 2026 会社名` のような形式で記載します。`&amp;copy;`
+                                        は著作権記号（©）のHTMLエンティティです。</li>
+                                    <li><strong>サイトマップリンク:</strong> プライバシーポリシー、利用規約、会社概要などの重要ページへのリンク</li>
+                                    <li><strong>連絡先情報:</strong> `<address>` タグを使って、メールアドレスや住所を記載</li>
+                                    <li><strong>SNSリンク:</strong> Twitter、Facebook、Instagramなどのソーシャルメディアアイコンとリンク</li>
+                                </ul>
+
+                                <h2>addressタグとの組み合わせ</h2>
+                                <p>連絡先情報を記載する際は、`
+                                <address>` タグを使うのが推奨されます。このタグは「連絡先」であることを明示的に示します。</p>
+                                    <div class="example-box">
+                                        <h4>連絡先情報の例</h4>
+                                        <div class="example-code">
+                                            &lt;footer&gt;<br>
+                                            &nbsp;&nbsp;&lt;address&gt;<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;お問い合わせ: &lt;a
+                                            href="mailto:info@example.com"&gt;info@example.com&lt;/a&gt;<br>
+                                            &nbsp;&nbsp;&lt;/address&gt;<br>
+                                            &lt;/footer&gt;
+                                        </div>
+                                    </div>
+
+                                    <h2>複数のfooterタグを使う</h2>
+                                    <p>`
+                                    <header>` と同様に、1つのページに複数の `<footer>` タグを配置することができます。ページ全体のフッターだけでなく、各 `<article>` や
+                                                `<section>` の中にそれぞれのフッターを置くことも可能です。</p>
+
+                                                    <h2>SEOと信頼性への貢献</h2>
+                                                    <p>フッターに適切なリンク（プライバシーポリシー、会社概要、利用規約など）を配置することは、以下の効果があります：</p>
+                                                    <ul>
+                                                        <li><strong>ユーザーの利便性向上:</strong> 重要な情報に素早くアクセスできる</li>
+                                                        <li><strong>検索エンジンの信頼:</strong> 「運営主体のしっかりしたサイトである」という印象を与える
+                                                        </li>
+                                                        <li><strong>法的コンプライアンス:</strong> 特定商取引法やGDPRなどの法規制に対応</li>
+                                                    </ul>
+
+                                                    <h2>アクセシビリティへの配慮</h2>
+                                                    <p>`
+                                                    <footer>`
+                                                        タグは、スクリーンリーダーにとって「ページの終わり」を示すランドマークとして機能します。視覚障害のあるユーザーは、このランドマークを使ってページの構造を理解できます。
+                                                        </p>
+
+                                                        <h2>まとめ</h2>
+                                                        <p>ページの終わりまで丁寧に。`
+                                                        <footer>`
+                                                            タグを正しく構成することで、サイトの完成度はぐっと引き締まります。著作権表示、重要リンク、連絡先情報を適切に配置し、プロフェッショナルなWebサイトを作りましょう。
+                                                            </p>
                 </div>
             </article>
         </main>

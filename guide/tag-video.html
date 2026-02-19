@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104">
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><video> タグの役割と使い方 | HTML Master リファレンス</title>
@@ -116,25 +119,55 @@
                     <p>外部サービスを使わずに、Webサイト上で動画ファイルを直接再生するための要素。</p>
                 </header>
                 <div class="detail-body">
-                    <h2>videoタグとは？</h2>
-                    <p>`&lt;video&gt;`
-                        タグは、サーバー上の動画ファイルを読み込んで表示します。かつては動画再生に特別なプラグインが必要でしたが、HTML5からはこのタグだけで簡単に再生できるようになりました。</p>
+                    <h2>videoタグ＝プラグイン不要の動画再生</h2>
+                    <p>`<video>` タグは、HTML5で導入された革命的な機能です。かつてはFlashなどの外部プラグインが必要だった動画再生が、このタグ一つで実現できるようになりました。</p>
+                    <p>YouTubeやVimeoなどの埋め込みとは異なり、自分のサーバーにある動画ファイルを直接再生できるため、広告なし・カスタマイズ自由な動画体験を提供できます。</p>
+
                     <div class="example-box">
-                        <h4>コード例</h4>
+                        <h4>基本的な使い方</h4>
                         <div class="example-code">
-                            &lt;video src="movie.mp4" controls width="400"&gt;<br>
+                            &lt;video src="movie.mp4" controls width="640" height="360"&gt;<br>
                             &nbsp;&nbsp;お使いのブラウザは動画の再生に対応していません。<br>
                             &lt;/video&gt;
                         </div>
                     </div>
-                    <h2>主な属性</h2>
+
+                    <h2>重要な属性一覧</h2>
                     <ul>
-                        <li><strong>controls:</strong> 再生ボタンや音量調節などのコントローラーを表示します。</li>
-                        <li><strong>autoplay:</strong> ページを開いた瞬間に自動で再生を開始します（ミュート状態でないと動かないブラウザが多いです）。</li>
-                        <li><strong>loop:</strong> 動画を繰り返し再生します。</li>
+                        <li><strong>controls:</strong> 再生/一時停止ボタン、シークバー、音量調節などのコントロールUIを表示します。ほぼ必須の属性です。</li>
+                        <li><strong>autoplay:</strong> ページ読み込み時に自動再生します。ただし、多くのブラウザでは `muted` 属性と併用しないと動作しません（UX配慮のため）。
+                        </li>
+                        <li><strong>loop:</strong> 動画が終わったら自動的に最初から再生し直します。背景動画などに便利です。</li>
+                        <li><strong>muted:</strong> 音声をミュート状態で開始します。autoplayと組み合わせて使われることが多いです。</li>
+                        <li><strong>poster:</strong> 動画が読み込まれる前に表示するサムネイル画像のURLを指定します。</li>
+                        <li><strong>preload:</strong> `auto`（全体を先読み）、`metadata`（メタデータのみ）、`none`（読み込まない）から選択できます。</li>
                     </ul>
+
+                    <h2>複数フォーマットへの対応</h2>
+                    <p>ブラウザによって対応している動画形式が異なります。そのため、`
+                        <source>` タグを使って複数のフォーマットを用意するのがベストプラクティスです。
+                    </p>
+                    <div class="example-box">
+                        <h4>複数フォーマットの指定</h4>
+                        <div class="example-code">
+                            &lt;video controls&gt;<br>
+                            &nbsp;&nbsp;&lt;source src="movie.mp4" type="video/mp4"&gt;<br>
+                            &nbsp;&nbsp;&lt;source src="movie.webm" type="video/webm"&gt;<br>
+                            &nbsp;&nbsp;お使いのブラウザは動画の再生に対応していません。<br>
+                            &lt;/video&gt;
+                        </div>
+                    </div>
+
+                    <h2>パフォーマンスへの配慮</h2>
+                    <p>動画ファイルは非常に大きくなりがちです。以下の点に注意しましょう：</p>
+                    <ul>
+                        <li>不必要に高解像度にしない（Web用なら720pや1080pで十分）</li>
+                        <li>圧縮ツールを使ってファイルサイズを削減する</li>
+                        <li>autoplayを乱用しない（モバイル通信量への配慮）</li>
+                    </ul>
+
                     <h2>まとめ</h2>
-                    <p>動画コンテンツは視覚的に強力ですが、ファイルサイズが大きくなりがちです。適切な属性設定と最適化を心がけて、快適なページ作りを行いましょう！</p>
+                    <p>`<video>` タグは、Webページに動的なコンテンツを追加する強力なツールです。ただし、ファイルサイズとユーザー体験のバランスを常に意識しましょう。</p>
                 </div>
             </article>
         </main>

@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104">
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><span> タグの役割と使い方 | HTML Master リファレンス</title>
@@ -116,21 +119,88 @@
                     <p>文章の一部だけに特定のデザインを適用したい時に使う、意味を持たない「インラインの箱」。</p>
                 </header>
                 <div class="detail-body">
-                    <h2>spanタグとは？</h2>
-                    <p>`&lt;span&gt;` タグは、文章の中にある特定の言葉や文字だけを囲って、CSSなどでデザインを指定するために使われます。</p>
-                    <p>このタグ自体には特別な意味はありませんが、`&lt;div&gt;` と違って改行を伴わない（インライン要素）ため、文章の流れを崩さずに一部分だけ色を変えたり、太くしたりすることができます。
+                    <h2>spanタグ＝文章の中の「ピンポイント装飾」</h2>
+                    <p>`<span>`
+                            タグは、文章の流れを壊さずに、特定の単語やフレーズだけにスタイルを適用するための「インライン要素」です。このタグ自体には意味がなく、純粋に「見た目」や「JavaScript操作」のために使われます。
                     </p>
-                    <div class="example-box">
-                        <h4>コード例</h4>
-                        <div class="example-code">
-                            今日のおすすめは&lt;span style="color: red;"&gt;イチゴ&lt;/span&gt;です。
-                        </div>
-                    </div>
-                    <h2>divとの違い</h2>
-                    <p>よく比較されるのが `&lt;div&gt;` です。`&lt;div&gt;` は「ブロックレベル要素」と呼ばれ、四角い大きな箱（段落のようなまとまり）を作ります。一方
-                        `&lt;span&gt;` は「インライン要素」で、行の中に溶け込むような小さな単位で使います。</p>
+                    <p>`
+                    <div>` が「ブロックレベル要素」として大きな箱を作るのに対し、`<span>` は文章の一部として溶け込むため、改行を伴いません。</p>
+
+                            <div class="example-box">
+                                <h4>基本的な使い方</h4>
+                                <div class="example-code">
+                                    今日のおすすめは&lt;span style="color: red; font-weight: bold;"&gt;イチゴ&lt;/span&gt;です。
+                                </div>
+                            </div>
+                            <p>この例では、「イチゴ」という単語だけが赤く太字になり、文章の流れは維持されます。</p>
+
+                            <h2>divとの決定的な違い</h2>
+                            <p>よく比較されるのが `
+                            <div>` タグです。両者の違いを理解することは、HTMLの基礎を固める上で非常に重要です。</p>
+
+                                <table class="comparison-table"
+                                    style="width: 100%; border-collapse: collapse; margin: 2rem 0; color: var(--text-secondary);">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                style="border: 1px solid var(--border-color); padding: 1rem; background: rgba(56, 189, 248, 0.1);">
+                                                要素</th>
+                                            <th
+                                                style="border: 1px solid var(--border-color); padding: 1rem; background: rgba(56, 189, 248, 0.1);">
+                                                種類</th>
+                                            <th
+                                                style="border: 1px solid var(--border-color); padding: 1rem; background: rgba(56, 189, 248, 0.1);">
+                                                特徴</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                                <code>&lt;div&gt;</code></td>
+                                            <td style="border: 1px solid var(--border-color); padding: 1rem;">ブロックレベル
+                                            </td>
+                                            <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                                横幅いっぱいに広がり、前後に改行が入る</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                                <code>&lt;span&gt;</code></td>
+                                            <td style="border: 1px solid var(--border-color); padding: 1rem;">インライン</td>
+                                            <td style="border: 1px solid var(--border-color); padding: 1rem;">
+                                                文章の一部として扱われ、改行しない</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h2>実際の使用例</h2>
+                                <p>`<span>` タグは、以下のような場面で頻繁に使われます。</p>
+                                <ul>
+                                    <li><strong>文字色の変更:</strong> 重要な数値や警告文を目立たせる</li>
+                                    <li><strong>JavaScriptでの操作:</strong> 特定の部分だけを動的に書き換える</li>
+                                    <li><strong>アイコンフォントの挿入:</strong> Font Awesomeなどのアイコンを文中に配置</li>
+                                </ul>
+
+                                <div class="example-box">
+                                    <h4>JavaScript操作の例</h4>
+                                    <div class="example-code">
+                                        &lt;p&gt;現在の気温：&lt;span id="temp"&gt;25&lt;/span&gt;℃&lt;/p&gt;<br>
+                                        &lt;script&gt;<br>
+                                        &nbsp;&nbsp;document.getElementById('temp').textContent = '30';<br>
+                                        &lt;/script&gt;
+                                    </div>
+                                </div>
+
+                                <h2>セマンティックな代替案を検討する</h2>
+                                <p>`<span>` は便利ですが、「意味」を持たないため、可能であればセマンティックなタグを優先すべきです。</p>
+                                <ul>
+                                    <li>強調したい → `<strong>` または `<em>`</li>
+                                    <li>コードを示す → `<code>`</li>
+                        <li>削除された文字 → `<del>`</li>
+                    </ul>
+                    <p>「見た目」だけが目的で、適切な意味タグがない場合にのみ `<span>` を使いましょう。</p>
+
                     <h2>まとめ</h2>
-                    <p>文章にアクセントを加えたい時、spanタグは非常に便利です。HTML Masterでも、文字の一部を装飾する課題でたくさん登場します！</p>
+                    <p>`<span>` は「無色透明な容器」です。文章の一部だけを装飾したい時、JavaScriptで操作したい時に威力を発揮します。ただし、乱用は避け、意味のあるタグが使える場面では、そちらを優先しましょう。</p>
                 </div>
             </article>
         </main>

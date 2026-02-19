@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104">
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><br> タグの役割と使い方 | HTML Master リファレンス</title>
@@ -116,21 +119,79 @@
                     <p>文章の途中で強制的に行を変えるためのタグ。終了タグを持たない空要素。</p>
                 </header>
                 <div class="detail-body">
-                    <h2>brタグとは？</h2>
-                    <p>`&lt;br&gt;` は「Break（改行）」の略で、テキストの中で単純に改行を行いたい場合に使用します。</p>
-                    <p>このタグを置いた場所で文章が途切れ、次の文字は新しい行から始まります。</p>
+                    <h2>brタグ＝「改行」だけを行う特殊タグ</h2>
+                    <p>`<br>` は「Break（改行）」の略で、文章の途中で強制的に改行を挿入するためのタグです。最大の特徴は、終了タグ（`</br>`）を持たない「空要素」であることです。</p>
+                    <p>このタグを置いた場所で文章が途切れ、次の文字は新しい行から始まります。ただし、段落（`
+                    <p>`）のように上下に余白は生まれません。</p>
+
                     <div class="example-box">
-                        <h4>コード例</h4>
+                        <h4>基本的な使い方</h4>
                         <div class="example-code">
                             1行目の文章です。&lt;br&gt;<br>
-                            2行目の文章です。
+                            2行目の文章です。&lt;br&gt;<br>
+                            3行目の文章です。
                         </div>
                     </div>
-                    <h2>注意点：レイアウトのために使わない</h2>
-                    <p>最も多い間違いは、段落と段落の間を空けたいからと `&lt;br&gt;` を何個も連続して使うことです。これは見た目の調整に過ぎず、正しい文書構造ではありません。</p>
-                    <p>間隔を空けたい場合は `&lt;p&gt;` タグを分けるか、CSSの `margin`（余白）を使用して調整するのが正しいプロの書き方です。</p>
+
+                    <h2>適切な使用場面</h2>
+                    <p>`<br>` タグは、「意味のまとまりは続いているが、視覚的に改行したい」場合にのみ使うべきです。</p>
+                    <ul>
+                        <li><strong>住所:</strong> 郵便番号、都道府県、市区町村を別々の行に表示</li>
+                        <li><strong>詩や歌詞:</strong> 各行が独立した意味を持つが、全体で一つの作品</li>
+                        <li><strong>署名:</strong> 名前、役職、連絡先を縦に並べる</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <h4>適切な使用例：住所</h4>
+                        <div class="example-code">
+                            &lt;p&gt;<br>
+                            &nbsp;&nbsp;〒100-0001&lt;br&gt;<br>
+                            &nbsp;&nbsp;東京都千代田区千代田1-1&lt;br&gt;<br>
+                            &nbsp;&nbsp;千代田ビル3F<br>
+                            &lt;/p&gt;
+                        </div>
+                    </div>
+
+                    <h2>❌ よくある間違い：レイアウト目的での乱用</h2>
+                    <p>初心者が最も陥りやすい罠が、「見た目の余白を作るために `<br>` を連打する」というものです。</p>
+
+                    <div class="example-box">
+                        <h4>❌ 悪い例</h4>
+                        <div class="example-code" style="color: #ef4444;">
+                            &lt;p&gt;これは最初の段落です。&lt;/p&gt;<br>
+                            &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+                            &lt;p&gt;これは次の段落です。&lt;/p&gt;
+                        </div>
+                    </div>
+
+                    <p>この書き方には以下の問題があります：</p>
+                    <ul>
+                        <li><strong>セマンティクスの欠如:</strong> 検索エンジンやスクリーンリーダーは、これを「段落の区切り」として認識できません。</li>
+                        <li><strong>保守性の低下:</strong> 余白の調整が必要になるたびに、すべての `<br>` を手作業で修正する必要があります。</li>
+                        <li><strong>レスポンシブ対応の困難:</strong> スマホとPCで異なる余白が必要な場合、対応できません。</li>
+                    </ul>
+
+                    <h2>✅ 正しい代替案</h2>
+                    <p>段落間の余白を調整したい場合は、CSSの `margin` プロパティを使いましょう。</p>
+
+                    <div class="example-box">
+                        <h4>✅ 正しい例</h4>
+                        <div class="example-code">
+                            /* CSS */<br>
+                            p {<br>
+                            &nbsp;&nbsp;margin-bottom: 2rem;<br>
+                            }<br><br>
+                            /* HTML */<br>
+                            &lt;p&gt;これは最初の段落です。&lt;/p&gt;<br>
+                            &lt;p&gt;これは次の段落です。&lt;/p&gt;
+                        </div>
+                    </div>
+
+                    <h2>アクセシビリティへの影響</h2>
+                    <p>スクリーンリーダーは `<br>` タグを「短い間」として読み上げます。過度に使用すると、聴覚的に不自然な間が生まれ、ユーザー体験を損ないます。</p>
+
                     <h2>まとめ</h2>
-                    <p>brタグは「意味は続いているが、行だけ変えたい」とき（住所や歌詞など）に限定して使うのがスマートです。正しく使い分けて、美しいコードを目指しましょう！</p>
+                    <p>`<br>` タグは「意味は続いているが、行だけ変えたい」という限定的な場面でのみ使用しましょう。レイアウト調整には、常にCSSを使うのがプロの流儀です。</p>
                 </div>
             </article>
         </main>

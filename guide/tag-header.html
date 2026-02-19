@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501905149062104">
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
@@ -118,25 +121,78 @@
                     <p>ページや各セクションの「顔」となる導入部分を定義するセマンティック要素。</p>
                 </header>
                 <div class="detail-body">
-                    <h2>headerタグとは？</h2>
-                    <p>`&lt;header&gt;` は、その範囲（ページ全体、あるいは記事の一部など）における導入部や、ナビゲーションの集まりを示します。</p>
-                    <p>通常、サイトのロゴ、検索フォーム、メインメニューなどがこの中に含まれます。単なる `&lt;div&gt;`
-                        と違い、ブラウザや検索エンジンに対して「ここが始まりの部分ですよ」という明確な意味（セマンティクス）を伝えることができます。</p>
-                    <div class="example-box">
-                        <h4>コード例</h4>
-                        <div class="example-code">
-                            &lt;header&gt;<br>
-                            &nbsp;&nbsp;&lt;h1&gt;サイトタイトル&lt;/h1&gt;<br>
-                            &nbsp;&nbsp;&lt;nav&gt;メニュー&lt;/nav&gt;<br>
-                            &lt;/header&gt;
+                    <h2>headerタグ＝ページの「顔」を作る</h2>
+                    <p>`
+                    <header>`
+                        は、HTML5で導入されたセマンティック要素で、ページ全体またはセクションの「導入部」を表します。多くのWebサイトでは、ロゴ、ナビゲーションメニュー、検索フォームなどがここに配置されます。
+                        </p>
+                        <p>単なる `
+                        <div class="header">` と違い、`<header>`
+                                タグを使うことで、ブラウザ、検索エンジン、スクリーンリーダーに対して「ここがページの始まり部分です」という明確な意味を伝えることができます。</p>
+
+                                <div class="example-box">
+                                    <h4>基本的な使い方</h4>
+                                    <div class="example-code">
+                                        &lt;header&gt;<br>
+                                        &nbsp;&nbsp;&lt;h1&gt;サイトタイトル&lt;/h1&gt;<br>
+                                        &nbsp;&nbsp;&lt;nav&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="/"&gt;ホーム&lt;/a&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="/about"&gt;会社概要&lt;/a&gt;<br>
+                                        &nbsp;&nbsp;&lt;/nav&gt;<br>
+                                        &lt;/header&gt;
+                                    </div>
+                                </div>
+
+                                <h2>headerタグに含めるべき要素</h2>
+                                <ul>
+                                    <li><strong>ロゴ:</strong> サイトのブランドアイデンティティを示す画像やテキスト</li>
+                                    <li><strong>ナビゲーション:</strong> `<nav>` タグで囲んだメインメニュー</li>
+                                    <li><strong>検索フォーム:</strong> サイト内検索機能（大規模サイトの場合）</li>
+                                    <li><strong>見出し:</strong> ページやセクションのタイトル（`<h1>`〜`<h6>`）</li>
+                                </ul>
+
+                                <h2>複数のheaderタグを使う</h2>
+                                <p>1つのページに複数の `
+                                <header>` タグを配置することは完全に問題ありません。ページ全体のヘッダーだけでなく、各 `<article>` や `<section>` の中にそれぞれの `
+                                            <header>` を置くことで、より論理的な構造になります。</p>
+
+                                                <div class="example-box">
+                                                    <h4>複数ヘッダーの例</h4>
+                                                    <div class="example-code">
+                                                        &lt;header&gt;<br>
+                                                        &nbsp;&nbsp;&lt;h1&gt;ブログサイト&lt;/h1&gt;<br>
+                                                        &lt;/header&gt;<br><br>
+                                                        &lt;article&gt;<br>
+                                                        &nbsp;&nbsp;&lt;header&gt;<br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;記事タイトル&lt;/h2&gt;<br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;投稿日: 2026年2月11日&lt;/p&gt;<br>
+                                                        &nbsp;&nbsp;&lt;/header&gt;<br>
+                                                        &nbsp;&nbsp;&lt;p&gt;記事本文...&lt;/p&gt;<br>
+                                                        &lt;/article&gt;
+                                                    </div>
+                                                </div>
+
+                                                <h2>アクセシビリティへの貢献</h2>
+                                                <p>`
+                                                <header>`
+                                                    タグは、スクリーンリーダーにとって重要なランドマーク（目印）として機能します。視覚障害のあるユーザーは、このランドマークを使ってページ内を効率的にナビゲートできます。
+                                                    </p>
+                                                    <p>さらに、ARIA属性 `role="banner"`
+                                                        を追加することで、メインヘッダーであることを明示的に示すこともできます（ただし、HTML5では `
+                                                    <header>` 自体が暗黙的にこの役割を持ちます）。</p>
+
+                                                        <h2>SEOへの影響</h2>
+                                                        <p>検索エンジンは `
+                                                        <header>`
+                                                            タグを見て、「このサイトの主要なナビゲーション構造はどうなっているか」を理解します。適切に構造化されたヘッダーは、サイト全体のSEO評価にプラスの影響を与えます。
+                                                            </p>
+
+                                                            <h2>まとめ</h2>
+                                                            <p>`
+                                                            <header>`
+                                                                タグは、ユーザーに安心感を与える重要なエリアです。ロゴとナビゲーションを適切に配置し、セマンティックな構造を意識することで、すべての人にとって使いやすいWebサイトを作りましょう。
+                                                                </p>
                         </div>
-                    </div>
-                    <h2>複数使ってもいい？</h2>
-                    <p>はい、問題ありません。ページ全体のヘッダーだけでなく、各 `&lt;article&gt;` や `&lt;section&gt;` の中にそれぞれの `&lt;header&gt;`
-                        を置くことができます。これにより、構造がより論理的になります。</p>
-                    <h2>まとめ</h2>
-                    <p>ヘッダーはユーザーに安心感を与える重要なエリアです。適切なセマンティックタグを使用して、機械にも人間にも優しいサイト構造を意識しましょう！</p>
-                </div>
             </article>
         </main>
         <footer class="home-footer">
